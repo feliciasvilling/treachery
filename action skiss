@@ -1,0 +1,97 @@
+
+invest ghoul /discipline /discipline rating
+
+
+
+
+formTable = {
+    'Aid Action':AidActionForm, 
+    'Conserve (Influence)':ConserveInfluenceForm,
+    'Conserve (Domain)':ConserveDomainForm,
+    'Influence (Forge)':InfluenceForgeForm,
+    'Influence (Steal)':InfluenceStealForm,
+    'Influence (Destroy)':InfluenceDestroyForm,
+    'Investigate (Character: Influence)':InvestigateCharacterInfluenceForm,
+    'Investigate (Character: Resources)':InvestigateCharacterResourcesForm,
+    'Investigate (Character: Downtime Actions)':InvestigateCharacterDowntimeActionsForm,
+    'Investigate (Counter spionage)':InvestigateCounterSpionageForm,
+    'Investigate (Phenomenon)':InvestigatePhenomenonForm,
+    'Investigate (Influence)':InvestigateInfluenceForm,
+    'Learn':LearnForm,
+    'Invest (Ghoul)':InvestGhoulForm,
+    'Invest (Equipment)':InvestEquipmentForm,
+    'Invest (Weapon)':InvestWeaponForm,
+    'Invest (Herd)':InvestHerdForm,
+    'Invest (Haven)':InvestHavenForm,
+    'Mentor':MentorForm,
+    'Rest':RestForm,
+    
+    }
+
+
+
+AID ACTION: spelare, action, hook. hjälpa eller stjälpa, spendera willpower.
+
+CONSERVE (Influence): influence.
+
+CONSERVE (Domain): domain, spendera willpower.
+
+INFLUENCE (Forge): namn, inflytande
+
+INFLUENCE (Steal): hook, inflytande
+
+INFLUENCE (Destroy): hook, inflytande
+
+INVESTIGATE (Character: Influence): spelare, prioriteringar.
+
+INVESTIGATE (Character: Resources): spelare, prioriteringar.
+
+INVESTIGATE (Character: Downtime actions): spelare
+
+INVESTIGATE (Counter spionage):
+
+INVESTIGATE (Phenomenon): Phenonemon
+
+INVESTIGATE (Influence): inflytande
+
+LEARN: attribute/discipline/specialication. level, mentor
+
+INVEST: background
+
+MENTOR: attribute/discipline/specialication. level, spelare
+
+REST: 
+
+
+
+ Aid action: spelare, action, hook. hjälpa eller stjälpa, spendera willpower.
+
+Conserve (influence): influence.
+
+Conserve (domain): domain, spendera willpower.
+
+Influence (forge): namn, inflytande
+
+Influence (steal): hook, inflytande
+
+Influence (destroy): hook, inflytande
+
+Investigate (character: influence): spelare, prioriteringar.
+
+Investigate (character: resources): spelare, prioriteringar.
+
+Investigate (character: downtime actions): spelare
+
+Investigate (counter spionage):
+
+Investigate (phenomenon): phenonemon
+
+Investigate (influence): inflytande
+
+Learn: attribute/discipline/specialication. level, mentor
+
+Invest: background
+
+Mentor: attribute/discipline/specialication. level, spelare
+
+Rest:

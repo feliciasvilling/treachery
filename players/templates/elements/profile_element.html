@@ -1,0 +1,22 @@
+<div class="row">
+  <div class="col-md-offset-3 col-md-6">
+    <dl class="dl-horizontal">
+      <dt>Name</dt>
+      <dd>{{ character.name }}</dd>
+      <dt>Clan</dt>
+      <dd>{{character.clan}}</dd>
+      <dt>Age</dt>
+      <dd>{{character.age}}</dd>
+      <dt>Titles</dt>
+      <dd>{{ character.titles.all|join:", " }}</dd>
+      <dt>Disciplines</dt>
+      <dd>{{ character.disciplines.all|join:", " }}</dd>
+      <dt>Resource Income</dt>
+      <dd>{{character.resource_income}}</dd>
+      <dt>Influences</dt>
+      <dd>{% for i in character.influences.all %}
+        {{ i.influence.name }}: {{i.rating}}<br>
+      {% endfor %}</dd>
+    </dl>
+  </div>
+</div>

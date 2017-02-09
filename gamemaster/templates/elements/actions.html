@@ -1,0 +1,101 @@
+
+<div class="row">
+  <div class="col-md-10 col-md-offset-1">
+    <h1>{{ session_name }} <small>Actions</small></h1>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-offset-1 col-md-7">
+
+    <div class="form-group form-inline" style="float: left; padding-right:10px">
+      <span><label>Type:</label>
+        <select class="form-control" id="filter-actions-type" name="type">
+          <option></option>
+          {% for type in action_types %}
+          <option>{{ type.name }}</option>
+          {% endfor %}
+        </select>
+      </span>
+    </div>
+
+    <div class="form-group form-inline" style="float: left; padding-right:10px">
+      <span><label>Character:</label>
+        <select class="form-control" id="filter-actions-character" name="character">
+          <option></option>
+          {% for character in characters %}
+          <option>{{ character.name }}</option>
+          {% endfor %}
+        </select>
+      </span>
+    </div>
+
+    <div class="form-group form-inline" style="float: left;">
+      <span><label>Resolved:</label>
+        <select class="form-control" id="filter-actions-resolved" name="resolved">
+          <option></option>
+          <option>Unresolved</option>
+          <option>Pending</option>
+          <option>Resolved</option>
+        </select>
+      </span>
+    </div>
+
+  </div>
+
+  <div class="col-md-3 text-right">
+    <input type="text" class="form-control" id="search" placeholder="Search...">
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-offset-1 col-md-10">
+    <table id="action-table" class="table table-hover">
+      <thead>
+        <tr>
+          <th class="dynatable-head">Type</th>
+          <th class="dynatable-head">Character</th>
+          <th class="dynatable-head">Description</th>
+          <th class="dynatable-head">Resolved</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for action in actions %}
+        <tr class="clickableRow {% if action.resolved == "RESOLVED" %}success{% elif action.resolved == "PENDING" %}warning{% endif %}" data-href="{% url 'action' action.id %}">
+          <td>{{ action.action_type.name }}</td>
+          <td>{{ action.character.name }}</td>
+          <td>{{ action.description|truncatechars:25 }}</td>
+          <td>{{ action.get_resolved_display}}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+<script>
+
+  $('#action-table').dynatable({
+    features: {
+      paginate:     true,
+      recordCount:  true,
+      sorting:      true,
+      perPageSelect: false,
+      search:       false,
+    },
+    inputs: {
+      queries: $('#filter-actions-resolved,#filter-actions-type,#filter-actions-character,#search'),
+    },
+    writers: {
+      _rowWriter: clickableRowWriter
+    },
+    readers: {
+      _rowReader: clickableRowReader
+    },
+    dataset: {
+      perPageDefault: 25,
+    }
+  });
+
+</script>
