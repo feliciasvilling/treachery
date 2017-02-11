@@ -29,7 +29,8 @@ def profile(request):
     for session in Session.objects.order_by('name').all():
         state = session.resolved_state(request.user.character)
         session_state.append({'state': state, 'session': session})
-
+         
+    print (request.user.character.background_cost())
     return render(request, 'profile.html',
                   {'character': request.user.character,
                    'session_list': session_state})

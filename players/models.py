@@ -16,6 +16,9 @@ RUMOR_FACT = 'Fact'
 RUMOR_VAMPIRE = 'Vampire'
 
 
+def toStrList(qrySet):
+    return ','.join(map(str,list(qrySet))) 
+
 class ActionType(Model):
     name = CharField(max_length=200)
     template = TextField(blank=True)
@@ -220,6 +223,7 @@ class HookAttribute(Model):
         
 class Hook(Model):
     name = CharField(max_length=200)
+   # description = CharField(max_length=200,blank=True)
     influence = ForeignKey(Influence)
     attributes = ManyToManyField(HookAttribute,blank=True)
     history = HistoricalRecords()
@@ -254,7 +258,7 @@ class Equipment(Model):
   specialization = ForeignKey(Specialization,null=True,blank=True)
   
   def __str__(self):
-        return self.name 
+        return '{} ({})'.format(self.name,self.specialization.name)
   
 class Ghoul(Model):
   name = CharField(max_length=200)
@@ -264,8 +268,28 @@ class Ghoul(Model):
   specializations = ManyToManyField(Specialization, blank=True)
   
   def __str__(self):
-        return self.name    
-   
+        return '{} (Level: {},Potence 1,{},{}) ' .format(
+            self.name,
+            self.level,
+            toStrList(self.disciplines.all()), 
+            toStrList(self.specializations.all()))
+            
+class Domain(Model):
+    name = CharField(max_length=200)
+    feeding_capacity = PositiveIntegerField()
+    status = CharField(max_length=200)
+    influence = CharField(max_length=200)
+    masquerade = CharField(max_length=200)
+    population = ManyToManyField(Population, blank=True)
+    history = HistoricalRecords()
+
+    def __str__(self):
+        population = ', '.join(d.name for d in self.population.all())
+        return '{} - FP: {}, S: {}, I: {}, M: {}, P: [{}]'.format(
+            self.name, self.feeding_capacity, self.status, self.influence,
+            self.masquerade, population)
+            
+                  
 class Character(Model):
     name = CharField(max_length=200)
     user = OneToOneField(
@@ -273,46 +297,65 @@ class Character(Model):
                         related_name='character',
                         blank=True,
                         null=True)
-    disciplines = ManyToManyField(DisciplineRating,   blank=True)
-    attributes  = ManyToManyField(AttributeRating,    blank=True)
-    rituals     = ManyToManyField(RitualRating,       blank=True)
-    specializations = ManyToManyField(Specialization, blank=True)
-    hooks  = ManyToManyField(Hook,  blank=True, related_name='master')
-    titles = ManyToManyField(Title, blank=True)
-    boons  = ManyToManyField(Boon,  blank=True)
-    canon_fact        = ManyToManyField(CanonFact, blank=True)
-    political_faction = ForeignKey(PoliticalFaction, blank=True,null=True)
-    age     = ForeignKey(Age)
-    clan    = ForeignKey(Clan,blank=True,null=True)
+    
     nature  = ForeignKey(Nature,related_name='+')
     demeanor= ForeignKey(Nature,related_name='+')
+
     sire    = ForeignKey('Character',blank=True,null=True)
-    concept = TextField(blank=True)
-        
+    clan    = ForeignKey(Clan,blank=True,null=True)
+    generation = PositiveIntegerField(default=13)  
+    age     = ForeignKey(Age)
+    titles  = ManyToManyField(Title, blank=True)
+    
     open_goal1  = TextField(blank=True)
     open_goal2  = TextField(blank=True)
     hidden_goal = TextField(blank=True)
     
-    relationships = ManyToManyField(Relationship, related_name='master', blank=True)
     
+    attributes  = ManyToManyField(AttributeRating,    blank=True)
+    specializations = ManyToManyField(Specialization, blank=True)
+    disciplines = ManyToManyField(DisciplineRating,   blank=True)
+    
+    humanity   = PositiveIntegerField(default=7)
+    willpower  = PositiveIntegerField(default=0)
+    health     = PositiveIntegerField(default=7)
+    blood      = PositiveIntegerField(default=10)
+    
+  #  bashing = PositiveIntegerField(default=0)
+  #  lethal = PositiveIntegerField(default=0)
+  #  aggravated = PositiveIntegerField(default=0)
+  #  domains = ManyToManyField(Domain,blank=True, related_name='owner')
+  
+
+    hooks  = ManyToManyField(Hook,  blank=True, related_name='master')
+
+    resources  = PositiveIntegerField(default=0)
+    
+    
+    rituals     = ManyToManyField(RitualRating,       blank=True)
+
+    boons  = ManyToManyField(Boon,  blank=True)
     frenzyTriggers = TextField(blank=True)
+
+    relationships = ManyToManyField(Relationship, related_name='master', blank=True)
+    canon_fact        = ManyToManyField(CanonFact, blank=True)
+
+    political_faction = ForeignKey(PoliticalFaction, blank=True,null=True)
+    concept = TextField(blank=True)
+        
+    
+    
     
     herd  = PositiveIntegerField(choices=((0,0),(1,1),(2,2),(3,3)),default=0)
     haven = PositiveIntegerField(choices=((0,0),(1,1),(2,2),(3,3)),default=0)
-    ghouls    = ManyToManyField(Ghoul,     blank=True)
     equipment = ManyToManyField(Equipment, blank=True)
     weapons   = ManyToManyField(Weapon,    blank=True)
+    ghouls    = ManyToManyField(Ghoul,     blank=True)
         
     exp          = PositiveIntegerField(default=0)
     humanity_exp = PositiveIntegerField(default=0)
     special_exp  = PositiveIntegerField(default=0)
     
-    health     = PositiveIntegerField(default=7)
-    blood      = PositiveIntegerField(default=10)
-    humanity   = PositiveIntegerField(default=7)
-    willpower  = PositiveIntegerField(default=0)
-    resources  = PositiveIntegerField(default=0)
-    generation = PositiveIntegerField(default=13)  
     
     additional_notes = TextField(blank=True)
           
@@ -348,30 +391,38 @@ class Character(Model):
                     'actions': actions}
         else:
             return False
+            
+    def get_influences(self):
+        return {inf.name:len(self.hooks.filter(influence=inf)) for inf in Influence.objects.all()}
+            
+        
 
     def resource_income(self):
-        ratings = InfluenceRating.objects.filter(character=self)
-        weights = [1, 5, 10]
+        ratings = self.get_influences()
+        weights = [0, 1, 5, 10]
         income = 0
-        for rating in ratings:
-            income += weights[min(rating.rating, 3) - 1]
+        for influence, rating in ratings.items():
+            income += weights[rating]
         return income
+        
+    def get_backgrounds(self):   
+        ghouls = sum([ghoul.level for ghoul in self.ghouls.all()])
+        equipment = len(list(self.equipment.all()))
+        weapons = sum([weapon.resources for weapon in self.weapons.all()])
+        return  {'haven': self.haven,
+                 'herd': self.herd,
+                 'ghouls': ghouls,
+                 'equipment': equipment,
+                 'weapons': weapons}
+        
+    def background_cost(self):
+        return sum([value for key,value in self.get_backgrounds().items()])
 
+    def get_hooks(self):
+        return ['{}: {} ({})' .format(h.influence, h.name, toStrList(h.attributes.all()))
+             for h in self.hooks.all()]
+             
 
-class Domain(Model):
-    name = CharField(max_length=200)
-    feeding_capacity = PositiveIntegerField()
-    status = CharField(max_length=200)
-    influence = CharField(max_length=200)
-    masquerade = CharField(max_length=200)
-    population = ManyToManyField(Population, blank=True)
-    history = HistoricalRecords()
-
-    def __str__(self):
-        population = ', '.join(d.name for d in self.population.all())
-        return '{} - FP: {}, S: {}, I: {}, M: {}, P: [{}]'.format(
-            self.name, self.feeding_capacity, self.status, self.influence,
-            self.masquerade, population)
 
 
 class InfluenceRating(Model):

@@ -96,6 +96,9 @@ def character(request, session, character):
     }
     return render(request, 'character.html', context)
 
+def character_display(request, character):
+    return render(request, 'character_display.html',
+                  {'character': Character.objects.get(pk=character)}) 
 
 def toggle_session(request, session):
     session_obj = get_object_or_404(Session, id=session)

@@ -3,20 +3,91 @@
     <dl class="dl-horizontal">
       <dt>Name</dt>
       <dd>{{ character.name }}</dd>
+      <dt>Player</dt>
+      <dd>{{character.user}}</dd>
+      <dt>Nature</dt>
+      <dd>{{ character.nature }}</dd>
+      <dt>Demeanor</dt>
+      <dd>{{ character.demeanor }}</dd>
+      
+      <dt>Sire</dt>
+      <dd>{{ character.sire }}</dd>
       <dt>Clan</dt>
       <dd>{{character.clan}}</dd>
+      <dt>Generation</dt>
+      <dd>{{character.generation}}</dd>
+      
+      <dt>Political Faction</dt>
+      <dd>{{character.political_faction}}</dd>
+      
       <dt>Age</dt>
       <dd>{{character.age}}</dd>
       <dt>Titles</dt>
       <dd>{{ character.titles.all|join:", " }}</dd>
+      
+      <dt>Goal</dt>
+      <dd>{{character.open_goal1}}</dd>
+      
+      <dt>Goal</dt>
+      <dd>{{character.open_goal2}}</dd>
+      
+      <dt>Goal</dt>
+      <dd>{{character.hidden_goal}}</dd>
+      
+      <dt>Attributes</dt>
+      <dd>{{ character.attributes.all|join:", " }}</dd> 
+      
+      <dt>Specializations</dt>
+      <dd>{{ character.specializations.all|join:", " }}</dd> 
+      
       <dt>Disciplines</dt>
       <dd>{{ character.disciplines.all|join:", " }}</dd>
+      
+      <dt>Humanity</dt>
+      <dd>{{ character.humanity}}</dd>      
+      <dt>Willpower</dt>
+      <dd>{{ character.willpower}}</dd>      
+      <dt>Health</dt>
+      <dd>{{ character.health}}</dd>
+      <dt>Blood</dt>
+      <dd>{{ character.blood}}</dd>
+      
+      <dt>Influences</dt>
+          {% for influence, rating in character.get_influences.items %} 
+            {% if rating > 0 %} <dd> {{influence}}: {{rating}}</dd> {% endif %}
+          {% endfor %}  
+      
+      <dt>Hooks</dt>
+           {% for hook in character.get_hooks %}
+             <dd>  {{hook}}</dd>   
+           {% endfor %}  
+
+      <dt>Resources</dt>
+      <dd>{{ character.resources}}</dd>          
       <dt>Resource Income</dt>
       <dd>{{character.resource_income}}</dd>
-      <dt>Influences</dt>
-      <dd>{% for i in character.influences.all %}
-        {{ i.influence.name }}: {{i.rating}}<br>
-      {% endfor %}</dd>
+      <dt>Background Cost</dt>
+      <dd>{{character.background_cost}}</dd>
+      
+      <dt>Backgrounds</dt>
+          {% for background, rating in character.get_backgrounds.items %} 
+            {% if rating > 0 %} <dd> {{background}}: {{rating}}</dd> {% endif %}
+          {% endfor %}  
+   
+      <dt>Equipment</dt>
+          {% for equi in character.equipment.all %} 
+             <dd> {{equi}}</dd>
+          {% endfor %} 
+      <dt>Weapons</dt>
+          {% for weap in character.weapons.all %} 
+             <dd> {{weap}}</dd>
+          {% endfor %} 
+      <dt>Ghouls</dt>
+          {% for ghoul in character.ghouls.all %} 
+             <dd> {{ghoul}}</dd>
+          {% endfor %} 
+       
+     </dd>
     </dl>
   </div>
 </div>
