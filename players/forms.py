@@ -33,6 +33,109 @@ class SessionFormSet(BaseModelFormSet):
             instance.save()
         self.save_m2m()
 
+def report_form(char):
+    class _ReportForm(Form):
+        open_goal1_text = CharField(
+            required=False,
+            disabled=True,
+            initial=char.open_goal1, 
+            label='Open Goal 1:')
+        open_goal1 = BooleanField(required=False,label='Did you work on this goal?')
+        
+        open_goal2_text = CharField(
+            required=False,
+            disabled=True,
+            initial=char.open_goal2, 
+            label='Open Goal 2:')
+        open_goal2 = BooleanField(required=False,label='Did you work on this goal?')
+
+        hidden_goal_text = CharField(
+            required=False,
+            disabled=True,
+            initial=char.hidden_goal, 
+            label='Hidden Goal:')
+        hidden_goal = BooleanField(required=False,label='Did you work on this goal?')
+
+        humantiy_goal = BooleanField(required=False,label='where any of the goals you worked on a humanity goal?')
+        
+        bashing = IntegerField(initial=0, label = 'Did you take any bashing damage?')
+        lethal = IntegerField(initial=0, label = 'Did you take any lethal damage?')
+        aggrevated = IntegerField(initial=0, label = 'Did you take any aggrevated damage?')
+        
+        
+        resources = IntegerField(initial=0, label = 'Did you pay any resources?')
+        willpower = IntegerField(initial=0, label = 'Did you pay any willpower?')
+        blood = IntegerField(initial=0, label = 'Did you pay any blood?')
+        
+        
+        humanity = IntegerField(initial=0, label = 'Did you lose any humanity?')
+                
+        def fill_save(self):
+            v = self.cleaned_data
+            if v['open_goal1']:
+                char.exp += 1
+            if v['open_goal2']:
+                char.exp += 1                    
+            if v['hidden_goal']:
+                char.exp += 1        
+            if v['humantiy_goal']:
+                char.exp -= 1
+                char.humanity_exp += 1
+                
+            char.resources -= v['resources']
+            char.humanity -= v['humanity']
+            char.blood -= v['blood']    
+            
+            if v['willpower'] != 0:
+                char.additional_notes += '\nspent willpower: {}' .format(v['willpower'])
+            if v['bashing'] != 0:
+                char.additional_notes +='\ntaken bashing damage: {}' .format( v['bashing'])
+            if v['lethal'] != 0:
+                char.additional_notes +='\ntaken lethal damage: {}' .format( v['lethal'])
+            if v['aggrevated'] != 0:
+                char.additional_notes +='\ntaken aggrevated damage: {}' .format( v['aggrevated'])
+            
+            if char.special_exp==0:
+                char.special_exp=1
+                char.save()    
+                
+            print ("saved {}!" )
+    return _ReportForm
+    
+    
+def set_goal_form(char):
+    class _SetGoal(Form):
+
+        open_goal1  = CharField(
+            initial = char.open_goal1,
+            widget=Textarea(
+                attrs={'col':15,'rows':3}),
+                required=False,
+                )
+        open_goal2  = CharField(
+            initial = char.open_goal2,
+                widget=Textarea(
+                attrs={'col':15,'rows':3}),
+                required=False,
+                )
+        hidden_goal = CharField(
+            initial = char.hidden_goal,
+            widget=Textarea(
+                attrs={'col':15,'rows':3}),
+                required=False,
+                )
+                           
+        def fill_save(self):
+            v = self.cleaned_data
+            
+            char.open_goal1 = v['open_goal1']
+            char.open_goal2 = v['open_goal2']
+            char.hidden_goal = v['hidden_goal']
+            
+            char.save()    
+                
+            print ("saved {}!" )
+    return _SetGoal
 
 class DisciplineActivationFormSet(SessionFormSet):
     def __init__(self, *args, **kwargs):
@@ -47,13 +150,23 @@ class DisciplineActivationFormSet(SessionFormSet):
                 'disciplines'].queryset = self.user.character.disciplines.all()
 
 
+class FeedingFormSet(SessionFormSet):
+    def __init__(self, *args, **kwargs):
+        super(FeedingFormSet, self).__init__(*args, **kwargs)
+        self.queryset = Feeding.objects.filter(character=self.character,
+                                               session=self.session)
+        self.max_num = 3
+        self.extra = 3
+        self.can_delete = False
+        for form in self.forms:
+            form.fields[
+                'discipline'].queryset = self.user.character.disciplines.all()
+
 class ActionFormSet(SessionFormSet):
     def __init__(self, *args, **kwargs):
         super(ActionFormSet, self).__init__(*args, **kwargs)
         self.queryset = Action.objects.filter(character=self.character,
                                               session=self.session)
-                                             
-
         self.can_delete = False
 
         if self.session.is_special:
@@ -85,17 +198,7 @@ class ActionFormSet(SessionFormSet):
                     form.fields['action_type'].queryset = action.action_types.all()
                     i = i + 1
                 
-class FeedingFormSet(SessionFormSet):
-    def __init__(self, *args, **kwargs):
-        super(FeedingFormSet, self).__init__(*args, **kwargs)
-        self.queryset = Feeding.objects.filter(character=self.character,
-                                               session=self.session)
-        self.max_num = 3
-        self.extra = 3
-        self.can_delete = False
-        for form in self.forms:
-            form.fields[
-                'discipline'].queryset = self.user.character.disciplines.all()
+
 
 
 class CharacterForm2(ModelForm):
@@ -145,12 +248,8 @@ class CharacterForm(Form):
 
     humanity   = IntegerField(initial=7)
     willpower  = IntegerField(initial=0)
-    resources  = IntegerField(initial=0)
     generation = IntegerField(initial=13) 
-    
-    
-
-    
+       
     hook1_name        = CharField(required=False)
     hook1_influence   = ModelChoiceField(queryset=Influence.objects,required=False)
     hook1_attributes  = ModelMultipleChoiceField(queryset=HookAttribute.objects,required=False)
@@ -279,7 +378,7 @@ class InfluenceDestroyForm(ActionForm):
 class InvestigateCharacterInfluenceForm(ActionForm):
     class Meta:
         model = InvestigateCharacterInfluence
-        exclude = excludedFields
+        exclude = excludedFields +['hooks']
     action_type = "Investigate (Character: Influence)"
 
 class InvestigateCharacterResourcesForm(ActionForm):

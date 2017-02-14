@@ -1,7 +1,6 @@
 from django.db import models
 from django.db.models import *
 from django.contrib.auth.models import User
-from simple_history.models import HistoricalRecords
 
 # Resolved states
 UNRESOLVED = 'UNRESOLVED'
@@ -15,6 +14,7 @@ RUMOR_RELIABLE = 'Reliable'
 RUMOR_FACT = 'Fact'
 RUMOR_VAMPIRE = 'Vampire'
 
+#DROP TABLE players_historicalcharacter
 
 def toStrList(qrySet):
     return ','.join(map(str,list(qrySet))) 
@@ -22,7 +22,7 @@ def toStrList(qrySet):
 class ActionType(Model):
     name = CharField(max_length=200)
     template = TextField(blank=True)
-    history = HistoricalRecords()
+    
 
     def help_texts():
         help_texts = []
@@ -41,7 +41,7 @@ class ActionType(Model):
 class ActionOption(Model):
     action_types = ManyToManyField(ActionType)
     count = PositiveIntegerField()
-    history = HistoricalRecords()
+    
 
     def __str__(self):
         action_types = ' or '.join(a.name for a in self.action_types.all())
@@ -50,7 +50,7 @@ class ActionOption(Model):
 
 class Influence(Model):
     name = CharField(max_length=200)
-    history = HistoricalRecords()
+    
 
     def __str__(self):
         return self.name
@@ -58,14 +58,14 @@ class Influence(Model):
 
 class Population(Model):
     name = CharField(max_length=200)
-    history = HistoricalRecords()
+    
 
     def __str__(self):
         return self.name
 
 class ElderPower(Model):
     name = CharField(max_length=200)
-    history = HistoricalRecords()
+    
     description = TextField()
 
     def __str__(self):
@@ -74,7 +74,7 @@ class ElderPower(Model):
 
 class Discipline(Model):
     name = CharField(max_length=200)
-    history = HistoricalRecords()
+    
 
     def __str__(self):
         return self.name
@@ -88,7 +88,7 @@ class DisciplineRating(Model):
     in_clan = BooleanField(default=False)
     mentor = BooleanField(default=False)
     exp = PositiveIntegerField(default=0)    
-    history = HistoricalRecords()
+    
 
     def __str__(self):
         return '{} {}'.format(self.discipline.name, str(self.value))
@@ -96,7 +96,7 @@ class DisciplineRating(Model):
 
 class Attribute(Model):
     name = CharField(max_length=200)
-    history = HistoricalRecords()
+    
 
     def __str__(self):
         return self.name
@@ -108,14 +108,14 @@ class AttributeRating(Model):
     mentor = BooleanField(default=False)
     value = PositiveIntegerField(default=1)
     exp = PositiveIntegerField(default=0)    
-    history = HistoricalRecords()
+    
 
     def __str__(self):
         return  '{} {}'.format(self.attribute.name, str(self.value))
 
 class Specialization(Model):
     name = CharField(max_length=200)
-    history = HistoricalRecords()
+    
 
     def __str__(self):
         return self.name
@@ -127,7 +127,7 @@ class Weapon(Model):
     damage_type = CharField(max_length=200,choices = damage_types)
     resources = PositiveIntegerField()
     ranged = BooleanField(default=False)
-    history = HistoricalRecords()
+    
 
     def __str__(self):
         return '{} (cost {}, bonus {} {} {})'.format(
@@ -141,7 +141,7 @@ class Weapon(Model):
 class Title(Model):
     name = CharField(max_length=200)
     action_options = ManyToManyField(ActionOption, blank=True)
-    history = HistoricalRecords()
+    
 
     def __str__(self):
         return self.name
@@ -149,7 +149,7 @@ class Title(Model):
 class Age(Model):
     name = CharField(max_length=200)
     action_options = ManyToManyField(ActionOption, blank=True)
-    history = HistoricalRecords()
+    
 
     def __str__(self):
         return self.name
@@ -157,7 +157,7 @@ class Age(Model):
 class Clan(Model):
     name = CharField(max_length=200)
     theme = TextField(blank=True)
-    history = HistoricalRecords()
+    
     clan_disciplines = ManyToManyField(Discipline, blank=True)
 
     def __str__(self):
@@ -165,23 +165,20 @@ class Clan(Model):
 
 class PoliticalFaction(Model):
     name = CharField(max_length=200)
-    description = TextField(blank=True)
-    history = HistoricalRecords()
+    description = TextField(blank=True)    
 
     def __str__(self):
         return self.name
         
 class CanonFact(Model):
     name = CharField(max_length=200)
-    description = TextField()
-    history = HistoricalRecords()
+    description = TextField()    
 
     def __str__(self):
         return self.name        
         
 class Nature(Model):
-    name = CharField(max_length=200)
-    history = HistoricalRecords()
+    name = CharField(max_length=200)    
 
     def __str__(self):
         return self.name        
@@ -190,8 +187,7 @@ class Relationship(Model):
     character = ForeignKey('Character', related_name='relationship')
     complicated = BooleanField()
     description = TextField()
-    blood_bond = PositiveIntegerField(choices=((0,0),(1,1),(2,2),(3,3)),default=0)
-    history = HistoricalRecords()
+    blood_bond = PositiveIntegerField(choices=((0,0),(1,1),(2,2),(3,3)),default=0)    
 
     def __str__(self):
         return 'to {}' .format(self.character.name)
@@ -199,8 +195,7 @@ class Relationship(Model):
 class Ritual(Model):
     name = CharField(max_length=200)
     level = PositiveIntegerField(default=1)
-    description = TextField()
-    history = HistoricalRecords()
+    description = TextField()    
 
     def __str__(self):
         return self.name
@@ -208,26 +203,22 @@ class Ritual(Model):
 class RitualRating(Model):
     ritual = ForeignKey(Ritual)
     exp = BooleanField(default=False)
-    invested = PositiveIntegerField(default=0)    
-    history = HistoricalRecords()
+    invested = PositiveIntegerField(default=0)        
     
     def __str__(self):
         return '{} {}'.format(self.ritual.name, str(self.invested))
 
 class HookAttribute(Model):
-    name = CharField(max_length=200)
-    history = HistoricalRecords()
+    name = CharField(max_length=200)    
     
     def __str__(self):
         return self.name        
         
 class Hook(Model):
     name = CharField(max_length=200)
-   # description = CharField(max_length=200,blank=True)
+  #  description = CharField(max_length=200,blank=True)
     influence = ForeignKey(Influence)
     attributes = ManyToManyField(HookAttribute,blank=True)
-    history = HistoricalRecords()
-       
 
     def __str__(self):
         try:
@@ -247,7 +238,7 @@ class Boon(Model):
     ) 
     size = CharField(choices=SIZE_CHOICES,max_length=10,default="enkel")
     number = PositiveIntegerField(default=1)
-    history = HistoricalRecords()
+    
     def __str__(self):
         return str(self.number) +" "+self.size + " från " + self.signer.name          
         
@@ -281,11 +272,10 @@ class Domain(Model):
     influence = CharField(max_length=200)
     masquerade = CharField(max_length=200)
     population = ManyToManyField(Population, blank=True)
-    history = HistoricalRecords()
 
     def __str__(self):
         population = ', '.join(d.name for d in self.population.all())
-        return '{} - FP: {}, S: {}, I: {}, M: {}, P: [{}]'.format(
+        return '{} - Feeding Points: {}, Status: {}, Influence: {}, Masquerade: {}, Population: [{}]'.format(
             self.name, self.feeding_capacity, self.status, self.influence,
             self.masquerade, population)
             
@@ -308,9 +298,11 @@ class Character(Model):
     titles  = ManyToManyField(Title, blank=True)
     
     open_goal1  = TextField(blank=True)
+  #  open_goal1_humanity  = BooleanField(default=False)
     open_goal2  = TextField(blank=True)
+  #  open_goal1_humanity  = BooleanField(default=False)
     hidden_goal = TextField(blank=True)
-    
+  #  hidden_goal_humanity = BooleanField(default=False)
     
     attributes  = ManyToManyField(AttributeRating,    blank=True)
     specializations = ManyToManyField(Specialization, blank=True)
@@ -318,12 +310,14 @@ class Character(Model):
     
     humanity   = PositiveIntegerField(default=7)
     willpower  = PositiveIntegerField(default=0)
-    health     = PositiveIntegerField(default=7)
+    #max_willpower  = PositiveIntegerField(default=0)
     blood      = PositiveIntegerField(default=10)
     
+    health  = PositiveIntegerField(default=0)   
   #  bashing = PositiveIntegerField(default=0)
   #  lethal = PositiveIntegerField(default=0)
   #  aggravated = PositiveIntegerField(default=0)
+    
   #  domains = ManyToManyField(Domain,blank=True, related_name='owner')
   
 
@@ -359,7 +353,7 @@ class Character(Model):
     
     additional_notes = TextField(blank=True)
           
-    history = HistoricalRecords()
+    
 
     def __str__(self):
         return '{} ({})'.format(self.name, self.user)   
@@ -429,7 +423,7 @@ class InfluenceRating(Model):
     influence = ForeignKey(Influence)
     rating = PositiveIntegerField()
     character = ForeignKey(Character, related_name='influences')
-    history = HistoricalRecords()
+    
 
     def __str__(self):
         return '[{}] {}: {:i}'.format(self.character, self.influence, self.rating)
@@ -442,7 +436,7 @@ class Session(Model):
     is_special = BooleanField(default=False)
     action_set = ForeignKey(ActionOption,blank=True,null=True)
     feeding_domains = ManyToManyField(Domain, blank=True)
-    history = HistoricalRecords()
+    
 
     def __str__(self):
         return '[{}] {}'.format('open' if self.is_open else 'closed', self.name)
@@ -474,15 +468,19 @@ class Action(Model):
     action_type = ForeignKey(ActionType)
     character = ForeignKey(Character)
     session = ForeignKey(Session, related_name='actions')
-    helpers = ManyToManyField(Character,related_name="allowedHelp", blank=True)
-    willpower = BooleanField(default=False)
+    helpers = ManyToManyField(
+        Character,
+        related_name="allowedHelp", 
+        blank=True, 
+        help_text="People who you excpect help from on this action. (warning: they might betray you.) (Hold down Ctrl to select multiple choices.)")
+    willpower = BooleanField(default=False,help_text="Do you want to spend a point of willpower for an automatic succses?")
     description = TextField(blank=True)
     resolved = CharField(
         max_length=10,
         choices=((UNRESOLVED, 'Unresolved'), (PENDING, 'Pending'), (
             RESOLVED, 'Resolved')),
         default=UNRESOLVED)
-    history = HistoricalRecords()
+    
 
     def to_description(self):
         return '{} '.format(self.action_type)
@@ -496,10 +494,10 @@ class Action(Model):
 
                                
 class AidAction(Action):
-    helpee = ForeignKey(Character,related_name="help")
-    action = ForeignKey(ActionType)
-    name = CharField(max_length=200,blank=True)
-    betrayal = BooleanField(default=False)
+    helpee = ForeignKey(Character,related_name="help",help_text="The person you are helping. (You are not allowed to chose your self.)")
+    action = ForeignKey(ActionType,help_text="What kind of action you are helping them with")
+    name = CharField(max_length=200,blank=True,help_text="if the action is targeting a hook, you need to enter the name of the hook here.")
+    betrayal = BooleanField(default=False,help_text="Do you want to betray them rather than help them?")
     def to_description(self):
         betrayal = '{} is betraying {}.' .format(
             self.character.
@@ -515,22 +513,22 @@ class AidAction(Action):
 
 
 class ConserveInfluence(Action): 
-    influence = ForeignKey(Influence)
+    influence = ForeignKey(Influence,help_text="Which of your influences are you trying to conserve? (Warning: Don't choose an influence where you have no hooks.)")
     def to_description(self):
         return '{} is conserving {}.'.format(            
             self.character.name,
             self.influence.name)
 
 class ConserveDomain(Action): 
-    domain = ForeignKey(Domain)
+    domain = ForeignKey(Domain,help_text="Which domain are you trying to conserve?")
     def to_description(self):
         return '{} is conserving {}.'.format(            
             self.character.name,
             self.domain.name)
 
 class InfluenceForge(Action): 
-    name = CharField(max_length=200)
-    influence = ForeignKey(Influence)
+    name = CharField(max_length=200,help_text="What is the name of the new hook?")
+    influence = ForeignKey(Influence,help_text="In what influence area do you want to create a new hook? (warning: you may not take this action unless you have performed a Investigate Influence actiona for the influence area before. If you want to create a new influence area contact the gamemasters directly.)")
     def to_description(self):
         return '{} is forging {} in the influence {}.'.format(            
             self.character.name,
@@ -538,8 +536,8 @@ class InfluenceForge(Action):
             self.influence.name)
 
 class InfluenceSteal(Action): 
-    name = CharField(max_length=200)
-    influence = ForeignKey(Influence)
+    name = CharField(max_length=200,help_text="What is the name of the hook you are trying to steal?")
+    influence = ForeignKey(Influence,help_text="In what influence does the hook operate?")
     def to_description(self):
         return '{} is stealing {} in the influence {}.'.format(            
             self.character.name,
@@ -547,8 +545,8 @@ class InfluenceSteal(Action):
             self.influence.name)
 
 class InfluenceDestroy(Action): 
-    name = CharField(max_length=200)
-    influence = ForeignKey(Influence)
+    name = CharField(max_length=200,help_text="What is the name of the hook you are trying to destroy?")
+    influence = ForeignKey(Influence,help_text="In what influence does the hook operate?")
     def to_description(self):
         return '{} is destroying {} in the influence {}.'.format(            
             self.character.name,
@@ -561,10 +559,10 @@ class InfluencePriority(Model):
     influence = ForeignKey(Influence,blank=True,null=True)
     def __str__(self):
         influence = ' ({})'.format(self.influence.name) if self.influence != None else "" 
-        return '{}{} {}'.format(self.name,influence, str(self.cost)) 
+        return '{}{} ({} successes)'.format(self.name,influence, str(self.cost)) 
        
 class InvestigateCharacterInfluence(Action): 
-    target = ForeignKey(Character,related_name="investigate_influence")
+    target = ForeignKey(Character,related_name="investigate_influence",help_text="Which character are you interested in?")
     
    
     priority1 = ForeignKey(InfluencePriority,blank=True,null=True,related_name="priority1")
@@ -597,10 +595,10 @@ class ResourcePriority(Model):
     name = CharField(max_length=200)
     cost = PositiveIntegerField()
     def __str__(self):       
-        return '{} {}'.format(self.name, str(self.cost)) 
+        return '{} ({} successes)'.format(self.name, str(self.cost)) 
 
 class InvestigateCharacterResources(Action): 
-    target = ForeignKey(Character,related_name="investigate_resources")
+    target = ForeignKey(Character,related_name="investigate_resources",help_text="Which character are you interested in?")
   
     priority1 = ForeignKey(ResourcePriority,blank=True,null=True,related_name="priority1")
     priority2 = ForeignKey(ResourcePriority,blank=True,null=True,related_name="priority2")
@@ -627,7 +625,7 @@ class InvestigateCharacterResources(Action):
             priorities)
             
 class InvestigateCharacterDowntimeActions(Action): 
-    target = ForeignKey(Character,related_name="investigate_downtime_actions")
+    target = ForeignKey(Character,related_name="investigate_downtime_actions",help_text="Which character are you interested in?")
     def to_description(self):
         return '{} is investigating {}\'s downtime actions.'.format(
             self.character.name,
@@ -640,19 +638,22 @@ class InvestigateCounterSpionage(Action):
         return '{} is doing counter espionage.' .format(self.character.name)
     
 class InvestigatePhenomenon(Action): 
-    phenonemon = TextField()
+    phenonemon = TextField(help_text="Describe what you want to learn. The more detailed you are the more detailed the information you get will be.")
     def to_description(self):
         return '{} is investigating: {}'.format(self.character.name,self.phenonemon)
 
 class InvestigateInfluence(Action): 
-    influence = ForeignKey(Influence)
+    influence = ForeignKey(Influence,help_text="What influence area are you interested in?")
     def to_description(self):
         return '{} is investigating {}.'.format(self.character.name,self.influence.name)
 
 class LearnAttribute(Action): 
-    attribute = ForeignKey(Attribute)
+    attribute = ForeignKey(Attribute,help_text="What attribute do you want to improve?")
     trainer = ForeignKey(Character,
-                         related_name="AttributeTrainee",blank=True,null=True)
+                         related_name="AttributeTrainee",
+                         blank=True,
+                         null=True,
+                         help_text="Do you have anyone to train you? If so, who?")
     def to_description(self):
         teacher = 'With {} as teacher.' .format(self.trainer.name) if self.trainer != None else ""
         return '{} is learning {}. {}' .format(
@@ -661,8 +662,12 @@ class LearnAttribute(Action):
             teacher)
     
 class LearnDiscipline(Action): 
-    discipline = ForeignKey(Discipline)
-    trainer = ForeignKey(Character,related_name="DisciplineTrainee",blank=True,null=True)
+    discipline = ForeignKey(Discipline,help_text="What Discipline do you want to improve?")
+    trainer = ForeignKey(Character,
+                related_name="DisciplineTrainee",
+                blank=True,
+                null=True,
+                help_text="Do you have anyone to train you? If so, who?")
     def to_description(self):
         teacher = 'With {} as teacher.' .format(self.trainer.name) if self.trainer != None else ""
         return '{} is learning {}. {}' .format(
@@ -671,9 +676,13 @@ class LearnDiscipline(Action):
             teacher)
 
 class LearnSpecialization(Action): 
-    new_specialization = ForeignKey(Specialization,related_name="learner")
-    old_specialization = ForeignKey(Specialization,related_name="forgeter")
-    trainer = ForeignKey(Character,related_name="SpecializationTrainee",blank=True,null=True)        
+    new_specialization = ForeignKey(Specialization,related_name="learner",help_text="Which specialization do want to gain?")
+    old_specialization = ForeignKey(Specialization,related_name="forgeter",help_text="Which specialization are you willing to give up?")
+    trainer = ForeignKey(Character,
+            related_name="SpecializationTrainee",
+            blank=True,
+            null=True,
+            help_text="Do you have anyone to train you? If so, who?")        
     def to_description(self):
         teacher = 'With {} as teacher.' .format(self.trainer.name) if self.trainer != None else ""
         return '{} is learning {},replacing {}. {}' .format(
@@ -683,9 +692,9 @@ class LearnSpecialization(Action):
             teacher)
 
 class InvestGhoul(Action):
-    name = CharField(max_length=200)
-    discipline = ForeignKey(Discipline)
-    specialization = ForeignKey(Specialization)
+    name = CharField(max_length=200,help_text="What is the name of the ghoul you want to create, or improve?")
+    discipline = ForeignKey(Discipline,help_text="What discipline should the ghoul gain a level in?")
+    specialization = ForeignKey(Specialization,help_text="What specialization should the ghould gain?")
     def to_description(self):
         return '{} is investing in the ghoul {}, which is getting {} and {}.'.format(
             self.character.name,
@@ -694,8 +703,8 @@ class InvestGhoul(Action):
             self.specialization.name)
   
 class InvestEquipment(Action):
-    name = CharField(max_length=200)
-    specialization = ForeignKey(Specialization)
+    name = CharField(max_length=200,help_text="What kind of equipment is it?")
+    specialization = ForeignKey(Specialization,help_text="What specialization should it give as bonus?")
     def to_description(self):
         return '{} is investing in the equipment {}, which is used for {}.'.format(
             self.character.name,
@@ -704,7 +713,7 @@ class InvestEquipment(Action):
 
 
 class InvestWeapon(Action):
-    weapon = ForeignKey(Weapon)
+    weapon = ForeignKey(Weapon,help_text="What weapon do you want to acqire?")
     def to_description(self):
         return '{} is investing in the weapon {}.'.format(            
             self.character.name,
@@ -721,8 +730,8 @@ class InvestHaven(Action):
             self.character.name)
 
 class MentorAttribute(Action): 
-    attribute = ForeignKey(Attribute)
-    student   = ForeignKey(Character,related_name="attribute_teacher")
+    attribute = ForeignKey(Attribute,help_text="What attribute do you want to help your student improve?")
+    student   = ForeignKey(Character,related_name="attribute_teacher",help_text="Who do you want to mentor?")
     def to_description(self):
         return '{} is mentoring {} on {}.'.format(            
             self.character.name,
@@ -730,8 +739,8 @@ class MentorAttribute(Action):
             self.attribute)
 
 class MentorDiscipline(Action): 
-    discipline = ForeignKey(Discipline)
-    student    = ForeignKey(Character,related_name="discipline_teacher")
+    discipline = ForeignKey(Discipline,help_text="What discipline do you want to help your student improve?")
+    student    = ForeignKey(Character,related_name="discipline_teacher",help_text="Who do you want to mentor?")
     def to_description(self):
         return '{} is mentoring {} on {}.'.format(            
             self.character.name,
@@ -739,8 +748,8 @@ class MentorDiscipline(Action):
             self.discipline)
             
 class MentorSpecialization(Action): 
-    specialization = ForeignKey(Specialization)
-    student        = ForeignKey(Character,related_name="specialization_teacher")
+    specialization = ForeignKey(Specialization,help_text="What specialization do you want to help your student acquire?")
+    student        = ForeignKey(Character,related_name="specialization_teacher",help_text="Who do you want to mentor?")
     def to_description(self):
         return '{} is mentoring {} on {}.'.format(            
             self.character.name,
@@ -753,21 +762,21 @@ class Rest(Action):
         
         
 class NeglectDomain(Action):
-    domain = ForeignKey(Domain)
+    domain = ForeignKey(Domain,help_text="Which domain do want to get an additional problem?")
     def to_description(self):
         return '{} is neglecting {}.' .format(
             self.character.name,
             self.domain.name)          
         
 class PatrolDomain(Action):
-    domain = ForeignKey(Domain)
+    domain = ForeignKey(Domain,help_text="Which domain do want to get one less problem?")
     def to_description(self):
         return '{} is patroling {}.' .format(
             self.character.name,
             self.domain.name)        
             
 class KeepersQuestion(Action):
-    target = ForeignKey(Character)
+    target = ForeignKey(Character,help_text="Who do you want to question?")
     question = TextField()
     def to_description(self):
         return '{} asked their visitor {}: {}' .format(
@@ -776,7 +785,7 @@ class KeepersQuestion(Action):
             self.question) 
 
 class PrimogensQuestion(Action):
-    target = ForeignKey(Character)
+    target = ForeignKey(Character,help_text="Who do you want to question? (You may only choose members of your own clan.)")
     question = TextField()
     def to_description(self):
         return '{} asked their clanmember {}: {}' .format(
@@ -785,10 +794,11 @@ class PrimogensQuestion(Action):
             self.question)
                                
 class PrimogensAidAction(Action):
-    helpee = ForeignKey(Character,related_name="primogen_help")
-    action = ForeignKey(ActionType)
-    name = CharField(max_length=200,blank=True)
-    betrayal = BooleanField(default=False)
+    helpee = ForeignKey(Character,related_name="primogen_help",help_text="Who do you want to help? (You may only choose members of your own clan.)")
+    action = ForeignKey(ActionType,help_text="What kind of action you are helping them with")
+    name = CharField(max_length=200,blank=True,help_text="if the action is targeting a hook, you need to enter the name of the hook here.")
+    betrayal = BooleanField(default=False,help_text="Do you want to betray rather than help?")
+
     def to_description(self):
         betrayal = '{} is betraying {}.' .format(
             self.character.
@@ -804,16 +814,16 @@ class PrimogensAidAction(Action):
 class Feeding(Model):
     character = ForeignKey(Character)
     session = ForeignKey(Session, related_name='feedings')
-    domain = ForeignKey(Domain)
-    feeding_points = PositiveIntegerField()
-    discipline = ForeignKey(DisciplineRating, blank=True, null=True)
-    description = TextField()
+    domain = ForeignKey(Domain,help_text="Where do you want to feed?")
+    feeding_points = PositiveIntegerField(help_text="How many feeding points do you want to take from this domain?")
+    discipline = ForeignKey(DisciplineRating, blank=True, null=True,help_text="What discipline (if any) do you use to feed?")
+    description = TextField(help_text="Describe how go about feeding.")
     resolved = CharField(
         max_length=10,
         choices=((UNRESOLVED, 'Unresolved'), (PENDING, 'Pending'), (
             RESOLVED, 'Resolved')),
         default=UNRESOLVED)
-    history = HistoricalRecords()
+    
 
     def __str__(self):
         return '[{}] {}: .formatd in {}'.format(
@@ -839,8 +849,8 @@ class Feeding(Model):
 class ActiveDisciplines(Model):
     character = ForeignKey(Character)
     session = ForeignKey(Session, related_name='active_disciplines')
-    disciplines = ManyToManyField(DisciplineRating, blank=True)
-    history = HistoricalRecords()
+    disciplines = ManyToManyField(DisciplineRating, blank=True,help_text="Which disciplines do you want to use during the downtime? (Hold down Ctrl to select multiple choices.)")
+    
 
     def __str__(self):
         disciplines = ', '.join(d.name for d in self.disciplines.all())
@@ -852,7 +862,7 @@ class ExtraAction(Model):
     session = ForeignKey(Session, related_name='+')
     action_options = ManyToManyField(ActionOption)
     description = TextField()
-    history = HistoricalRecords()
+    
 
     def __str__(self):
         action_options = ', '.join(str(d) for d in self.action_options.all())

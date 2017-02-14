@@ -233,7 +233,7 @@ class ActionUpdate(UpdateView):
             disc = adisc[0]
             context['extra_title'] = 'Active Disciplines'
             context['extra_data'] = ', '.join(
-                [d.name for d in disc.disciplines.all()])
+                [d.discipline.name for d in disc.disciplines.all()])
         return context
 
 

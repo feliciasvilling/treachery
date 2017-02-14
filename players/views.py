@@ -13,7 +13,7 @@ from django.shortcuts import redirect
 from django.core import serializers
 from players import forms
 from players.models import *
-
+from django.forms import formset_factory
 
 def logout_view(request):
     logout(request)
@@ -59,7 +59,7 @@ def wizard(request, session):
         'character': request.user.character,
         'session': get_object_or_404(Session,pk=session)
     }
-    initial = {'0': data, '1': data, '2': data, }
+    initial = {'0': data, '1': data, '2': data, '3': data,'4': data,}
 
     if not data['session'].is_open:
         raise PermissionDenied('Session closed')
@@ -71,7 +71,11 @@ def wizard(request, session):
     Feeding.objects.filter(character=request.user.character,
                            session=session).delete()
 
+    rep_form = forms.report_form(request.user.character)
     session = [
+    
+            rep_form,
+            forms.set_goal_form(request.user.character),
             modelformset_factory(ActiveDisciplines,
                                  formset=forms.DisciplineActivationFormSet,
                                  fields=['disciplines']),
@@ -85,12 +89,14 @@ def wizard(request, session):
         ]
         
     session1 = [
-            modelformset_factory(Action,
+           rep_form,
+           forms.set_goal_form(request.user.character),            
+           modelformset_factory(Action,
                                  formset=forms.ActionFormSet,
                                  fields=['action_type'])
         ]
         
-    return SubmitWizard.as_view(session1,
+    return SubmitWizard.as_view(session,
         initial_dict=initial)(request, **data)
 
 
@@ -106,10 +112,14 @@ class SubmitWizard(SessionWizardView):
         context = super(SubmitWizard, self).get_context_data(form=form,
                                                              **kwargs)
         if self.steps.current == '0':
-            context.update({'stepTitle': 'Active Disciplines'})
+            context.update({'stepTitle': 'After Event Report'})
         elif self.steps.current == '1':
-            context.update({'stepTitle': 'Feeding'})
+            context.update({'stepTitle': 'Set New Goals'})
         elif self.steps.current == '2':
+            context.update({'stepTitle': 'Active Disciplines'})
+        elif self.steps.current == '3':
+            context.update({'stepTitle': 'Feeding'})
+        elif self.steps.current == '4':
             context.update({'stepTitle': 'Actions'})
             context.update({'help_texts': ActionType.help_texts()})
         return context
@@ -184,12 +194,15 @@ def make_character(request):
                 exp          = 0,
                 humanity_exp = 0,      
                 special_exp  = 0,
-                
-                health     = 7,
+               
+                health = 7, 
+              #  bashing    = 0,
+              #  lethal     = 0,
+              #  aggrevated = 0,
                 blood      = 10,
+                
                 humanity   = f['humanity'],
                 willpower  = f['willpower'],
-                resources  = f['resources'],
                 generation = f['generation'],
                 
                 additional_notes = f['additional_notes'],
