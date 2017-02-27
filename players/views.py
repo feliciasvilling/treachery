@@ -139,7 +139,7 @@ class ActionWizard(SessionWizardView):
             serialized_obj = form.to_description()
             form.description = serialized_obj            
             form.save()
-        Action.objects.filter(description="").delete()
+        Action.objects.filter(description="",character=form.character).delete()
         return redirect('session', session= kwargs['session'].id)
         
     def get_context_data(self, form, **kwargs):

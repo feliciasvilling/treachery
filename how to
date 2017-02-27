@@ -1,0 +1,11 @@
+ssh 'root@46.101.201.193'
+scp root@46.101.201.193:treachery-backup.dump treachery-backup.dump
+
+git init
+git add .
+git commit -m "init"
+git remote add server dokku@downtime.treachery.eu:downtime
+
+git push -f server master
+
+
