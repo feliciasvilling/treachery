@@ -130,22 +130,19 @@ class ActionWizard(SessionWizardView):
 
     def done(self, form_list, **kwargs):
         for (f,action_type) in zip(form_list,kwargs['action_type']):
-            print(str(action_type))
             form = f.save(commit=False)
             form.character = kwargs['character']
             form.session = kwargs['session']
             form.action_type = action_type            
             form.save()            
-            serialized_obj = form.to_description()
-            form.description = serialized_obj            
+            form.description = form.to_description()        
             form.save()
         Action.objects.filter(description="",character=form.character).delete()
-        return redirect('session', session= kwargs['session'].id)
+        return redirect('profile')
         
     def get_context_data(self, form, **kwargs):
         context = super(ActionWizard, self).get_context_data(form=form,**kwargs)
-        action_type = form.action_type
-        context.update({'stepTitle': str(action_type)})
+        context.update({'stepTitle': str(form.action_type)})
         return context
                                                              
                                                              
@@ -155,6 +152,8 @@ def actionDetails(request, session):
     session = get_object_or_404(Session, pk=session)
     character = request.user.character
     actions = Action.objects.filter(session=session, character=character)
+    if len(actions)==0:
+        return redirect('profile')
     actionForms = [forms.actionToForm(action) for action in actions]
     data = {'session': session,
             'character': character,
