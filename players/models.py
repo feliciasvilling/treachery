@@ -484,6 +484,7 @@ class Action(Model):
     
     def resolve(self):
         self.description = self.to_description() +"\n\n"+ self.get_resolution()
+        self.resolved = PENDING
         self.save()
         
     def get_resolution(self):
@@ -531,7 +532,7 @@ class Action(Model):
                  (3 if have_spec else 0) + \
                  (1 if self.willpower else 0)
                  
-        result = help_result
+        result = help_result + bonus
         for die in range(0,dice):
             result += random.randint(0, 1)                 
             
@@ -577,7 +578,7 @@ class Action(Model):
                  discipline_value + \
                  (3 if have_spec else 0)
                  
-        result = 0
+        result = bonus
         for die in range(0,dice):
             result += random.randint(0, 1)                 
                  
@@ -664,10 +665,10 @@ class InfluenceForge(Action):
             
     def get_resolution(self):
         lst = "{} rolls {} to to create a hook." .format(self.character.name, self.roll(1, "Social",self.influence.name,"Prescence")[1])
-     #   lst += "\n{} rolls {} to hide their involvment." .format(self.character.name, self.roll (1, "Social","Subterfuge","Obfuscate")[1])        
+     #   lst += "\n{} rolls {} to hide their involvement." .format(self.character.name, self.roll (1, "Social","Subterfuge","Obfuscate")[1])        
         return lst
 
-class InfluenceSteal(Action): 
+class InfluenceSteal(Action):
     name = CharField(max_length=200,help_text="What is the name of the hook you are trying to steal?")
     influence = ForeignKey(Influence,help_text="In what influence does the hook operate?")
     def to_description(self):
@@ -677,7 +678,6 @@ class InfluenceSteal(Action):
             self.influence.name)
             
     def get_resolution(self):
-    
         targets = list(Character.objects.filter(hooks__name=self.name))
         if targets==[]:
             return "no hook matching the discription"
@@ -708,7 +708,7 @@ class InfluenceSteal(Action):
         print(target.name)
         lst = "{} rolls {} to steal the hook." .format(self.character.name, attack_roll[1])
         lst += "The owner of {} rolls {} to resist." .format(self.name, defense_roll[1])
-        lst += "\n{} rolls {} to hide their involvment." .format(self.character.name, stealth_roll[1])        
+        lst += "\n{} rolls {} to hide their involvement." .format(self.character.name, stealth_roll[1])        
         return lst
 
 
@@ -875,9 +875,11 @@ class LearnAttribute(Action):
     def get_resolution(self):
         return "no roll"
     def get_resolution(self):
+        if self.trainer == None:
+            return "{} trains succesfully.".format(self.character.name)
         mentor_acts = list(MentorAttribute.objects.filter(session=self.session,character=self.trainer,student=self.character,attribute=self.attribute))
         if mentor_acts==[]:
-            return "{} have not made a mentor action to train {} in {}" .format(self.trainer,self.character.name,self.attribute)
+            return "{} have not made a mentor action to train {} in {}" .format(self.trainer.name,self.character.name,self.attribute)
         else:  
             trainer = mentor_acts[0]
             trainer_value = trainer.character.attributes.get(attribute=self.attribute).value
@@ -905,9 +907,11 @@ class LearnDiscipline(Action):
             self.discipline.name,
             teacher)
     def get_resolution(self):
+        if self.trainer == None:
+            return "{} trains succesfully.".format(self.character.name)
         mentor_acts = list(MentorDiscipline.objects.filter(session=self.session,character=self.trainer,student=self.character,discipline=self.discipline))
         if mentor_acts==[]:
-            return "{} have not made a mentor action to train {} in {}" .format(self.trainer,self.character.name,self.discipline)
+            return "{} have not made a mentor action to train {} in {}" .format(self.trainer.name,self.character.name,self.discipline)
         else:    
             trainer = mentor_acts[0]
             trainer_dis = list(trainer.character.disciplines.filter(discipline=self.discipline))
@@ -945,9 +949,11 @@ class LearnSpecialization(Action):
             self.old_specialization.name,
             teacher)
     def get_resolution(self):
+        if self.trainer == None:
+            return "{} trains succesfully.".format(self.character.name)
         mentor_acts = list(MentorSpecialization.objects.filter(session=self.session,character=self.trainer,student=self.character,specialization=self.new_specialization))
         if mentor_acts==[]:
-            return "{} have not made a mentor action to train {} in {}" .format(self.trainer,self.character.name,self.new_specialization)
+            return "{} have not made a mentor action to train {} in {}" .format(self.trainer.name,self.character.name,self.new_specialization)
         else:
             trainer = mentor_acts[0]
             trainer_specializations = list(trainer.character.specializations.all())
