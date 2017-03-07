@@ -493,7 +493,7 @@ class Action(Model):
         return self.character.attributes.get(attribute__name=attribute).value
         
     def get_dis(self,discipline):   
-        activated = ActiveDisciplines.objects.filter(character=self.character,session=self.session)
+        activated = list(ActiveDisciplines.objects.filter(character=self.character,session=self.session))
         if activated==[]:
             return 0
         else:    
