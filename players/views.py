@@ -71,10 +71,9 @@ def wizard(request, session):
     Feeding.objects.filter(character=request.user.character,
                            session=session).delete()
 
-    rep_form = forms.report_form(request.user.character)
     session = [
     
-            rep_form,
+            forms.report_form(request.user.character),
             forms.set_goal_form(request.user.character),
             modelformset_factory(ActiveDisciplines,
                                  formset=forms.DisciplineActivationFormSet,
@@ -88,13 +87,6 @@ def wizard(request, session):
                                  fields=['action_type'])
         ]
         
-    session1 = [
-           rep_form,
-           forms.set_goal_form(request.user.character),            
-           modelformset_factory(Action,
-                                 formset=forms.ActionFormSet,
-                                 fields=['action_type'])
-        ]
         
     return SubmitWizard.as_view(session,
         initial_dict=initial)(request, **data)

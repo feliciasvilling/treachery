@@ -10,9 +10,54 @@ from django.shortcuts import redirect
 from players.models import *
 
 
+
+
+
 def close(request):
     return render(request, 'closewindow.html')
 
+
+ActionClasses = [
+    AidAction,
+    ConserveInfluence,
+    ConserveDomain,
+    InfluenceForge,
+    InfluenceSteal,
+    InfluenceDestroy,
+    InvestigateCharacterInfluence,
+    InvestigateCharacterResources,
+    InvestigateCharacterDowntimeActions,
+    InvestigateCounterSpionage,
+    InvestigatePhenomenon,
+    InvestigateInfluence,
+    LearnAttribute,
+    LearnDiscipline,
+    LearnSpecialization,
+    InvestGhoul,
+    InvestEquipment,
+    InvestWeapon,
+    InvestHerd,
+    InvestHaven,
+    MentorAttribute,
+    MentorDiscipline,
+    MentorSpecialization,
+    Rest,
+    NeglectDomain,
+    PatrolDomain,
+    KeepersQuestion,
+    PrimogensQuestion,
+    PrimogensAidAction,
+    ]
+
+def resolve_actions(request, session):
+    actions = []
+    for ActionClass in ActionClasses:
+        actions += list(ActionClass.objects.filter(session=session))
+    for action in actions:
+        action.resolve()
+
+
+    return redirect('actions', session=session)
 
 def assign_rumors(request, session):
 
@@ -136,8 +181,30 @@ class ActionListView(ListView):
         context['action_types'] = ActionType.objects.all()
         context['type'] = 'actions'
         context['actions'] = self.object_list
+        context['session_id'] = self.kwargs['session']
         return context
 
+
+class RumorListView(ListView):
+    model = Rumor
+    template_name = 'list.html'
+
+    def get_queryset(self):
+        self.session = get_object_or_404(Session, id=self.kwargs['session'])
+        return Rumor.objects.filter(session=self.session)
+
+    def get_context_data(self, **kwargs):
+        context = super(RumorListView, self).get_context_data(**kwargs)
+        session_name = get_object_or_404(Session,
+                                         id=self.kwargs['session']).name
+        context['session_name'] = session_name
+        context['characters'] = Character.objects.all()
+        context['influences'] = Influence.objects.all()
+        context['type'] = 'rumors'
+        context['rumors'] = self.object_list
+        context['session_id'] = self.kwargs['session']
+        return context
+        
 
 class CharacterListView(ListView):
     model = Character
@@ -192,28 +259,6 @@ class FeedingListView(ListView):
         context['type'] = 'feedings'
         context['feedings'] = self.object_list
         return context
-
-
-class RumorListView(ListView):
-    model = Rumor
-    template_name = 'list.html'
-
-    def get_queryset(self):
-        self.session = get_object_or_404(Session, id=self.kwargs['session'])
-        return Rumor.objects.filter(session=self.session)
-
-    def get_context_data(self, **kwargs):
-        context = super(RumorListView, self).get_context_data(**kwargs)
-        session_name = get_object_or_404(Session,
-                                         id=self.kwargs['session']).name
-        context['session_name'] = session_name
-        context['characters'] = Character.objects.all()
-        context['influences'] = Influence.objects.all()
-        context['type'] = 'rumors'
-        context['rumors'] = self.object_list
-        context['session_id'] = self.kwargs['session']
-        return context
-
 
 class ActionUpdate(UpdateView):
     model = Action

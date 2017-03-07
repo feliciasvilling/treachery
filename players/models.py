@@ -1,6 +1,7 @@
 from django.db import models
 from django.db.models import *
 from django.contrib.auth.models import User
+import random 
 
 # Resolved states
 UNRESOLVED = 'UNRESOLVED'
@@ -481,6 +482,113 @@ class Action(Model):
             RESOLVED, 'Resolved')),
         default=UNRESOLVED)
     
+    def resolve(self):
+        self.description = self.to_description() +"\n\n"+ self.get_resolution()
+        self.save()
+        
+    def get_resolution(self):
+        return "X"    
+        
+    def get_att(self,attribute):    
+        return self.character.attributes.get(attribute__name=attribute).value
+        
+    def get_dis(self,discipline):   
+        activated = ActiveDisciplines.objects.filter(character=self.character,session=self.session)
+        if activated==[]:
+            return 0
+        else:    
+            active = activated[0]
+            disp = list(active.disciplines.filter(discipline__name=discipline))
+            if disp==[]:
+                return 0
+            else:
+                return disp[0].value
+                
+                
+    def roll(self,bonus,attribute,specialization,discipline):
+    
+        helpers = list(self.helpers.all())
+        help_actions = list(AidAction.objects.filter(helpee=self.character,action=self.action_type,session=self.session))
+        help_actions += list(PrimogensAidAction.objects.filter(helpee=self.character,action=self.action_type,session=self.session))
+        help_result = 0
+        for help in help_actions:
+            if help.character in helpers:
+                help_roll = self.roll_target(1,help.character,attribute,specialization,discipline)
+                if help.betrayal:
+                    help_result -= help_roll[0]
+                else:
+                    help_result += help_roll[0]
+                help.description += "\n"+ help_roll[1]
+                help.save()
+                
+        have_spec = False
+        for spec in self.character.specializations.all():
+            if spec.name == specialization:
+                have_spec = True
+                
+        dice = self.get_att(attribute) + \
+                 self.get_dis(discipline) + \
+                 (3 if have_spec else 0) + \
+                 (1 if self.willpower else 0)
+                 
+        result = help_result
+        for die in range(0,dice):
+            result += random.randint(0, 1)                 
+            
+        if help_result==0:
+            helpers = ""
+        else:
+            helpers =" + {} from helpers {}" .format(help_result,[h.name for h in helpers])
+       
+                 
+        lst = "{} successes ({} {} + {} {}{}".format(
+            result, 
+            attribute, self.get_att(attribute), 
+            discipline, self.get_dis(discipline),
+            helpers)
+        if have_spec:
+            lst += " + {}" .format(specialization)
+        if self.willpower:
+            lst += " + Willpower"    
+        lst += ")"
+        return (result,lst)
+        
+    def roll_target(self,target,bonus,attribute,specialization,discipline):
+        attribute_value = target.attributes.get(attribute__name=attribute).value
+   
+        activated = list(ActiveDisciplines.objects.filter(character=target,session=self.session))
+        if activated==[]:
+            discipline_value = 0
+        else:    
+            active = activated[0]
+            disp = list(active.disciplines.filter(discipline__name=discipline))
+            if disp==[]:
+                discipline_value = 0
+            else:
+                discipline_value = disp[0].value    
+           
+            
+        have_spec = False
+        for spec in target.specializations.all():
+            if spec.name == specialization:
+                have_spec = True
+                
+        dice = attribute_value + \
+                 discipline_value + \
+                 (3 if have_spec else 0)
+                 
+        result = 0
+        for die in range(0,dice):
+            result += random.randint(0, 1)                 
+                 
+        lst = "{} successes ({} {} + {} {} ".format(
+            result, 
+            attribute, attribute_value, 
+            discipline, discipline_value)
+        if have_spec:
+            lst += " + {}" .format(specialization)
+        lst += ")"
+        return (result,lst)
 
     def to_description(self):
         return '{} '.format(self.action_type)
@@ -488,10 +596,6 @@ class Action(Model):
         return '[{}] {}: {}'.format(self.session.name, self.character,
                                 self.action_type)
                                 
-
-
-
-
                                
 class AidAction(Action):
     helpee = ForeignKey(Character,related_name="help",help_text="The person you are helping. (You are not allowed to chose your self.)")
@@ -510,7 +614,9 @@ class AidAction(Action):
             hook,
             betrayal if self.betrayal else ""
             )
-
+            
+    def get_resolution(self):
+        return ""
 
 class ConserveInfluence(Action): 
     influence = ForeignKey(Influence,help_text="Which of your influences are you trying to conserve? (Warning: Don't choose an influence where you have no hooks.)")
@@ -518,6 +624,12 @@ class ConserveInfluence(Action):
         return '{} is conserving {}.'.format(            
             self.character.name,
             self.influence.name)
+          
+    def get_resolution(self):
+      #  lst = "{} rolls {} to prevent attacks." .format(self.character.name, self.roll(1, "Social",self.influence.name,"Dominate")[1])
+      #  lst += "\n{} rolls {} to detect attacks." .format(self.character.name, self.roll (1,"Social",self.influence.name,"Auspex")[1])        
+        return ""    
+
 
 class ConserveDomain(Action): 
     domain = ForeignKey(Domain,help_text="Which domain are you trying to conserve?")
@@ -525,6 +637,21 @@ class ConserveDomain(Action):
         return '{} is conserving {}.'.format(            
             self.character.name,
             self.domain.name)
+
+    def get_resolution(self):
+        detect_roll = self.roll (1,"Mental","Protection","Protean")
+        feed_actions = list(Feeding.objects.filter(domain=self.domain,session=self.session))
+        detected = ""
+        for feed in feed_actions:
+            feed_roll = self.roll_target(feed.character,0,"Mental","Stealth","---")
+            if True: #feed_roll[0]<=detect_roll[0]:
+                detected += "\n{} is feeding on {}. {}"\
+                    .format(feed.character.name,self.domain.name,feed.description)
+        lst = "{} rolls {} to prevent problems." .format(self.character.name, self.roll(1,"Mental","Protection","Animalism")[1])
+      #  lst += "\n{} rolls {} to detect poaching. {}" .format(self.character.name, detect_roll[1],detected)        
+        return lst
+
+
 
 class InfluenceForge(Action): 
     name = CharField(max_length=200,help_text="What is the name of the new hook?")
@@ -534,6 +661,11 @@ class InfluenceForge(Action):
             self.character.name,
             self.name,
             self.influence.name)
+            
+    def get_resolution(self):
+        lst = "{} rolls {} to to create a hook." .format(self.character.name, self.roll(1, "Social",self.influence.name,"Prescence")[1])
+     #   lst += "\n{} rolls {} to hide their involvment." .format(self.character.name, self.roll (1, "Social","Subterfuge","Obfuscate")[1])        
+        return lst
 
 class InfluenceSteal(Action): 
     name = CharField(max_length=200,help_text="What is the name of the hook you are trying to steal?")
@@ -543,6 +675,38 @@ class InfluenceSteal(Action):
             self.character.name,
             self.name,
             self.influence.name)
+            
+    def get_resolution(self):
+    
+        target = Character.objects.get(hooks__name=self.name)
+        stealth_roll = self.roll (1,"Social",self.influence.name,"Obfuscate")
+        attack_roll = self.roll(1, "Social",self.influence.name,"Prescence")
+        conservation = list(ConserveInfluence.objects.filter(
+                character=target,
+                session=self.session,
+                influence=self.influence))
+        
+        if conservation == []:
+            defense_roll = self.roll_target(target,0,"Social",self.influence.name,"Dominate")
+        else:
+            conserve_action = conservation[0]
+            defense_roll   = conserve_action.roll(3,"Social",self.influence.name,"Dominate")
+            detection_roll = conserve_action.roll(1,"Social",self.influence.name,"Auspex")
+            if detection_roll[0] >= stealth_roll[0]:
+                if attack_roll[0] < defense_roll[0]:
+                    conserve_action.description += "{} rolls {} to prevent attacks, and {} to detect attacks. {} attempted to steal {} in the influence {}."\
+                         .format(target.name, defense_roll[1], detection_roll[1], self.character.name,self.name,self.influence)
+                else: 
+                    conserve_action.description += "{} rolls {} to prevent attacks, and {} to detect attacks. {} stole {} in the influence {}."\
+                         .format(target.name, defense_roll[1], detection_roll[1],self.character.name,self.name,self.influence)
+                conserve_action.save()
+        
+        print(target.name)
+        lst = "{} rolls {} to steal the hook." .format(self.character.name, attack_roll[1])
+        lst += "The owner of {} rolls {} to resist." .format(self.name, defense_roll[1])
+        lst += "\n{} rolls {} to hide their involvment." .format(self.character.name, stealth_roll[1])        
+        return lst
+
 
 class InfluenceDestroy(Action): 
     name = CharField(max_length=200,help_text="What is the name of the hook you are trying to destroy?")
@@ -591,6 +755,10 @@ class InvestigateCharacterInfluence(Action):
             priorities,
             self.hooks)
     
+    def get_resolution(self):
+        lst = "{} rolls {}." .format(self.character.name, self.roll(1,"Social","Investigation","Auspex")[1])
+        return lst
+    
 class ResourcePriority(Model):
     name = CharField(max_length=200)
     cost = PositiveIntegerField()
@@ -624,6 +792,10 @@ class InvestigateCharacterResources(Action):
             self.target.name,
             priorities)
             
+    def get_resolution(self):
+        lst = "{} rolls {}." .format(self.character.name, self.roll(1,"Mental","Investigation","Protean")[1])     
+        return lst        
+            
 class InvestigateCharacterDowntimeActions(Action): 
     target = ForeignKey(Character,related_name="investigate_downtime_actions",help_text="Which character are you interested in?")
     def to_description(self):
@@ -631,21 +803,56 @@ class InvestigateCharacterDowntimeActions(Action):
             self.character.name,
             self.target.name,
             )
+            
+    def get_resolution(self):
+        lst = "{} rolls {}." .format(self.character.name, self.roll(1,"Mental","Investigation","Protean")[1])
+        lst += "{} rolls {}." .format(self.target.name, self.roll_target(self.target,0,"Mental","Subterfugue","Obfuscate")[1])
+        return lst        
     
 class InvestigateCounterSpionage(Action):
     pass
     def to_description(self):
         return '{} is doing counter espionage.' .format(self.character.name)
+    def get_resolution(self):
+        spy_actions = list(InvestigateCharacterInfluence.objects.filter(target=self.character,session=self.session))
+        spy_actions += list(InvestigateCharacterResources.objects.filter(target=self.character,session=self.session))
+        spy_actions += list(InvestigateCharacterDowntimeActions.objects.filter(target=self.character,session=self.session))
+        
+        investigation_roll = self.roll(1,"Mental","Investigation","Protean")
+        
+        print(str(investigation_roll[1]))
+        
+        detected = ""
+        
+        for act in spy_actions:
+            spy_roll = act.roll(1,"Mental","Subterfuge","Obfuscate")
+            if spy_roll[0]<=investigation_roll[0]: 
+                detected +="\n{} is doing {} on you. They rolled {} succes to try to hide it, but you caught them."\
+                    .format(act.character.name,act.action_type,spy_roll[0])
+            
+            
+        print(detected)
+        lst = "{} rolls {}.\n{}" .format(self.character.name, investigation_roll[1],detected)
+        return lst  
+        
+        
+        
     
 class InvestigatePhenomenon(Action): 
     phenonemon = TextField(help_text="Describe what you want to learn. The more detailed you are the more detailed the information you get will be.")
     def to_description(self):
         return '{} is investigating: {}'.format(self.character.name,self.phenonemon)
+    def get_resolution(self):
+        lst = "{} rolls {}." .format(self.character.name, self.roll(1,"Mental","Legwork","Dementation")[1])
+        return lst  
 
 class InvestigateInfluence(Action): 
     influence = ForeignKey(Influence,help_text="What influence area are you interested in?")
     def to_description(self):
         return '{} is investigating {}.'.format(self.character.name,self.influence.name)
+    def get_resolution(self):
+        lst = "{} rolls {}." .format(self.character.name, self.roll(1,"Social",self.influence.name,"Auspex")[1])
+        return lst      
 
 class LearnAttribute(Action): 
     attribute = ForeignKey(Attribute,help_text="What attribute do you want to improve?")
@@ -660,7 +867,26 @@ class LearnAttribute(Action):
             self.character.name,
             self.attribute.name,
             teacher)
-    
+            
+    def get_resolution(self):
+        return "no roll"
+    def get_resolution(self):
+        mentor_acts = list(MentorAttribute.objects.filter(session=self.session,character=self.trainer,student=self.character,attribute=self.attribute))
+        if mentor_acts==[]:
+            return "{} have not made a mentor action to train {} in {}" .format(self.trainer,self.character.name,self.attribute)
+        else:  
+            trainer = mentor_acts[0]
+            trainer_value = trainer.character.attributes.get(attribute=self.attribute).value
+            trainee_value = self.character.attributes.get(attribute=self.attribute).value
+            print(str(trainer_value))
+            if trainer_value > trainee_value:
+                return "{} successfully trains {} in {}. "\
+                    .format(trainer.character.name,self.character.name,self.attribute)
+            else:
+                return "{} is not competent to teach {} in {}. "\
+                    .format(trainer.character.name,self.character.name,self.attribute)
+                
+                                
 class LearnDiscipline(Action): 
     discipline = ForeignKey(Discipline,help_text="What Discipline do you want to improve?")
     trainer = ForeignKey(Character,
@@ -674,6 +900,30 @@ class LearnDiscipline(Action):
             self.character.name,
             self.discipline.name,
             teacher)
+    def get_resolution(self):
+        mentor_acts = list(MentorDiscipline.objects.filter(session=self.session,character=self.trainer,student=self.character,discipline=self.discipline))
+        if mentor_acts==[]:
+            return "{} have not made a mentor action to train {} in {}" .format(self.trainer,self.character.name,self.discipline)
+        else:    
+            trainer = mentor_acts[0]
+            trainer_dis = list(trainer.character.disciplines.filter(discipline=self.discipline))
+            if trainer_dis==[]:
+                return "{} does not have the discipline {}"\
+                    .format(trainer.character.name,self.discipline)
+            trainer_value = trainer_dis[0].value
+            trainee_dis = list(self.character.disciplines.filter(discipline=self.discipline))
+            if trainee_dis==[]:
+                trainee_value = 0
+            else:
+                trainee_value = trainee_dis[0].value  
+                
+            if trainer_value > trainee_value:
+                return "{} successfully trains {} in {}. "\
+                    .format(trainer.character.name,self.character.name,self.discipline)
+            else:
+                return "{} is not competent to teach {} in {}. "\
+                    .format(trainer.character.name,self.character.name,self.discipline)
+                
 
 class LearnSpecialization(Action): 
     new_specialization = ForeignKey(Specialization,related_name="learner",help_text="Which specialization do want to gain?")
@@ -690,7 +940,25 @@ class LearnSpecialization(Action):
             self.new_specialization.name,
             self.old_specialization.name,
             teacher)
-
+    def get_resolution(self):
+        mentor_acts = list(MentorSpecialization.objects.filter(session=self.session,character=self.trainer,student=self.character,specialization=self.new_specialization))
+        if mentor_acts==[]:
+            return "{} have not made a mentor action to train {} in {}" .format(self.trainer,self.character.name,self.new_specialization)
+        else:
+            trainer = mentor_acts[0]
+            trainer_specializations = list(trainer.character.specializations.all())
+            if not (self.new_specialization in trainer_specializations):
+                return "{} does not have the specialization {}"\
+                    .format(trainer.character.name,self.new_specialization)
+            trainee_specializations = list(self.character.specializations.all())
+                    
+            if not self.old_specialization in trainee_specializations:
+                return "{} does not have the specialization {}"\
+                    .format(self.character.name,self.old_specialization)
+            else:
+                return "{} successfully trains {} in {}. "\
+                    .format(trainer.character.name,self.character.name,self.new_specialization)
+            
 class InvestGhoul(Action):
     name = CharField(max_length=200,help_text="What is the name of the ghoul you want to create, or improve?")
     discipline = ForeignKey(Discipline,help_text="What discipline should the ghoul gain a level in?")
@@ -701,6 +969,8 @@ class InvestGhoul(Action):
             self.name,
             self.discipline.name,
             self.specialization.name)
+    def get_resolution(self):
+        return "no roll"
   
 class InvestEquipment(Action):
     name = CharField(max_length=200,help_text="What kind of equipment is it?")
@@ -710,6 +980,8 @@ class InvestEquipment(Action):
             self.character.name,
             self.name,
             self.specialization.name)
+    def get_resolution(self):
+        return "no roll"
 
 
 class InvestWeapon(Action):
@@ -718,16 +990,22 @@ class InvestWeapon(Action):
         return '{} is investing in the weapon {}.'.format(            
             self.character.name,
             self.weapon.name)
+    def get_resolution(self):
+        return "no roll"
 
 class InvestHerd(Action):
     def to_description(self):
         return '{} is investing in their herd.'.format(
             self.character.name)
+    def get_resolution(self):
+        return "no roll"
     
 class InvestHaven(Action): 
     def to_description(self):
         return '{} is investing in their haven.'.format(
             self.character.name)
+    def get_resolution(self):
+        return "no roll"
 
 class MentorAttribute(Action): 
     attribute = ForeignKey(Attribute,help_text="What attribute do you want to help your student improve?")
@@ -737,6 +1015,8 @@ class MentorAttribute(Action):
             self.character.name,
             self.student.name,
             self.attribute)
+    def get_resolution(self):
+        return "no roll"
 
 class MentorDiscipline(Action): 
     discipline = ForeignKey(Discipline,help_text="What discipline do you want to help your student improve?")
@@ -746,6 +1026,8 @@ class MentorDiscipline(Action):
             self.character.name,
             self.student.name,
             self.discipline)
+    def get_resolution(self):
+        return "no roll"
             
 class MentorSpecialization(Action): 
     specialization = ForeignKey(Specialization,help_text="What specialization do you want to help your student acquire?")
@@ -755,10 +1037,14 @@ class MentorSpecialization(Action):
             self.character.name,
             self.student.name,
             self.specialization)
+    def get_resolution(self):
+        return "no roll"
 
 class Rest(Action):
     def to_description(self):
         return '{} is resting.' .format(self.character.name)
+    def get_resolution(self):
+        return "no roll"
         
         
 class NeglectDomain(Action):
@@ -766,14 +1052,19 @@ class NeglectDomain(Action):
     def to_description(self):
         return '{} is neglecting {}.' .format(
             self.character.name,
-            self.domain.name)          
+            self.domain.name)
+            
+    def get_resolution(self):
+        return "no roll"      
         
 class PatrolDomain(Action):
     domain = ForeignKey(Domain,help_text="Which domain do want to get one less problem?")
     def to_description(self):
         return '{} is patroling {}.' .format(
             self.character.name,
-            self.domain.name)        
+            self.domain.name)
+    def get_resolution(self):
+        return "no roll"        
             
 class KeepersQuestion(Action):
     target = ForeignKey(Character,help_text="Who do you want to question?")
@@ -783,6 +1074,8 @@ class KeepersQuestion(Action):
             self.character.name,
             self.target.name,
             self.question) 
+    def get_resolution(self):
+        return "no roll"
 
 class PrimogensQuestion(Action):
     target = ForeignKey(Character,help_text="Who do you want to question? (You may only choose members of your own clan.)")
@@ -792,6 +1085,8 @@ class PrimogensQuestion(Action):
             self.character.name,
             self.target.name,
             self.question)
+    def get_resolution(self):
+        return "no roll"
                                
 class PrimogensAidAction(Action):
     helpee = ForeignKey(Character,related_name="primogen_help",help_text="Who do you want to help? (You may only choose members of your own clan.)")
@@ -853,7 +1148,7 @@ class ActiveDisciplines(Model):
     
 
     def __str__(self):
-        disciplines = ', '.join(d.name for d in self.disciplines.all())
+        disciplines = ', '.join(d.discipline.name for d in self.disciplines.all())
         return '[{}] {}: {}'.format(self.session.name, self.character, disciplines)
 
 
