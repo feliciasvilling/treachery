@@ -23,6 +23,8 @@ urlpatterns = [
     url(r'^session/(?P<session>\d+)/actions/resolve$',
         staff_member_required(views.resolve_actions),
         name='resolve_actions'),
+        
+        
     
     url(r'^session/(?P<session>\d+)/feedings$',
         staff_member_required(views.FeedingListView.as_view()),
@@ -39,10 +41,14 @@ urlpatterns = [
     url(r'^session/(?P<session>\d+)/rumors$',
         staff_member_required(views.RumorListView.as_view()),
         name='rumors'),
-    
+        
     url(r'^action/(?P<pk>\d+)$',
         staff_member_required(views.ActionUpdate.as_view()),
         name='action'),
+    
+    url(r'^action/roll_dice/(?P<pk>\d+)$',
+        staff_member_required(views.resolve_action),
+        name='resolve_action'),
     
     url(r'^feeding/(?P<pk>\d+)$',
         staff_member_required(views.FeedingUpdate.as_view()),

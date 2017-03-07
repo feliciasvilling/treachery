@@ -55,9 +55,18 @@ def resolve_actions(request, session):
         actions += list(ActionClass.objects.filter(session=session))
     for action in actions:
         action.resolve()
-
-
+        
     return redirect('actions', session=session)
+
+def resolve_action(request, pk):
+    actions = []
+    for ActionClass in ActionClasses:
+        actions += list(ActionClass.objects.filter(pk=pk))
+    for action in actions:
+        action.resolve()
+    print ("resolving")
+    return redirect('action', pk)
+
 
 def assign_rumors(request, session):
 
@@ -270,6 +279,7 @@ class ActionUpdate(UpdateView):
         context = super(ActionUpdate, self).get_context_data(**kwargs)
         context['request'] = self.request
         context['enable_comments'] = True
+        context['action_id'] = self.kwargs['pk']
         session = self.object.session
         character = self.object.character
         adisc = ActiveDisciplines.objects.filter(session=session,
