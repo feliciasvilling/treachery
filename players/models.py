@@ -678,7 +678,11 @@ class InfluenceSteal(Action):
             
     def get_resolution(self):
     
-        target = Character.objects.get(hooks__name=self.name)
+        targets = list(Character.objects.filter(hooks__name=self.name))
+        if targets==[]:
+            return "no hook matching the discription"
+        else:
+            target = targets[0]    
         stealth_roll = self.roll (1,"Social",self.influence.name,"Obfuscate")
         attack_roll = self.roll(1, "Social",self.influence.name,"Prescence")
         conservation = list(ConserveInfluence.objects.filter(
