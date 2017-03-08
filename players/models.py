@@ -2,29 +2,23 @@ from django.db import models
 from django.db.models import *
 from django.contrib.auth.models import User
 import random 
-
 # Resolved states
 UNRESOLVED = 'UNRESOLVED'
 RESOLVED = 'RESOLVED'
 PENDING = 'PENDING'
 NO_ACTIONS = 'NO_ACTIONS'
-
 # Rumor Types
 RUMOR_UNRELIABLE = 'Unreliable'
 RUMOR_RELIABLE = 'Reliable'
 RUMOR_FACT = 'Fact'
 RUMOR_VAMPIRE = 'Vampire'
-
 #DROP TABLE players_historicalcharacter
-
 def toStrList(qrySet):
     return ','.join(map(str,list(qrySet))) 
-
 class ActionType(Model):
     name = CharField(max_length=200)
     template = TextField(blank=True)
     
-
     def help_texts():
         help_texts = []
         for action_type in ActionType.objects.order_by('name').all():
@@ -34,49 +28,38 @@ class ActionType(Model):
                     'text': action_type.template
                 })
         return help_texts
-
     def __str__(self):
         return self.name
-
 
 class ActionOption(Model):
     action_types = ManyToManyField(ActionType)
     count = PositiveIntegerField()
     
-
     def __str__(self):
         action_types = ' or '.join(a.name for a in self.action_types.all())
         return '[{}]{}'.format(action_types, self.count)
 
-
 class Influence(Model):
     name = CharField(max_length=200)
     
-
     def __str__(self):
         return self.name
-
 
 class Population(Model):
     name = CharField(max_length=200)
     
-
     def __str__(self):
         return self.name
-
 class ElderPower(Model):
     name = CharField(max_length=200)
     
     description = TextField()
-
     def __str__(self):
         return self.name
-
 
 class Discipline(Model):
     name = CharField(max_length=200)
     
-
     def __str__(self):
         return self.name
         
@@ -90,15 +73,12 @@ class DisciplineRating(Model):
     mentor = BooleanField(default=False)
     exp = PositiveIntegerField(default=0)    
     
-
     def __str__(self):
         return '{} {}'.format(self.discipline.name, str(self.value))
         
-
 class Attribute(Model):
     name = CharField(max_length=200)
     
-
     def __str__(self):
         return self.name
         
@@ -110,17 +90,21 @@ class AttributeRating(Model):
     value = PositiveIntegerField(default=1)
     exp = PositiveIntegerField(default=0)    
     
-
+    def __character__(self):
+        try:
+            masters = Character.objects.filter(attributes = self)
+            master = ','.join([m.name for m in masters])
+        except IndexError:
+            master = ""
+        return master
     def __str__(self):
         return  '{} {}'.format(self.attribute.name, str(self.value))
-
+        
 class Specialization(Model):
     name = CharField(max_length=200)
-    
-
     def __str__(self):
         return self.name
-
+        
 class Weapon(Model):
     name = CharField(max_length=200)
     mod = PositiveIntegerField()
@@ -129,7 +113,6 @@ class Weapon(Model):
     resources = PositiveIntegerField()
     ranged = BooleanField(default=False)
     
-
     def __str__(self):
         return '{} (cost {}, bonus {} {} {})'.format(
             self.name,
@@ -138,49 +121,40 @@ class Weapon(Model):
             self.damage_type,
             "ranged" if self.ranged else ""
             )
-
+            
 class Title(Model):
     name = CharField(max_length=200)
     action_options = ManyToManyField(ActionOption, blank=True)
-    
-
     def __str__(self):
         return self.name
-
+        
 class Age(Model):
     name = CharField(max_length=200)
     action_options = ManyToManyField(ActionOption, blank=True)
-    
-
     def __str__(self):
         return self.name
-
+        
 class Clan(Model):
     name = CharField(max_length=200)
     theme = TextField(blank=True)
-    
     clan_disciplines = ManyToManyField(Discipline, blank=True)
-
     def __str__(self):
         return self.name
-
+        
 class PoliticalFaction(Model):
     name = CharField(max_length=200)
     description = TextField(blank=True)    
-
     def __str__(self):
         return self.name
         
 class CanonFact(Model):
     name = CharField(max_length=200)
     description = TextField()    
-
     def __str__(self):
         return self.name        
         
 class Nature(Model):
     name = CharField(max_length=200)    
-
     def __str__(self):
         return self.name        
         
@@ -189,18 +163,16 @@ class Relationship(Model):
     complicated = BooleanField()
     description = TextField()
     blood_bond = PositiveIntegerField(choices=((0,0),(1,1),(2,2),(3,3)),default=0)    
-
     def __str__(self):
         return 'to {}' .format(self.character.name)
-
+        
 class Ritual(Model):
     name = CharField(max_length=200)
     level = PositiveIntegerField(default=1)
     description = TextField()    
-
     def __str__(self):
         return self.name
-
+        
 class RitualRating(Model):
     ritual = ForeignKey(Ritual)
     exp = BooleanField(default=False)
@@ -208,7 +180,6 @@ class RitualRating(Model):
     
     def __str__(self):
         return '{} {}'.format(self.ritual.name, str(self.invested))
-
 class HookAttribute(Model):
     name = CharField(max_length=200)    
     
@@ -219,14 +190,16 @@ class Hook(Model):
     name = CharField(max_length=200)
   #  description = CharField(max_length=200,blank=True)
     influence = ForeignKey(Influence)
-    attributes = ManyToManyField(HookAttribute,blank=True)
-
-    def __str__(self):
+    attributes = ManyToManyField(HookAttribute,blank=True)  
+    def __master__(self):
         try:
             master = Character.objects.filter(hooks__name = self.name)[0].name
+            print (str(master))
         except IndexError:
             master = ""
-        return '{} ({},{})'.format(self.name,self.influence.name,master)
+        return master
+    def __str__(self):
+        return self.name
         
 class Boon(Model):
     signer = ForeignKey('Character')
@@ -273,7 +246,6 @@ class Domain(Model):
     influence = CharField(max_length=200)
     masquerade = CharField(max_length=200)
     population = ManyToManyField(Population, blank=True)
-
     def __str__(self):
         population = ', '.join(d.name for d in self.population.all())
         return '{} - Feeding Points: {}, Status: {}, Influence: {}, Masquerade: {}, Population: [{}]'.format(
@@ -291,7 +263,6 @@ class Character(Model):
     
     nature  = ForeignKey(Nature,related_name='+')
     demeanor= ForeignKey(Nature,related_name='+')
-
     sire    = ForeignKey('Character',blank=True,null=True)
     clan    = ForeignKey(Clan,blank=True,null=True)
     generation = PositiveIntegerField(default=13)  
@@ -321,20 +292,15 @@ class Character(Model):
     
   #  domains = ManyToManyField(Domain,blank=True, related_name='owner')
   
-
     hooks  = ManyToManyField(Hook,  blank=True, related_name='master')
-
     resources  = PositiveIntegerField(default=0)
     
     
     rituals     = ManyToManyField(RitualRating,       blank=True)
-
     boons  = ManyToManyField(Boon,  blank=True)
     frenzyTriggers = TextField(blank=True)
-
     relationships = ManyToManyField(Relationship, related_name='master', blank=True)
     canon_fact        = ManyToManyField(CanonFact, blank=True)
-
     political_faction = ForeignKey(PoliticalFaction, blank=True,null=True)
     concept = TextField(blank=True)
         
@@ -355,17 +321,14 @@ class Character(Model):
     additional_notes = TextField(blank=True)
           
     
-
     def __str__(self):
         return '{} ({})'.format(self.name, self.user)   
-
     def action_count(self, session):
         action_options = self.actions(session)
         count = 0
         for action_option in action_options:
             count += action_option.count
         return count
-
     def actions(self, session):
         action_options = list(self.age.action_options.all())
         extra_actions  = ExtraAction.objects.filter(character=self, session=session)
@@ -374,7 +337,6 @@ class Character(Model):
         for title in self.titles.all():
             action_options.extend(list(title.action_options.all()))
         return action_options
-
     def submitted(self, session):
         actions  = Action.objects.filter(character=self, session=session)
         feedings = Feeding.objects.filter(character=self, session=session)
@@ -391,7 +353,6 @@ class Character(Model):
         return {inf.name:len(self.hooks.filter(influence=inf)) for inf in Influence.objects.all()}
             
         
-
     def resource_income(self):
         ratings = self.get_influences()
         weights = [0, 1, 5, 10]
@@ -412,23 +373,18 @@ class Character(Model):
         
     def background_cost(self):
         return sum([value for key,value in self.get_backgrounds().items()])
-
     def get_hooks(self):
         return ['{}: {} ({})' .format(h.influence, h.name, toStrList(h.attributes.all()))
              for h in self.hooks.all()]
              
-
-
 
 class InfluenceRating(Model):
     influence = ForeignKey(Influence)
     rating = PositiveIntegerField()
     character = ForeignKey(Character, related_name='influences')
     
-
     def __str__(self):
         return '[{}] {}: {:i}'.format(self.character, self.influence, self.rating)
-
 
 # Session actions
 class Session(Model):
@@ -438,13 +394,10 @@ class Session(Model):
     action_set = ForeignKey(ActionOption,blank=True,null=True)
     feeding_domains = ManyToManyField(Domain, blank=True)
     
-
     def __str__(self):
         return '[{}] {}'.format('open' if self.is_open else 'closed', self.name)
-
     def submitted(self):
         return [i for i in list(Character.objects.all()) if i.submitted(self)]
-
     def resolved_state(self, character):
         """
             Checks all actions and feedings,
@@ -463,7 +416,6 @@ class Session(Model):
             elif a.resolved == UNRESOLVED:
                 state = UNRESOLVED
         return state
-
 
 class Action(Model):
     action_type = ForeignKey(ActionType)
@@ -590,7 +542,6 @@ class Action(Model):
             lst += " + {}" .format(specialization)
         lst += ")"
         return (result,lst)
-
     def to_description(self):
         return '{} '.format(self.action_type)
     def __str__(self):
@@ -618,7 +569,6 @@ class AidAction(Action):
             
     def get_resolution(self):
         return ""
-
 class ConserveInfluence(Action): 
     influence = ForeignKey(Influence,help_text="Which of your influences are you trying to conserve? (Warning: Don't choose an influence where you have no hooks.)")
     def to_description(self):
@@ -631,14 +581,12 @@ class ConserveInfluence(Action):
       #  lst += "\n{} rolls {} to detect attacks." .format(self.character.name, self.roll (1,"Social",self.influence.name,"Auspex")[1])        
         return ""    
 
-
 class ConserveDomain(Action): 
     domain = ForeignKey(Domain,help_text="Which domain are you trying to conserve?")
     def to_description(self):
         return '{} is conserving {}.'.format(            
             self.character.name,
             self.domain.name)
-
     def get_resolution(self):
         detect_roll = self.roll (1,"Mental","Protection","Protean")
         feed_actions = list(Feeding.objects.filter(domain=self.domain,session=self.session))
@@ -651,8 +599,6 @@ class ConserveDomain(Action):
         lst = "{} rolls {} to prevent problems." .format(self.character.name, self.roll(1,"Mental","Protection","Animalism")[1])
       #  lst += "\n{} rolls {} to detect poaching. {}" .format(self.character.name, detect_roll[1],detected)        
         return lst
-
-
 
 class InfluenceForge(Action): 
     name = CharField(max_length=200,help_text="What is the name of the new hook?")
@@ -667,7 +613,7 @@ class InfluenceForge(Action):
         lst = "{} rolls {} to to create a hook." .format(self.character.name, self.roll(1, "Social",self.influence.name,"Prescence")[1])
      #   lst += "\n{} rolls {} to hide their involvement." .format(self.character.name, self.roll (1, "Social","Subterfuge","Obfuscate")[1])        
         return lst
-
+        
 class InfluenceSteal(Action):
     name = CharField(max_length=200,help_text="What is the name of the hook you are trying to steal?")
     influence = ForeignKey(Influence,help_text="In what influence does the hook operate?")
@@ -711,7 +657,6 @@ class InfluenceSteal(Action):
         lst += "\n{} rolls {} to hide their involvement." .format(self.character.name, stealth_roll[1])        
         return lst
 
-
 class InfluenceDestroy(Action): 
     name = CharField(max_length=200,help_text="What is the name of the hook you are trying to destroy?")
     influence = ForeignKey(Influence,help_text="In what influence does the hook operate?")
@@ -741,7 +686,6 @@ class InvestigateCharacterInfluence(Action):
     priority6 = ForeignKey(InfluencePriority,blank=True,null=True,related_name="priority6")
     priority7 = ForeignKey(InfluencePriority,blank=True,null=True,related_name="priority7")
     priority8 = ForeignKey(InfluencePriority,blank=True,null=True,related_name="priority8")
-
     hooks = TextField(blank=True)
     def to_description(self):
         priorities = '{},{},{},{},{},{},{},{}' .format(
@@ -768,7 +712,7 @@ class ResourcePriority(Model):
     cost = PositiveIntegerField()
     def __str__(self):       
         return '{} ({} successes)'.format(self.name, str(self.cost)) 
-
+        
 class InvestigateCharacterResources(Action): 
     target = ForeignKey(Character,related_name="investigate_resources",help_text="Which character are you interested in?")
   
@@ -780,7 +724,6 @@ class InvestigateCharacterResources(Action):
     priority6 = ForeignKey(ResourcePriority,blank=True,null=True,related_name="priority6")
     priority7 = ForeignKey(ResourcePriority,blank=True,null=True,related_name="priority7")
     priority8 = ForeignKey(ResourcePriority,blank=True,null=True,related_name="priority8")
-
     def to_description(self):
         priorities = '{},{},{},{},{},{},{},{}' .format(
             self.priority1,
@@ -932,7 +875,6 @@ class LearnDiscipline(Action):
                 return "{} is not competent to teach {} in {}. "\
                     .format(trainer.character.name,self.character.name,self.discipline)
                 
-
 class LearnSpecialization(Action): 
     new_specialization = ForeignKey(Specialization,related_name="learner",help_text="Which specialization do want to gain?")
     old_specialization = ForeignKey(Specialization,related_name="forgeter",help_text="Which specialization are you willing to give up?")
@@ -992,7 +934,6 @@ class InvestEquipment(Action):
             self.specialization.name)
     def get_resolution(self):
         return "no roll"
-
 
 class InvestWeapon(Action):
     weapon = ForeignKey(Weapon,help_text="What weapon do you want to acqire?")
@@ -1056,7 +997,6 @@ class Rest(Action):
     def get_resolution(self):
         return "no roll"
         
-        
 class NeglectDomain(Action):
     domain = ForeignKey(Domain,help_text="Which domain do want to get an additional problem?")
     def to_description(self):
@@ -1086,7 +1026,7 @@ class KeepersQuestion(Action):
             self.question) 
     def get_resolution(self):
         return "no roll"
-
+        
 class PrimogensQuestion(Action):
     target = ForeignKey(Character,help_text="Who do you want to question? (You may only choose members of your own clan.)")
     question = TextField()
@@ -1103,7 +1043,6 @@ class PrimogensAidAction(Action):
     action = ForeignKey(ActionType,help_text="What kind of action you are helping them with")
     name = CharField(max_length=200,blank=True,help_text="if the action is targeting a hook, you need to enter the name of the hook here.")
     betrayal = BooleanField(default=False,help_text="Do you want to betray rather than help?")
-
     def to_description(self):
         betrayal = '{} is betraying {}.' .format(
             self.character.
@@ -1129,14 +1068,12 @@ class Feeding(Model):
             RESOLVED, 'Resolved')),
         default=UNRESOLVED)
     
-
     def __str__(self):
         return '[{}] {}: .formatd in {}'.format(
             self.session.name, 
             self.character,
             self.feeding_points, 
             self.domain)
-
     def is_overfeeding(self):
         feedings = list(Feeding.objects.filter(session=self.session,
                                                domain=self.domain))
@@ -1145,10 +1082,7 @@ class Feeding(Model):
             sum += feeding.feeding_points
             if sum > self.domain.feeding_capacity:
                 return True
-
         return False
-
-
 
 
 class ActiveDisciplines(Model):
@@ -1156,11 +1090,9 @@ class ActiveDisciplines(Model):
     session = ForeignKey(Session, related_name='active_disciplines')
     disciplines = ManyToManyField(DisciplineRating, blank=True,help_text="Which disciplines do you want to use during the downtime? (Hold down Ctrl to select multiple choices.)")
     
-
     def __str__(self):
         disciplines = ', '.join(d.discipline.name for d in self.disciplines.all())
         return '[{}] {}: {}'.format(self.session.name, self.character, disciplines)
-
 
 class ExtraAction(Model):
     character = ForeignKey(Character, related_name='+')
@@ -1168,12 +1100,10 @@ class ExtraAction(Model):
     action_options = ManyToManyField(ActionOption)
     description = TextField()
     
-
     def __str__(self):
         action_options = ', '.join(str(d) for d in self.action_options.all())
         return '[{}] +{} to {}'.format(self.session.name, action_options,
                                    self.character)
-
 
 class Rumor(Model):
     influence = ForeignKey(Influence, blank=True,null=True)
@@ -1190,7 +1120,6 @@ class Rumor(Model):
             RUMOR_RELIABLE, 'Reliable'), (RUMOR_FACT, 'Fact'), (RUMOR_VAMPIRE,
                                                                 'Vampire')),
         default=RUMOR_UNRELIABLE)
-
     def __str__(self):
         return '[{}] {} - {}: {}'.format(self.session.name, self.influence,
                                      self.rumor_type, self.description)

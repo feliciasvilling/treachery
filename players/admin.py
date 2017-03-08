@@ -4,21 +4,60 @@ from simple_history.admin import SimpleHistoryAdmin
 from players.models import *
 
 # Admin interface
-admin.site.register(Character, SimpleHistoryAdmin)
+
+class AttributeRatingInline(admin.TabularInline):
+    model = Character.attributes.through
+    extra = 0
+    min_num = 3
+    can_delete = False
+    
+class DisciplineRatingInline(admin.TabularInline):
+    model = Character.disciplines.through
+    extra = 0
+
+class HooksInline(admin.TabularInline):
+    model = Character.hooks.through
+    extra = 1    
+    
+class GhoulsInline(admin.TabularInline):
+    model = Character.ghouls.through
+    extra = 1       
+    
+@admin.register(Character)
+class CharacterAdmin(admin.ModelAdmin):
+    exclude = ('rituals','boons','frenzyTriggers','relationships',
+    'canon_fact','concept','attributes','disciplines','hooks')
+    filter_horizontal = ('titles','specializations')
+   # radio_fields = {"clan": admin.HORIZONTAL,'age': admin.HORIZONTAL}
+    inlines = [AttributeRatingInline, DisciplineRatingInline,HooksInline,GhoulsInline]
+    
 admin.site.register(Discipline, SimpleHistoryAdmin)
 admin.site.register(DisciplineRating, SimpleHistoryAdmin)
 admin.site.register(Attribute, SimpleHistoryAdmin)
-admin.site.register(AttributeRating, SimpleHistoryAdmin)
+
+AttributeRating
+
+
+@admin.register(AttributeRating)
+class AttributeRatingAdmin(admin.ModelAdmin):
+    list_display = ('attribute','value','learned','exp','mentor','elder_blood','__character__')
+
+@admin.register(Ghoul)
+class GhoulAdmin(admin.ModelAdmin):
+    list_display = ('name','level') 
 
 admin.site.register(Equipment, SimpleHistoryAdmin)
-admin.site.register(Ghoul, SimpleHistoryAdmin)
 admin.site.register(Title, SimpleHistoryAdmin)
 admin.site.register(CanonFact, SimpleHistoryAdmin)
 admin.site.register(PoliticalFaction, SimpleHistoryAdmin)
 admin.site.register(Boon, SimpleHistoryAdmin)
 admin.site.register(Relationship, SimpleHistoryAdmin)
 admin.site.register(Age, SimpleHistoryAdmin)
-admin.site.register(Hook, SimpleHistoryAdmin)
+
+@admin.register(Hook)
+class HookAdmin(admin.ModelAdmin):
+    list_display = ('name','influence','__master__') 
+
 admin.site.register(HookAttribute, SimpleHistoryAdmin)
 admin.site.register(Nature, SimpleHistoryAdmin)
 admin.site.register(Specialization, SimpleHistoryAdmin)
