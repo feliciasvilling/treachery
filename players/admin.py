@@ -26,10 +26,10 @@ class GhoulsInline(admin.TabularInline):
 @admin.register(Character)
 class CharacterAdmin(admin.ModelAdmin):
     exclude = ('rituals','boons','frenzyTriggers','relationships',
-    'canon_fact','concept','attributes','disciplines','hooks')
-    filter_horizontal = ('titles','specializations')
+    'canon_fact','concept','attributes','disciplines')
+    filter_horizontal = ('titles','specializations','hooks')
    # radio_fields = {"clan": admin.HORIZONTAL,'age': admin.HORIZONTAL}
-    inlines = [AttributeRatingInline, DisciplineRatingInline,HooksInline,GhoulsInline]
+    inlines = [AttributeRatingInline, DisciplineRatingInline,GhoulsInline]
     
 admin.site.register(Discipline, SimpleHistoryAdmin)
 admin.site.register(DisciplineRating, SimpleHistoryAdmin)
