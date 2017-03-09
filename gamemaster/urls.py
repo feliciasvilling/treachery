@@ -24,7 +24,9 @@ urlpatterns = [
         staff_member_required(views.resolve_actions),
         name='resolve_actions'),
         
-        
+    url(r'^session/(?P<session>\d+)/feedings/resolve$',
+        staff_member_required(views.resolve_feedings),
+        name='resolve_feedings'),        
     
     url(r'^session/(?P<session>\d+)/feedings$',
         staff_member_required(views.FeedingListView.as_view()),

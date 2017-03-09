@@ -57,6 +57,13 @@ def resolve_actions(request, session):
         action.resolve()
         
     return redirect('actions', session=session)
+    
+def resolve_feedings(request, session):
+    feedings =  list(Feeding.objects.filter(session=session))
+    for feeding in feedings:
+        feeding.resolve()
+        
+    return redirect('feedings', session=session)
 
 def resolve_action(request, pk):
     actions = []
@@ -266,7 +273,8 @@ class FeedingListView(ListView):
         context['characters'] = Character.objects.all()
         context['domains'] = Domain.objects.all()
         context['type'] = 'feedings'
-        context['feedings'] = self.object_list
+        context['feedings'] = self.object_list 
+        context['session_id'] = self.kwargs['session']
         return context
 
 class ActionUpdate(UpdateView):
@@ -280,6 +288,7 @@ class ActionUpdate(UpdateView):
         context['request'] = self.request
         context['enable_comments'] = True
         context['action_id'] = self.kwargs['pk']
+        context['action_edit'] = True
         session = self.object.session
         character = self.object.character
         adisc = ActiveDisciplines.objects.filter(session=session,

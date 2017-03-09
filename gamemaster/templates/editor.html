@@ -48,11 +48,11 @@
               </button>
             {% endbuttons %}
           </div>
-          <!--
+          {% if action_edit %}
           <div class="col-md-offset-1 col-md-10 text-right">
-            <a class="btn btn-primary" href="{ % url 'resolve_action' action_id % }">Roll Dice<a>
+            <a class="btn btn-primary" href="{% url 'resolve_action' action_id %}">Roll Dice<a>
           </div>
-          -->
+           {% endif %}
         </form>
       </div>
     </div>

@@ -243,6 +243,7 @@ class Domain(Model):
     name = CharField(max_length=200)
     feeding_capacity = PositiveIntegerField()
     status = CharField(max_length=200)
+   # incidents = PositiveIntegerField(default=0)
     influence = CharField(max_length=200)
     masquerade = CharField(max_length=200)
     population = ManyToManyField(Population, blank=True)
@@ -596,7 +597,19 @@ class ConserveDomain(Action):
             if True: #feed_roll[0]<=detect_roll[0]:
                 detected += "\n{} is feeding on {}. {}"\
                     .format(feed.character.name,self.domain.name,feed.description)
-        lst = "{} rolls {} to prevent problems." .format(self.character.name, self.roll(1,"Mental","Protection","Animalism")[1])
+        lst = "{} rolls {} to prevent problems."\
+             .format(self.character.name, 
+                self.roll(1,"Mental","Protection","Animalism")[1])
+        
+        feeds = Feeding.objects.filter(session=self.session,domain=self.domain)
+        
+        for feed in feeds:
+            stealth_roll = feed.roll("Mental","Stealth","---")
+            detect_roll = self.roll(1,"Mental","Protection","Protean")
+            if detect_roll >= stealth_roll:
+                lst += "\n{} have been feeding on {}."\
+                  .format(feed.character.name,self.domain.name)
+        
       #  lst += "\n{} rolls {} to detect poaching. {}" .format(self.character.name, detect_roll[1],detected)        
         return lst
 
@@ -1083,6 +1096,53 @@ class Feeding(Model):
             if sum > self.domain.feeding_capacity:
                 return True
         return False
+       
+       
+    def get_att(self,attribute):    
+        return self.character.attributes.get(attribute__name=attribute).value
+        
+    def get_dis(self,discipline):   
+        activated = list(ActiveDisciplines.objects.filter(character=self.character,session=self.session))
+        if activated==[]:
+            return 0
+        else:    
+            active = activated[0]
+            disp = list(active.disciplines.filter(discipline__name=discipline))
+            if disp==[]:
+                return 0
+            else:
+                return disp[0].value
+                
+                
+    def roll(self,attribute,specialization,discipline):
+                  
+        have_spec = False
+        for spec in self.character.specializations.all():
+            if spec.name == specialization:
+                have_spec = True
+                
+        dice = self.get_att(attribute) + \
+                 self.get_dis(discipline) + \
+                 (3 if have_spec else 0)
+                 
+        result = 0
+        for die in range(0,dice):
+            result += random.randint(0, 1)                 
+            
+       
+                 
+        lst = "{} successes ({} {} + {} {}".format(
+            result, 
+            attribute, self.get_att(attribute), 
+            discipline, self.get_dis(discipline))
+        if have_spec:
+            lst += " + {}" .format(specialization)    
+        lst += ")"
+        return (result,lst)   
+       
+    def resolve(self):
+        pass
+   
 
 
 class ActiveDisciplines(Model):
