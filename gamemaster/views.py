@@ -59,11 +59,18 @@ def resolve_actions(request, session):
     return redirect('actions', session=session)
     
 def resolve_feedings(request, session):
-    feedings =  list(Feeding.objects.filter(session=session))
+    feedings = Feeding.objects.filter(session=session)
     for feeding in feedings:
         feeding.resolve()
         
     return redirect('feedings', session=session)
+
+def resolve_characters(request, session):
+    chars = Character.objects.all()
+    for char in chars:
+        char.resolve()
+        
+    return redirect('characters', session=session)
 
 def resolve_action(request, pk):
     actions = []
@@ -144,16 +151,11 @@ def assign_rumors(request, session):
 
 def character(request, session, character):
     context = {
-        'character': get_object_or_404(Character,
-                                       id=character),
-        'session': get_object_or_404(Character,
-                                     id=character),
-        'actions': Action.objects.filter(character=character,
-                                         session=session),
-        'disciplines': Action.objects.filter(character=character,
-                                             session=session),
-        'feedings': Feeding.objects.filter(character=character,
-                                           session=session),
+        'character': get_object_or_404(Character,id=character),
+        'session': get_object_or_404(Character,id=character),
+        'actions': Action.objects.filter(character=character,session=session),
+        'disciplines': Action.objects.filter(character=character,session=session),
+        'feedings': Feeding.objects.filter(character=character,session=session),
     }
     return render(request, 'character.html', context)
 
@@ -200,7 +202,6 @@ class ActionListView(ListView):
         context['session_id'] = self.kwargs['session']
         return context
 
-
 class RumorListView(ListView):
     model = Rumor
     template_name = 'list.html'
@@ -220,7 +221,7 @@ class RumorListView(ListView):
         context['rumors'] = self.object_list
         context['session_id'] = self.kwargs['session']
         return context
-        
+  
 
 class CharacterListView(ListView):
     model = Character
@@ -236,6 +237,7 @@ class CharacterListView(ListView):
         for c in self.object_list:
             c.has_submitted = c.submitted(session)
         context['characters'] = self.object_list
+        context['session_id'] = self.kwargs['session']
         return context
 
 

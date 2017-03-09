@@ -379,6 +379,32 @@ class Character(Model):
              for h in self.hooks.all()]
              
 
+    def resolve(self):
+        self.resources += self.resource_income()
+        self.resources -= self.background_cost()
+        if self.humanity_exp==0:
+            if self.humanity==1:
+                result = random.randint(0, 10)  
+                if result != 10:
+                    self.humanity -= 1
+                    self.additional_notes += "lost humanity"
+            else:    
+                result = 0
+                for die in range(0,self.humanity):
+                    result += random.randint(0, 1)  
+                    if self.clan.name == "Gangrel" and self.humanity > 2:
+                        if result < 3:
+                            self.humanity -= 1
+                            self.additional_notes += "lost humanity"
+
+                    else:
+                        if result == 0:
+                            self.humanity -= 1
+                            self.additional_notes += "lost humanity"
+
+        self.save                 
+    
+
 class InfluenceRating(Model):
     influence = ForeignKey(Influence)
     rating = PositiveIntegerField()
