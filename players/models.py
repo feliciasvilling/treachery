@@ -198,6 +198,8 @@ class Hook(Model):
         except IndexError:
             master = ""
         return master
+    __master__.admin_order_field = 'master__name'
+        
     def __str__(self):
         return self.name
         
