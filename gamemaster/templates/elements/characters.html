@@ -49,13 +49,16 @@
       </thead>
       <tbody>
         {% for character in characters %}
-          <tr class="clickableRow {{ character.has_submitted|yesno:'success,warning' }}" data-href="{% url 'character' character.id %}">
-            <td>{{ character.name }}</td>
+          <tr>
+            <td><a href="{% url 'character' character.id %}">{{ character.name }}</</td>
             <td>{{ character.user.first_name }} {{ character.user.last_name }}</td>
             <td>{{ character.age.name }}</td>
             <td>{{ character.titles.all |join:", " }}</td>
             <td>{{ character.clan.name }}</td>
+            <td><a href="{% url 'character_sheet' session_id character.id %}"> actions</a></td>
+          
           </tr>
+          
         {% endfor %}
       </tbody>
     </table>

@@ -144,6 +144,17 @@ def assign_rumors(request, session):
     return redirect('rumors', session=session)
 
 
+def character_sheet(request, session, char):
+    session = get_object_or_404(Session, pk=session)
+    character = Character.objects.get(pk=char)
+    data = {'session': session,
+            'character': character,
+            'rumor_list': Rumor.objects.filter(session=session,
+                                               recipients=character),
+            'submitted': character.submitted(session),
+            'request': request}
+    return render(request, 'session.html', data)
+
 def character(request, session, character):
     context = {
         'character': get_object_or_404(Character,id=character),

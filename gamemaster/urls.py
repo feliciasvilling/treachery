@@ -16,6 +16,12 @@ urlpatterns = [
         staff_member_required(views.toggle_session),
         name='toggle_session'),
     
+    url(r'^session/(?P<session>\d+)/character/(?P<char>\d+)$',
+        staff_member_required(views.character_sheet),
+        name='character_sheet'),
+    
+    
+    
     url(r'^session/(?P<session>\d+)/actions$',
         staff_member_required(views.ActionListView.as_view()),
         name='actions'),

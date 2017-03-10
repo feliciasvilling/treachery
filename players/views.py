@@ -45,8 +45,6 @@ def session(request, session):
             'rumor_list': Rumor.objects.filter(session=session,
                                                recipients=character),
             'submitted': character.submitted(session),
-            'extra_actions': ExtraAction.objects.filter(session=session,
-                                                        character=character),
             'request': request}
     return render(request, 'session.html', data)
 
