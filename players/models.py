@@ -325,7 +325,7 @@ class Character(Model):
           
     
     def __str__(self):
-        return '{} ({})'.format(self.name, self.user)   
+        return '{} ({})'.format(self.name, self.user)
     def action_count(self, session):
         action_options = self.actions(session)
         count = 0

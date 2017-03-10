@@ -10,26 +10,20 @@ from django.shortcuts import redirect
 from players.models import *
 
 
-
-
-
 def close(request):
     return render(request, 'closewindow.html')
 
-
 ActionClasses = [
     AidAction,
+    PrimogensAidAction,
     ConserveInfluence,
     ConserveDomain,
     InfluenceForge,
     InfluenceSteal,
     InfluenceDestroy,
-    InvestigateCharacterInfluence,
-    InvestigateCharacterResources,
-    InvestigateCharacterDowntimeActions,
-    InvestigateCounterSpionage,
-    InvestigatePhenomenon,
-    InvestigateInfluence,
+    MentorAttribute,
+    MentorDiscipline,
+    MentorSpecialization,
     LearnAttribute,
     LearnDiscipline,
     LearnSpecialization,
@@ -38,15 +32,17 @@ ActionClasses = [
     InvestWeapon,
     InvestHerd,
     InvestHaven,
-    MentorAttribute,
-    MentorDiscipline,
-    MentorSpecialization,
-    Rest,
     NeglectDomain,
     PatrolDomain,
     KeepersQuestion,
     PrimogensQuestion,
-    PrimogensAidAction,
+    InvestigateCounterSpionage,
+    InvestigateCharacterInfluence,
+    InvestigateCharacterResources,
+    InvestigateCharacterDowntimeActions,
+    InvestigatePhenomenon,
+    InvestigateInfluence,    
+    Rest,
     ]
 
 def resolve_actions(request, session):
@@ -96,16 +92,10 @@ def assign_rumors(request, session):
                                                   rumor_type=RUMOR_VAMPIRE)
 
         # get all characters that requires more rumors.
-        characters = []
-        ratings = InfluenceRating.objects.filter(influence=influence)
-        for rating in ratings:
-            rumors_needed = rating.rating - len(Rumor.objects.filter(
-                session=session,
-                recipients=rating.character,
-                influence=influence).exclude(rumor_type=RUMOR_FACT).exclude(
-                    rumor_type=RUMOR_VAMPIRE))
-
-            characters.extend([rating.character] * rumors_needed)
+        characters = [h.master.all()[0] 
+                      for h in Hook.objects.filter(influence=influence) 
+                      if list(h.master.all()) != []]
+        print (str(characters))
         random.shuffle(characters)
 
         for rumor in unassigned:
@@ -139,12 +129,17 @@ def assign_rumors(request, session):
         facts = Rumor.objects.filter(session=session,
                                      influence=influence,
                                      rumor_type=RUMOR_FACT)
-        ratings = InfluenceRating.objects.filter(influence=influence)
-        for rating in ratings:
-            if rating.rating >= 2:
+                                     
+        characters = [h.master.all()[0] 
+              for h in Hook.objects.filter(influence=influence) 
+              if list(h.master.all()) != []]
+        
+        for char in set(characters):
+            if len([c for c in characters if c == char])>1:
                 for fact in facts:
-                    fact.recipients.add(rating.character)
+                    fact.recipients.add(char)
                     fact.save()
+
 
     return redirect('rumors', session=session)
 
