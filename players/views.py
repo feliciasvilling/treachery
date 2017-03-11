@@ -19,7 +19,6 @@ def logout_view(request):
     logout(request)
     return redirect('login')
 
-
 @login_required
 @user_passes_test(lambda u: not u.is_superuser, login_url='/gm/')
 def profile(request):
