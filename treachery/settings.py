@@ -56,7 +56,7 @@ INSTALLED_APPS = ('django.contrib.admin',
                   'django.contrib.staticfiles',
                   'django.contrib.sites',
                   'django_comments',
-                  'simple_history',
+                #  'simple_history',
                   'bootstrap3',
                   'players',
                   'gamemaster', )

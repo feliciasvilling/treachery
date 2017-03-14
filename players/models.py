@@ -13,6 +13,7 @@ RUMOR_RELIABLE = 'Reliable'
 RUMOR_FACT = 'Fact'
 RUMOR_VAMPIRE = 'Vampire'
 #DROP TABLE players_historicalcharacter
+
 def toStrList(qrySet):
     return ','.join(map(str,list(qrySet))) 
 class ActionType(Model):
@@ -188,7 +189,7 @@ class HookAttribute(Model):
         
 class Hook(Model):
     name = CharField(max_length=200)
-  #  description = CharField(max_length=200,blank=True)
+    concept = CharField(max_length=200,blank=True)
     influence = ForeignKey(Influence)
     attributes = ManyToManyField(HookAttribute,blank=True)  
     def __master__(self):
@@ -285,7 +286,7 @@ class Character(Model):
     
     humanity   = PositiveIntegerField(default=7)
     willpower  = PositiveIntegerField(default=0)
-    #max_willpower  = PositiveIntegerField(default=0)
+    max_willpower  = PositiveIntegerField(default=0)
     blood      = PositiveIntegerField(default=10)
     
     health  = PositiveIntegerField(default=0)   
@@ -382,9 +383,11 @@ class Character(Model):
              
 
     def resolve(self):
-        self.resources += self.resource_income()
-        self.resources -= self.background_cost()
-        if self.humanity_exp==0:
+       # self.resources += self.resource_income()
+       # self.resources -= self.background_cost()
+        self.special_exp=0
+        
+        if self.humanity_exp==10:
             if self.humanity==1:
                 result = random.randint(0, 10)  
                 if result != 10:
@@ -394,15 +397,19 @@ class Character(Model):
                 result = 0
                 for die in range(0,self.humanity):
                     result += random.randint(0, 1)  
-                    if self.clan.name == "Gangrel" and self.humanity > 2:
+                if self.clan.name == "Gangrel":
+                    if self.humanity > 2:
                         if result < 3:
                             self.humanity -= 1
                             self.additional_notes += "lost humanity"
-
-                    else:
-                        if result == 0:
+                    if self.humanity == 2:
+                        if result < 2:
                             self.humanity -= 1
                             self.additional_notes += "lost humanity"
+                else:
+                    if result < 2:
+                        self.humanity -= 1
+                        self.additional_notes += "lost humanity"
 
         self.save                 
     
