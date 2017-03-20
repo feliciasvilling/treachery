@@ -170,7 +170,6 @@ class ActionFormSet(SessionFormSet):
         self.can_delete = False
 
         if self.session.is_special:
-            print("INITIAL")
             action_count = 2
             self.extra = action_count
             self.max_num = self.extra
@@ -196,6 +195,7 @@ class ActionFormSet(SessionFormSet):
                     # we could use form.initial to look at previous values. However
                     # matching the action to the option is hard.
                     form.fields['action_type'].queryset = action.action_types.all()
+                    form.title = action.name
                     i = i + 1
                 
 
@@ -516,9 +516,16 @@ class PrimogensAidActionForm(ActionForm):
         exclude = excludedFields
     action_type = "Primogenens Aid Action"  
 
-
+class GhoulAidActionForm(ActionForm):
+    class Meta:
+        model = GhoulAidAction
+        exclude = excludedFields
+    action_type = "Ghoul Aid Action"  
+    
 formTable = {
     'Aid Action':AidActionForm, 
+    'Primogenens Aid Action':PrimogensAidActionForm,
+    'Ghoul Aid Action':GhoulAidAction,
     'Conserve (Influence)':ConserveInfluenceForm,
     'Conserve (Domain)':ConserveDomainForm,
     'Influence (Forge)':InfluenceForgeForm,
@@ -545,7 +552,6 @@ formTable = {
     'Neglegera domän':NeglectDomainForm,
     'Patrullera domän':PatrolDomainForm,
     'Primogenens fråga':PrimogensQuestionForm,
-    'Primogenens Aid Action':PrimogensAidActionForm,
     'Elysiemästarens fråga':KeepersQuestionForm,
     
     }

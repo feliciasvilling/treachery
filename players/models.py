@@ -33,6 +33,7 @@ class ActionType(Model):
         return self.name
 
 class ActionOption(Model):
+    name = CharField(max_length=200,default="Any Action")
     action_types = ManyToManyField(ActionType)
     count = PositiveIntegerField()
     
@@ -246,7 +247,7 @@ class Domain(Model):
     name = CharField(max_length=200)
     feeding_capacity = PositiveIntegerField()
     status = CharField(max_length=200)
-   # incidents = PositiveIntegerField(default=0)
+    owner = ForeignKey('Character', blank=True,null=True)
     influence = CharField(max_length=200)
     masquerade = CharField(max_length=200)
     population = ManyToManyField(Population, blank=True)
@@ -255,6 +256,63 @@ class Domain(Model):
         return '{} - Feeding Points: {}, Status: {}, Influence: {}, Masquerade: {}, Population: [{}]'.format(
             self.name, self.feeding_capacity, self.status, self.influence,
             self.masquerade, population)
+            
+    def resolve(self,session):
+        feedings = list(Feeding.objects.filter(session=session,domain=self))
+        total_feed = sum([feed.feeding_points for feed in feedings])
+        overfeeding = total_feed - self.feeding_capacity
+        
+        def get_incident_roll(feed):
+            return feed.incident_roll
+            
+        for reciever in feedings:
+            reciever.incidents=0
+            reciever.save()
+                
+        if overfeeding>0:
+            feedings = sorted(feedings,key=get_incident_roll)
+            
+            if overfeeding < 4:
+                incidents = 1
+            else: 
+                if overfeeding < 10:
+                    incidents = 2
+                else:
+                    incidents = 4   
+            
+                   
+            incident_recivers = feedings[0:incidents]
+            
+            
+            for reciver in incident_recivers:
+                reciver.incidents = 1
+                incidents -= 1
+                reciver.save()
+                
+                
+            if incidents > 0:
+                additional_recivers = incident_recivers[0:incidents]
+                for reciver in additional_recivers:
+                    reciver.incidents += 1
+                    incidents -= 1
+                    reciver.save()
+
+            if incidents > 0:
+                additional_recivers = additional_recivers[0:incidents]
+                for reciver in additional_recivers:
+                    reciver.incidents += 1
+                    incidents -= 1
+                    reciver.save()
+
+            if incidents > 0:
+                additional_recivers = additional_recivers[0:incidents]
+                for reciver in additional_recivers:
+                    reciver.incidents += 1
+                    incidents -= 1
+                    reciver.save()
+                    
+                         
+           # print("overfeeding {}\n{} have incidents at {}" .format(overfeeding,incident_recivers,self.name) )
             
                   
 class Character(Model):
@@ -285,16 +343,15 @@ class Character(Model):
     disciplines = ManyToManyField(DisciplineRating,   blank=True)
     
     humanity   = PositiveIntegerField(default=7)
-    willpower  = PositiveIntegerField(default=0)
     max_willpower  = PositiveIntegerField(default=0)
+    willpower  = PositiveIntegerField(default=0)
     blood      = PositiveIntegerField(default=10)
     
     health  = PositiveIntegerField(default=0)   
-  #  bashing = PositiveIntegerField(default=0)
-  #  lethal = PositiveIntegerField(default=0)
-  #  aggravated = PositiveIntegerField(default=0)
+    bashing = PositiveIntegerField(default=0)
+    lethal = PositiveIntegerField(default=0)
+    aggravated = PositiveIntegerField(default=0)
     
-  #  domains = ManyToManyField(Domain,blank=True, related_name='owner')
   
     hooks  = ManyToManyField(Hook,  blank=True, related_name='master')
     resources  = PositiveIntegerField(default=0)
@@ -307,7 +364,7 @@ class Character(Model):
     canon_fact        = ManyToManyField(CanonFact, blank=True)
     political_faction = ForeignKey(PoliticalFaction, blank=True,null=True)
     concept = TextField(blank=True)
-        
+    
     
     
     
@@ -1102,6 +1159,25 @@ class PrimogensAidAction(Action):
             self.action.name,
             hook,
             betrayal if self.betrayal else "")
+            
+class GhoulAidAction(Action):
+    ghoul = ForeignKey(Ghoul)
+    helpee = ForeignKey(Character,related_name="ghoul_help",help_text="Who do you want to help?")
+    action = ForeignKey(ActionType,help_text="What kind of action you are helping them with")
+    name = CharField(max_length=200,blank=True,help_text="if the action is targeting a hook, you need to enter the name of the hook here.")
+    betrayal = BooleanField(default=False,help_text="Do you want to betray rather than help?")
+    def to_description(self):
+        betrayal = '{} is betraying {}.' .format(
+            self.ghoul.name.
+            name,self.helpee.name) 
+        hook = 'on {}' .format(self.name) if self.name != "" else ""
+        return '{} is helping {} with {} {}.\n {}'.format(
+            self.ghoul.name,
+            self.helpee.name,
+            self.action.name,
+            hook,
+            betrayal if self.betrayal else "")           
+            
 
 class Feeding(Model):
     character = ForeignKey(Character)
@@ -1110,6 +1186,16 @@ class Feeding(Model):
     feeding_points = PositiveIntegerField(help_text="How many feeding points do you want to take from this domain?")
     discipline = ForeignKey(DisciplineRating, blank=True, null=True,help_text="What discipline (if any) do you use to feed?")
     description = TextField(help_text="Describe how go about feeding.")
+    
+    heal_bashing = PositiveIntegerField(default=0)
+    heal_lethal = PositiveIntegerField(default=0)
+    heal_aggrevated = PositiveIntegerField(default=0)
+    
+    has_good_method = BooleanField(default=True)
+    has_permission = BooleanField(default=True)
+    incidents = PositiveIntegerField(default=0)
+    incident_roll = PositiveIntegerField(default=0)
+    
     resolved = CharField(
         max_length=10,
         choices=((UNRESOLVED, 'Unresolved'), (PENDING, 'Pending'), (
@@ -1122,6 +1208,31 @@ class Feeding(Model):
             self.character,
             self.feeding_points, 
             self.domain)
+            
+    def resolve(self):
+        if self.is_overfeeding():
+            dice = 5
+            if self.has_permission:
+                dice -= 2
+            if self.has_good_method:
+                dice -= 1
+            if self.discipline != None:
+                dice -= 1
+            if self.character.humanity < 6:
+                dice += 1
+            if self.character.humanity < 4:
+                dice += 1
+            if self.character.clan.name == "Nosferatu":
+                dice += 2
+                
+            result = 0
+            for die in range(0,dice):
+                result += random.randint(0, 10)
+            self.incident_roll = result
+            self.save()      
+            print("{}: {} of {}".format(self.character.name,self.incident_roll,dice))
+            
+            
     def is_overfeeding(self):
         feedings = list(Feeding.objects.filter(session=self.session,
                                                domain=self.domain))
@@ -1175,8 +1286,7 @@ class Feeding(Model):
         lst += ")"
         return (result,lst)   
        
-    def resolve(self):
-        pass
+
    
 
 

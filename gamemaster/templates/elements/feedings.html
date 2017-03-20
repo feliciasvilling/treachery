@@ -66,8 +66,9 @@
           <th class="dynatable-head">Character</th>
           <th class="dynatable-head">Points</th>
           <th class="dynatable-head">Discipline</th>
-          <th class="dynatable-head">Description</th>
+          <th class="dynatable-head">Has good method</th>
           <th class="dynatable-head">Overfeeding</th>
+          <th class="dynatable-head">Incidents</th>
           <th class="dynatable-head">Resolved</th>
         </tr>
       </thead>
@@ -77,9 +78,10 @@
           <td>{{ feeding.domain.name }}</td>
           <td>{{ feeding.character.name }}</td>
           <td>{{ feeding.feeding_points }}</td>
-          <td>{{ feeding.discipline.name }}</td>
-          <td>{{ feeding.description|truncatechars:25 }}</td>
+          <td>{{ feeding.discipline.discipline.name }}</td>
+          <td>{{ feeding.has_good_method|yesno:"Yes,No" }}</td>
           <td>{{ feeding.is_overfeeding|yesno:"Yes,No" }}</td>
+          <td>{{ feeding.incidents}}</td>
           <td>{{ feeding.get_resolved_display}}</td>
         </tr>
         {% endfor %}

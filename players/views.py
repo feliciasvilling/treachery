@@ -77,8 +77,10 @@ def wizard(request, session):
                                  fields=['disciplines']),
             modelformset_factory(Feeding,
                                  formset=forms.FeedingFormSet,
-                                 fields=['domain', 'feeding_points',
-                                         'discipline', 'description']),
+                                 fields=['domain', 'feeding_points', 
+                                         'discipline', 'has_permission',
+                                         'heal_bashing','heal_lethal','heal_aggrevated',
+                                         'description']),
             modelformset_factory(Action,
                                  formset=forms.ActionFormSet,
                                  fields=['action_type'])
@@ -190,7 +192,7 @@ def make_character(request):
                 blood      = 10,
                 
                 humanity   = f['humanity'],
-                willpower  = f['willpower'],
+                max_willpower  = f['willpower'],
                 generation = f['generation'],
                 
                 additional_notes = f['additional_notes'],

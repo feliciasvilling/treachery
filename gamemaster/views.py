@@ -59,6 +59,10 @@ def resolve_feedings(request, session):
     for feeding in feedings:
         feeding.resolve()
         
+    domains = Domain.objects.all()
+    for domain in domains:
+        domain.resolve(session)    
+        
     return redirect('feedings', session=session)
 
 def resolve_characters(request, session):
@@ -313,7 +317,7 @@ class FeedingUpdate(UpdateView):
     model = Feeding
     template_name = 'editor.html'
     fields = ['character', 'domain', 'feeding_points', 'discipline',
-              'description', 'resolved']
+              'description', 'has_good_method','resolved']
     success_url = reverse_lazy('closewindow')
 
     def get_context_data(self, **kwargs):

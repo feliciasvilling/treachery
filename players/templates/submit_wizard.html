@@ -20,20 +20,29 @@
       <table>
         {{ wizard.management_form }}
         {% if wizard.form.forms %}
-        {{ wizard.form.management_form }}
-        {% for form in wizard.form.forms %}
-        <div class="well">
-          {% bootstrap_form form %}
-        </div>
-        {% endfor %}
-      {% else %}
-        {% bootstrap_form wizard.form %}
+            {{ wizard.form.management_form }}
+            {% for form in wizard.form.forms %}
+                {% if form.title %}
+                    <div class="well">
+                       <b> {{ form.title }} </b>
+                       <br>
+                        {{ form.action_type }}
+                    </div>
+                {% else %}
+                    <div class="well">
+                        {% bootstrap_form form %}
+                    </div>
+                {% endif %}
+                
+            {% endfor %}
+        {% else %}
+            {% bootstrap_form wizard.form %}
         {% endif %}
       </table>
       <div class="text-right">
         {% buttons %}
         {% if wizard.steps.prev %}
-        <button class="btn" name="wizard_goto_step" type="submit" value="{{ wizard.steps.prev }}">{% trans "Prev step" %}</button>
+            <button class="btn" name="wizard_goto_step" type="submit" value="{{ wizard.steps.prev }}">{% trans "Prev step" %}</button>
         {% endif %}
         <input class="btn btn-primary" type="submit" value="{% if wizard.steps.count == wizard.steps.step1 %} Submit {% else %} Next {% endif %}"/>
         {% endbuttons %}

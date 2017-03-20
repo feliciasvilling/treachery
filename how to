@@ -1,11 +1,37 @@
 ssh 'root@46.101.201.193'
-scp root@46.101.201.193:treachery-backup.dump treachery-backup.dump
+scp root@46.101.201.193:depdump.json depdump.json
 
 git init
 git add .
 git commit -m "init"
 git remote add server dokku@downtime.treachery.eu:downtime
 
-git push -f server master
+git push server master
+
+
+dokku run downtime python3 manage.py dumpdata --natural-foreign --natural-primary --indent 4 -e sessions -e contenttypes -e auth.Permission -e admin > depdump.json 
+
+scp root@46.101.201.193:depdump.json depdump.json
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
