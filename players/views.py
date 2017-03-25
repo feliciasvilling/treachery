@@ -6,7 +6,7 @@ from django.contrib.auth.decorators import login_required, user_passes_test
 from django.db import models
 from formtools.wizard.views import SessionWizardView
 from django.utils.decorators import method_decorator
-from django.forms.models import modelformset_factory
+from django.forms.models import (modelformset_factory,modelform_factory)
 from django.contrib.auth import logout
 from django.core.exceptions import PermissionDenied
 from django.shortcuts import redirect
@@ -69,9 +69,10 @@ def wizard(request, session):
                            session=session).delete()
 
     session = [
-    
-            forms.report_form(request.user.character),
-            forms.set_goal_form(request.user.character),
+            forms.report_form(data['character'],data['session']),
+            forms.set_goal_form(data['character'],data['session']),    
+                
+
             modelformset_factory(ActiveDisciplines,
                                  formset=forms.DisciplineActivationFormSet,
                                  fields=['disciplines']),
@@ -79,13 +80,16 @@ def wizard(request, session):
                                  formset=forms.FeedingFormSet,
                                  fields=['domain', 'feeding_points', 
                                          'discipline', 'has_permission',
-                                         'heal_bashing','heal_lethal','heal_aggrevated',
                                          'description']),
             modelformset_factory(Action,
                                  formset=forms.ActionFormSet,
                                  fields=['action_type'])
         ]
-        
+    
+    session2 = [
+        forms.report_form(data['character'],data['session']),
+        forms.set_goal_form(data['character'],data['session']),    
+    ]    
         
     return SubmitWizard.as_view(session,
         initial_dict=initial)(request, **data)
@@ -95,6 +99,19 @@ class SubmitWizard(SessionWizardView):
     template_name = 'submit_wizard.html'
 
     def done(self, form_list, **kwargs):
+        learns = DisciplineRating.objects.filter(learning=True)
+        for learn in learns:
+            learn.learning = False
+            learn.learned = False
+            learn.save()
+        
+        learns = AttributeRating.objects.filter(learning=True)
+        for learn in learns:
+            learn.learning = False
+            learn.learned = False
+            learn.save()   
+            
+            
         for f in form_list:
             f.fill_save()
         return redirect('action details', session= kwargs['session'].id)
@@ -116,6 +133,8 @@ class SubmitWizard(SessionWizardView):
         return context
 
 
+
+
 class ActionWizard(SessionWizardView):
     template_name = 'action_details.html'
 
@@ -129,13 +148,108 @@ class ActionWizard(SessionWizardView):
             form.description = form.to_description()        
             form.save()
         Action.objects.filter(description="",character=form.character).delete()
-        return redirect('profile')
+        return redirect('exp', session= kwargs['session'].id)
         
     def get_context_data(self, form, **kwargs):
         context = super(ActionWizard, self).get_context_data(form=form,**kwargs)
         context.update({'stepTitle': str(form.action_type)})
         return context
-                                                             
+        
+def spend_exp(request, session):
+    session = get_object_or_404(Session, pk=session)
+    character = request.user.character 
+    event = EventReport.objects.get(character=character,session=session)
+  
+    form = forms.exp_spending_form(character,session)
+    disps = [{'discipline':rat,'exp':False,'special_exp':0, 'help':rat.spending()} 
+             for rat in character.disciplines.filter(learned=True)]
+    attrs = [{'attribute':rat,'exp':False,'special_exp':0, 'help':rat.spending()} 
+             for rat in character.attributes.filter(learned=True)]
+    
+    form_set_disciplines = formset_factory(form['disciplines'], extra=0)
+    form_set_attributes  = formset_factory(form['attributes'], extra=0)
+
+    if (disps==[] and attrs==[]):
+        return redirect('healing', session=session.id)
+    
+    if request.method == 'POST':
+        form_set_disciplines = form_set_disciplines(request.POST)
+        form_set_attributes  = form_set_attributes(request.POST)
+        if form_set_disciplines.is_valid() and form_set_attributes.is_valid():
+            for form in form_set_disciplines:
+                form.fill_save()
+            for form in form_set_attributes:
+                form.fill_save()    
+            return redirect('healing', session=session.id)   
+    else:
+        form_set_disciplines = form_set_disciplines(initial = disps)
+        form_set_attributes  = form_set_attributes(initial = attrs)
+                  
+    exp = character.exp
+    if event.open_goal1:
+        exp+=1
+    if event.open_goal2:
+        exp+=1
+    if event.hidden_goal:
+        exp+=1
+    if event.humanity_exp:
+        exp-=1
+    
+                  
+    data = {
+            'discipline_forms':form_set_disciplines,
+            'attribute_forms':form_set_attributes,
+            'exp':exp,
+            'special_exp':character.special_exp,
+            }
+    return render(request, 'exp_spending.html', data)                  
+
+        
+                                
+def healing(request, session):
+    session = get_object_or_404(Session, pk=session)
+    character = request.user.character 
+    event = EventReport.objects.get(character=character,session=session)
+    feedings = Feeding.objects.filter(character=character,session=session)
+    actions = Action.objects.filter(character=character,session=session)
+    form = forms.healing_report_form(character,session)
+    
+    bashing = character.bashing + event.bashing
+    lethal = character.lethal + event.lethal
+    aggravated = character.aggravated + event.aggravated
+    
+    blood = character.blood
+    for feed in feedings:
+        blood += 5 * feed.feeding_points
+    
+    if "Rest" in [action.action_type for action in actions]:
+        willpower = character.max_willpower
+    else:
+        willpower = character.willpower
+    
+    for action in actions:
+        if action.willpower:
+            willpower -= 1
+    
+    if bashing+lethal+aggravated==0:   
+        return redirect('profile')
+    
+    data = {
+        'bashing':bashing, 
+        'lethal':lethal, 
+        'aggravated':aggravated, 
+        'blood':blood,
+        'willpower':willpower,
+        'form': form
+        }
+    
+    if request.method == 'POST':
+        form = forms.healing_report_form(character,session)(request.POST)
+        if form.is_valid():
+            form.fill_save()
+            return redirect('profile')   
+    else:                             
+        return render(request, 'healing.html', data)                  
                                                              
 @login_required
 @user_passes_test(lambda u: not u.is_superuser, login_url='/gm/')
@@ -144,7 +258,7 @@ def actionDetails(request, session):
     character = request.user.character
     actions = Action.objects.filter(session=session, character=character)
     if len(actions)==0:
-        return redirect('profile')
+        return redirect('exp',session=session.id)
     actionForms = [forms.actionToForm(action) for action in actions]
     data = {'session': session,
             'character': character,

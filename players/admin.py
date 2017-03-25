@@ -31,10 +31,16 @@ class CharacterAdmin(admin.ModelAdmin):
    # radio_fields = {"clan": admin.HORIZONTAL,'age': admin.HORIZONTAL}
     inlines = [AttributeRatingInline, DisciplineRatingInline,GhoulsInline]
     
+admin.site.register(ChangeGoals)       
+admin.site.register(EventReport)  
+admin.site.register(HealingReport)  
+
 admin.site.register(Discipline)
 admin.site.register(DisciplineRating)
 admin.site.register(Attribute)
 
+admin.site.register(ExpDisciplineSpending)
+admin.site.register(ExpAttributeSpending)
 AttributeRating
 
 

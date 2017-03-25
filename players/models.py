@@ -19,6 +19,8 @@ def toStrList(qrySet):
 class ActionType(Model):
     name = CharField(max_length=200)
     template = TextField(blank=True)
+    no_roll = BooleanField(default=False)
+    aid_action = BooleanField(default=False)
     
     def help_texts():
         help_texts = []
@@ -65,11 +67,15 @@ class Discipline(Model):
     def __str__(self):
         return self.name
         
+DISPLINE_TABLE = [4,4,5,5,6,6,7,7,8,8]
+         
+        
 class DisciplineRating(Model):
     discipline = ForeignKey(Discipline, null=True, blank=True)
     value = PositiveIntegerField(default=1)
     elder_powers = ManyToManyField(ElderPower, blank=True)
     learned = BooleanField(default=False)
+    learning = BooleanField(default=False)
     elder_blood = BooleanField(default=False)
     in_clan = BooleanField(default=False)
     mentor = BooleanField(default=False)
@@ -78,15 +84,46 @@ class DisciplineRating(Model):
     def __str__(self):
         return '{} {}'.format(self.discipline.name, str(self.value))
         
+    def spending(self):
+        if self.learned:
+            needed = DISPLINE_TABLE[self.value] 
+            #the table in the rule is for the level wanted, we use the existing 
+            #level here, which compensates for lists being zero indexed.
+            bonus = []
+            if self.elder_blood:
+                needed -= 1
+                bonus += ["Elder Blood"]
+            if self.in_clan:
+                needed -= 1
+                bonus += ["Clan"]
+            if self.mentor:
+                needed -= 1
+                bonus += ["Mentor"]
+                
+            bonus = ','.join(bonus)
+            if bonus != "":
+               bonus = "({})".format(bonus)     
+                            
+            return ". Spent {} of {} exp needed for raise. {}" .format(self.exp,needed,bonus)
+        else:    
+            return ""
+            
+    def display(self):
+        
+        return '{} {}{}'.format(self.discipline.name, self.value,self.spending())
+                
 class Attribute(Model):
     name = CharField(max_length=200)
     
     def __str__(self):
         return self.name
         
+ATTRIBUTE_TABLE =[0, 2, 3, 4, 5, 6, 6, 7, 7, 8]
+        
 class AttributeRating(Model):
     attribute = ForeignKey(Attribute, null=True, blank=True)
     learned = BooleanField(default=False)
+    learning = BooleanField(default=False)  
     elder_blood = BooleanField(default=False)
     mentor = BooleanField(default=False)
     value = PositiveIntegerField(default=1)
@@ -101,6 +138,29 @@ class AttributeRating(Model):
         return master
     def __str__(self):
         return  '{} {}'.format(self.attribute.name, str(self.value))
+    
+    def spending(self):
+        if self.learned:
+            needed = ATTRIBUTE_TABLE[self.value] 
+            #the table in the rule is for the level wanted, we use the existing 
+            #level here, which compensates for lists being zero indexed.
+            bonus = []
+            if self.elder_blood:
+                needed -= 1
+                bonus += ["Elder Blood"]
+            if self.mentor:
+                needed -= 1
+                bonus += ["Mentor"]
+                
+            bonus = ','.join(bonus)
+            if bonus != "":
+               bonus = "({})".format(bonus)     
+                            
+            return ". Spent {} of {} exp needed for raise. {}" .format(self.exp,needed,bonus)
+        else:    
+            return ""
+    def display(self):
+        return '{} {}{}'.format(self.attribute.name, self.value,self.spending()) 
         
 class Specialization(Model):
     name = CharField(max_length=200)
@@ -253,9 +313,8 @@ class Domain(Model):
     population = ManyToManyField(Population, blank=True)
     def __str__(self):
         population = ', '.join(d.name for d in self.population.all())
-        return '{} - Feeding Points: {}, Status: {}, Influence: {}, Masquerade: {}, Population: [{}]'.format(
-            self.name, self.feeding_capacity, self.status, self.influence,
-            self.masquerade, population)
+        return '{} - Feeding Points: {}, Status: {}, Masquerade: {}'.format(
+            self.name, self.feeding_capacity, self.status, self.masquerade)
             
     def resolve(self,session):
         feedings = list(Feeding.objects.filter(session=session,domain=self))
@@ -279,11 +338,9 @@ class Domain(Model):
                     incidents = 2
                 else:
                     incidents = 4   
-            
                    
             incident_recivers = feedings[0:incidents]
-            
-            
+             
             for reciver in incident_recivers:
                 reciver.incidents = 1
                 incidents -= 1
@@ -347,7 +404,6 @@ class Character(Model):
     willpower  = PositiveIntegerField(default=0)
     blood      = PositiveIntegerField(default=10)
     
-    health  = PositiveIntegerField(default=0)   
     bashing = PositiveIntegerField(default=0)
     lethal = PositiveIntegerField(default=0)
     aggravated = PositiveIntegerField(default=0)
@@ -384,19 +440,36 @@ class Character(Model):
     
     def __str__(self):
         return '{} ({})'.format(self.name, self.user)
+        
+       
+    def display_disciplines(self):
+        disps =  list(self.disciplines.all())
+        disps = [disp.display() for disp in disps]
+        
+        return "\n".join(disps)
+        
+    def display_attributes(self):
+        disps =  list(self.attributes.all())
+        disps = [disp.display() for disp in disps]
+        
+        return "\n".join(disps)    
+        
+        
     def action_count(self, session):
         action_options = self.actions(session)
         count = 0
         for action_option in action_options:
             count += action_option.count
+        
         return count
     def actions(self, session):
         action_options = list(self.age.action_options.all())
         extra_actions  = ExtraAction.objects.filter(character=self, session=session)
-        for extra_action in extra_actions:
-            action_options.extend(extra_action.action_options.all())
         for title in self.titles.all():
             action_options.extend(list(title.action_options.all()))
+        for ghoul in self.ghouls.all():
+            action_options.append(ActionOption.objects.get(name="Ghoul Aid Action"))
+        
         return action_options
     def submitted(self, session):
         actions  = Action.objects.filter(character=self, session=session)
@@ -431,20 +504,27 @@ class Character(Model):
                  'ghouls': ghouls,
                  'equipment': equipment,
                  'weapons': weapons}
+                 
+    def background_to_cost(self,backs):
+        if backs < 3:
+            return backs
+        else: 
+            return backs * 2 - 2
         
     def background_cost(self):
-        return sum([value for key,value in self.get_backgrounds().items()])
+        backs = sum([value for key,value in self.get_backgrounds().items()])
+        return self.background_to_cost(backs) 
     def get_hooks(self):
         return ['{}: {} ({})' .format(h.influence, h.name, toStrList(h.attributes.all()))
              for h in self.hooks.all()]
              
+    
 
     def resolve(self):
-       # self.resources += self.resource_income()
-       # self.resources -= self.background_cost()
-        self.special_exp=0
+        self.resources += self.resource_income()
+        self.resources -= self.background_cost()
         
-        if self.humanity_exp==10:
+        if self.humanity_exp==0:
             if self.humanity==1:
                 result = random.randint(0, 10)  
                 if result != 10:
@@ -459,7 +539,7 @@ class Character(Model):
                         if result < 3:
                             self.humanity -= 1
                             self.additional_notes += "lost humanity"
-                    if self.humanity == 2:
+                    else:
                         if result < 2:
                             self.humanity -= 1
                             self.additional_notes += "lost humanity"
@@ -467,7 +547,6 @@ class Character(Model):
                     if result < 2:
                         self.humanity -= 1
                         self.additional_notes += "lost humanity"
-
         self.save                 
     
 
@@ -556,6 +635,7 @@ class Action(Model):
         helpers = list(self.helpers.all())
         help_actions = list(AidAction.objects.filter(helpee=self.character,action=self.action_type,session=self.session))
         help_actions += list(PrimogensAidAction.objects.filter(helpee=self.character,action=self.action_type,session=self.session))
+        help_actions += list(GhoulAidAction.objects.filter(helpee=self.character,action=self.action_type,session=self.session))
         help_result = 0
         for help in help_actions:
             if help.character in helpers:
@@ -643,10 +723,22 @@ class Action(Model):
                                 
                                
 class AidAction(Action):
-    helpee = ForeignKey(Character,related_name="help",help_text="The person you are helping. (You are not allowed to chose your self.)")
-    action = ForeignKey(ActionType,help_text="What kind of action you are helping them with")
-    name = CharField(max_length=200,blank=True,help_text="if the action is targeting a hook, you need to enter the name of the hook here.")
-    betrayal = BooleanField(default=False,help_text="Do you want to betray them rather than help them?")
+    helpee = ForeignKey(
+        Character,
+        
+        related_name="help",
+        help_text="The person you are helping. (You are not allowed to chose your self.)")
+    action = ForeignKey(
+        ActionType,
+        limit_choices_to={'no_roll': False, 'aid_action':False},
+        help_text="What kind of action you are helping them with")
+    name = CharField(
+        max_length=200,
+        blank=True,
+        help_text="if the action is targeting a hook, you need to enter the name of the hook here.")
+    betrayal = BooleanField(
+        default=False,
+        help_text="Do you want to betray them rather than help them?")
     def to_description(self):
         betrayal = '{} is betraying {}.' .format(
             self.character.
@@ -662,6 +754,68 @@ class AidAction(Action):
             
     def get_resolution(self):
         return ""
+        
+        
+class PrimogensAidAction(Action):
+    helpee = ForeignKey(
+        Character,
+        related_name="primogen_help",
+        help_text="Who do you want to help? (You may only choose members of your own clan.)")
+    action = ForeignKey(
+        ActionType,
+        limit_choices_to={'no_roll': False, 'aid_action':False},
+        help_text="What kind of action you are helping them with")
+    name = CharField(
+        max_length=200,
+        blank=True,
+        help_text="if the action is targeting a hook, you need to enter the name of the hook here.")
+    betrayal = BooleanField(
+        default=False,
+        help_text="Do you want to betray rather than help?")
+    def to_description(self):
+        betrayal = '{} is betraying {}.' .format(
+            self.character.
+            name,self.helpee.name) 
+        hook = 'on {}' .format(self.name) if self.name != "" else ""
+        return '{} is helping their clanmember {} with {} {}.\n {}'.format(
+            self.character.name,
+            self.helpee.name,
+            self.action.name,
+            hook,
+            betrayal if self.betrayal else "")
+            
+class GhoulAidAction(Action):
+    ghoul = ForeignKey(Ghoul)
+    helpee = ForeignKey(
+        Character,
+        related_name="ghoul_help",
+        help_text="Who do you want to help?")
+    action = ForeignKey(
+        ActionType,
+        limit_choices_to={'no_roll': False, 'aid_action':False},
+        help_text="What kind of action you are helping them with")
+    name = CharField(
+        max_length=200,
+        blank=True,
+        help_text="if the action is targeting a hook, you need to enter the name of the hook here.")
+    betrayal = BooleanField(
+        default=False,
+        help_text="Do you want to betray rather than help?")
+    
+   
+    def to_description(self):
+        betrayal = '{} is betraying {}.' .format(
+            self.ghoul.name,
+            self.helpee.name) 
+        hook = 'on {}' .format(self.name) if self.name != "" else ""
+        return '{} is helping {} with {} {}.\n {}'.format(
+            self.ghoul.name,
+            self.helpee.name,
+            self.action.name,
+            hook,
+            betrayal if self.betrayal else "")          
+                    
+        
 class ConserveInfluence(Action): 
     influence = ForeignKey(Influence,help_text="Which of your influences are you trying to conserve? (Warning: Don't choose an influence where you have no hooks.)")
     def to_description(self):
@@ -913,6 +1067,7 @@ class LearnAttribute(Action):
                          blank=True,
                          null=True,
                          help_text="Do you have anyone to train you? If so, who?")
+    blood = BooleanField(default=False,help_text="if you have someone to train you, do you drink of their blood?")
     def to_description(self):
         teacher = 'With {} as teacher.' .format(self.trainer.name) if self.trainer != None else ""
         return '{} is learning {}. {}' .format(
@@ -934,8 +1089,14 @@ class LearnAttribute(Action):
             trainee_value = self.character.attributes.get(attribute=self.attribute).value
             print(str(trainer_value))
             if trainer_value > trainee_value:
-                return "{} successfully trains {} in {}. "\
-                    .format(trainer.character.name,self.character.name,self.attribute)
+                if trainer.blood:
+                    blood = "{} drinks the blood of {}."\
+                         .format(self.character.name,trainer.character.name)
+                else:
+                    blood = ""
+                return "{} successfully trains {} in {}. {}"\
+                        .format(trainer.character.name,self.character.name,self.attribute,blood)
+
             else:
                 return "{} is not competent to teach {} in {}. "\
                     .format(trainer.character.name,self.character.name,self.attribute)
@@ -948,6 +1109,7 @@ class LearnDiscipline(Action):
                 blank=True,
                 null=True,
                 help_text="Do you have anyone to train you? If so, who?")
+    blood = BooleanField(default=False,help_text="if you have someone to train you, do you drink of their blood?")
     def to_description(self):
         teacher = 'With {} as teacher.' .format(self.trainer.name) if self.trainer != None else ""
         return '{} is learning {}. {}' .format(
@@ -961,6 +1123,7 @@ class LearnDiscipline(Action):
         if mentor_acts==[]:
             return "{} have not made a mentor action to train {} in {}" .format(self.trainer.name,self.character.name,self.discipline)
         else:    
+        
             trainer = mentor_acts[0]
             trainer_dis = list(trainer.character.disciplines.filter(discipline=self.discipline))
             if trainer_dis==[]:
@@ -974,8 +1137,13 @@ class LearnDiscipline(Action):
                 trainee_value = trainee_dis[0].value  
                 
             if trainer_value > trainee_value:
-                return "{} successfully trains {} in {}. "\
-                    .format(trainer.character.name,self.character.name,self.discipline)
+                if trainer.blood:
+                    blood = "{} drinks the blood of {}."\
+                         .format(self.character.name,trainer.character.name)
+                else:
+                    blood = ""
+                return "{} successfully trains {} in {}. {}"\
+                        .format(trainer.character.name,self.character.name,self.discipline,blood)
             else:
                 return "{} is not competent to teach {} in {}. "\
                     .format(trainer.character.name,self.character.name,self.discipline)
@@ -1066,22 +1234,35 @@ class InvestHaven(Action):
 class MentorAttribute(Action): 
     attribute = ForeignKey(Attribute,help_text="What attribute do you want to help your student improve?")
     student   = ForeignKey(Character,related_name="attribute_teacher",help_text="Who do you want to mentor?")
+    blood = BooleanField(default=True,help_text="Do you give of your blood to your student?")
     def to_description(self):
-        return '{} is mentoring {} on {}.'.format(            
+        if self.blood:
+            blood = " and offering their blood"
+        else:
+            blood = ""
+        return '{} is mentoring {} on {}{}.'.format(            
             self.character.name,
             self.student.name,
-            self.attribute)
+            self.attribute,
+            blood)
     def get_resolution(self):
         return "no roll"
 
 class MentorDiscipline(Action): 
     discipline = ForeignKey(Discipline,help_text="What discipline do you want to help your student improve?")
     student    = ForeignKey(Character,related_name="discipline_teacher",help_text="Who do you want to mentor?")
+    blood = BooleanField(default=True,help_text="Do you give of your blood to your student?")
+
     def to_description(self):
-        return '{} is mentoring {} on {}.'.format(            
+        if self.blood:
+            blood = " and offering their blood"
+        else:
+            blood = ""
+        return '{} is mentoring {} on {}{}.'.format(            
             self.character.name,
             self.student.name,
-            self.discipline)
+            self.discipline,
+            blood)
     def get_resolution(self):
         return "no roll"
             
@@ -1143,41 +1324,115 @@ class PrimogensQuestion(Action):
     def get_resolution(self):
         return "no roll"
                                
-class PrimogensAidAction(Action):
-    helpee = ForeignKey(Character,related_name="primogen_help",help_text="Who do you want to help? (You may only choose members of your own clan.)")
-    action = ForeignKey(ActionType,help_text="What kind of action you are helping them with")
-    name = CharField(max_length=200,blank=True,help_text="if the action is targeting a hook, you need to enter the name of the hook here.")
-    betrayal = BooleanField(default=False,help_text="Do you want to betray rather than help?")
-    def to_description(self):
-        betrayal = '{} is betraying {}.' .format(
-            self.character.
-            name,self.helpee.name) 
-        hook = 'on {}' .format(self.name) if self.name != "" else ""
-        return '{} is helping their clanmember {} with {} {}.\n {}'.format(
-            self.character.name,
-            self.helpee.name,
-            self.action.name,
-            hook,
-            betrayal if self.betrayal else "")
+
+class EventReport(Model):
+    character = ForeignKey(Character, related_name='event', blank=True,null=True)
+    session = ForeignKey(Session, related_name='event', blank=True,null=True)
+
+    open_goal1  = BooleanField(default=False)
+    open_goal2  = BooleanField(default=False)
+    hidden_goal = BooleanField(default=False)
+    
+    humanity_exp =  BooleanField(default=False)
+     
+    humanity   = PositiveIntegerField(default=0)
+    willpower_dots  = PositiveIntegerField(default=0)
+    willpower_points  = PositiveIntegerField(default=0)
+    blood      = PositiveIntegerField(default=0)
+    resources  = PositiveIntegerField(default=0)
+    
+    bashing = PositiveIntegerField(default=0)
+    lethal = PositiveIntegerField(default=0)
+    aggravated = PositiveIntegerField(default=0)   
+    
+                
+    def __str__(self):
+        return '{}: {}'.format(
+            self.session, 
+            self.character)  
+    def resolve(self):
+           
+        if self.open_goal1:
+            char.exp += 1
+        if self.open_goal2:
+            char.exp += 1                    
+        if self.hidden_goal:
+            char.exp += 1        
+        if self.humantiy_goal:
+            char.exp -= 1
+            char.humanity_exp += 1
             
-class GhoulAidAction(Action):
-    ghoul = ForeignKey(Ghoul)
-    helpee = ForeignKey(Character,related_name="ghoul_help",help_text="Who do you want to help?")
-    action = ForeignKey(ActionType,help_text="What kind of action you are helping them with")
-    name = CharField(max_length=200,blank=True,help_text="if the action is targeting a hook, you need to enter the name of the hook here.")
-    betrayal = BooleanField(default=False,help_text="Do you want to betray rather than help?")
-    def to_description(self):
-        betrayal = '{} is betraying {}.' .format(
-            self.ghoul.name.
-            name,self.helpee.name) 
-        hook = 'on {}' .format(self.name) if self.name != "" else ""
-        return '{} is helping {} with {} {}.\n {}'.format(
-            self.ghoul.name,
-            self.helpee.name,
-            self.action.name,
-            hook,
-            betrayal if self.betrayal else "")           
+        char.resources -= self.resources
+        char.humanity -= self.humanity
+        char.blood -= self.blood
+        
+        if self.willpower_points != 0:
+            char.additional_notes += '\nspent willpower: {}' .format(self.willpower_points)
+        if self.bashing != 0:
+            char.additional_notes +='\ntaken bashing damage: {}' .format( self.bashing)
+        if self.lethal != 0:
+            char.additional_notes +='\ntaken lethal damage: {}' .format( self.lethal)
+        if self.aggravated != 0:
+            char.additional_notes +='\ntaken aggravated damage: {}' .format( self.aggravated)
+        
+        char.save()    
+                         
             
+class ChangeGoals(Model):
+    character = ForeignKey(Character, related_name='change_goal', blank=True,null=True)
+    session = ForeignKey(Session, related_name='change_goal', blank=True,null=True)
+
+    open_goal1  = TextField()
+    open_goal2  = TextField()
+    hidden_goal = TextField()
+        
+    def __str__(self):
+        return '{}: {}'.format(
+            self.session, 
+            self.character)             
+                          
+                               
+class HealingReport(Model):
+    character = ForeignKey(Character, related_name='healing', blank=True,null=True)
+    session = ForeignKey(Session, related_name='healing', blank=True,null=True)
+
+    bashing = PositiveIntegerField(default=0)
+    lethal = PositiveIntegerField(default=0)
+    aggravated = PositiveIntegerField(default=0)            
+    
+    def __str__(self):
+        return '{}: {}'.format(
+            self.session, 
+            self.character) 
+            
+            
+class ExpDisciplineSpending(Model):
+    character = ForeignKey(Character, related_name='exp_dis_spending', blank=True,null=True)
+    session = ForeignKey(Session, related_name='exp_dis_spending', blank=True,null=True)
+
+    discipline = ForeignKey(DisciplineRating)
+    exp = BooleanField()
+    special_exp = PositiveIntegerField()
+
+    def __str__(self):
+        return '{}: {}'.format(
+            self.session, 
+            self.character) 
+            
+class ExpAttributeSpending(Model):
+    character = ForeignKey(Character, related_name='exp_atr_spending', blank=True,null=True)
+    session = ForeignKey(Session, related_name='exp_atr_spending', blank=True,null=True)
+
+    attribute = ForeignKey(AttributeRating)
+    exp = BooleanField()
+    special_exp = PositiveIntegerField()
+
+    def __str__(self):
+        return '{}: {}'.format(
+            self.session, 
+            self.character) 
+           
+           
 
 class Feeding(Model):
     character = ForeignKey(Character)
@@ -1186,11 +1441,7 @@ class Feeding(Model):
     feeding_points = PositiveIntegerField(help_text="How many feeding points do you want to take from this domain?")
     discipline = ForeignKey(DisciplineRating, blank=True, null=True,help_text="What discipline (if any) do you use to feed?")
     description = TextField(help_text="Describe how go about feeding.")
-    
-    heal_bashing = PositiveIntegerField(default=0)
-    heal_lethal = PositiveIntegerField(default=0)
-    heal_aggrevated = PositiveIntegerField(default=0)
-    
+       
     has_good_method = BooleanField(default=True)
     has_permission = BooleanField(default=True)
     incidents = PositiveIntegerField(default=0)
@@ -1203,7 +1454,7 @@ class Feeding(Model):
         default=UNRESOLVED)
     
     def __str__(self):
-        return '[{}] {}: .formatd in {}'.format(
+        return '[{}] {}: {}points from {}'.format(
             self.session.name, 
             self.character,
             self.feeding_points, 

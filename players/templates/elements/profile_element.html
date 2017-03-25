@@ -4,12 +4,19 @@
       <dt>Name</dt>
       <dd>{{ character.name }}</dd>
       <dt>Player</dt>
-      <dd>{{character.user}}</dd>
+      <dd>
+      {% if character.user.first_name %}
+        {{character.user.first_name}} {{character.user.last_name}}
+      {% else %}
+        {{character.user}}
+      {% endif%}      
+      </dd>
+      </p>
       <dt>Nature</dt>
       <dd>{{ character.nature }}</dd>
       <dt>Demeanor</dt>
       <dd>{{ character.demeanor }}</dd>
-      
+      </p>
       <dt>Sire</dt>
       <dd>{{ character.sire }}</dd>
       <dt>Clan</dt>
@@ -22,75 +29,90 @@
       
       <dt>Age</dt>
       <dd>{{character.age}}</dd>
+      
+      </p>
+      
       <dt>Titles</dt>
       <dd>{{ character.titles.all|join:", " }}</dd>
-      
+      </p>
       <dt>Goal</dt>
       <dd>{{character.open_goal1}}</dd>
-      
+      </p>
       <dt>Goal</dt>
       <dd>{{character.open_goal2}}</dd>
-      
+      </p>
       <dt>Goal</dt>
       <dd>{{character.hidden_goal}}</dd>
+      </p>
       
       <dt>Attributes</dt>
-      <dd>{{ character.attributes.all|join:", " }}</dd> 
+      <dd>{{ character.display_attributes|linebreaks }}</dd> 
       
       <dt>Specializations</dt>
       <dd>{{ character.specializations.all|join:", " }}</dd> 
-      
+      </p>
       <dt>Disciplines</dt>
-      <dd>{{ character.disciplines.all|join:", " }}</dd>
+      <dd>{{ character.display_disciplines|linebreaks }}</dd>
       
       <dt>Humanity</dt>
       <dd>{{ character.humanity}}</dd>      
       <dt>Willpower</dt>
-      <dd>{{ character.max_willpower}}</dd>      
-      <dt>Bashing Damage</dt>
-      <dd>{{ character.bashing}}</dd>
-      <dt>Lethal Damage</dt>
-      <dd>{{ character.lethal}}</dd>
-      <dt>Aggrevated Damage</dt>
-      <dd>{{ character.aggrevated}}</dd>
+      <dd>{{ character.willpower}} of {{ character.max_willpower}}</dd>      
+
+    {% if character.bashing or character.lethal or character.aggravated %}
+          
+      <dt>Damage</dt>
+      <dd>{% if character.bashing %}
+                {{character.bashing}} bashing.
+          {% endif %}
+          {% if character.lethal %}
+                 {{character.lethal}} lethal. 
+          {% endif %}
+          {% if character.aggravated %}
+                 {{character.aggravated}} aggravated.
+          {% endif %}
+          
+          </dd>
+    {% endif %}
+    
+
       <dt>Blood</dt>
       <dd>{{ character.blood}}</dd>
-      
+      </p>
       <dt>Influences</dt>
           {% for influence, rating in character.get_influences.items %} 
             {% if rating > 0 %} <dd> {{influence}}: {{rating}}</dd> {% endif %}
           {% endfor %}  
-      
+      </p>
       <dt>Hooks</dt>
-           {% for hook in character.get_hooks %}
-             <dd>  {{hook}}</dd>   
-           {% endfor %}  
-
+      <dd>  {{ character.get_hooks | join:"<br>" }} </dd>
+            
+      </p>
       <dt>Resources</dt>
       <dd>{{ character.resources}}</dd>          
       <dt>Resource Income</dt>
       <dd>{{character.resource_income}}</dd>
       <dt>Background Cost</dt>
       <dd>{{character.background_cost}}</dd>
-      
-      <dt>Backgrounds</dt>
+      </p>
           {% for background, rating in character.get_backgrounds.items %} 
-            {% if rating > 0 %} <dd> {{background}}: {{rating}}</dd> {% endif %}
+            {% if rating > 0 %} <dt> {{background|title}}</dt><dd> {{rating}}</dd> {% endif %}
           {% endfor %}  
-   
-      <dt>Equipment</dt>
+      </p>
+      <dt>Equipment</dt> <dd>
           {% for equi in character.equipment.all %} 
-             <dd> {{equi}}</dd>
-          {% endfor %} 
+              {{equi}}
+          {% endfor %} </dd>
       <dt>Weapons</dt>
-          {% for weap in character.weapons.all %} 
-             <dd> {{weap}}</dd>
-          {% endfor %} 
+        <dd>  {% for weap in character.weapons.all %} 
+              {{weap}}
+          {% endfor %} </dd>
       <dt>Ghouls</dt>
-          {% for ghoul in character.ghouls.all %} 
-             <dd> {{ghoul}}</dd>
-          {% endfor %} 
-          
+      <dd>
+          {{ character.ghouls.all|join:"<br>" }} 
+             
+          </dd>
+          </p>
       <dt>Additional Notes</dt>
       <dd>{{character.additional_notes}}</dd>
      </dd>

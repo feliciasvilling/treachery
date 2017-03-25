@@ -33,7 +33,10 @@ class SessionFormSet(BaseModelFormSet):
             instance.save()
         self.save_m2m()
 
-def report_form(char):
+
+
+
+def report_form(char,session):
     class _ReportForm(Form):
         open_goal1_text = CharField(
             required=False,
@@ -60,11 +63,12 @@ def report_form(char):
         
         bashing = IntegerField(initial=0, label = 'Did you take any bashing damage?')
         lethal = IntegerField(initial=0, label = 'Did you take any lethal damage?')
-        aggrevated = IntegerField(initial=0, label = 'Did you take any aggrevated damage?')
+        aggravated = IntegerField(initial=0, label = 'Did you take any aggrevated damage?')
         
         
         resources = IntegerField(initial=0, label = 'Did you pay any resources?')
-        willpower = IntegerField(initial=0, label = 'Did you pay any willpower?')
+        willpower_points = IntegerField(initial=0, label = 'Did you pay any willpower points?')
+        willpower_dots = IntegerField(initial=0, label = 'Did you pay any willpower dots?')
         blood = IntegerField(initial=0, label = 'Did you pay any blood?')
         
         
@@ -72,38 +76,37 @@ def report_form(char):
                 
         def fill_save(self):
             v = self.cleaned_data
-            if v['open_goal1']:
-                char.exp += 1
-            if v['open_goal2']:
-                char.exp += 1                    
-            if v['hidden_goal']:
-                char.exp += 1        
-            if v['humantiy_goal']:
-                char.exp -= 1
-                char.humanity_exp += 1
-                
-            char.resources -= v['resources']
-            char.humanity -= v['humanity']
-            char.blood -= v['blood']    
             
-            if v['willpower'] != 0:
-                char.additional_notes += '\nspent willpower: {}' .format(v['willpower'])
-            if v['bashing'] != 0:
-                char.additional_notes +='\ntaken bashing damage: {}' .format( v['bashing'])
-            if v['lethal'] != 0:
-                char.additional_notes +='\ntaken lethal damage: {}' .format( v['lethal'])
-            if v['aggrevated'] != 0:
-                char.additional_notes +='\ntaken aggrevated damage: {}' .format( v['aggrevated'])
             
-            if char.special_exp==0:
-                char.special_exp=1
-                char.save()    
+            EventReport.objects.filter(character=char,session=session).delete()
+            
+            report = EventReport.objects.create(
                 
-            print ("saved {}!" )
+                open_goal1  = v['open_goal1'],
+                open_goal2  = v['open_goal2'],
+                hidden_goal = v['hidden_goal'],
+                
+                humanity_exp = v['humantiy_goal'],
+                 
+                humanity   = v['humanity'],
+                willpower_dots  = v['willpower_dots'],
+                willpower_points  = v['willpower_points'],
+                blood      = v['blood'],
+                resources  = v['resources'],
+                
+                bashing = v['bashing'],
+                lethal = v['lethal'],
+                aggravated = v['aggravated'],
+               )
+   
+            report.character = char
+            report.session = session
+            report.save()
+        
     return _ReportForm
     
     
-def set_goal_form(char):
+def set_goal_form(char,session):
     class _SetGoal(Form):
 
         open_goal1  = CharField(
@@ -127,15 +130,151 @@ def set_goal_form(char):
                            
         def fill_save(self):
             v = self.cleaned_data
+            ChangeGoals.objects.filter(character=char,session=session).delete()
             
-            char.open_goal1 = v['open_goal1']
-            char.open_goal2 = v['open_goal2']
-            char.hidden_goal = v['hidden_goal']
-            
-            char.save()    
-                
-            print ("saved {}!" )
+            goals = ChangeGoals.objects.create(
+                open_goal1 = v['open_goal1'],
+                open_goal2 = v['open_goal2'],
+                hidden_goal = v['hidden_goal'],
+                )
+            goals.character = char
+            goals.session = session  
+            goals.save()    
     return _SetGoal
+
+def healing_report_form(char,session):
+    class _HealingForm(Form):
+
+        bashing = IntegerField(initial=0)
+        lethal = IntegerField(initial=0)
+        aggravated = IntegerField(initial=0)  
+        
+                           
+        def fill_save(self):
+            v = self.cleaned_data
+            HealingReport.objects.filter(character=char,session=session).delete()
+            
+            healing = HealingReport.objects.create(
+                bashing = v['bashing'],
+                lethal = v['lethal'],
+                aggravated = v['aggravated'],
+                )
+            healing.character = char
+            healing.session = session  
+            healing.save()    
+    return _HealingForm
+
+
+
+def exp_spending_form(char,session):
+    
+    # disciplines
+    
+    learns = LearnDiscipline.objects.filter(character=char,session=session)
+    new_learnables = [learn.discipline for learn in learns]
+    
+    for learn in new_learnables:
+        new_disp = list(DisciplineRating.objects.filter(
+            character=char,
+            discipline=learn))
+        if new_disp == []:
+            new = DisciplineRating.objects.create(
+                discipline=learn,
+                value=0,
+                learned=True,
+                learning=True,
+                )
+            new.save()
+            char.disciplines.add(new)
+            char.save()
+        else:
+            if not new_disp[0].learned:
+                new_disp[0].learned = True
+                new_disp[0].learning = True
+                new_disp[0].save()
+    
+    learnables = char.disciplines.exclude(learned=False) 
+       
+    class _ExpDispForm(Form):
+        discipline = ModelChoiceField(queryset=learnables,disabled=False)
+        exp = BooleanField(initial=False,required=False)
+        special_exp = IntegerField(initial=0)
+        help = CharField(max_length=200,required=False)
+        
+        def fill_save(self):
+            v = self.cleaned_data
+            if 'discipline' in v:
+                ExpDisciplineSpending.objects.filter(
+                    character=char,
+                    session=session,
+                    discipline=v['discipline']
+                    ).delete()
+                    
+                spend = ExpDisciplineSpending.objects.create(
+                    discipline = v['discipline'],
+                    exp = v['exp'],
+                    special_exp = v['special_exp'],
+                    )
+                spend.character = char
+                spend.session = session  
+                spend.save()  
+                
+    # attributes 
+     
+    learns = LearnAttribute.objects.filter(character=char,session=session)
+    new_learnables = [learn.attribute for learn in learns]
+    
+    for learn in new_learnables:
+        new_disp = list(AttributeRating.objects.filter(
+            character=char,
+            attribute=learn))
+        if new_disp == []:
+            new = AttributeRating.objects.create(
+                attribute=learn,
+                value=0,
+                learned=True,
+                learning=True,
+                )
+            new.save()
+            char.attributes.add(new)
+            char.save()
+        else:
+            if not new_disp[0].learned:
+                new_disp[0].learned = True
+                new_disp[0].learning = True
+                new_disp[0].save()
+    
+    learnables = char.attributes.exclude(learned=False) 
+       
+    class _ExpAttrForm(Form):
+        attribute = ModelChoiceField(queryset=learnables,disabled=False)
+        exp = BooleanField(initial=False,required=False)
+        special_exp = IntegerField(initial=0)
+        help = CharField(max_length=200,required=False)
+        
+        def fill_save(self):
+            v = self.cleaned_data
+            if 'attribute' in v:
+                ExpAttributeSpending.objects.filter(
+                    character=char,
+                    session=session,
+                    attribute=v['attribute']
+                    ).delete()
+                    
+                spend = ExpAttributeSpending.objects.create(
+                    attribute = v['attribute'],
+                    exp = v['exp'],
+                    special_exp = v['special_exp'],
+                    )
+                spend.character = char
+                spend.session = session  
+                spend.save() 
+
+    return {'disciplines':_ExpDispForm, 'attributes':_ExpAttrForm}
+
+
+
+
 
 class DisciplineActivationFormSet(SessionFormSet):
     def __init__(self, *args, **kwargs):
@@ -333,6 +472,8 @@ class CharacterForm(Form):
 
 excludedFields  = ['character','action_type','session','description','resolved']
 
+no_roll_excluded = ['willpower','helpers']
+aid_excluded = ['helpers']
 class ActionForm(ModelForm):
     class Meta:
         model = Action
@@ -342,8 +483,22 @@ class ActionForm(ModelForm):
 class AidActionForm(ActionForm):
     class Meta:
         model = AidAction
-        exclude = excludedFields
+        exclude = excludedFields + aid_excluded
     action_type = "Aid Action"
+    
+    
+    
+class GhoulAidActionForm(ActionForm):
+    class Meta:
+        model = GhoulAidAction
+        exclude = excludedFields + aid_excluded
+    action_type = "Ghoul Aid Action"  
+        
+class PrimogensAidActionForm(ActionForm):
+    class Meta:
+        model = PrimogensAidAction
+        exclude = excludedFields + aid_excluded
+    action_type = "Primogenens Aid Action"  
 
 class ConserveInfluenceForm(ActionForm):
     class Meta:
@@ -414,19 +569,19 @@ class InvestigateInfluenceForm(ActionForm):
 class LearnAttributeForm(ActionForm):
     class Meta:
         model = LearnAttribute
-        exclude = excludedFields
+        exclude = excludedFields + no_roll_excluded
     action_type = "Learn (Attribute)"
 
 class LearnDisciplineForm(ActionForm):
     class Meta:
         model = LearnDiscipline
-        exclude = excludedFields
+        exclude = excludedFields + no_roll_excluded
     action_type = "Learn (Discipline)"
 
 class LearnSpecializationForm(ActionForm):
     class Meta:
         model = LearnSpecialization
-        exclude = excludedFields
+        exclude = excludedFields + no_roll_excluded
     action_type = "Learn (Specialization)"
 
 
@@ -435,97 +590,85 @@ class LearnSpecializationForm(ActionForm):
 class InvestGhoulForm(ActionForm):
     class Meta:
         model = InvestGhoul
-        exclude = excludedFields
+        exclude = excludedFields + no_roll_excluded
     action_type = "Invest (Ghoul)"
         
 class InvestEquipmentForm(ActionForm):
     class Meta:
         model = InvestEquipment
-        exclude = excludedFields
+        exclude = excludedFields + no_roll_excluded
     action_type = "Invest (Equipment)"
 
 class InvestWeaponForm(ActionForm):
     class Meta:
         model = InvestWeapon
-        exclude = excludedFields
+        exclude = excludedFields + no_roll_excluded
     action_type = "Invest (Weapon)"
 
 class InvestHerdForm(ActionForm):
     class Meta:
         model = InvestHerd
-        exclude = excludedFields
+        exclude = excludedFields + no_roll_excluded
     action_type = "Invest (Herd)"
         
 class InvestHavenForm(ActionForm):
     class Meta:
         model = InvestHaven
-        exclude = excludedFields
+        exclude = excludedFields + no_roll_excluded
     action_type = "Invest (Haven)"
 
 class MentorAttributeForm(ActionForm):
     class Meta:
         model = MentorAttribute
-        exclude = excludedFields
+        exclude = excludedFields + no_roll_excluded
     action_type = "Mentor (Attribute)"
 
 class MentorDisciplineForm(ActionForm):
     class Meta:
         model = MentorDiscipline
-        exclude = excludedFields
+        exclude = excludedFields + no_roll_excluded
     action_type = "Mentor (Discipline)"
     
 class MentorSpecializationForm(ActionForm):
     class Meta:
         model = MentorSpecialization
-        exclude = excludedFields
+        exclude = excludedFields + no_roll_excluded
     action_type = "Mentor (Specialization)"
 
 class RestForm(ActionForm):
     class Meta:
         model = Rest
-        exclude = excludedFields
+        exclude = excludedFields + no_roll_excluded
     action_type = "Rest"
         
 class NeglectDomainForm(ActionForm):
     class Meta:
         model = NeglectDomain
-        exclude = excludedFields
+        exclude = excludedFields + no_roll_excluded
     action_type = "Neglegera domän"        
 
 class PatrolDomainForm(ActionForm):
     class Meta:
         model = PatrolDomain
-        exclude = excludedFields
+        exclude = excludedFields + no_roll_excluded
     action_type = "Patrullera domän"  
     
 class KeepersQuestionForm(ActionForm):
     class Meta:
         model = KeepersQuestion
-        exclude = excludedFields
+        exclude = excludedFields + no_roll_excluded
     action_type = "Elysiemästarens fråga"  
 
 class PrimogensQuestionForm(ActionForm):
     class Meta:
         model = PrimogensQuestion
-        exclude = excludedFields
+        exclude = excludedFields + no_roll_excluded
     action_type = "Primogenens fråga"  
-                
-class PrimogensAidActionForm(ActionForm):
-    class Meta:
-        model = PrimogensAidAction
-        exclude = excludedFields
-    action_type = "Primogenens Aid Action"  
-
-class GhoulAidActionForm(ActionForm):
-    class Meta:
-        model = GhoulAidAction
-        exclude = excludedFields
-    action_type = "Ghoul Aid Action"  
-    
+                    
 formTable = {
     'Aid Action':AidActionForm, 
     'Primogenens Aid Action':PrimogensAidActionForm,
-    'Ghoul Aid Action':GhoulAidAction,
+    'Ghoul Aid Action':GhoulAidActionForm,
     'Conserve (Influence)':ConserveInfluenceForm,
     'Conserve (Domain)':ConserveDomainForm,
     'Influence (Forge)':InfluenceForgeForm,
