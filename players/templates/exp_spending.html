@@ -9,37 +9,18 @@
 
 <div class="row">
   <div class="col-md-offset-3 col-md-6">
- 
+  
+  
+  
   You have {{exp}} exp points and {{special_exp}} special exp points to spend. 
   </p> 
   <form class="spending" action="" method="post">{% csrf_token %}
-      <table>
-            <tr>
-                <th>trait</th>
-                <th>_exp_</th>
-                <th>_special exp</th>
-                <th>You have:</th>
-            </tr>
-        {{ discipline_forms.management_form }}
-        {% for form in discipline_forms %}
-            <tr>
-                <td>{{form.discipline}} {{form.discipline.errors}} </td>
-                <td>: : {{form.exp}} {{form.exp.errors}}</td>
-                <td>{{form.special_exp}} {{form.special_exp.errors}}</td>
-                <td>{{form.help.value}} {{form.help.errors}}</td>
-            </tr>
-        {% endfor %}
-        {{ attribute_forms.management_form }}
-        {% for form in attribute_forms %}
-            <tr>
-                <td>{{form.attribute}} {{form.attribute.errors}}</td>
-                <td>: : {{form.exp}} {{form.exp.errors}}</td>
-                <td>{{form.special_exp}} {{form.special_exp.errors}}</td>
-                <td>{{form.help.value}} {{form.help.errors}}</td>
-            </tr>
-        {% endfor %}
-      </table>
-      </p>
+
+        
+  
+        {{discipline_forms}}
+        {{attribute_forms}}
+
       <div class="text-right">
            <input class="btn btn-primary" type="submit" value="Next"/>
       </div>

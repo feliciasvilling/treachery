@@ -150,7 +150,7 @@ def healing_report_form(char,session):
         aggravated = IntegerField(initial=0)  
         
                            
-        def fill_save(self):
+        def save(self):
             v = self.cleaned_data
             HealingReport.objects.filter(character=char,session=session).delete()
             
@@ -201,8 +201,9 @@ def exp_spending_form(char,session):
         special_exp = IntegerField(initial=0)
         help = CharField(max_length=200,required=False)
         
-        def fill_save(self):
+        def save(self):
             v = self.cleaned_data
+            print ("saving \n{}" .format(v))
             if 'discipline' in v:
                 ExpDisciplineSpending.objects.filter(
                     character=char,

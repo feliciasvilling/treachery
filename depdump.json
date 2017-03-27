@@ -20,7 +20,7 @@
     "model": "auth.user",
     "fields": {
         "password": "pbkdf2_sha256$24000$snLxEPCdTO9K$5cbsoXSx7sEQbdsbaPTE4jHKFTtGmOYPx/EPd6wlbKQ=",
-        "last_login": "2017-02-27T18:50:18Z",
+        "last_login": "2017-03-14T17:11:35.469Z",
         "is_superuser": true,
         "username": "felicia",
         "first_name": "",
@@ -37,7 +37,7 @@
     "model": "auth.user",
     "fields": {
         "password": "pbkdf2_sha256$24000$SgGqYLdSNQua$ZYH1kJk/0QLfO+EltcuFn1PE/AQ2ZvBK7n0XRn9pGvs=",
-        "last_login": "2017-03-04T16:16:47Z",
+        "last_login": "2017-03-20T14:50:41.287Z",
         "is_superuser": true,
         "username": "Johannes_J\u00f6rgensen",
         "first_name": "Johannes",
@@ -139,7 +139,7 @@
     "model": "auth.user",
     "fields": {
         "password": "pbkdf2_sha256$24000$blIlXuhrUVZu$o/eHe9JH3/yVhydTwObsBj6z8dsmoxaw82B+yahaQEg=",
-        "last_login": "2017-03-10T21:31:37.667Z",
+        "last_login": "2017-03-27T13:26:44.898Z",
         "is_superuser": false,
         "username": "JeGy",
         "first_name": "Jerome",
@@ -411,7 +411,7 @@
     "model": "auth.user",
     "fields": {
         "password": "pbkdf2_sha256$24000$zTkU1mfYAEOZ$H9EHrtJTNYL9X/FkKWJYOEbfkUYPOlOVPU6Udegzjhs=",
-        "last_login": "2017-03-13T20:07:26.479Z",
+        "last_login": "2017-03-23T17:13:47.437Z",
         "is_superuser": false,
         "username": "HeRo",
         "first_name": "Henrik",
@@ -445,7 +445,7 @@
     "model": "auth.user",
     "fields": {
         "password": "pbkdf2_sha256$24000$7pzv7Rf8PGd8$B43riW10tKvuJtGUnJpxQr/CdAHAXyiypLYXcriNCQg=",
-        "last_login": "2017-01-24T12:09:08.409Z",
+        "last_login": "2017-03-26T17:17:34.020Z",
         "is_superuser": false,
         "username": "erik_test",
         "first_name": "erik",
@@ -2091,7 +2091,9 @@
     "pk": 1,
     "fields": {
         "name": "Aid Action",
-        "template": "**Slag:** Varierar\r\n\r\nDu hj\u00e4lper/eller stj\u00e4lper en annan karakt\u00e4r. Du skickar in en Aid Action-handling och anger en handling som en annan karakt\u00e4r t\u00e4nker genomf\u00f6ra och om du vill hj\u00e4lpa eller stj\u00e4lpa. Om de har skickat in handlingen som du anger s\u00e5 f\u00e5r de v\u00e4lja om de vill motta din Aid Action. De fr\u00e5n INTE veta om du kommer hj\u00e4lpa eller stj\u00e4lpa (du f\u00e5r givetvis p\u00e5st\u00e5 vad du vill). Om de vill ta emot din hj\u00e4lp sl\u00e5r du samma slag som de g\u00f6r och l\u00e4gger till/drar ifr\u00e5n dina lyckade till deras. Den du hj\u00e4lper \u00e4r dock den som f\u00e5r effekten av en lyckad handling. Om handlingen du hj\u00e4lper inneb\u00e4r en risk s\u00e5 kan den drabba \u00e4ven dig. "
+        "template": "**Slag:** Varierar\r\n\r\nDu hj\u00e4lper/eller stj\u00e4lper en annan karakt\u00e4r. Du skickar in en Aid Action-handling och anger en handling som en annan karakt\u00e4r t\u00e4nker genomf\u00f6ra och om du vill hj\u00e4lpa eller stj\u00e4lpa. Om de har skickat in handlingen som du anger s\u00e5 f\u00e5r de v\u00e4lja om de vill motta din Aid Action. De fr\u00e5n INTE veta om du kommer hj\u00e4lpa eller stj\u00e4lpa (du f\u00e5r givetvis p\u00e5st\u00e5 vad du vill). Om de vill ta emot din hj\u00e4lp sl\u00e5r du samma slag som de g\u00f6r och l\u00e4gger till/drar ifr\u00e5n dina lyckade till deras. Den du hj\u00e4lper \u00e4r dock den som f\u00e5r effekten av en lyckad handling. Om handlingen du hj\u00e4lper inneb\u00e4r en risk s\u00e5 kan den drabba \u00e4ven dig. ",
+        "no_roll": false,
+        "aid_action": false
     }
 },
 {
@@ -2099,7 +2101,9 @@
     "pk": 2,
     "fields": {
         "name": "Conserve (Influence)",
-        "template": "**Slag:**\r\n\r\n- **SKYDDA DOM\u00c4N:** Charisma + Inflytandets Ability + Dominate\\* + 3 Automatiska lyckade VS Motst\u00e5ndarens slag f\u00f6r INFLUENCE (Steal) eller INFLUENCE (destroy)\r\n- **SP\u00c5RA ANGRIPARE:** Manipulation + Inflytandets Ability + Auspex\\* VS Motst\u00e5ndarens slag f\u00f6r att d\u00f6lja sig\r\n\r\nDu f\u00f6rst\u00e4rker din kontroll \u00f6ver ett av dina etablerade inflytandeomr\u00e5den och f\u00e5r m\u00f6jlighet att uppt\u00e4cka vem som genomf\u00f6r eventuella angrepp. Vanligtvis f\u00f6rsvarar du ditt inflytande med Inflytandets ability + Dominate, men med conserve influence-handlingen f\u00e5r du l\u00e4gga till din charisma och f\u00e5r dessutom tre automatiska lyckade."
+        "template": "**Slag:**\r\n\r\n- **SKYDDA DOM\u00c4N:** Charisma + Inflytandets Ability + Dominate\\* + 3 Automatiska lyckade VS Motst\u00e5ndarens slag f\u00f6r INFLUENCE (Steal) eller INFLUENCE (destroy)\r\n- **SP\u00c5RA ANGRIPARE:** Manipulation + Inflytandets Ability + Auspex\\* VS Motst\u00e5ndarens slag f\u00f6r att d\u00f6lja sig\r\n\r\nDu f\u00f6rst\u00e4rker din kontroll \u00f6ver ett av dina etablerade inflytandeomr\u00e5den och f\u00e5r m\u00f6jlighet att uppt\u00e4cka vem som genomf\u00f6r eventuella angrepp. Vanligtvis f\u00f6rsvarar du ditt inflytande med Inflytandets ability + Dominate, men med conserve influence-handlingen f\u00e5r du l\u00e4gga till din charisma och f\u00e5r dessutom tre automatiska lyckade.",
+        "no_roll": false,
+        "aid_action": false
     }
 },
 {
@@ -2107,7 +2111,9 @@
     "pk": 3,
     "fields": {
         "name": "Conserve (Domain)",
-        "template": "**Slag:** \r\n\r\n- **HINDRA PROBLEM:** Intelligence + Leadership/Streetwise + Animalism VS Sv\u00e5righetsgrad p\u00e5 problem\r\n- **UPPT\u00c4CKA JAKT:** Wits + Leadership/Streetwise + Protean\\* VS Motst\u00e5ndarens slag f\u00f6r att d\u00f6lja sig\r\n\r\nDu minskar de omedelbara effekterna av problem som uppst\u00e5r p\u00e5 din dom\u00e4n till f\u00f6ljd av ploter, downtimehandlingar och overfeeding. Du f\u00e5r ocks\u00e5 sl\u00e5 slag f\u00f6r att uppt\u00e4cka vem/vilka som overfeedat i din dom\u00e4n."
+        "template": "**Slag:** \r\n\r\n- **HINDRA PROBLEM:** Intelligence + Leadership/Streetwise + Animalism VS Sv\u00e5righetsgrad p\u00e5 problem\r\n- **UPPT\u00c4CKA JAKT:** Wits + Leadership/Streetwise + Protean\\* VS Motst\u00e5ndarens slag f\u00f6r att d\u00f6lja sig\r\n\r\nDu minskar de omedelbara effekterna av problem som uppst\u00e5r p\u00e5 din dom\u00e4n till f\u00f6ljd av ploter, downtimehandlingar och overfeeding. Du f\u00e5r ocks\u00e5 sl\u00e5 slag f\u00f6r att uppt\u00e4cka vem/vilka som overfeedat i din dom\u00e4n.",
+        "no_roll": false,
+        "aid_action": false
     }
 },
 {
@@ -2115,7 +2121,9 @@
     "pk": 4,
     "fields": {
         "name": "Influence (Forge)",
-        "template": "**Slag:**\r\n\r\n- **SKAPA HOOK:** Charisma + Inflytandets Ability + Presence\\* VS Special\r\n\r\n**Krav:** Tidigare lyckad Investigate (Influence) ELLER Namngiven karakt\u00e4r som inte \u00e4r en hook\r\n\r\nDu skapar en ny Hook f\u00f6rutsatt att det finns en ledig plats f\u00f6r dig. Om flera personer f\u00f6rs\u00f6ker flytta till en tom niv\u00e5 samtidigt best\u00e4ms vem platsen g\u00e5r enligt f\u00f6ljande:\r\n\r\n1. De som har f\u00f6rlorat en hook i inflytandet denna eller f\u00f6reg\u00e5ende downtime l\u00e4mnar f\u00f6retr\u00e4de till alla andra.\r\n2. De som stj\u00e4l inflytande f\u00e5r f\u00f6rtur.\r\n3. Den som har st\u00f6rst antal successes f\u00e5r f\u00f6rtur.\r\n\r\nDu m\u00e5ste specificera i vilken dom\u00e4n du skapar en ny hook. En lyckad kr\u00e4vs f\u00f6r att skapa en ny hook i en dom\u00e4n d\u00e4r inflytandet \u00e4r vanligt f\u00f6rekommande, annars kr\u00e4vs tre lyckade. Du f\u00e5r sl\u00e5 ett slag f\u00f6r att d\u00f6lja din inblandning."
+        "template": "**Slag:**\r\n\r\n- **SKAPA HOOK:** Charisma + Inflytandets Ability + Presence\\* VS Special\r\n\r\n**Krav:** Tidigare lyckad Investigate (Influence) ELLER Namngiven karakt\u00e4r som inte \u00e4r en hook\r\n\r\nDu skapar en ny Hook f\u00f6rutsatt att det finns en ledig plats f\u00f6r dig. Om flera personer f\u00f6rs\u00f6ker flytta till en tom niv\u00e5 samtidigt best\u00e4ms vem platsen g\u00e5r enligt f\u00f6ljande:\r\n\r\n1. De som har f\u00f6rlorat en hook i inflytandet denna eller f\u00f6reg\u00e5ende downtime l\u00e4mnar f\u00f6retr\u00e4de till alla andra.\r\n2. De som stj\u00e4l inflytande f\u00e5r f\u00f6rtur.\r\n3. Den som har st\u00f6rst antal successes f\u00e5r f\u00f6rtur.\r\n\r\nDu m\u00e5ste specificera i vilken dom\u00e4n du skapar en ny hook. En lyckad kr\u00e4vs f\u00f6r att skapa en ny hook i en dom\u00e4n d\u00e4r inflytandet \u00e4r vanligt f\u00f6rekommande, annars kr\u00e4vs tre lyckade. Du f\u00e5r sl\u00e5 ett slag f\u00f6r att d\u00f6lja din inblandning.",
+        "no_roll": false,
+        "aid_action": false
     }
 },
 {
@@ -2123,7 +2131,9 @@
     "pk": 5,
     "fields": {
         "name": "Influence (Steal)",
-        "template": "**Slag:**\r\n\r\n- **STJ\u00c4LA HOOK:** Charisma + Inflytandes Ability + Presence\\* VS Most\u00e5ndarens basslag (Inflytandets Ability + Dominate\\*) ELLER CONSERVE (Influence)\r\n- **D\u00d6LJA SP\u00c5R:** Manipulation + Stealth + Obfuscate\\* VS Motst\u00e5ndarens slag f\u00f6r att uppt\u00e4cka \r\n\r\nKrav: Namngiven karakta\u0308r som a\u0308r en hook tillho\u0308rande en annan karakta\u0308r\r\n\r\nDu stja\u0308l en ny hook fo\u0308rutsatt att det finns en ledig plats fo\u0308r dig. I annat fall frigo\u0308rs hooken sa\u030a att ingen la\u0308ngre kontrollerar den. Du fa\u030ar sla\u030a ett slag fo\u0308r att do\u0308lja din inblandning. Se Influence (Forge) fo\u0308r mer information."
+        "template": "**Slag:**\r\n\r\n- **STJ\u00c4LA HOOK:** Charisma + Inflytandes Ability + Presence\\* VS Most\u00e5ndarens basslag (Inflytandets Ability + Dominate\\*) ELLER CONSERVE (Influence)\r\n- **D\u00d6LJA SP\u00c5R:** Manipulation + Stealth + Obfuscate\\* VS Motst\u00e5ndarens slag f\u00f6r att uppt\u00e4cka \r\n\r\nKrav: Namngiven karakta\u0308r som a\u0308r en hook tillho\u0308rande en annan karakta\u0308r\r\n\r\nDu stja\u0308l en ny hook fo\u0308rutsatt att det finns en ledig plats fo\u0308r dig. I annat fall frigo\u0308rs hooken sa\u030a att ingen la\u0308ngre kontrollerar den. Du fa\u030ar sla\u030a ett slag fo\u0308r att do\u0308lja din inblandning. Se Influence (Forge) fo\u0308r mer information.",
+        "no_roll": false,
+        "aid_action": false
     }
 },
 {
@@ -2131,7 +2141,9 @@
     "pk": 6,
     "fields": {
         "name": "Influence (Destroy)",
-        "template": "**Slag:**\r\n\r\n- **F\u00d6RST\u00d6RA INFLYTANDE:** Valfri kombination av Strength/Charisma/Intelligence + Inflytandets \t\t\t\t\t\tAbility/Combat/Intimidation + Celerity*/Fortitude*/Potence*/Dementation* VS Most\u00e5ndarens basslag (Inflytandets Ability + Dominate*) ELLER CONSERVE (Influence)\r\n- **D\u00d6LJA SP\u00c5R:** Manipulation + Stealth + Obfuscate* VS Motst\u00e5ndarens slag f\u00f6r att uppt\u00e4cka\r\n\r\n**Krav:** Namngiven karakt\u00e4r som \u00e4r en hook tillh\u00f6rande en annan karakt\u00e4r OCH F\u00f6rlora en Humanityniv\u00e5\r\n\r\nDu f\u00f6rst\u00f6r permanent en hook. Du f\u00e5r sl\u00e5 ett slag f\u00f6r att d\u00f6lja din inblandning."
+        "template": "**Slag:**\r\n\r\n- **F\u00d6RST\u00d6RA INFLYTANDE:** Valfri kombination av Strength/Charisma/Intelligence + Inflytandets \t\t\t\t\t\tAbility/Combat/Intimidation + Celerity*/Fortitude*/Potence*/Dementation* VS Most\u00e5ndarens basslag (Inflytandets Ability + Dominate*) ELLER CONSERVE (Influence)\r\n- **D\u00d6LJA SP\u00c5R:** Manipulation + Stealth + Obfuscate* VS Motst\u00e5ndarens slag f\u00f6r att uppt\u00e4cka\r\n\r\n**Krav:** Namngiven karakt\u00e4r som \u00e4r en hook tillh\u00f6rande en annan karakt\u00e4r OCH F\u00f6rlora en Humanityniv\u00e5\r\n\r\nDu f\u00f6rst\u00f6r permanent en hook. Du f\u00e5r sl\u00e5 ett slag f\u00f6r att d\u00f6lja din inblandning.",
+        "no_roll": false,
+        "aid_action": false
     }
 },
 {
@@ -2139,7 +2151,9 @@
     "pk": 7,
     "fields": {
         "name": "Investigate (Character: Influence)",
-        "template": "**Slag:** Manipulation + Investigation + Auspex\\* VS Special\r\n\r\nDu unders\u00f6ker en karakt\u00e4rs inflytande. Du f\u00e5r spendera dina lyckade f\u00f6r att f\u00e5 information enligt f\u00f6ljande:\r\n\r\n* Alla Masterniv\u00e5er 1\r\n* Alla Master och Contenderniv\u00e5er 2\r\n* Alla Inflytandeniv\u00e5er 3\r\n* Alla hooks i ett valt inflytande 2\r\n* En hook i ett valt inflytande 1\r\n* En k\u00e4nd hooks keywords 1\r\n\r\nN\u00e4r t\u00e4rningarna slagits s\u00e5 spenderar du alla dina lyckade samtidigt. Om det inte finns n\u00e5gon information att h\u00e4mta s\u00e5 g\u00e5r dina lyckade \u00e5t f\u00f6r att f\u00e5 reda p\u00e5 det. Om du inte kan spendera dina lyckade j\u00e4mnt s\u00e5 g\u00e5r oanv\u00e4nda till spillo."
+        "template": "**Slag:** Manipulation + Investigation + Auspex\\* VS Special\r\n\r\nDu unders\u00f6ker en karakt\u00e4rs inflytande. Du f\u00e5r spendera dina lyckade f\u00f6r att f\u00e5 information enligt f\u00f6ljande:\r\n\r\n* Alla Masterniv\u00e5er 1\r\n* Alla Master och Contenderniv\u00e5er 2\r\n* Alla Inflytandeniv\u00e5er 3\r\n* Alla hooks i ett valt inflytande 2\r\n* En hook i ett valt inflytande 1\r\n* En k\u00e4nd hooks keywords 1\r\n\r\nN\u00e4r t\u00e4rningarna slagits s\u00e5 spenderar du alla dina lyckade samtidigt. Om det inte finns n\u00e5gon information att h\u00e4mta s\u00e5 g\u00e5r dina lyckade \u00e5t f\u00f6r att f\u00e5 reda p\u00e5 det. Om du inte kan spendera dina lyckade j\u00e4mnt s\u00e5 g\u00e5r oanv\u00e4nda till spillo.",
+        "no_roll": false,
+        "aid_action": false
     }
 },
 {
@@ -2147,7 +2161,9 @@
     "pk": 8,
     "fields": {
         "name": "Investigate (Character: Resources)",
-        "template": "**Slag:** Wits + Investigation + Protean\\* VS Special\r\n\r\nDu unders\u00f6ker en karakt\u00e4rs backgrounds och feeding. Du f\u00e5r spendera dina lyckade f\u00f6r att f\u00e5 information enligt f\u00f6ljande:\r\n\r\nEn slumpm\u00e4ssigt background 1\r\nEn vald typ av background 1\r\nHur mycket blod som tagits och var 3\r\nHur m\u00e5nga Resource points karakt\u00e4ren har 3\r\n\r\nN\u00e4r t\u00e4rningarna slagits s\u00e5 spenderar du alla dina lyckade samtidigt. Om du spenderar mer lyckade \u00e4n det finns backgrounds s\u00e5 g\u00e5r de till spillo."
+        "template": "**Slag:** Wits + Investigation + Protean\\* VS Special\r\n\r\nDu unders\u00f6ker en karakt\u00e4rs backgrounds och feeding. Du f\u00e5r spendera dina lyckade f\u00f6r att f\u00e5 information enligt f\u00f6ljande:\r\n\r\nEn slumpm\u00e4ssigt background 1\r\nEn vald typ av background 1\r\nHur mycket blod som tagits och var 3\r\nHur m\u00e5nga Resource points karakt\u00e4ren har 3\r\n\r\nN\u00e4r t\u00e4rningarna slagits s\u00e5 spenderar du alla dina lyckade samtidigt. Om du spenderar mer lyckade \u00e4n det finns backgrounds s\u00e5 g\u00e5r de till spillo.",
+        "no_roll": false,
+        "aid_action": false
     }
 },
 {
@@ -2155,7 +2171,9 @@
     "pk": 9,
     "fields": {
         "name": "Investigate (Character: Downtime Actions)",
-        "template": "**Slag:** Wits + Investigation + Protean\\* VS Wits + Stealth + Obfuscate\\*\r\n\r\nDu unders\u00f6ker vilka downtime-handlingar en spelare har valt och kan v\u00e4lja att ingripa f\u00f6r att stoppa n\u00e5gon av dem. Om du lyckas s\u00e5 f\u00e5r du en lista av handlingar och kan s\u00e4tta en scen d\u00e4r du ingriper p\u00e5 ett s\u00e4tt som du finner l\u00e4mpligt.\r\n"
+        "template": "**Slag:** Wits + Investigation + Protean\\* VS Wits + Stealth + Obfuscate\\*\r\n\r\nDu unders\u00f6ker vilka downtime-handlingar en spelare har valt och kan v\u00e4lja att ingripa f\u00f6r att stoppa n\u00e5gon av dem. Om du lyckas s\u00e5 f\u00e5r du en lista av handlingar och kan s\u00e4tta en scen d\u00e4r du ingriper p\u00e5 ett s\u00e4tt som du finner l\u00e4mpligt.\r\n",
+        "no_roll": false,
+        "aid_action": false
     }
 },
 {
@@ -2163,7 +2181,9 @@
     "pk": 10,
     "fields": {
         "name": "Investigate (Counter spionage)",
-        "template": "**Slag:** Wits + Investigation + Protean\\* VS Wits + Stealth + Obfuscate\\*\r\n\r\nDu unders\u00f6ker om n\u00e5gon f\u00f6rs\u00f6ker ta reda p\u00e5 saker om dig eller dina inflytanden. Du f\u00e5r en lista p\u00e5 alla om har unders\u00f6kt dig som du har f\u00e5tt lika m\u00e5nga eller fler lyckade som."
+        "template": "**Slag:** Wits + Investigation + Protean\\* VS Wits + Stealth + Obfuscate\\*\r\n\r\nDu unders\u00f6ker om n\u00e5gon f\u00f6rs\u00f6ker ta reda p\u00e5 saker om dig eller dina inflytanden. Du f\u00e5r en lista p\u00e5 alla om har unders\u00f6kt dig som du har f\u00e5tt lika m\u00e5nga eller fler lyckade som.",
+        "no_roll": false,
+        "aid_action": false
     }
 },
 {
@@ -2171,7 +2191,9 @@
     "pk": 11,
     "fields": {
         "name": "Investigate (Phenomenon)",
-        "template": "**Slag:** Wits + Investigation + Dementation\\* VS Special\r\n\r\nDu f\u00f6rs\u00f6ker ta reda p\u00e5 information om ett settingelement. Fler lyckade ger mer, b\u00e4ttre information. Det \u00e4r m\u00f6jligt att v\u00e4lja ett inflytandeomr\u00e5de, i s\u00e5dana fall ger 1 lyckad ett os\u00e4kert rykte och 3 lyckade ett s\u00e4kert rykte."
+        "template": "**Slag:** Wits + Investigation + Dementation\\* VS Special\r\n\r\nDu f\u00f6rs\u00f6ker ta reda p\u00e5 information om ett settingelement. Fler lyckade ger mer, b\u00e4ttre information. Det \u00e4r m\u00f6jligt att v\u00e4lja ett inflytandeomr\u00e5de, i s\u00e5dana fall ger 1 lyckad ett os\u00e4kert rykte och 3 lyckade ett s\u00e4kert rykte.",
+        "no_roll": false,
+        "aid_action": false
     }
 },
 {
@@ -2179,7 +2201,9 @@
     "pk": 12,
     "fields": {
         "name": "Investigate (Influence)",
-        "template": "**Slag:** Manipulation + Inflytandes Ability + Auspex\\*  VS Special\r\n\r\nDu unders\u00f6ker det allm\u00e4nna l\u00e4get inom ett inflytandeomr\u00e5de. Den f\u00f6rsta lyckade ger vem som \u00e4r master och contenders, alla f\u00f6ljande lyckade ger slumpm\u00e4ssiga hooks inom inflytandet."
+        "template": "**Slag:** Manipulation + Inflytandes Ability + Auspex\\*  VS Special\r\n\r\nDu unders\u00f6ker det allm\u00e4nna l\u00e4get inom ett inflytandeomr\u00e5de. Den f\u00f6rsta lyckade ger vem som \u00e4r master och contenders, alla f\u00f6ljande lyckade ger slumpm\u00e4ssiga hooks inom inflytandet.",
+        "no_roll": false,
+        "aid_action": false
     }
 },
 {
@@ -2187,7 +2211,9 @@
     "pk": 16,
     "fields": {
         "name": "Rest",
-        "template": "Du a\u030aterfa\u030ar alla spenderad Willpower."
+        "template": "Du a\u030aterfa\u030ar alla spenderad Willpower.",
+        "no_roll": false,
+        "aid_action": false
     }
 },
 {
@@ -2195,7 +2221,9 @@
     "pk": 17,
     "fields": {
         "name": "Patrullera dom\u00e4n",
-        "template": "Lagmannen kan v\u00e4lja ett omr\u00e5de d\u00e4r det uppst\u00e5r ett Problem mindre under downtime."
+        "template": "Lagmannen kan v\u00e4lja ett omr\u00e5de d\u00e4r det uppst\u00e5r ett Problem mindre under downtime.",
+        "no_roll": false,
+        "aid_action": false
     }
 },
 {
@@ -2203,7 +2231,9 @@
     "pk": 18,
     "fields": {
         "name": "Neglegera dom\u00e4n",
-        "template": "Lagmannen kan v\u00e4lja ett omr\u00e5de d\u00e4r det uppst\u00e5r ett Problem mer under downtime."
+        "template": "Lagmannen kan v\u00e4lja ett omr\u00e5de d\u00e4r det uppst\u00e5r ett Problem mer under downtime.",
+        "no_roll": false,
+        "aid_action": false
     }
 },
 {
@@ -2211,7 +2241,9 @@
     "pk": 19,
     "fields": {
         "name": "Elysiem\u00e4starens fr\u00e5ga",
-        "template": "Elysiem\u00e4staren f\u00e5r st\u00e4lla vars en personlig fr\u00e5ga till tre valfria bes\u00f6kare p\u00e5 Elysium. Bes\u00f6karen m\u00e5ste svara \u00e4rligt eller betala en Liten G\u00e4ld. Om information avsl\u00f6jas beslutar spelarna hur den har framkommit."
+        "template": "Elysiem\u00e4staren f\u00e5r st\u00e4lla vars en personlig fr\u00e5ga till tre valfria bes\u00f6kare p\u00e5 Elysium. Bes\u00f6karen m\u00e5ste svara \u00e4rligt eller betala en Liten G\u00e4ld. Om information avsl\u00f6jas beslutar spelarna hur den har framkommit.",
+        "no_roll": false,
+        "aid_action": false
     }
 },
 {
@@ -2219,7 +2251,9 @@
     "pk": 20,
     "fields": {
         "name": "Primogenens Aid Action",
-        "template": "Primogener har en extra downtimehandling som endast kan anv\u00e4ndas till Aid Action till n\u00e5gon inom klanen."
+        "template": "Primogener har en extra downtimehandling som endast kan anv\u00e4ndas till Aid Action till n\u00e5gon inom klanen.",
+        "no_roll": false,
+        "aid_action": false
     }
 },
 {
@@ -2227,7 +2261,9 @@
     "pk": 21,
     "fields": {
         "name": "Primogenens fr\u00e5ga",
-        "template": "Primogener f\u00e5r st\u00e4lla en personlig fr\u00e5ga till en valfri klanmedlem. Klanmedlemmen m\u00e5ste svara \u00e4rligt eller betala en ansenlig G\u00e4ld. Om information avsl\u00f6jas beslutar spelarna hur den har framkommit."
+        "template": "Primogener f\u00e5r st\u00e4lla en personlig fr\u00e5ga till en valfri klanmedlem. Klanmedlemmen m\u00e5ste svara \u00e4rligt eller betala en ansenlig G\u00e4ld. Om information avsl\u00f6jas beslutar spelarna hur den har framkommit.",
+        "no_roll": false,
+        "aid_action": false
     }
 },
 {
@@ -2235,7 +2271,9 @@
     "pk": 22,
     "fields": {
         "name": "Invest (Equipment)",
-        "template": "Du bo\u0308rjar skaffa dig en ny Equipment enligt inla\u0308rningsreglerna."
+        "template": "Du bo\u0308rjar skaffa dig en ny Equipment enligt inla\u0308rningsreglerna.",
+        "no_roll": false,
+        "aid_action": false
     }
 },
 {
@@ -2243,7 +2281,9 @@
     "pk": 23,
     "fields": {
         "name": "Invest (Ghoul)",
-        "template": "Du bo\u0308rjar skaffa dig en ny ghoul enligt inla\u0308rningsreglerna."
+        "template": "Du bo\u0308rjar skaffa dig en ny ghoul enligt inla\u0308rningsreglerna.",
+        "no_roll": false,
+        "aid_action": false
     }
 },
 {
@@ -2251,7 +2291,9 @@
     "pk": 24,
     "fields": {
         "name": "Invest (Haven)",
-        "template": "Du bo\u0308rjar skaffa dig en ny haven enligt inla\u0308rningsreglerna."
+        "template": "Du bo\u0308rjar skaffa dig en ny haven enligt inla\u0308rningsreglerna.",
+        "no_roll": false,
+        "aid_action": false
     }
 },
 {
@@ -2259,7 +2301,9 @@
     "pk": 25,
     "fields": {
         "name": "Invest (Herd)",
-        "template": "Du bo\u0308rjar skaffa dig en ny herd enligt inla\u0308rningsreglerna."
+        "template": "Du bo\u0308rjar skaffa dig en ny herd enligt inla\u0308rningsreglerna.",
+        "no_roll": false,
+        "aid_action": false
     }
 },
 {
@@ -2267,7 +2311,9 @@
     "pk": 26,
     "fields": {
         "name": "Invest (Weapon)",
-        "template": "Du bo\u0308rjar skaffa dig ett nytt vapen enligt inla\u0308rningsreglerna."
+        "template": "Du bo\u0308rjar skaffa dig ett nytt vapen enligt inla\u0308rningsreglerna.",
+        "no_roll": false,
+        "aid_action": false
     }
 },
 {
@@ -2275,7 +2321,9 @@
     "pk": 27,
     "fields": {
         "name": "Learn (Attribute)",
-        "template": "Du bo\u0308rjar att la\u0308ra dig ett nytt steg p\u00e5 ett Attribute enligt inla\u0308rningsreglerna."
+        "template": "Du bo\u0308rjar att la\u0308ra dig ett nytt steg p\u00e5 ett Attribute enligt inla\u0308rningsreglerna.",
+        "no_roll": false,
+        "aid_action": false
     }
 },
 {
@@ -2283,7 +2331,9 @@
     "pk": 28,
     "fields": {
         "name": "Learn (Discipline)",
-        "template": "Du bo\u0308rjar att la\u0308ra dig ett nytt steg p\u00e5 en Discipline enligt inla\u0308rningsreglerna."
+        "template": "Du bo\u0308rjar att la\u0308ra dig ett nytt steg p\u00e5 en Discipline enligt inla\u0308rningsreglerna.",
+        "no_roll": false,
+        "aid_action": false
     }
 },
 {
@@ -2291,7 +2341,9 @@
     "pk": 29,
     "fields": {
         "name": "Learn (Specialization)",
-        "template": "Du bo\u0308rjar att la\u0308ra dig en ny specialization, men tappar samtidigt en gammal, enligt inla\u0308rningsreglerna."
+        "template": "Du bo\u0308rjar att la\u0308ra dig en ny specialization, men tappar samtidigt en gammal, enligt inla\u0308rningsreglerna.",
+        "no_roll": false,
+        "aid_action": false
     }
 },
 {
@@ -2299,7 +2351,9 @@
     "pk": 30,
     "fields": {
         "name": "Mentor (Attribute)",
-        "template": "Du ger mentorbonusen till na\u030agon fo\u0308r ett Attribute du a\u0308r kvalificerad att la\u0308ra dem enligt inla\u0308rningsreglerna."
+        "template": "Du ger mentorbonusen till na\u030agon fo\u0308r ett Attribute du a\u0308r kvalificerad att la\u0308ra dem enligt inla\u0308rningsreglerna.",
+        "no_roll": false,
+        "aid_action": false
     }
 },
 {
@@ -2307,7 +2361,9 @@
     "pk": 31,
     "fields": {
         "name": "Mentor (Discipline)",
-        "template": "Du ger mentorbonusen till na\u030agon fo\u0308r en Discipline du a\u0308r kvalificerad att la\u0308ra dem enligt inla\u0308rningsreglerna."
+        "template": "Du ger mentorbonusen till na\u030agon fo\u0308r en Discipline du a\u0308r kvalificerad att la\u0308ra dem enligt inla\u0308rningsreglerna.",
+        "no_roll": false,
+        "aid_action": false
     }
 },
 {
@@ -2315,13 +2371,26 @@
     "pk": 32,
     "fields": {
         "name": "Mentor (Specialization)",
-        "template": "Du ger mentorbonusen till na\u030agon fo\u0308r en Specialization du a\u0308r kvalificerad att la\u0308ra dem enligt inla\u0308rningsreglerna."
+        "template": "Du ger mentorbonusen till na\u030agon fo\u0308r en Specialization du a\u0308r kvalificerad att la\u0308ra dem enligt inla\u0308rningsreglerna.",
+        "no_roll": false,
+        "aid_action": false
+    }
+},
+{
+    "model": "players.actiontype",
+    "pk": 33,
+    "fields": {
+        "name": "Ghoul Aid Action",
+        "template": "",
+        "no_roll": false,
+        "aid_action": false
     }
 },
 {
     "model": "players.actionoption",
     "pk": 1,
     "fields": {
+        "name": "Any Action",
         "count": 4,
         "action_types": [
             1,
@@ -2355,9 +2424,9 @@
     "model": "players.actionoption",
     "pk": 2,
     "fields": {
+        "name": "Mentor / Invest / Learn",
         "count": 1,
         "action_types": [
-            32,
             22,
             23,
             24,
@@ -2367,7 +2436,8 @@
             28,
             29,
             30,
-            31
+            31,
+            32
         ]
     }
 },
@@ -2375,11 +2445,12 @@
     "model": "players.actionoption",
     "pk": 3,
     "fields": {
+        "name": "Mentor",
         "count": 1,
         "action_types": [
-            32,
             30,
-            31
+            31,
+            32
         ]
     }
 },
@@ -2387,6 +2458,7 @@
     "model": "players.actionoption",
     "pk": 4,
     "fields": {
+        "name": "Influence Steal",
         "count": 1,
         "action_types": [
             5
@@ -2397,6 +2469,7 @@
     "model": "players.actionoption",
     "pk": 5,
     "fields": {
+        "name": "Invest / Learn",
         "count": 1,
         "action_types": [
             22,
@@ -2414,6 +2487,7 @@
     "model": "players.actionoption",
     "pk": 6,
     "fields": {
+        "name": "Conserve (Influence)",
         "count": 1,
         "action_types": [
             2
@@ -2424,6 +2498,7 @@
     "model": "players.actionoption",
     "pk": 7,
     "fields": {
+        "name": "Aid Action",
         "count": 1,
         "action_types": [
             1
@@ -2434,6 +2509,7 @@
     "model": "players.actionoption",
     "pk": 8,
     "fields": {
+        "name": "Patrullera dom\u00e4n",
         "count": 1,
         "action_types": [
             17
@@ -2444,6 +2520,7 @@
     "model": "players.actionoption",
     "pk": 9,
     "fields": {
+        "name": "Neglegera dom\u00e4n",
         "count": 1,
         "action_types": [
             18
@@ -2454,6 +2531,7 @@
     "model": "players.actionoption",
     "pk": 10,
     "fields": {
+        "name": "Investigate",
         "count": 1,
         "action_types": [
             7,
@@ -2469,6 +2547,7 @@
     "model": "players.actionoption",
     "pk": 11,
     "fields": {
+        "name": "Elysiem\u00e4starens fr\u00e5ga",
         "count": 3,
         "action_types": [
             19
@@ -2479,6 +2558,7 @@
     "model": "players.actionoption",
     "pk": 12,
     "fields": {
+        "name": "Primogenens Fr\u00e5ga",
         "count": 1,
         "action_types": [
             21
@@ -2489,6 +2569,7 @@
     "model": "players.actionoption",
     "pk": 13,
     "fields": {
+        "name": "Primogenens Aid Action",
         "count": 1,
         "action_types": [
             20
@@ -2499,6 +2580,7 @@
     "model": "players.actionoption",
     "pk": 14,
     "fields": {
+        "name": "Aid Action",
         "count": 1,
         "action_types": [
             1
@@ -2509,6 +2591,7 @@
     "model": "players.actionoption",
     "pk": 15,
     "fields": {
+        "name": "Investigate",
         "count": 2,
         "action_types": [
             7,
@@ -2524,6 +2607,7 @@
     "model": "players.actionoption",
     "pk": 16,
     "fields": {
+        "name": "Aid Action",
         "count": 2,
         "action_types": [
             1
@@ -2656,8 +2740,9 @@
         "discipline": 10,
         "value": 3,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
-        "in_clan": false,
+        "in_clan": true,
         "mentor": false,
         "exp": 0,
         "elder_powers": []
@@ -2670,6 +2755,7 @@
         "discipline": 1,
         "value": 2,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "in_clan": false,
         "mentor": false,
@@ -2684,6 +2770,7 @@
         "discipline": 11,
         "value": 1,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "in_clan": false,
         "mentor": false,
@@ -2698,8 +2785,9 @@
         "discipline": 1,
         "value": 4,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
-        "in_clan": false,
+        "in_clan": true,
         "mentor": false,
         "exp": 0,
         "elder_powers": []
@@ -2712,8 +2800,9 @@
         "discipline": 5,
         "value": 4,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
-        "in_clan": false,
+        "in_clan": true,
         "mentor": false,
         "exp": 0,
         "elder_powers": []
@@ -2726,8 +2815,9 @@
         "discipline": 11,
         "value": 1,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
-        "in_clan": false,
+        "in_clan": true,
         "mentor": false,
         "exp": 0,
         "elder_powers": []
@@ -2740,6 +2830,7 @@
         "discipline": 11,
         "value": 3,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "in_clan": false,
         "mentor": false,
@@ -2754,8 +2845,9 @@
         "discipline": 2,
         "value": 5,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
-        "in_clan": false,
+        "in_clan": true,
         "mentor": false,
         "exp": 0,
         "elder_powers": []
@@ -2768,6 +2860,7 @@
         "discipline": 6,
         "value": 7,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "in_clan": false,
         "mentor": false,
@@ -2782,6 +2875,7 @@
         "discipline": 10,
         "value": 0,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "in_clan": false,
         "mentor": false,
@@ -2796,6 +2890,7 @@
         "discipline": 8,
         "value": 2,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "in_clan": false,
         "mentor": false,
@@ -2810,6 +2905,7 @@
         "discipline": 3,
         "value": 2,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "in_clan": false,
         "mentor": false,
@@ -2824,6 +2920,7 @@
         "discipline": 6,
         "value": 3,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "in_clan": false,
         "mentor": false,
@@ -2838,6 +2935,7 @@
         "discipline": 8,
         "value": 1,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "in_clan": false,
         "mentor": false,
@@ -2852,6 +2950,7 @@
         "discipline": 2,
         "value": 5,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "in_clan": false,
         "mentor": false,
@@ -2866,6 +2965,7 @@
         "discipline": 6,
         "value": 7,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "in_clan": false,
         "mentor": false,
@@ -2880,6 +2980,7 @@
         "discipline": 10,
         "value": 6,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "in_clan": false,
         "mentor": false,
@@ -2894,6 +2995,7 @@
         "discipline": 8,
         "value": 2,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "in_clan": false,
         "mentor": false,
@@ -2908,6 +3010,7 @@
         "discipline": 3,
         "value": 2,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "in_clan": false,
         "mentor": false,
@@ -2922,6 +3025,7 @@
         "discipline": 6,
         "value": 3,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "in_clan": false,
         "mentor": false,
@@ -2936,6 +3040,7 @@
         "discipline": 8,
         "value": 1,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "in_clan": false,
         "mentor": false,
@@ -2950,6 +3055,7 @@
         "discipline": 2,
         "value": 5,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "in_clan": false,
         "mentor": false,
@@ -2964,6 +3070,7 @@
         "discipline": 6,
         "value": 7,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "in_clan": false,
         "mentor": false,
@@ -2978,8 +3085,9 @@
         "discipline": 10,
         "value": 6,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
-        "in_clan": false,
+        "in_clan": true,
         "mentor": false,
         "exp": 0,
         "elder_powers": []
@@ -2992,6 +3100,7 @@
         "discipline": 8,
         "value": 2,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "in_clan": false,
         "mentor": false,
@@ -3006,6 +3115,7 @@
         "discipline": 3,
         "value": 2,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "in_clan": false,
         "mentor": false,
@@ -3020,6 +3130,7 @@
         "discipline": 6,
         "value": 3,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "in_clan": false,
         "mentor": false,
@@ -3034,6 +3145,7 @@
         "discipline": 8,
         "value": 1,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "in_clan": false,
         "mentor": false,
@@ -3048,8 +3160,9 @@
         "discipline": 9,
         "value": 6,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
-        "in_clan": false,
+        "in_clan": true,
         "mentor": false,
         "exp": 0,
         "elder_powers": []
@@ -3062,8 +3175,9 @@
         "discipline": 3,
         "value": 3,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
-        "in_clan": false,
+        "in_clan": true,
         "mentor": false,
         "exp": 0,
         "elder_powers": []
@@ -3076,8 +3190,9 @@
         "discipline": 8,
         "value": 3,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
-        "in_clan": false,
+        "in_clan": true,
         "mentor": false,
         "exp": 0,
         "elder_powers": []
@@ -3090,6 +3205,7 @@
         "discipline": 2,
         "value": 1,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "in_clan": false,
         "mentor": false,
@@ -3104,6 +3220,7 @@
         "discipline": 3,
         "value": 1,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "in_clan": false,
         "mentor": false,
@@ -3118,6 +3235,7 @@
         "discipline": 8,
         "value": 2,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "in_clan": false,
         "mentor": false,
@@ -3132,6 +3250,7 @@
         "discipline": 9,
         "value": 0,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "in_clan": false,
         "mentor": false,
@@ -3146,6 +3265,7 @@
         "discipline": 3,
         "value": 1,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "in_clan": false,
         "mentor": false,
@@ -3160,6 +3280,7 @@
         "discipline": 8,
         "value": 2,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "in_clan": false,
         "mentor": false,
@@ -3174,6 +3295,7 @@
         "discipline": 9,
         "value": 0,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "in_clan": false,
         "mentor": false,
@@ -3188,6 +3310,7 @@
         "discipline": 3,
         "value": 1,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "in_clan": false,
         "mentor": false,
@@ -3202,6 +3325,7 @@
         "discipline": 8,
         "value": 1,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "in_clan": false,
         "mentor": false,
@@ -3216,6 +3340,7 @@
         "discipline": 9,
         "value": 1,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "in_clan": false,
         "mentor": false,
@@ -3230,6 +3355,7 @@
         "discipline": 1,
         "value": 1,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "in_clan": false,
         "mentor": false,
@@ -3244,8 +3370,9 @@
         "discipline": 3,
         "value": 2,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
-        "in_clan": false,
+        "in_clan": true,
         "mentor": false,
         "exp": 0,
         "elder_powers": []
@@ -3258,6 +3385,7 @@
         "discipline": 10,
         "value": 1,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "in_clan": false,
         "mentor": false,
@@ -3272,8 +3400,9 @@
         "discipline": 3,
         "value": 0,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
-        "in_clan": false,
+        "in_clan": true,
         "mentor": false,
         "exp": 0,
         "elder_powers": []
@@ -3286,8 +3415,9 @@
         "discipline": 8,
         "value": 0,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
-        "in_clan": false,
+        "in_clan": true,
         "mentor": false,
         "exp": 0,
         "elder_powers": []
@@ -3300,8 +3430,9 @@
         "discipline": 9,
         "value": 3,
         "learned": true,
+        "learning": false,
         "elder_blood": false,
-        "in_clan": false,
+        "in_clan": true,
         "mentor": true,
         "exp": 0,
         "elder_powers": []
@@ -3314,8 +3445,9 @@
         "discipline": 4,
         "value": 3,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
-        "in_clan": false,
+        "in_clan": true,
         "mentor": false,
         "exp": 0,
         "elder_powers": []
@@ -3328,8 +3460,9 @@
         "discipline": 1,
         "value": 0,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
-        "in_clan": false,
+        "in_clan": true,
         "mentor": false,
         "exp": 0,
         "elder_powers": []
@@ -3342,8 +3475,9 @@
         "discipline": 7,
         "value": 0,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
-        "in_clan": false,
+        "in_clan": true,
         "mentor": false,
         "exp": 0,
         "elder_powers": []
@@ -3356,8 +3490,9 @@
         "discipline": 6,
         "value": 1,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
-        "in_clan": false,
+        "in_clan": true,
         "mentor": false,
         "exp": 0,
         "elder_powers": []
@@ -3370,8 +3505,9 @@
         "discipline": 9,
         "value": 7,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
-        "in_clan": false,
+        "in_clan": true,
         "mentor": false,
         "exp": 0,
         "elder_powers": []
@@ -3384,8 +3520,9 @@
         "discipline": 8,
         "value": 6,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
-        "in_clan": false,
+        "in_clan": true,
         "mentor": false,
         "exp": 0,
         "elder_powers": []
@@ -3398,8 +3535,9 @@
         "discipline": 3,
         "value": 5,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
-        "in_clan": false,
+        "in_clan": true,
         "mentor": false,
         "exp": 0,
         "elder_powers": []
@@ -3412,6 +3550,7 @@
         "discipline": 6,
         "value": 2,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "in_clan": false,
         "mentor": false,
@@ -3426,6 +3565,7 @@
         "discipline": 10,
         "value": 2,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "in_clan": false,
         "mentor": false,
@@ -3440,8 +3580,9 @@
         "discipline": 3,
         "value": 1,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
-        "in_clan": false,
+        "in_clan": true,
         "mentor": false,
         "exp": 0,
         "elder_powers": []
@@ -3454,8 +3595,9 @@
         "discipline": 8,
         "value": 1,
         "learned": true,
+        "learning": false,
         "elder_blood": false,
-        "in_clan": false,
+        "in_clan": true,
         "mentor": false,
         "exp": 1,
         "elder_powers": []
@@ -3468,8 +3610,9 @@
         "discipline": 9,
         "value": 1,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
-        "in_clan": false,
+        "in_clan": true,
         "mentor": false,
         "exp": 0,
         "elder_powers": []
@@ -3482,8 +3625,9 @@
         "discipline": 4,
         "value": 1,
         "learned": true,
+        "learning": false,
         "elder_blood": false,
-        "in_clan": false,
+        "in_clan": true,
         "mentor": false,
         "exp": 1,
         "elder_powers": []
@@ -3496,8 +3640,9 @@
         "discipline": 7,
         "value": 2,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
-        "in_clan": false,
+        "in_clan": true,
         "mentor": false,
         "exp": 0,
         "elder_powers": []
@@ -3510,8 +3655,9 @@
         "discipline": 1,
         "value": 1,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
-        "in_clan": false,
+        "in_clan": true,
         "mentor": false,
         "exp": 0,
         "elder_powers": []
@@ -3524,8 +3670,9 @@
         "discipline": 7,
         "value": 2,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
-        "in_clan": false,
+        "in_clan": true,
         "mentor": false,
         "exp": 0,
         "elder_powers": []
@@ -3538,8 +3685,9 @@
         "discipline": 10,
         "value": 3,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
-        "in_clan": false,
+        "in_clan": true,
         "mentor": false,
         "exp": 0,
         "elder_powers": []
@@ -3552,6 +3700,7 @@
         "discipline": 6,
         "value": 1,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "in_clan": true,
         "mentor": false,
@@ -3566,8 +3715,9 @@
         "discipline": 4,
         "value": 5,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
-        "in_clan": false,
+        "in_clan": true,
         "mentor": false,
         "exp": 0,
         "elder_powers": []
@@ -3580,8 +3730,9 @@
         "discipline": 7,
         "value": 3,
         "learned": true,
+        "learning": false,
         "elder_blood": false,
-        "in_clan": false,
+        "in_clan": true,
         "mentor": false,
         "exp": 1,
         "elder_powers": []
@@ -3594,8 +3745,9 @@
         "discipline": 1,
         "value": 1,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
-        "in_clan": false,
+        "in_clan": true,
         "mentor": false,
         "exp": 0,
         "elder_powers": []
@@ -3608,6 +3760,7 @@
         "discipline": 11,
         "value": 1,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "in_clan": false,
         "mentor": false,
@@ -3622,6 +3775,7 @@
         "discipline": 7,
         "value": 1,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "in_clan": false,
         "mentor": false,
@@ -3636,6 +3790,7 @@
         "discipline": 8,
         "value": 1,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "in_clan": false,
         "mentor": false,
@@ -3650,6 +3805,7 @@
         "discipline": 3,
         "value": 1,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "in_clan": false,
         "mentor": false,
@@ -3664,6 +3820,7 @@
         "discipline": 8,
         "value": 1,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "in_clan": false,
         "mentor": false,
@@ -3678,6 +3835,7 @@
         "discipline": 6,
         "value": 1,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "in_clan": false,
         "mentor": false,
@@ -3692,6 +3850,7 @@
         "discipline": 3,
         "value": 1,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "in_clan": false,
         "mentor": false,
@@ -3706,6 +3865,7 @@
         "discipline": 8,
         "value": 1,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "in_clan": false,
         "mentor": false,
@@ -3720,6 +3880,7 @@
         "discipline": 6,
         "value": 1,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "in_clan": false,
         "mentor": false,
@@ -3734,6 +3895,7 @@
         "discipline": 3,
         "value": 1,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "in_clan": false,
         "mentor": false,
@@ -3748,6 +3910,7 @@
         "discipline": 8,
         "value": 1,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "in_clan": false,
         "mentor": false,
@@ -3762,6 +3925,7 @@
         "discipline": 6,
         "value": 1,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "in_clan": false,
         "mentor": false,
@@ -3776,6 +3940,7 @@
         "discipline": 3,
         "value": 1,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "in_clan": false,
         "mentor": false,
@@ -3790,6 +3955,7 @@
         "discipline": 8,
         "value": 1,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "in_clan": false,
         "mentor": false,
@@ -3804,6 +3970,7 @@
         "discipline": 6,
         "value": 1,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "in_clan": false,
         "mentor": false,
@@ -3818,8 +3985,9 @@
         "discipline": 3,
         "value": 1,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
-        "in_clan": false,
+        "in_clan": true,
         "mentor": false,
         "exp": 0,
         "elder_powers": []
@@ -3832,8 +4000,9 @@
         "discipline": 8,
         "value": 1,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
-        "in_clan": false,
+        "in_clan": true,
         "mentor": false,
         "exp": 0,
         "elder_powers": []
@@ -3846,6 +4015,7 @@
         "discipline": 6,
         "value": 1,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "in_clan": false,
         "mentor": false,
@@ -3860,8 +4030,9 @@
         "discipline": 1,
         "value": 5,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
-        "in_clan": false,
+        "in_clan": true,
         "mentor": false,
         "exp": 0,
         "elder_powers": []
@@ -3874,8 +4045,9 @@
         "discipline": 11,
         "value": 5,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
-        "in_clan": false,
+        "in_clan": true,
         "mentor": false,
         "exp": 0,
         "elder_powers": []
@@ -3888,8 +4060,9 @@
         "discipline": 5,
         "value": 5,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
-        "in_clan": false,
+        "in_clan": true,
         "mentor": false,
         "exp": 0,
         "elder_powers": []
@@ -3902,6 +4075,7 @@
         "discipline": 9,
         "value": 5,
         "learned": true,
+        "learning": false,
         "elder_blood": false,
         "in_clan": false,
         "mentor": false,
@@ -3916,8 +4090,9 @@
         "discipline": 1,
         "value": 2,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
-        "in_clan": false,
+        "in_clan": true,
         "mentor": false,
         "exp": 0,
         "elder_powers": []
@@ -3930,8 +4105,9 @@
         "discipline": 11,
         "value": 1,
         "learned": true,
+        "learning": false,
         "elder_blood": false,
-        "in_clan": false,
+        "in_clan": true,
         "mentor": false,
         "exp": 1,
         "elder_powers": []
@@ -3944,8 +4120,9 @@
         "discipline": 2,
         "value": 1,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
-        "in_clan": false,
+        "in_clan": true,
         "mentor": false,
         "exp": 0,
         "elder_powers": []
@@ -3958,8 +4135,9 @@
         "discipline": 10,
         "value": 2,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
-        "in_clan": false,
+        "in_clan": true,
         "mentor": false,
         "exp": 0,
         "elder_powers": []
@@ -3972,6 +4150,7 @@
         "discipline": 7,
         "value": 1,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "in_clan": false,
         "mentor": false,
@@ -3986,6 +4165,7 @@
         "discipline": 5,
         "value": 3,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "in_clan": false,
         "mentor": false,
@@ -4000,6 +4180,7 @@
         "discipline": 11,
         "value": 1,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "in_clan": false,
         "mentor": false,
@@ -4014,8 +4195,9 @@
         "discipline": 1,
         "value": 0,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
-        "in_clan": false,
+        "in_clan": true,
         "mentor": false,
         "exp": 0,
         "elder_powers": []
@@ -4028,8 +4210,9 @@
         "discipline": 5,
         "value": 0,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
-        "in_clan": false,
+        "in_clan": true,
         "mentor": false,
         "exp": 0,
         "elder_powers": []
@@ -4042,8 +4225,9 @@
         "discipline": 11,
         "value": 4,
         "learned": true,
+        "learning": false,
         "elder_blood": false,
-        "in_clan": false,
+        "in_clan": true,
         "mentor": false,
         "exp": 1,
         "elder_powers": []
@@ -4056,6 +4240,7 @@
         "discipline": 1,
         "value": 3,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "in_clan": false,
         "mentor": false,
@@ -4070,8 +4255,9 @@
         "discipline": 9,
         "value": 0,
         "learned": true,
+        "learning": false,
         "elder_blood": false,
-        "in_clan": false,
+        "in_clan": true,
         "mentor": false,
         "exp": 1,
         "elder_powers": []
@@ -4084,6 +4270,7 @@
         "discipline": 6,
         "value": 0,
         "learned": true,
+        "learning": false,
         "elder_blood": false,
         "in_clan": false,
         "mentor": true,
@@ -4098,8 +4285,9 @@
         "discipline": 6,
         "value": 0,
         "learned": true,
+        "learning": false,
         "elder_blood": false,
-        "in_clan": false,
+        "in_clan": true,
         "mentor": false,
         "exp": 1,
         "elder_powers": []
@@ -4112,6 +4300,7 @@
         "discipline": 3,
         "value": 0,
         "learned": true,
+        "learning": false,
         "elder_blood": false,
         "in_clan": false,
         "mentor": true,
@@ -4126,6 +4315,7 @@
         "discipline": 8,
         "value": 0,
         "learned": true,
+        "learning": false,
         "elder_blood": false,
         "in_clan": false,
         "mentor": true,
@@ -4140,6 +4330,7 @@
         "discipline": 10,
         "value": 1,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "in_clan": false,
         "mentor": false,
@@ -4154,6 +4345,7 @@
         "discipline": 5,
         "value": 3,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "in_clan": false,
         "mentor": false,
@@ -4168,6 +4360,7 @@
         "discipline": 2,
         "value": 1,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "in_clan": false,
         "mentor": false,
@@ -4202,6 +4395,7 @@
     "fields": {
         "attribute": 1,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "mentor": false,
         "value": 4,
@@ -4214,6 +4408,7 @@
     "fields": {
         "attribute": 3,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "mentor": false,
         "value": 3,
@@ -4226,6 +4421,7 @@
     "fields": {
         "attribute": 2,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "mentor": false,
         "value": 4,
@@ -4238,6 +4434,7 @@
     "fields": {
         "attribute": 1,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "mentor": false,
         "value": 4,
@@ -4250,6 +4447,7 @@
     "fields": {
         "attribute": 3,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "mentor": false,
         "value": 1,
@@ -4262,6 +4460,7 @@
     "fields": {
         "attribute": 2,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "mentor": false,
         "value": 3,
@@ -4274,6 +4473,7 @@
     "fields": {
         "attribute": 1,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "mentor": false,
         "value": 5,
@@ -4286,6 +4486,7 @@
     "fields": {
         "attribute": 3,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "mentor": false,
         "value": 2,
@@ -4298,6 +4499,7 @@
     "fields": {
         "attribute": 2,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "mentor": false,
         "value": 3,
@@ -4310,6 +4512,7 @@
     "fields": {
         "attribute": 1,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "mentor": false,
         "value": 1,
@@ -4322,6 +4525,7 @@
     "fields": {
         "attribute": 1,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "mentor": false,
         "value": 4,
@@ -4334,6 +4538,7 @@
     "fields": {
         "attribute": 3,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "mentor": false,
         "value": 6,
@@ -4346,6 +4551,7 @@
     "fields": {
         "attribute": 2,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "mentor": false,
         "value": 5,
@@ -4358,6 +4564,7 @@
     "fields": {
         "attribute": 1,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "mentor": false,
         "value": 4,
@@ -4370,6 +4577,7 @@
     "fields": {
         "attribute": 3,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "mentor": false,
         "value": 6,
@@ -4382,6 +4590,7 @@
     "fields": {
         "attribute": 2,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "mentor": false,
         "value": 5,
@@ -4394,6 +4603,7 @@
     "fields": {
         "attribute": 1,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "mentor": false,
         "value": 4,
@@ -4406,6 +4616,7 @@
     "fields": {
         "attribute": 3,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "mentor": false,
         "value": 6,
@@ -4418,6 +4629,7 @@
     "fields": {
         "attribute": 2,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "mentor": false,
         "value": 5,
@@ -4430,6 +4642,7 @@
     "fields": {
         "attribute": 1,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "mentor": false,
         "value": 4,
@@ -4442,6 +4655,7 @@
     "fields": {
         "attribute": 3,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "mentor": false,
         "value": 3,
@@ -4454,6 +4668,7 @@
     "fields": {
         "attribute": 2,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "mentor": false,
         "value": 2,
@@ -4466,6 +4681,7 @@
     "fields": {
         "attribute": 1,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "mentor": false,
         "value": 1,
@@ -4478,6 +4694,7 @@
     "fields": {
         "attribute": 3,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "mentor": false,
         "value": 4,
@@ -4490,6 +4707,7 @@
     "fields": {
         "attribute": 2,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "mentor": false,
         "value": 1,
@@ -4502,6 +4720,7 @@
     "fields": {
         "attribute": 1,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "mentor": false,
         "value": 1,
@@ -4514,6 +4733,7 @@
     "fields": {
         "attribute": 3,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "mentor": false,
         "value": 4,
@@ -4526,6 +4746,7 @@
     "fields": {
         "attribute": 2,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "mentor": false,
         "value": 3,
@@ -4538,6 +4759,7 @@
     "fields": {
         "attribute": 1,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "mentor": false,
         "value": 4,
@@ -4550,6 +4772,7 @@
     "fields": {
         "attribute": 3,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "mentor": false,
         "value": 1,
@@ -4562,6 +4785,7 @@
     "fields": {
         "attribute": 2,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "mentor": false,
         "value": 1,
@@ -4574,6 +4798,7 @@
     "fields": {
         "attribute": 1,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "mentor": false,
         "value": 2,
@@ -4586,6 +4811,7 @@
     "fields": {
         "attribute": 3,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "mentor": false,
         "value": 5,
@@ -4598,6 +4824,7 @@
     "fields": {
         "attribute": 2,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "mentor": false,
         "value": 5,
@@ -4610,6 +4837,7 @@
     "fields": {
         "attribute": 1,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "mentor": false,
         "value": 6,
@@ -4622,6 +4850,7 @@
     "fields": {
         "attribute": 3,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "mentor": false,
         "value": 5,
@@ -4634,6 +4863,7 @@
     "fields": {
         "attribute": 2,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "mentor": false,
         "value": 3,
@@ -4646,6 +4876,7 @@
     "fields": {
         "attribute": 1,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "mentor": false,
         "value": 2,
@@ -4658,6 +4889,7 @@
     "fields": {
         "attribute": 3,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "mentor": false,
         "value": 6,
@@ -4670,6 +4902,7 @@
     "fields": {
         "attribute": 2,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "mentor": false,
         "value": 3,
@@ -4682,6 +4915,7 @@
     "fields": {
         "attribute": 1,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "mentor": false,
         "value": 1,
@@ -4694,6 +4928,7 @@
     "fields": {
         "attribute": 3,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "mentor": false,
         "value": 1,
@@ -4706,6 +4941,7 @@
     "fields": {
         "attribute": 2,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "mentor": false,
         "value": 5,
@@ -4718,6 +4954,7 @@
     "fields": {
         "attribute": 1,
         "learned": true,
+        "learning": false,
         "elder_blood": false,
         "mentor": false,
         "value": 3,
@@ -4730,6 +4967,7 @@
     "fields": {
         "attribute": 3,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "mentor": false,
         "value": 1,
@@ -4742,6 +4980,7 @@
     "fields": {
         "attribute": 2,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "mentor": false,
         "value": 5,
@@ -4754,6 +4993,7 @@
     "fields": {
         "attribute": 1,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "mentor": false,
         "value": 1,
@@ -4766,6 +5006,7 @@
     "fields": {
         "attribute": 3,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "mentor": false,
         "value": 5,
@@ -4778,6 +5019,7 @@
     "fields": {
         "attribute": 2,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "mentor": false,
         "value": 1,
@@ -4790,6 +5032,7 @@
     "fields": {
         "attribute": 1,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "mentor": false,
         "value": 4,
@@ -4802,6 +5045,7 @@
     "fields": {
         "attribute": 3,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "mentor": false,
         "value": 1,
@@ -4814,6 +5058,7 @@
     "fields": {
         "attribute": 2,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "mentor": false,
         "value": 5,
@@ -4826,6 +5071,7 @@
     "fields": {
         "attribute": 1,
         "learned": true,
+        "learning": false,
         "elder_blood": false,
         "mentor": false,
         "value": 2,
@@ -4838,6 +5084,7 @@
     "fields": {
         "attribute": 3,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "mentor": false,
         "value": 3,
@@ -4850,6 +5097,7 @@
     "fields": {
         "attribute": 2,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "mentor": false,
         "value": 5,
@@ -4862,6 +5110,7 @@
     "fields": {
         "attribute": 1,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "mentor": false,
         "value": 1,
@@ -4874,6 +5123,7 @@
     "fields": {
         "attribute": 3,
         "learned": true,
+        "learning": false,
         "elder_blood": false,
         "mentor": false,
         "value": 3,
@@ -4886,6 +5136,7 @@
     "fields": {
         "attribute": 2,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "mentor": false,
         "value": 4,
@@ -4898,6 +5149,7 @@
     "fields": {
         "attribute": 1,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "mentor": false,
         "value": 4,
@@ -4910,6 +5162,7 @@
     "fields": {
         "attribute": 3,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "mentor": false,
         "value": 1,
@@ -4922,6 +5175,7 @@
     "fields": {
         "attribute": 2,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "mentor": false,
         "value": 3,
@@ -4934,6 +5188,7 @@
     "fields": {
         "attribute": 1,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "mentor": false,
         "value": 7,
@@ -4946,6 +5201,7 @@
     "fields": {
         "attribute": 3,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "mentor": false,
         "value": 5,
@@ -4958,6 +5214,7 @@
     "fields": {
         "attribute": 2,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "mentor": false,
         "value": 3,
@@ -4970,6 +5227,7 @@
     "fields": {
         "attribute": 1,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "mentor": false,
         "value": 1,
@@ -4982,6 +5240,7 @@
     "fields": {
         "attribute": 3,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "mentor": false,
         "value": 1,
@@ -4994,6 +5253,7 @@
     "fields": {
         "attribute": 2,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "mentor": false,
         "value": 5,
@@ -5006,6 +5266,7 @@
     "fields": {
         "attribute": 1,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "mentor": false,
         "value": 0,
@@ -5018,6 +5279,7 @@
     "fields": {
         "attribute": 3,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "mentor": false,
         "value": 0,
@@ -5030,6 +5292,7 @@
     "fields": {
         "attribute": 2,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "mentor": false,
         "value": 0,
@@ -5042,6 +5305,7 @@
     "fields": {
         "attribute": 1,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "mentor": false,
         "value": 0,
@@ -5054,6 +5318,7 @@
     "fields": {
         "attribute": 3,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "mentor": false,
         "value": 0,
@@ -5066,6 +5331,7 @@
     "fields": {
         "attribute": 2,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "mentor": false,
         "value": 0,
@@ -5078,6 +5344,7 @@
     "fields": {
         "attribute": 1,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "mentor": false,
         "value": 6,
@@ -5090,6 +5357,7 @@
     "fields": {
         "attribute": 3,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "mentor": false,
         "value": 2,
@@ -5102,6 +5370,7 @@
     "fields": {
         "attribute": 2,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "mentor": false,
         "value": 6,
@@ -5114,6 +5383,7 @@
     "fields": {
         "attribute": 1,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "mentor": false,
         "value": 1,
@@ -5126,6 +5396,7 @@
     "fields": {
         "attribute": 3,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "mentor": false,
         "value": 3,
@@ -5138,6 +5409,7 @@
     "fields": {
         "attribute": 2,
         "learned": false,
+        "learning": false,
         "elder_blood": false,
         "mentor": false,
         "value": 3,
@@ -5747,6 +6019,7 @@
     "pk": 3,
     "fields": {
         "name": "Ludvig Eklund",
+        "concept": "",
         "influence": 1,
         "attributes": [
             1,
@@ -5759,6 +6032,7 @@
     "pk": 4,
     "fields": {
         "name": "Nora Ljung",
+        "concept": "",
         "influence": 2,
         "attributes": [
             3,
@@ -5771,6 +6045,7 @@
     "pk": 5,
     "fields": {
         "name": "Karolin Olofsdotter",
+        "concept": "",
         "influence": 3,
         "attributes": [
             1,
@@ -5783,6 +6058,7 @@
     "pk": 6,
     "fields": {
         "name": "Sture V\u00e5ng",
+        "concept": "",
         "influence": 6,
         "attributes": [
             3,
@@ -5795,6 +6071,7 @@
     "pk": 7,
     "fields": {
         "name": "Paula M\u00e5rdh",
+        "concept": "",
         "influence": 6,
         "attributes": [
             1,
@@ -5807,6 +6084,7 @@
     "pk": 8,
     "fields": {
         "name": "Magdalena Dahl",
+        "concept": "",
         "influence": 2,
         "attributes": [
             3,
@@ -5819,6 +6097,7 @@
     "pk": 9,
     "fields": {
         "name": "Lillith",
+        "concept": "",
         "influence": 3,
         "attributes": [
             4,
@@ -5831,6 +6110,7 @@
     "pk": 10,
     "fields": {
         "name": "Mephistofeles",
+        "concept": "",
         "influence": 5,
         "attributes": [
             1,
@@ -5843,6 +6123,7 @@
     "pk": 11,
     "fields": {
         "name": "Sven-G\u00f6ran Gelin",
+        "concept": "",
         "influence": 5,
         "attributes": [
             5
@@ -5854,6 +6135,7 @@
     "pk": 12,
     "fields": {
         "name": "Inga Fj\u00e4llstr\u00f6m",
+        "concept": "",
         "influence": 5,
         "attributes": [
             3
@@ -5865,6 +6147,7 @@
     "pk": 13,
     "fields": {
         "name": "Sverker Olofson",
+        "concept": "",
         "influence": 5,
         "attributes": [
             1
@@ -5876,6 +6159,7 @@
     "pk": 14,
     "fields": {
         "name": "Nils Cronholm",
+        "concept": "",
         "influence": 2,
         "attributes": [
             3
@@ -5887,6 +6171,7 @@
     "pk": 15,
     "fields": {
         "name": "Tilde Christersson",
+        "concept": "",
         "influence": 4,
         "attributes": [
             2
@@ -5898,6 +6183,7 @@
     "pk": 16,
     "fields": {
         "name": "Erik Blom",
+        "concept": "",
         "influence": 6,
         "attributes": [
             1
@@ -5909,6 +6195,7 @@
     "pk": 29,
     "fields": {
         "name": "Jenna Sykes",
+        "concept": "",
         "influence": 3,
         "attributes": [
             3,
@@ -5921,6 +6208,7 @@
     "pk": 30,
     "fields": {
         "name": "Max Stenstr\u00f6m",
+        "concept": "",
         "influence": 3,
         "attributes": [
             3,
@@ -5933,6 +6221,7 @@
     "pk": 31,
     "fields": {
         "name": "Till Hansson",
+        "concept": "",
         "influence": 5,
         "attributes": [
             3,
@@ -5945,6 +6234,7 @@
     "pk": 32,
     "fields": {
         "name": "Mio Bj\u00f6rk",
+        "concept": "",
         "influence": 1,
         "attributes": [
             3,
@@ -5957,6 +6247,7 @@
     "pk": 33,
     "fields": {
         "name": "Kim Strand",
+        "concept": "",
         "influence": 2,
         "attributes": [
             3,
@@ -5969,6 +6260,7 @@
     "pk": 34,
     "fields": {
         "name": "Sam Nordblom",
+        "concept": "",
         "influence": 6,
         "attributes": [
             3,
@@ -5981,6 +6273,7 @@
     "pk": 35,
     "fields": {
         "name": "Profeser wallenberg",
+        "concept": "",
         "influence": 6,
         "attributes": [
             2
@@ -5992,6 +6285,7 @@
     "pk": 36,
     "fields": {
         "name": "Ivan Kallenberg",
+        "concept": "",
         "influence": 5,
         "attributes": [
             1
@@ -6003,6 +6297,7 @@
     "pk": 37,
     "fields": {
         "name": "Kenneth Dar",
+        "concept": "",
         "influence": 2,
         "attributes": [
             4,
@@ -6015,6 +6310,7 @@
     "pk": 38,
     "fields": {
         "name": "Greta Star",
+        "concept": "",
         "influence": 5,
         "attributes": [
             3,
@@ -6027,6 +6323,7 @@
     "pk": 39,
     "fields": {
         "name": "Klaus Dow",
+        "concept": "",
         "influence": 6,
         "attributes": [
             1,
@@ -6039,6 +6336,7 @@
     "pk": 40,
     "fields": {
         "name": "Doug Underhill",
+        "concept": "",
         "influence": 5,
         "attributes": [
             2,
@@ -6051,6 +6349,7 @@
     "pk": 41,
     "fields": {
         "name": "Greg Stone",
+        "concept": "",
         "influence": 3,
         "attributes": [
             1,
@@ -6063,6 +6362,7 @@
     "pk": 42,
     "fields": {
         "name": "Louise Uppercut",
+        "concept": "",
         "influence": 6,
         "attributes": [
             3,
@@ -6075,6 +6375,7 @@
     "pk": 43,
     "fields": {
         "name": "Martin Abelsen",
+        "concept": "",
         "influence": 6,
         "attributes": [
             3,
@@ -6087,6 +6388,7 @@
     "pk": 44,
     "fields": {
         "name": "Joanna \u00d6hrn",
+        "concept": "",
         "influence": 4,
         "attributes": [
             1,
@@ -6099,6 +6401,7 @@
     "pk": 45,
     "fields": {
         "name": "Katarina \u00c5gren",
+        "concept": "",
         "influence": 4,
         "attributes": [
             4,
@@ -6111,6 +6414,7 @@
     "pk": 46,
     "fields": {
         "name": "Elise Yxfeldt",
+        "concept": "",
         "influence": 3,
         "attributes": [
             3,
@@ -6123,6 +6427,7 @@
     "pk": 47,
     "fields": {
         "name": "Mahmoud Nejem",
+        "concept": "",
         "influence": 2,
         "attributes": [
             4,
@@ -6135,6 +6440,7 @@
     "pk": 48,
     "fields": {
         "name": "Gabriella Seger",
+        "concept": "",
         "influence": 2,
         "attributes": [
             1,
@@ -6147,6 +6453,7 @@
     "pk": 49,
     "fields": {
         "name": "Erling Ufving",
+        "concept": "",
         "influence": 5,
         "attributes": [
             1,
@@ -6159,6 +6466,7 @@
     "pk": 50,
     "fields": {
         "name": "Maja Thorz\u00e9n",
+        "concept": "",
         "influence": 1,
         "attributes": [
             4,
@@ -6171,6 +6479,7 @@
     "pk": 51,
     "fields": {
         "name": "Alex Reimer",
+        "concept": "",
         "influence": 1,
         "attributes": [
             3,
@@ -6183,6 +6492,7 @@
     "pk": 52,
     "fields": {
         "name": "Leif Palm",
+        "concept": "",
         "influence": 4,
         "attributes": [
             2,
@@ -6195,6 +6505,7 @@
     "pk": 53,
     "fields": {
         "name": "Sven Piper",
+        "concept": "",
         "influence": 5,
         "attributes": [
             3,
@@ -6207,6 +6518,7 @@
     "pk": 54,
     "fields": {
         "name": "Lina F\u00e4ladsson",
+        "concept": "",
         "influence": 1,
         "attributes": [
             2,
@@ -6219,6 +6531,7 @@
     "pk": 55,
     "fields": {
         "name": "Johan Fall",
+        "concept": "",
         "influence": 5,
         "attributes": [
             1,
@@ -6231,6 +6544,7 @@
     "pk": 56,
     "fields": {
         "name": "Martin Oddshammar",
+        "concept": "",
         "influence": 2,
         "attributes": [
             4,
@@ -6243,6 +6557,7 @@
     "pk": 57,
     "fields": {
         "name": "Mattias Nesselqvist",
+        "concept": "",
         "influence": 5,
         "attributes": [
             3,
@@ -6255,6 +6570,7 @@
     "pk": 58,
     "fields": {
         "name": "Maria Mattisdotter",
+        "concept": "",
         "influence": 4,
         "attributes": [
             1,
@@ -6267,6 +6583,7 @@
     "pk": 59,
     "fields": {
         "name": "Tod Smith",
+        "concept": "",
         "influence": 2,
         "attributes": [
             3,
@@ -6279,6 +6596,7 @@
     "pk": 61,
     "fields": {
         "name": "Vera Sk\u00f6ld",
+        "concept": "",
         "influence": 3,
         "attributes": [
             2,
@@ -6291,6 +6609,7 @@
     "pk": 62,
     "fields": {
         "name": "Jan Book",
+        "concept": "",
         "influence": 4,
         "attributes": [
             4,
@@ -6303,6 +6622,7 @@
     "pk": 63,
     "fields": {
         "name": "My Bo",
+        "concept": "",
         "influence": 1,
         "attributes": [
             1,
@@ -6315,6 +6635,7 @@
     "pk": 64,
     "fields": {
         "name": "Ursula Kafort",
+        "concept": "",
         "influence": 3,
         "attributes": [
             3,
@@ -6327,6 +6648,7 @@
     "pk": 65,
     "fields": {
         "name": "Ace K Rowan",
+        "concept": "",
         "influence": 3,
         "attributes": [
             4,
@@ -6339,6 +6661,7 @@
     "pk": 66,
     "fields": {
         "name": "Loranna Hart",
+        "concept": "",
         "influence": 3,
         "attributes": [
             3,
@@ -6351,6 +6674,7 @@
     "pk": 67,
     "fields": {
         "name": "Alexander Svart\u00e9n",
+        "concept": "",
         "influence": 1,
         "attributes": [
             1,
@@ -6363,6 +6687,7 @@
     "pk": 88,
     "fields": {
         "name": "Samuel Markesj\u00f6",
+        "concept": "",
         "influence": 1,
         "attributes": [
             2
@@ -6374,6 +6699,7 @@
     "pk": 89,
     "fields": {
         "name": "Dean Lauritzen",
+        "concept": "",
         "influence": 5,
         "attributes": []
     }
@@ -6383,6 +6709,7 @@
     "pk": 90,
     "fields": {
         "name": "Cassandra Kahn",
+        "concept": "",
         "influence": 5,
         "attributes": []
     }
@@ -6392,6 +6719,7 @@
     "pk": 91,
     "fields": {
         "name": "Fergus Henrysson",
+        "concept": "",
         "influence": 3,
         "attributes": []
     }
@@ -6401,6 +6729,7 @@
     "pk": 92,
     "fields": {
         "name": "Marie Gravvold",
+        "concept": "",
         "influence": 2,
         "attributes": []
     }
@@ -6410,6 +6739,7 @@
     "pk": 93,
     "fields": {
         "name": "Glen Svensson",
+        "concept": "",
         "influence": 2,
         "attributes": [
             1,
@@ -6422,6 +6752,7 @@
     "pk": 94,
     "fields": {
         "name": "Xantro",
+        "concept": "",
         "influence": 4,
         "attributes": [
             3,
@@ -6434,6 +6765,7 @@
     "pk": 95,
     "fields": {
         "name": "Michelle Falk",
+        "concept": "",
         "influence": 4,
         "attributes": [
             3,
@@ -6446,6 +6778,7 @@
     "pk": 96,
     "fields": {
         "name": "Lina Ebbasdotter",
+        "concept": "",
         "influence": 4,
         "attributes": [
             3,
@@ -6458,6 +6791,7 @@
     "pk": 97,
     "fields": {
         "name": "Arvid Lindgren",
+        "concept": "",
         "influence": 5,
         "attributes": [
             1,
@@ -6470,6 +6804,7 @@
     "pk": 98,
     "fields": {
         "name": "Leonard Hansson",
+        "concept": "",
         "influence": 3,
         "attributes": [
             2,
@@ -6482,6 +6817,7 @@
     "pk": 99,
     "fields": {
         "name": "Ester Andersson",
+        "concept": "",
         "influence": 2,
         "attributes": [
             4,
@@ -6494,6 +6830,7 @@
     "pk": 100,
     "fields": {
         "name": "Gustav Strand",
+        "concept": "",
         "influence": 2,
         "attributes": [
             3,
@@ -6506,6 +6843,7 @@
     "pk": 101,
     "fields": {
         "name": "Sven-Olof Hieta",
+        "concept": "",
         "influence": 2,
         "attributes": [
             1,
@@ -6518,6 +6856,7 @@
     "pk": 102,
     "fields": {
         "name": "Susanna Karlsdotter",
+        "concept": "",
         "influence": 6,
         "attributes": [
             3,
@@ -6530,6 +6869,7 @@
     "pk": 103,
     "fields": {
         "name": "Tobias von Knorring",
+        "concept": "",
         "influence": 1,
         "attributes": [
             1,
@@ -6542,6 +6882,7 @@
     "pk": 104,
     "fields": {
         "name": "Nadia Dahlkvist",
+        "concept": "",
         "influence": 4,
         "attributes": [
             3,
@@ -6554,6 +6895,7 @@
     "pk": 105,
     "fields": {
         "name": "Juliana Conde",
+        "concept": "",
         "influence": 6,
         "attributes": [
             1,
@@ -6566,6 +6908,7 @@
     "pk": 106,
     "fields": {
         "name": "Kertin Bergenfeldt",
+        "concept": "",
         "influence": 3,
         "attributes": [
             4
@@ -6577,6 +6920,7 @@
     "pk": 107,
     "fields": {
         "name": "Leif Albrechtsson",
+        "concept": "",
         "influence": 1,
         "attributes": [
             5
@@ -6588,6 +6932,7 @@
     "pk": 108,
     "fields": {
         "name": "Aikku Jokinen",
+        "concept": "",
         "influence": 6,
         "attributes": [
             4,
@@ -6600,6 +6945,7 @@
     "pk": 109,
     "fields": {
         "name": "Carl L\u00f6fquist",
+        "concept": "",
         "influence": 1,
         "attributes": [
             3,
@@ -6612,6 +6958,7 @@
     "pk": 110,
     "fields": {
         "name": "Bang Olauson",
+        "concept": "",
         "influence": 2,
         "attributes": [
             2,
@@ -6624,6 +6971,7 @@
     "pk": 111,
     "fields": {
         "name": "Petra Caspersen",
+        "concept": "",
         "influence": 6,
         "attributes": [
             1,
@@ -6636,6 +6984,7 @@
     "pk": 112,
     "fields": {
         "name": "Anna Nilsson",
+        "concept": "",
         "influence": 6,
         "attributes": [
             4,
@@ -6648,6 +6997,7 @@
     "pk": 113,
     "fields": {
         "name": "Hedvig Persson - Priest",
+        "concept": "",
         "influence": 4,
         "attributes": [
             2,
@@ -6660,6 +7010,7 @@
     "pk": 114,
     "fields": {
         "name": "Janne Cook - Collector",
+        "concept": "",
         "influence": 4,
         "attributes": [
             1,
@@ -6672,6 +7023,7 @@
     "pk": 115,
     "fields": {
         "name": "Shei Svensson - Journalist",
+        "concept": "",
         "influence": 2,
         "attributes": [
             3,
@@ -6684,6 +7036,7 @@
     "pk": 116,
     "fields": {
         "name": "Madam Rotterdam - Medium",
+        "concept": "",
         "influence": 5,
         "attributes": [
             1,
@@ -6696,6 +7049,7 @@
     "pk": 117,
     "fields": {
         "name": "Maximilian Elmersson",
+        "concept": "",
         "influence": 6,
         "attributes": [
             2,
@@ -6708,6 +7062,7 @@
     "pk": 118,
     "fields": {
         "name": "Virginia Varg",
+        "concept": "",
         "influence": 1,
         "attributes": [
             1,
@@ -6720,6 +7075,7 @@
     "pk": 119,
     "fields": {
         "name": "Olivia Berglund",
+        "concept": "",
         "influence": 1,
         "attributes": [
             1,
@@ -6732,6 +7088,7 @@
     "pk": 120,
     "fields": {
         "name": "Edith Nordek",
+        "concept": "",
         "influence": 1,
         "attributes": [
             3,
@@ -6744,6 +7101,7 @@
     "pk": 121,
     "fields": {
         "name": "Lova Vinge",
+        "concept": "",
         "influence": 3,
         "attributes": [
             1,
@@ -6756,6 +7114,7 @@
     "pk": 122,
     "fields": {
         "name": "Ava Neros",
+        "concept": "",
         "influence": 1,
         "attributes": [
             4,
@@ -6768,6 +7127,7 @@
     "pk": 123,
     "fields": {
         "name": "Carl Af Croona",
+        "concept": "",
         "influence": 2,
         "attributes": [
             3,
@@ -6780,6 +7140,7 @@
     "pk": 124,
     "fields": {
         "name": "Konrad Hult",
+        "concept": "",
         "influence": 2,
         "attributes": [
             3,
@@ -6792,6 +7153,7 @@
     "pk": 125,
     "fields": {
         "name": "Beatrice Eldh",
+        "concept": "",
         "influence": 6,
         "attributes": [
             3,
@@ -6804,6 +7166,7 @@
     "pk": 126,
     "fields": {
         "name": "G\u00f6sta Grahn",
+        "concept": "",
         "influence": 5,
         "attributes": [
             1,
@@ -6816,6 +7179,7 @@
     "pk": 127,
     "fields": {
         "name": "Leif Persson",
+        "concept": "",
         "influence": 6,
         "attributes": [
             3,
@@ -6828,6 +7192,7 @@
     "pk": 128,
     "fields": {
         "name": "Katarina Hill",
+        "concept": "",
         "influence": 4,
         "attributes": [
             4,
@@ -6840,6 +7205,7 @@
     "pk": 129,
     "fields": {
         "name": "Gregg Stone",
+        "concept": "",
         "influence": 1,
         "attributes": [
             1,
@@ -6852,6 +7218,7 @@
     "pk": 130,
     "fields": {
         "name": "Elvira",
+        "concept": "",
         "influence": 6,
         "attributes": [
             1,
@@ -6864,6 +7231,7 @@
     "pk": 131,
     "fields": {
         "name": "Karl Vansten",
+        "concept": "",
         "influence": 5,
         "attributes": [
             3,
@@ -7002,6 +7370,7 @@
         "name": "\u00c5ngsholmen",
         "feeding_capacity": 10,
         "status": "4",
+        "owner": null,
         "influence": "-",
         "masquerade": "Normal",
         "population": []
@@ -7014,6 +7383,7 @@
         "name": "K\u00e4rnkraftverket",
         "feeding_capacity": 15,
         "status": "2",
+        "owner": null,
         "influence": "-",
         "masquerade": "Normal",
         "population": []
@@ -7026,6 +7396,7 @@
         "name": "Ljunghagen",
         "feeding_capacity": 20,
         "status": "1",
+        "owner": null,
         "influence": "-",
         "masquerade": "Normal",
         "population": []
@@ -7038,6 +7409,7 @@
         "name": "Skavt\u00e5ng",
         "feeding_capacity": 10,
         "status": "3",
+        "owner": null,
         "influence": "-",
         "masquerade": "Better",
         "population": []
@@ -7050,6 +7422,7 @@
         "name": "Varbyskogen",
         "feeding_capacity": 15,
         "status": "3",
+        "owner": null,
         "influence": "-",
         "masquerade": "Worse",
         "population": []
@@ -7062,6 +7435,7 @@
         "name": "Innerstaden",
         "feeding_capacity": 25,
         "status": "3",
+        "owner": null,
         "influence": "-",
         "masquerade": "Normal",
         "population": []
@@ -7074,6 +7448,7 @@
         "name": "Helsingkrona Zoo",
         "feeding_capacity": 5,
         "status": "4",
+        "owner": null,
         "influence": "-",
         "masquerade": "Better",
         "population": []
@@ -7086,6 +7461,7 @@
         "name": "Villakvarteret",
         "feeding_capacity": 5,
         "status": "5",
+        "owner": null,
         "influence": "-",
         "masquerade": "Normal",
         "population": []
@@ -7098,6 +7474,7 @@
         "name": "Soptippen",
         "feeding_capacity": 0,
         "status": "0",
+        "owner": null,
         "influence": "-",
         "masquerade": "Worse",
         "population": []
@@ -7110,6 +7487,7 @@
         "name": "Skogsomr\u00e5det",
         "feeding_capacity": 0,
         "status": "0",
+        "owner": null,
         "influence": "-",
         "masquerade": "Worse",
         "population": []
@@ -7133,9 +7511,12 @@
         "open_goal2": "Min karakt\u00e4r tycker att det \u00e4r b\u00e4ttre om klan Gangrel \u00e4ger hela m\u00e4nnisko populationen och ist\u00e4llet ransonerar ut m\u00e4nniskor \u00e5t de andra klanerna, och ska d\u00e4rf\u00f6r anv\u00e4nda sin post som sheriff f\u00f6r att ut\u00f6ka gangrels dom\u00e4n storlek s\u00e5 det t\u00e4cker st\u00f6rre delen av populationen.",
         "hidden_goal": "Dom som tjuvjagar skadar v\u00e5r symbios med m\u00e4nniskorna, jag ska bringa dom till r\u00e4ttvisa.",
         "humanity": 8,
+        "max_willpower": 3,
         "willpower": 3,
         "blood": 10,
-        "health": 7,
+        "bashing": 0,
+        "lethal": 0,
+        "aggravated": 0,
         "resources": 6,
         "frenzyTriggers": "",
         "political_faction": 1,
@@ -7144,7 +7525,7 @@
         "haven": 1,
         "exp": 1,
         "humanity_exp": 0,
-        "special_exp": 1,
+        "special_exp": 0,
         "additional_notes": "",
         "titles": [
             3
@@ -7162,9 +7543,9 @@
             15
         ],
         "disciplines": [
+            105,
             1,
-            104,
-            105
+            104
         ],
         "hooks": [
             9,
@@ -7204,9 +7585,12 @@
         "open_goal2": "M\u00e4nsklighet: Att ha ett d\u00e5ligt rykte p\u00e5verkar mig negativt, jag ska d\u00e4rf\u00f6r f\u00f6rb\u00e4ttra dom\u00e4nens f\u00f6rtroende f\u00f6r mig genom att hj\u00e4lpa n\u00e5gon utsatt",
         "hidden_goal": "Nature: Andras svagheter blir min styrka. D\u00e4rf\u00f6r ska jag finna n\u00e5gons svaghet och l\u00e5ta dom lida f\u00f6r den.",
         "humanity": 6,
-        "willpower": 5,
+        "max_willpower": 5,
+        "willpower": 2,
         "blood": 10,
-        "health": 7,
+        "bashing": 0,
+        "lethal": 0,
+        "aggravated": 0,
         "resources": 10,
         "frenzyTriggers": "",
         "political_faction": null,
@@ -7215,7 +7599,7 @@
         "haven": 1,
         "exp": 3,
         "humanity_exp": 0,
-        "special_exp": 1,
+        "special_exp": 0,
         "additional_notes": "Ritualer: Deflection of Wooden Doom\r\n\r\nHooks: Jag samlade v\u00e4ldigt m\u00e5nga hooks, s\u00e5 resterade kan f\u00e5 random namn och random attribut\r\n\r\nGhoul: Eva Lord \u00e4r en Femme Fatale infiltration-ghoul med ritualerna Disrupt Technology, Open Passage och Magic of the Smith.\r\nspent willpower: 3",
         "titles": [
             8,
@@ -7232,10 +7616,10 @@
             13
         ],
         "disciplines": [
+            109,
             4,
             5,
-            6,
-            109
+            6
         ],
         "hooks": [
             3,
@@ -7278,9 +7662,12 @@
         "open_goal2": "\u00d6ka f\u00f6rst\u00e5elsen f\u00f6r Liliths mysterier.",
         "hidden_goal": "F\u00e5 Tremererna att officielt be om urs\u00e4kt f\u00f6r deras hemska experiment p\u00e5 gangreler och andra.",
         "humanity": 6,
+        "max_willpower": 7,
         "willpower": 7,
         "blood": 10,
-        "health": 7,
+        "bashing": 0,
+        "lethal": 0,
+        "aggravated": 0,
         "resources": 21,
         "frenzyTriggers": "",
         "political_faction": 1,
@@ -7289,7 +7676,7 @@
         "haven": 1,
         "exp": 1,
         "humanity_exp": 0,
-        "special_exp": 1,
+        "special_exp": 0,
         "additional_notes": "",
         "titles": [
             9
@@ -7301,10 +7688,10 @@
         ],
         "specializations": [],
         "disciplines": [
-            8,
             9,
-            11,
+            8,
             12,
+            11,
             24
         ],
         "hooks": [
@@ -7348,9 +7735,12 @@
         "open_goal2": "2. Filch \u00e4r ung och riskerar falla offer f\u00f6r sin nyfikenhet. Jag skall\r\nskydda honom fr\u00e5n att hamna i farliga situationer. (\u00f6ppet, nyfikenhet)",
         "hidden_goal": "3. Att s\u00f6ka kunskap genom forskning \u00e4r arrogant och sker alltf\u00f6r ofta\r\nutan eftertanke. Jag skall f\u00f6rst\u00f6ra Universitetet som\r\ninflytandeomr\u00e5de. (hemligt, kunskap)",
         "humanity": 7,
+        "max_willpower": 5,
         "willpower": 5,
         "blood": 10,
-        "health": 7,
+        "bashing": 0,
+        "lethal": 0,
+        "aggravated": 0,
         "resources": 5,
         "frenzyTriggers": "",
         "political_faction": null,
@@ -7359,7 +7749,7 @@
         "haven": 1,
         "exp": 1,
         "humanity_exp": 1,
-        "special_exp": 1,
+        "special_exp": 0,
         "additional_notes": "",
         "titles": [
             7
@@ -7374,10 +7764,10 @@
             12
         ],
         "disciplines": [
+            32,
             29,
             30,
-            31,
-            32
+            31
         ],
         "hooks": [
             31,
@@ -7417,9 +7807,12 @@
         "open_goal2": "Protect humanity from other kinredes",
         "hidden_goal": "Become human once again",
         "humanity": 8,
-        "willpower": 6,
+        "max_willpower": 6,
+        "willpower": 4,
         "blood": 10,
-        "health": 7,
+        "bashing": 0,
+        "lethal": 0,
+        "aggravated": 0,
         "resources": 2,
         "frenzyTriggers": "",
         "political_faction": 3,
@@ -7428,7 +7821,7 @@
         "haven": 0,
         "exp": 1,
         "humanity_exp": 2,
-        "special_exp": 1,
+        "special_exp": 0,
         "additional_notes": "spent willpower: 2",
         "titles": [],
         "attributes": [
@@ -7445,8 +7838,8 @@
         ],
         "disciplines": [
             42,
-            43,
             44,
+            43,
             102
         ],
         "hooks": [
@@ -7482,9 +7875,12 @@
         "open_goal2": "To make contact with K-Mart to make them get rid of a Tremere Ancilla\r\nReason one - Tremere has to much influence and power in the city\r\nReason two - Two place my self i this position to gain more influence in the city",
         "hidden_goal": "To talk to Robin (Zeta) about me and Angelika complicated relation\r\nreason- It would be better to inform Robin my self then letting him find out this on his own. The secret is that me and angelika had a child together before we booth were sired.",
         "humanity": 8,
+        "max_willpower": 5,
         "willpower": 5,
         "blood": 10,
-        "health": 7,
+        "bashing": 0,
+        "lethal": 0,
+        "aggravated": 0,
         "resources": 12,
         "frenzyTriggers": "",
         "political_faction": 3,
@@ -7493,9 +7889,10 @@
         "haven": 0,
         "exp": 0,
         "humanity_exp": 0,
-        "special_exp": 1,
+        "special_exp": 0,
         "additional_notes": "",
         "titles": [
+            4,
             6
         ],
         "attributes": [
@@ -7552,9 +7949,12 @@
         "open_goal2": "Vinna mina \u00e4ldres tillit",
         "hidden_goal": "Avs\u00e4tta de \u00e4ldre f\u00f6r att hj\u00e4lpa min klan och mitt kotteri",
         "humanity": 7,
+        "max_willpower": 4,
         "willpower": 4,
         "blood": 10,
-        "health": 7,
+        "bashing": 0,
+        "lethal": 0,
+        "aggravated": 0,
         "resources": 4,
         "frenzyTriggers": "",
         "political_faction": null,
@@ -7563,7 +7963,7 @@
         "haven": 0,
         "exp": 0,
         "humanity_exp": 0,
-        "special_exp": 1,
+        "special_exp": 0,
         "additional_notes": "Har tillg\u00e5ng till mat genom dom\u00e4n tillh\u00f6rande fursten",
         "titles": [],
         "attributes": [
@@ -7580,9 +7980,9 @@
         ],
         "disciplines": [
             48,
+            51,
             49,
-            50,
-            51
+            50
         ],
         "hooks": [
             45,
@@ -7616,9 +8016,12 @@
         "open_goal2": "Trygghet- St\u00e4rka och skydda min dom\u00e4n mot yttre och inre hot",
         "hidden_goal": "\u00d6verlevnad- identifiera, hitta och eliminera det st\u00f6rsta hotet mot min \u00f6verlevnad",
         "humanity": 6,
+        "max_willpower": 6,
         "willpower": 6,
         "blood": 10,
-        "health": 7,
+        "bashing": 0,
+        "lethal": 0,
+        "aggravated": 0,
         "resources": 9,
         "frenzyTriggers": "",
         "political_faction": null,
@@ -7627,7 +8030,7 @@
         "haven": 2,
         "exp": 2,
         "humanity_exp": 1,
-        "special_exp": 1,
+        "special_exp": 0,
         "additional_notes": "Komplicerade relationer:\r\nBrujahneonaten Hans \u00e4r blodsbunden till mig grad 3 (detaljer p\u00e5 beg\u00e4ran)\r\nJonas (ancilla primogen)- ideologiska mots\u00e4ttningar\r\nJason (Neonat i klan Brujah)- ideologiska mots\u00e4ttningar\r\nJerome (Sheriff och harpya, neonat i klan gangrel) -\u00e4lskare \r\nThordon (Harpya och neonat i klan gangrel)-\u00e4lskare \r\nHannes (\u00e4ldste gangrel)-Hemlighet\r\nJanni (furste)- k\u00e4rlek (plus att hon \u00e4r blodsbunden till mig grad 3)",
         "titles": [
             8,
@@ -7640,11 +8043,11 @@
         ],
         "specializations": [],
         "disciplines": [
+            55,
+            56,
             52,
             53,
-            54,
-            55,
-            56
+            54
         ],
         "hooks": [
             51,
@@ -7684,9 +8087,12 @@
         "open_goal2": "Jag vill organisera ett \u00e5tertagande av Stockholm",
         "hidden_goal": "Jag vill blodsbinda fler werecreatures till mig",
         "humanity": 5,
+        "max_willpower": 9,
         "willpower": 9,
         "blood": 10,
-        "health": 7,
+        "bashing": 0,
+        "lethal": 0,
+        "aggravated": 0,
         "resources": 0,
         "frenzyTriggers": "",
         "political_faction": null,
@@ -7695,7 +8101,7 @@
         "haven": 0,
         "exp": 2,
         "humanity_exp": 2,
-        "special_exp": 1,
+        "special_exp": 0,
         "additional_notes": "",
         "titles": [],
         "attributes": [
@@ -7711,10 +8117,10 @@
             9
         ],
         "disciplines": [
-            57,
-            59,
             103,
-            58
+            57,
+            58,
+            59
         ],
         "hooks": [
             52,
@@ -7749,9 +8155,12 @@
         "open_goal2": "Bryta blodsbanden mellan Tremererna (i mitt kotteri) och deras \u00f6vriga klan.",
         "hidden_goal": "S\u00e4tta pappa p\u00e5 tronen",
         "humanity": 7,
+        "max_willpower": 2,
         "willpower": 2,
         "blood": 10,
-        "health": 7,
+        "bashing": 0,
+        "lethal": 0,
+        "aggravated": 0,
         "resources": 1,
         "frenzyTriggers": "",
         "political_faction": 1,
@@ -7760,7 +8169,7 @@
         "haven": 0,
         "exp": 0,
         "humanity_exp": 0,
-        "special_exp": 1,
+        "special_exp": 0,
         "additional_notes": "Derangement: Tror att alla runtomkring honom \u00e4r fiktiva och bara en del av hans fantasi.",
         "titles": [],
         "attributes": [
@@ -7776,8 +8185,8 @@
             17
         ],
         "disciplines": [
-            61,
-            60
+            60,
+            61
         ],
         "hooks": [
             58,
@@ -7811,9 +8220,12 @@
         "open_goal2": "Jag vill att vampyrerna skall vara mer som m\u00e4nnisskor d\u00e4rf\u00f6r skall jag jobba f\u00f6r att vi skall outa oss och leva tillsamans med m\u00e4nniskorna.",
         "hidden_goal": "Att passa p\u00e5 och njuta s\u00e5 mycket jag kan av allt det som jag finner njutbart samt f\u00e5 min b\u00e4sta v\u00e4n/ bror Robin att njuta med mig och f\u00f6rst\u00e5 att mina njutningar \u00e4r b\u00e4st.",
         "humanity": 7,
+        "max_willpower": 5,
         "willpower": 5,
         "blood": 10,
-        "health": 7,
+        "bashing": 0,
+        "lethal": 0,
+        "aggravated": 0,
         "resources": 2,
         "frenzyTriggers": "",
         "political_faction": 1,
@@ -7822,7 +8234,7 @@
         "haven": 0,
         "exp": 0,
         "humanity_exp": 0,
-        "special_exp": 1,
+        "special_exp": 0,
         "additional_notes": "Hon \u00e4r s\u00e5 klart lite galen som alla malkaver. Hon lider av vanf\u00f6rest\u00e4llningar som f\u00e5r henne att tro att hon \u00e4r mitt i en film ibland. Det kan vara alla grader fr\u00e5n att hon kallar sin pappa f\u00f6r Dart Wader till att hon blir f\u00f6rkrossad f\u00f6r att Leeloo h\u00e5ller p\u00e5 att d\u00f6 och the Mondoshawans \u00e4r p\u00e5 v\u00e4g.",
         "titles": [],
         "attributes": [
@@ -7873,9 +8285,12 @@
         "open_goal2": "Apologismen \u00e4r den enda moraliska politiska faktionen och passion \u00e4r v\u00e4gen till makt. Jag m\u00e5ste f\u00e5 en Brujha utanf\u00f6r mitt coateri att h\u00e5lla ett rant om apologismen.",
         "hidden_goal": "Gorillan Eva \u00e4r den godaste varelsen i staden. Jag skall skydda henne fr\u00e5n alla vampyrerna i den h\u00e4r j\u00e4vla staden.",
         "humanity": 8,
+        "max_willpower": 8,
         "willpower": 8,
         "blood": 10,
-        "health": 7,
+        "bashing": 0,
+        "lethal": 0,
+        "aggravated": 0,
         "resources": 0,
         "frenzyTriggers": "",
         "political_faction": null,
@@ -7884,7 +8299,7 @@
         "haven": 2,
         "exp": 0,
         "humanity_exp": 0,
-        "special_exp": 1,
+        "special_exp": 0,
         "additional_notes": "Investing 1 in Explosives.",
         "titles": [
             4,
@@ -7938,9 +8353,12 @@
         "open_goal2": "Jag vill vinna furstens gunst.D\u00e4rf\u00f6r ska jag hj\u00e4lpa henne att f\u00e5 sin ockult influens.",
         "hidden_goal": "Jag vill ha mer makt f\u00f6r att leda v\u00e4gen f\u00f6r min klan. D\u00e4rf\u00f6r ska jag motarbeta de andra ancillornas m\u00e5l.",
         "humanity": 5,
+        "max_willpower": 7,
         "willpower": 7,
         "blood": 10,
-        "health": 7,
+        "bashing": 0,
+        "lethal": 0,
+        "aggravated": 0,
         "resources": 19,
         "frenzyTriggers": "",
         "political_faction": 3,
@@ -7949,7 +8367,7 @@
         "haven": 1,
         "exp": 1,
         "humanity_exp": 0,
-        "special_exp": 1,
+        "special_exp": 0,
         "additional_notes": "Kato - Klanledare f\u00f6r Malkavians.\r\nSire till tre childes.\r\nVill skydda och se sin klan frodas. Men har moraliska problem med att sira m\u00e4nniskor p\u00e5 grund av att hn \u00e4r Human Apologist. S\u00e5 k\u00e4nner skuld kring sina childes.\r\nDerrangment: Tappar greppet om verkligheten, ser syner om d\u00e5tid/samtid/framtid och alternativa versioner av det. \u00c4r d\u00e5 ibland f\u00f6rvirrad \u00f6ver vissa h\u00e4ndelser och s\u00e5 vidare.",
         "titles": [
             5,
@@ -7965,10 +8383,10 @@
             11
         ],
         "disciplines": [
-            66,
-            68,
             69,
-            67
+            66,
+            67,
+            68
         ],
         "hooks": [
             64,
@@ -8005,9 +8423,12 @@
         "open_goal2": "F\u00e5 reda p\u00e5 v\u00e4rdefull information om fursten,\r\n\u00e4ldste, primogener och andra personer av vikt.",
         "hidden_goal": "Se till att ingen f\u00e5r reda p\u00e5 hennes hemligheter, men samtidigt se om hon kan hitta mer information om det sj\u00e4lv.",
         "humanity": 7,
+        "max_willpower": 5,
         "willpower": 5,
         "blood": 10,
-        "health": 7,
+        "bashing": 0,
+        "lethal": 0,
+        "aggravated": 0,
         "resources": 7,
         "frenzyTriggers": "",
         "political_faction": null,
@@ -8016,7 +8437,7 @@
         "haven": 1,
         "exp": 0,
         "humanity_exp": 0,
-        "special_exp": 1,
+        "special_exp": 0,
         "additional_notes": "------------------\r\nKomplexa relationer:\r\nSimon Lilja\r\nFursten Pauli\r\nSire Hans\r\n\r\nIcke komplexa relationer:\r\nElysiem\u00e4stare Primus\r\nHarpyan Thorden\r\nRobin \r\n------------------\r\n\r\nRobin Malkav och Lydia Pauli Tremere \u00e4r skyldiga Zelda minor boones \r\n------------------\r\n\"Tror att det \u00e4r hela karakt\u00e4ren, hoppas jag inte missat n\u00e5got - Har ingen aning om ifall jag fyllt i den h\u00e4r r\u00e4tt. Men i v\u00e4rsta fall f\u00e5r jag g\u00f6ra om den. //Matilda\"",
         "titles": [],
         "attributes": [
@@ -8032,9 +8453,9 @@
             15
         ],
         "disciplines": [
+            86,
             84,
-            85,
-            86
+            85
         ],
         "hooks": [
             91,
@@ -8070,9 +8491,12 @@
         "open_goal2": "F\u00e5 en ny tittel.",
         "hidden_goal": "Ta reda p\u00e5 vad Samuel Lilja vill och vad hans slutna m\u00e5l \u00e4r.\r\nG\u00e4rna s\u00e4tta dig honnom f\u00f6r n\u00e5got.",
         "humanity": 7,
-        "willpower": 2,
+        "max_willpower": 2,
+        "willpower": 0,
         "blood": 10,
-        "health": 7,
+        "bashing": 0,
+        "lethal": 0,
+        "aggravated": 0,
         "resources": 9,
         "frenzyTriggers": "",
         "political_faction": null,
@@ -8081,7 +8505,7 @@
         "haven": 0,
         "exp": 2,
         "humanity_exp": 0,
-        "special_exp": 1,
+        "special_exp": 0,
         "additional_notes": "Saknar huntingground ?\r\nspent willpower: 2",
         "titles": [
             6
@@ -8099,9 +8523,9 @@
             4
         ],
         "disciplines": [
-            1,
             42,
-            51
+            51,
+            1
         ],
         "hooks": [
             127,
@@ -8137,9 +8561,12 @@
         "open_goal2": "F\u00f6r att kunna beh\u00e5lla v\u00e5r m\u00e4nsklighet m\u00e5ste vi agera m\u00e4nskligt och uppr\u00e4tth\u00e5lla maskeraden, jag ska d\u00e4rmed tills\u00e4tta n\u00e5gon som kan f\u00e5 ordning p\u00e5 dom\u00e4nens maskerad.",
         "hidden_goal": "Demoner p\u00e5 dom\u00e4nen kan riskera att locka besl\u00e4ktade i f\u00f6rd\u00e4rvet och utg\u00f6r en stor risk i fel h\u00e4nder. Jag vill d\u00e4rf\u00f6r hitta demonen som ryktas befinna sig i staden och personen som \u00e4r ansvarig f\u00f6r att demonen kommit hit.",
         "humanity": 5,
-        "willpower": 8,
+        "max_willpower": 8,
+        "willpower": 7,
         "blood": 8,
-        "health": 7,
+        "bashing": 0,
+        "lethal": 0,
+        "aggravated": 0,
         "resources": 16,
         "frenzyTriggers": "",
         "political_faction": null,
@@ -8148,7 +8575,7 @@
         "haven": 2,
         "exp": 2,
         "humanity_exp": 0,
-        "special_exp": 1,
+        "special_exp": 0,
         "additional_notes": "+ 2 dottar i extra ritualer (Thaumaturgy)\r\nspent willpower: 1",
         "titles": [
             1
@@ -8160,10 +8587,10 @@
         ],
         "specializations": [],
         "disciplines": [
+            90,
             87,
             88,
-            89,
-            90
+            89
         ],
         "hooks": [
             98,
@@ -8202,9 +8629,12 @@
         "open_goal2": "Pierre tycker att kunskap blir b\u00e4ttre n\u00e4r den delas, och vill d\u00e4rf\u00f6r hj\u00e4lpa andra till insikter.",
         "hidden_goal": "Pierre tror att Besten kan t\u00e4mjas om man f\u00f6rst\u00e5r den tillr\u00e4ckligt, och vill d\u00e4rf\u00f6r l\u00e4ra sig hur den fungerar.",
         "humanity": 7,
+        "max_willpower": 4,
         "willpower": 4,
         "blood": 10,
-        "health": 7,
+        "bashing": 0,
+        "lethal": 0,
+        "aggravated": 0,
         "resources": 1,
         "frenzyTriggers": "",
         "political_faction": null,
@@ -8213,7 +8643,7 @@
         "haven": 1,
         "exp": 0,
         "humanity_exp": 1,
-        "special_exp": 1,
+        "special_exp": 0,
         "additional_notes": "",
         "titles": [],
         "attributes": [
@@ -8264,9 +8694,12 @@
         "open_goal2": "Att arbeta p\u00e5 att bli fiskal.",
         "hidden_goal": "Att se till att Winters dumheter inte tar d\u00f6d p\u00e5 honom.",
         "humanity": 7,
+        "max_willpower": 4,
         "willpower": 4,
         "blood": 10,
-        "health": 7,
+        "bashing": 0,
+        "lethal": 0,
+        "aggravated": 0,
         "resources": 5,
         "frenzyTriggers": "",
         "political_faction": null,
@@ -8275,7 +8708,7 @@
         "haven": 0,
         "exp": 1,
         "humanity_exp": 0,
-        "special_exp": 1,
+        "special_exp": 0,
         "additional_notes": "",
         "titles": [],
         "attributes": [
@@ -8292,9 +8725,9 @@
             11
         ],
         "disciplines": [
+            95,
             93,
-            94,
-            95
+            94
         ],
         "hooks": [
             109,
@@ -8327,9 +8760,12 @@
         "open_goal2": "Aquire obscure occult knowledge",
         "hidden_goal": "Control information for Tremere's benefit",
         "humanity": 7,
-        "willpower": 0,
+        "max_willpower": 4,
+        "willpower": 4,
         "blood": 10,
-        "health": 7,
+        "bashing": 0,
+        "lethal": 0,
+        "aggravated": 0,
         "resources": 0,
         "frenzyTriggers": "",
         "political_faction": 1,
@@ -8338,7 +8774,7 @@
         "haven": 1,
         "exp": 2,
         "humanity_exp": 0,
-        "special_exp": 1,
+        "special_exp": 0,
         "additional_notes": "",
         "titles": [
             4,
@@ -8380,6 +8816,17 @@
     "fields": {
         "name": "inf\u00f6r lajv 2",
         "is_open": false,
+        "is_special": false,
+        "action_set": null,
+        "feeding_domains": []
+    }
+},
+{
+    "model": "players.session",
+    "pk": 2,
+    "fields": {
+        "name": "inf\u00f6r lajv 3",
+        "is_open": true,
         "is_special": false,
         "action_set": null,
         "feeding_domains": []
@@ -9940,6 +10387,50 @@
     }
 },
 {
+    "model": "players.primogensaidaction",
+    "pk": 247,
+    "fields": {
+        "helpee": 2,
+        "action": 11,
+        "name": "",
+        "betrayal": false,
+        "helpers": []
+    }
+},
+{
+    "model": "players.primogensaidaction",
+    "pk": 283,
+    "fields": {
+        "helpee": 32,
+        "action": 5,
+        "name": "Greg Stone",
+        "betrayal": false,
+        "helpers": []
+    }
+},
+{
+    "model": "players.primogensaidaction",
+    "pk": 413,
+    "fields": {
+        "helpee": 13,
+        "action": 5,
+        "name": "Xantro",
+        "betrayal": false,
+        "helpers": []
+    }
+},
+{
+    "model": "players.primogensaidaction",
+    "pk": 441,
+    "fields": {
+        "helpee": 17,
+        "action": 28,
+        "name": "",
+        "betrayal": false,
+        "helpers": []
+    }
+},
+{
     "model": "players.conserveinfluence",
     "pk": 136,
     "fields": {
@@ -10695,6 +11186,7 @@
     "fields": {
         "attribute": 3,
         "trainer": null,
+        "blood": false,
         "helpers": []
     }
 },
@@ -10704,6 +11196,7 @@
     "fields": {
         "attribute": 1,
         "trainer": null,
+        "blood": false,
         "helpers": []
     }
 },
@@ -10713,6 +11206,7 @@
     "fields": {
         "attribute": 1,
         "trainer": null,
+        "blood": false,
         "helpers": []
     }
 },
@@ -10722,6 +11216,7 @@
     "fields": {
         "discipline": 6,
         "trainer": 19,
+        "blood": false,
         "helpers": []
     }
 },
@@ -10731,6 +11226,7 @@
     "fields": {
         "discipline": 8,
         "trainer": null,
+        "blood": false,
         "helpers": []
     }
 },
@@ -10740,6 +11236,7 @@
     "fields": {
         "discipline": 9,
         "trainer": 13,
+        "blood": false,
         "helpers": []
     }
 },
@@ -10749,6 +11246,7 @@
     "fields": {
         "discipline": 9,
         "trainer": 13,
+        "blood": false,
         "helpers": []
     }
 },
@@ -10758,6 +11256,7 @@
     "fields": {
         "discipline": 9,
         "trainer": 13,
+        "blood": false,
         "helpers": []
     }
 },
@@ -10767,6 +11266,7 @@
     "fields": {
         "discipline": 3,
         "trainer": 2,
+        "blood": false,
         "helpers": []
     }
 },
@@ -10776,6 +11276,7 @@
     "fields": {
         "discipline": 6,
         "trainer": null,
+        "blood": false,
         "helpers": []
     }
 },
@@ -10785,6 +11286,7 @@
     "fields": {
         "discipline": 9,
         "trainer": 15,
+        "blood": false,
         "helpers": []
     }
 },
@@ -10794,6 +11296,7 @@
     "fields": {
         "discipline": 8,
         "trainer": 16,
+        "blood": false,
         "helpers": []
     }
 },
@@ -10803,6 +11306,7 @@
     "fields": {
         "discipline": 11,
         "trainer": null,
+        "blood": false,
         "helpers": []
     }
 },
@@ -10812,6 +11316,7 @@
     "fields": {
         "discipline": 11,
         "trainer": null,
+        "blood": false,
         "helpers": []
     }
 },
@@ -10821,6 +11326,7 @@
     "fields": {
         "discipline": 9,
         "trainer": null,
+        "blood": false,
         "helpers": []
     }
 },
@@ -10830,6 +11336,7 @@
     "fields": {
         "discipline": 11,
         "trainer": null,
+        "blood": false,
         "helpers": []
     }
 },
@@ -10839,6 +11346,7 @@
     "fields": {
         "discipline": 4,
         "trainer": 20,
+        "blood": false,
         "helpers": []
     }
 },
@@ -10848,6 +11356,7 @@
     "fields": {
         "discipline": 4,
         "trainer": 20,
+        "blood": false,
         "helpers": []
     }
 },
@@ -10857,6 +11366,7 @@
     "fields": {
         "discipline": 7,
         "trainer": null,
+        "blood": false,
         "helpers": []
     }
 },
@@ -10960,6 +11470,7 @@
     "fields": {
         "discipline": 8,
         "student": 19,
+        "blood": true,
         "helpers": []
     }
 },
@@ -10969,6 +11480,7 @@
     "fields": {
         "discipline": 6,
         "student": 16,
+        "blood": true,
         "helpers": []
     }
 },
@@ -10978,6 +11490,7 @@
     "fields": {
         "discipline": 9,
         "student": 13,
+        "blood": true,
         "helpers": []
     }
 },
@@ -10987,6 +11500,7 @@
     "fields": {
         "discipline": 9,
         "student": 27,
+        "blood": true,
         "helpers": []
     }
 },
@@ -11075,47 +11589,34 @@
     }
 },
 {
-    "model": "players.primogensaidaction",
-    "pk": 247,
+    "model": "players.eventreport",
+    "pk": 1,
     "fields": {
-        "helpee": 2,
-        "action": 11,
-        "name": "",
-        "betrayal": false,
-        "helpers": []
+        "character": 13,
+        "session": 2,
+        "open_goal1": true,
+        "open_goal2": true,
+        "hidden_goal": true,
+        "humanity_exp": false,
+        "humanity": 0,
+        "willpower_dots": 0,
+        "willpower_points": 0,
+        "blood": 0,
+        "resources": 0,
+        "bashing": 0,
+        "lethal": 0,
+        "aggravated": 0
     }
 },
 {
-    "model": "players.primogensaidaction",
-    "pk": 283,
+    "model": "players.changegoals",
+    "pk": 1,
     "fields": {
-        "helpee": 32,
-        "action": 5,
-        "name": "Greg Stone",
-        "betrayal": false,
-        "helpers": []
-    }
-},
-{
-    "model": "players.primogensaidaction",
-    "pk": 413,
-    "fields": {
-        "helpee": 13,
-        "action": 5,
-        "name": "Xantro",
-        "betrayal": false,
-        "helpers": []
-    }
-},
-{
-    "model": "players.primogensaidaction",
-    "pk": 441,
-    "fields": {
-        "helpee": 17,
-        "action": 28,
-        "name": "",
-        "betrayal": false,
-        "helpers": []
+        "character": 13,
+        "session": 2,
+        "open_goal1": "In all things, we all want to feel needed. To be loved, to be the special one for someone. Hans wants to be the only special special one to his Elder, not share this with anyone else. This might be his Blood Bound taking, however Hans will remove any obstacles.\r\nWork on this things: \r\n-  Put the current Brujah Ancilla in bad lights, and then become the elysium keeper",
+        "open_goal2": "Increase the wealth and build out the new Domain into becoming the trendy SoHo with a thriving hipp night life and resturant life",
+        "hidden_goal": "Work towards diminish  the Tremere influence in the City, \r\n- Take out Tremere Neonates - Faye is high the list as the Tremere have been stealing rumours and not cooperating on information shared\r\n- Find other kindred who wants to take out the Tremere Ancilla\r\n- Steal FP from Tremere domains not belonging to the tremere queen"
     }
 },
 {
@@ -11128,6 +11629,10 @@
         "feeding_points": 9,
         "discipline": null,
         "description": "Jag feedar genom att smyga upp p\u00e5 folk och dricka deras blod.",
+        "has_good_method": true,
+        "has_permission": true,
+        "incidents": 0,
+        "incident_roll": 0,
         "resolved": "RESOLVED"
     }
 },
@@ -11141,6 +11646,10 @@
         "feeding_points": 5,
         "discipline": null,
         "description": "G\u00e5 med medborgargardet och feeda p\u00e5 dem som \u00e4r p\u00e5v\u00e4ghem och \u00e4r berusade",
+        "has_good_method": true,
+        "has_permission": true,
+        "incidents": 0,
+        "incident_roll": 0,
         "resolved": "RESOLVED"
     }
 },
@@ -11154,6 +11663,10 @@
         "feeding_points": 5,
         "discipline": null,
         "description": "Hitta folk med swanky kl\u00e4der. Lura in dom till \u00f6de platser (gr\u00e4nder, \u00f6vergivna hus, etc) Feeda & l\u00e5na deras \u00e4godelar permanent.",
+        "has_good_method": true,
+        "has_permission": true,
+        "incidents": 0,
+        "incident_roll": 0,
         "resolved": "RESOLVED"
     }
 },
@@ -11167,6 +11680,10 @@
         "feeding_points": 5,
         "discipline": 47,
         "description": "I infuse passion in the victims through Presence, and in the heat of luv making I take the essence that gives me life.",
+        "has_good_method": true,
+        "has_permission": true,
+        "incidents": 0,
+        "incident_roll": 0,
         "resolved": "RESOLVED"
     }
 },
@@ -11180,6 +11697,10 @@
         "feeding_points": 5,
         "discipline": 29,
         "description": "Jag anv\u00e4nder entrancement f\u00f6r att locka till mig och f\u00f6rf\u00f6ra en ensam man p\u00e5 v\u00e4g hem fr\u00e5n en nattklubb.",
+        "has_good_method": true,
+        "has_permission": true,
+        "incidents": 0,
+        "incident_roll": 0,
         "resolved": "RESOLVED"
     }
 },
@@ -11193,6 +11714,10 @@
         "feeding_points": 5,
         "discipline": null,
         "description": "I seek out those who try to cause harm to my flock and feed off those. If the hard they sought to cause was grave enough then I have my ghoul fully exsanguinate them and bring me their blood.",
+        "has_good_method": true,
+        "has_permission": true,
+        "incidents": 0,
+        "incident_roll": 0,
         "resolved": "RESOLVED"
     }
 },
@@ -11206,6 +11731,10 @@
         "feeding_points": 5,
         "discipline": null,
         "description": "F\u00f6rv\u00e5nande vad m\u00e4nniskor g\u00e5r med p\u00e5 s\u00e5 l\u00e4ng du p\u00e5st\u00e5r att det \u00e4r f\u00f6r den medicinska vetenskapen.",
+        "has_good_method": true,
+        "has_permission": true,
+        "incidents": 0,
+        "incident_roll": 0,
         "resolved": "RESOLVED"
     }
 },
@@ -11219,6 +11748,10 @@
         "feeding_points": 4,
         "discipline": null,
         "description": "F\u00f6rs\u00f6ker hitta folk som \u00e4r ensamma, undviker kameror\r\n\r\n\r\n\r\n\r\n\r\n?",
+        "has_good_method": true,
+        "has_permission": true,
+        "incidents": 0,
+        "incident_roll": 0,
         "resolved": "RESOLVED"
     }
 },
@@ -11232,6 +11765,10 @@
         "feeding_points": 5,
         "discipline": 5,
         "description": "Dominerar folk p\u00e5 v\u00e4g hem fr\u00e5n att ha jobbat \u00f6ver sent, dricker deras blod, tar bort deras minnen om det och s\u00e4tter dom i en taxi hem.",
+        "has_good_method": true,
+        "has_permission": true,
+        "incidents": 0,
+        "incident_roll": 0,
         "resolved": "RESOLVED"
     }
 },
@@ -11245,6 +11782,10 @@
         "feeding_points": 6,
         "discipline": null,
         "description": "Fr\u00e5n de heml\u00f6sa. Jag kl\u00e4ttrar horror movie style fr\u00e5n skuggorna med klorna och \u00e4ter p\u00e5 dem n\u00e4r de sover.",
+        "has_good_method": true,
+        "has_permission": true,
+        "incidents": 0,
+        "incident_roll": 0,
         "resolved": "RESOLVED"
     }
 },
@@ -11258,6 +11799,10 @@
         "feeding_points": 7,
         "discipline": 89,
         "description": "Jag vill bjuda hem fulla ungdomsg\u00e4ng p\u00e5 \"efterfest\"",
+        "has_good_method": true,
+        "has_permission": true,
+        "incidents": 0,
+        "incident_roll": 0,
         "resolved": "RESOLVED"
     }
 },
@@ -11271,6 +11816,10 @@
         "feeding_points": 3,
         "discipline": 63,
         "description": "Jag charmar s\u00f6ta pojkar p\u00e5 bion eller p\u00e5 g\u00e5gatan efter att vi har sett samma film. Siktar in mig p\u00e5 de ensamma eller de som splittras fr\u00e5n gruppen erfter att filmen \u00e4r slut s\u00e5 klart och startar en konversation om filmen vi just har sett och det utvecklar sig till att vi g\u00e5r p\u00e5 en kaffe och efter det s\u00e5 erbjuder han sig alltid att f\u00f6ja mig hem, f\u00f6r det \u00e4r ju s\u00e5 m\u00f6rkt. F\u00f6r sj\u00e4lvklar s\u00e5 har jag ju spelat hj\u00e4lpl\u00f6s under fikan.  Sedan n\u00e4r vi \u00e4r p\u00e5 v\u00e4gen hem s\u00e5 n\u00e5gonstans i en m\u00f6rk gr\u00e4nd n\u00e4r han vill kyssa mig godnatt s\u00e5 biter jag och han gillar det s\u00e5klat och blir inte alls uppr\u00f6rd. Om det blir n\u00e5gra problem eller tveksamheter s\u00e5 f\u00f6rsfinner jag bara ur \u00e5syn n\u00e4r han har v\u00e4nt bort blicken.",
+        "has_good_method": true,
+        "has_permission": true,
+        "incidents": 0,
+        "incident_roll": 0,
         "resolved": "RESOLVED"
     }
 },
@@ -11284,6 +11833,10 @@
         "feeding_points": 5,
         "discipline": 91,
         "description": "Pierre extrakn\u00e4cker som medium, med fokus som underh\u00e5llare p\u00e5 intimare bjudningar i  villakvarteren (skaffar kunder genom riktade facebookannonser och liknande, och skapar en ny persona ungef\u00e4r en g\u00e5ng i m\u00e5naden, som inte \u00e4r sammanknytbar med f\u00f6reg\u00e5ende i automatiserade s\u00f6kningar).\r\n\r\nV\u00e4l p\u00e5 plats anv\u00e4nds Auspex f\u00f6r att, genom kroppsspr\u00e5ks- och auravarseblivning, v\u00e4lja ut det l\u00e4mpligaste offret, varefter sp\u00e5domarna gentemot den personen formas f\u00f6r att f\u00e5 dem att k\u00e4nna sig mottagliga f\u00f6r efterf\u00f6ljande...\u00e4ventyr. Exakt hur det fortl\u00f6per varierar - f\u00f6rf\u00f6relse, inbjudan till mer formella, privata, esoterisa ritualer, et cetera.",
+        "has_good_method": true,
+        "has_permission": true,
+        "incidents": 0,
+        "incident_roll": 0,
         "resolved": "RESOLVED"
     }
 },
@@ -11297,6 +11850,10 @@
         "feeding_points": 5,
         "discipline": 52,
         "description": "Jag tr\u00e4ffar dem p\u00e5 n\u00e5gon av Ljunghagens sv\u00e5ra nattklubbar, fr\u00e4mst de med BDSM-inslag. De vill att jag dricker dem, det f\u00f6rs\u00e4krar jag mig om.",
+        "has_good_method": true,
+        "has_permission": true,
+        "incidents": 0,
+        "incident_roll": 0,
         "resolved": "RESOLVED"
     }
 },
@@ -11310,6 +11867,10 @@
         "feeding_points": 2,
         "discipline": 61,
         "description": "Stake out, ser till att ingen mer \u00e4n jag och offret finns i n\u00e4rheten, h\u00e5ller mig ifr\u00e5n all form av \u00f6vervakning. H\u00e5ller mig i obfuscate tills offret \u00e4r p\u00e5 r\u00e4tt plats vid r\u00e4tt tillf\u00e4lle innan jag helt enkelt hoppar p\u00e5 denna och mumsar.\r\n\r\nResten tar jag fr\u00e5n min herd.",
+        "has_good_method": true,
+        "has_permission": true,
+        "incidents": 0,
+        "incident_roll": 0,
         "resolved": "RESOLVED"
     }
 },
@@ -11323,6 +11884,10 @@
         "feeding_points": 5,
         "discipline": null,
         "description": "Kato likt sin namne g\u00e5r in i djupa samtal med societetens medlemmar om diverse politiska motstridigheter inom de kulturella landskapet. Ofta hamnar han i djupa diskussioner kring de nuvarande kulturarvet som finns i Helsingskrona. Ofta med en uppkommande artist/konstn\u00e4r som han sn\u00e4r in med l\u00f6ften om sex, pengar och framg\u00e5ng som han har tillg\u00e5ng till genom sin influence. I detta lurar han dem till att bjuda in honom i deras hem eller m\u00f6rka gr\u00e4nder d\u00e4r han f\u00f6der p\u00e5 dem.",
+        "has_good_method": true,
+        "has_permission": true,
+        "incidents": 0,
+        "incident_roll": 0,
         "resolved": "RESOLVED"
     }
 },
@@ -11336,6 +11901,10 @@
         "feeding_points": 5,
         "discipline": 51,
         "description": "Jag vill vara s\u00e4ker p\u00e5 att ingen ser mig n\u00e4r jag f\u00f6ljer efter mina byten.\r\nStuderar dem tills jag hittar en \u00f6ppning.\r\n\r\nN\u00e4r jag \u00e4r 100% s\u00e4ker p\u00e5 att mitt offer \u00e4r sj\u00e4lv s\u00e5 sl\u00e5r jag till.\r\nJag ser till att jag inte t\u00f6mmer dem p\u00e5 blod.\r\n\r\nn\u00e4r jag \u00e4r klar st\u00e4dar jag upp ev oreda eller kladd jag orsakat och l\u00e4mmnar offret d\u00e4r de ligger.",
+        "has_good_method": true,
+        "has_permission": true,
+        "incidents": 0,
+        "incident_roll": 0,
         "resolved": "RESOLVED"
     }
 },
@@ -11349,6 +11918,10 @@
         "feeding_points": 5,
         "discipline": null,
         "description": "Raggar i barer och f\u00f6ljer med folk hem.",
+        "has_good_method": true,
+        "has_permission": true,
+        "incidents": 0,
+        "incident_roll": 0,
         "resolved": "RESOLVED"
     }
 },
@@ -11362,6 +11935,10 @@
         "feeding_points": 3,
         "discipline": null,
         "description": "Lurar en fr\u00e4mling fr\u00e5n en krog in i en gr\u00e4nd f\u00f6r att \u00e4ta",
+        "has_good_method": true,
+        "has_permission": true,
+        "incidents": 0,
+        "incident_roll": 0,
         "resolved": "RESOLVED"
     }
 },
@@ -11383,8 +11960,8 @@
         "character": 8,
         "session": 1,
         "disciplines": [
-            29,
-            32
+            32,
+            29
         ]
     }
 },
@@ -11462,9 +12039,9 @@
         "character": 26,
         "session": 1,
         "disciplines": [
-            1,
             42,
-            51
+            51,
+            1
         ]
     }
 },
@@ -11669,8 +12246,8 @@
         "gm_note": "",
         "rumor_type": "Fact",
         "recipients": [
-            2,
             8,
+            2,
             20
         ]
     }
@@ -11686,9 +12263,9 @@
         "gm_note": "Parcelplot; Papyrus som g\u00f6r Bastet-statyetten mer efterfr\u00e5gad av olika samlare.",
         "rumor_type": "Reliable",
         "recipients": [
-            16,
-            5,
             8,
+            5,
+            16,
             32
         ]
     }
@@ -11704,8 +12281,8 @@
         "gm_note": "M\u00f6jlighet: Vandrar man bland Eli\u2019s konst s\u00e5 hittar man bilder om som p\u00e5minner om ens d\u00f6dliga liv, v\u00e4cker k\u00e4nslor till liv. 1 Humanity XP. Hot: Folk som kommer efter\u00e5t kan se en av dina hemligheter p\u00e5 v\u00e4ggarna.",
         "rumor_type": "Unreliable",
         "recipients": [
-            2,
             8,
+            2,
             20
         ]
     }
@@ -11783,8 +12360,8 @@
         "gm_note": "Parcelplot; Resources. Tavlan stulen av vanliga brottslingar, kan sp\u00e5ras med kontakter, discipliner eller knowhow.",
         "rumor_type": "Unreliable",
         "recipients": [
-            4,
-            27
+            27,
+            4
         ]
     }
 },
@@ -11877,8 +12454,8 @@
         "rumor_type": "Fact",
         "recipients": [
             8,
-            4,
-            15
+            15,
+            4
         ]
     }
 },
@@ -11909,8 +12486,8 @@
         "rumor_type": "Reliable",
         "recipients": [
             8,
-            26,
-            27
+            27,
+            26
         ]
     }
 },
@@ -11957,8 +12534,8 @@
         "gm_note": "",
         "rumor_type": "Unreliable",
         "recipients": [
-            19,
             2,
+            19,
             29
         ]
     }
@@ -11974,9 +12551,9 @@
         "gm_note": "-Parcelplot- Diablerie- \u00c4ldrevampyr i Torpor som kan diableriseas-",
         "rumor_type": "Reliable",
         "recipients": [
+            8,
             13,
-            5,
-            8
+            5
         ]
     }
 },
@@ -11991,8 +12568,8 @@
         "gm_note": "",
         "rumor_type": "Unreliable",
         "recipients": [
-            28,
-            25
+            25,
+            28
         ]
     }
 },
@@ -12101,9 +12678,9 @@
         "gm_note": "",
         "rumor_type": "Fact",
         "recipients": [
-            4,
             27,
-            15
+            15,
+            4
         ]
     }
 },
@@ -12179,10 +12756,10 @@
         "gm_note": "[ALIEN JIGSAW]",
         "rumor_type": "Unreliable",
         "recipients": [
-            17,
             8,
-            4,
-            25
+            17,
+            25,
+            4
         ]
     }
 },
@@ -12259,8 +12836,8 @@
         "rumor_type": "Unreliable",
         "recipients": [
             5,
-            18,
             27,
+            18,
             15
         ]
     }
@@ -12277,8 +12854,8 @@
         "rumor_type": "Reliable",
         "recipients": [
             12,
-            4,
-            28
+            28,
+            4
         ]
     }
 },
@@ -12293,8 +12870,8 @@
         "gm_note": "",
         "rumor_type": "Unreliable",
         "recipients": [
-            4,
-            28
+            28,
+            4
         ]
     }
 },
@@ -12324,8 +12901,8 @@
         "gm_note": "Parcelplot; plocka upp den d\u00f6des stuff: Haven och resources.",
         "rumor_type": "Unreliable",
         "recipients": [
-            19,
-            5
+            5,
+            19
         ]
     }
 },

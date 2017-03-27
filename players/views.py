@@ -168,22 +168,31 @@ def spend_exp(request, session):
     
     form_set_disciplines = formset_factory(form['disciplines'], extra=0)
     form_set_attributes  = formset_factory(form['attributes'], extra=0)
+    
+    print ("{} \n{}\n{}" .format(request.method,form_set_disciplines,form_set_attributes))
 
-    if (disps==[] and attrs==[]):
-        return redirect('healing', session=session.id)
     
     if request.method == 'POST':
-        form_set_disciplines = form_set_disciplines(request.POST)
-        form_set_attributes  = form_set_attributes(request.POST)
+        form_set_disciplines = form_set_disciplines(request.POST, prefix="disciplines")
+        form_set_attributes  = form_set_attributes(request.POST, prefix="attributes")
         if form_set_disciplines.is_valid() and form_set_attributes.is_valid():
+            print ("valid \n{}" .format(request.POST))
+            print ("\nprocessing: {}".format(form_set_disciplines))
+            print ("\nprocessing: {}".format(form_set_attributes))
             for form in form_set_disciplines:
-                form.fill_save()
+                
+                form.save()
             for form in form_set_attributes:
-                form.fill_save()    
+                form.save()    
             return redirect('healing', session=session.id)   
+        else:
+            print ("not valid \n{}\n{}" .format(form_set_disciplines.errors,form_set_attributes.errors))
     else:
-        form_set_disciplines = form_set_disciplines(initial = disps)
-        form_set_attributes  = form_set_attributes(initial = attrs)
+        if (disps==[] and attrs==[]):
+            return redirect('healing', session=session.id)
+
+        form_set_disciplines = form_set_disciplines(initial = disps, prefix="disciplines")
+        form_set_attributes  = form_set_attributes(initial = attrs, prefix="attributes")
                   
     exp = character.exp
     if event.open_goal1:
