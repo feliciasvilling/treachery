@@ -353,6 +353,7 @@ class CharacterForm(Form):
     
     age     = ModelChoiceField(queryset=Age.objects,empty_label=None)
     clan    = ModelChoiceField(queryset=Clan.objects,empty_label=None)
+    sire    = ModelChoiceField(queryset=Character.objects,required=False)
     nature  = ModelChoiceField(queryset=Nature.objects,empty_label=None)
     demeanor= ModelChoiceField(queryset=Nature.objects,empty_label=None)
 
@@ -391,27 +392,33 @@ class CharacterForm(Form):
     generation = IntegerField(initial=13) 
        
     hook1_name        = CharField(required=False)
+    hook1_concept        = CharField(required=False)
     hook1_influence   = ModelChoiceField(queryset=Influence.objects,required=False)
     hook1_attributes  = ModelMultipleChoiceField(queryset=HookAttribute.objects,required=False)
     
     hook2_name        = CharField(required=False)
+    hook2_concept        = CharField(required=False)
     hook2_influence   = ModelChoiceField(queryset=Influence.objects,required=False)
     hook2_attributes  = ModelMultipleChoiceField(queryset=HookAttribute.objects,required=False)
     
     hook3_name        = CharField(required=False)
+    hook3_concept        = CharField(required=False)
     hook3_influence   = ModelChoiceField(queryset=Influence.objects,required=False)
     hook3_attributes  = ModelMultipleChoiceField(queryset=HookAttribute.objects,required=False)
     
     hook4_name        = CharField(required=False)
+    hook4_concept        = CharField(required=False)
     hook4_influence   = ModelChoiceField(queryset=Influence.objects,required=False)
     hook4_attributes  = ModelMultipleChoiceField(queryset=HookAttribute.objects,required=False)
     
     
     hook5_name        = CharField(required=False)
+    hook5_concept        = CharField(required=False)
     hook5_influence   = ModelChoiceField(queryset=Influence.objects,required=False)
     hook5_attributes  = ModelMultipleChoiceField(queryset=HookAttribute.objects,required=False)
     
     hook6_name        = CharField(required=False)
+    hook6_concept     = CharField(required=False)
     hook6_influence   = ModelChoiceField(queryset=Influence.objects,required=False)
     hook6_attributes  = ModelMultipleChoiceField(queryset=HookAttribute.objects,required=False)
     

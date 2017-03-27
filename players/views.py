@@ -293,6 +293,7 @@ def make_character(request):
                 name    = f['name'],
                 age     = f['age'],
                 clan    = f['clan'],
+                sire    = f['sire'],
                 nature  = f['nature'],
                 demeanor= f['demeanor'],
                 concept = f['concept'],
@@ -308,10 +309,10 @@ def make_character(request):
                 humanity_exp = 0,      
                 special_exp  = 0,
                
-                health = 7, 
-              #  bashing    = 0,
-              #  lethal     = 0,
-              #  aggrevated = 0,
+               
+                bashing    = 0,
+                lethal     = 0,
+                aggravated = 0,
                 blood      = 10,
                 
                 humanity   = f['humanity'],
@@ -367,6 +368,7 @@ def make_character(request):
             
             if f['hook1_name'] != "":
                 hook = Hook.objects.create(
+                    concept=f['hook1_concept'],
                     name=f['hook1_name'],
                     influence=f['hook1_influence'],
                     )
@@ -377,6 +379,7 @@ def make_character(request):
             
             if f['hook2_name'] != "":
                 hook = Hook.objects.create(
+                    concept=f['hook2_concept'],
                     name=f['hook2_name'],
                     influence=f['hook2_influence'],
                     )
@@ -387,6 +390,7 @@ def make_character(request):
                 
             if f['hook3_name'] != "":
                 hook = Hook.objects.create(
+                    concept=f['hook3_concept'],
                     name=f['hook3_name'],
                     influence=f['hook3_influence'],
                     )
@@ -397,6 +401,7 @@ def make_character(request):
             
             if f['hook4_name'] != "":
                 hook = Hook.objects.create(
+                    concept=f['hook4_concept'],
                     name=f['hook4_name'],
                     influence=f['hook4_influence'],
                     )
@@ -407,6 +412,7 @@ def make_character(request):
 
             if f['hook5_name'] != "":
                 hook = Hook.objects.create(
+                    concept=f['hook5_concept'],
                     name=f['hook5_name'],
                     influence=f['hook5_influence'],
                     )
@@ -471,6 +477,16 @@ def make_character(request):
                     )
                     ghoul.disciplines.add(disp_rate)
                 ghoul.save()
+                disp = list(ghoul.disciplines.filter(discipline__name="Potence"))
+                if disp == []:
+                    disp_rate = DisciplineRating.objects.create(
+                        discipline = Discipline.objects.get(name="Potence"),
+                        value = 1, 
+                    )
+                    ghoul.disciplines.add(disp_rate)
+                else:
+                    disp[0].value += 1 
+                    disp[0].save()                    
                 ch.ghouls.add(ghoul)
             
             if f['ghoul2_name'] != "":
@@ -498,6 +514,16 @@ def make_character(request):
                     )
                     ghoul.disciplines.add(disp_rate)
                 ghoul.save()
+                disp = list(ghoul.disciplines.filter(discipline__name="Potence"))
+                if disp == []:
+                    disp_rate = DisciplineRating.objects.create(
+                        discipline = Discipline.objects.get(name="Potence"),
+                        value = 1, 
+                    )
+                    ghoul.disciplines.add(disp_rate)
+                else:
+                    disp[0].value += 1 
+                    disp[0].save()
                 ch.ghouls.add(ghoul)
 
             if f['ghoul3_name'] != "":
@@ -525,6 +551,16 @@ def make_character(request):
                     )
                     ghoul.disciplines.add(disp_rate)
                 ghoul.save()
+                disp = list(ghoul.disciplines.filter(discipline__name="Potence"))
+                if disp == []:
+                    disp_rate = DisciplineRating.objects.create(
+                        discipline = Discipline.objects.get(name="Potence"),
+                        value = 1, 
+                    )
+                    ghoul.disciplines.add(disp_rate)
+                else:
+                    disp[0].value += 1 
+                    disp[0].save()
                 ch.ghouls.add(ghoul)
                 
             soc = AttributeRating.objects.create(

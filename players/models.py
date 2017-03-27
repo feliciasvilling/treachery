@@ -297,7 +297,7 @@ class Ghoul(Model):
   specializations = ManyToManyField(Specialization, blank=True)
   
   def __str__(self):
-        return '{} (Level: {},Potence 1,{},{}) ' .format(
+        return '{} (Level: {},{},{}) ' .format(
             self.name,
             self.level,
             toStrList(self.disciplines.all()), 
@@ -439,7 +439,10 @@ class Character(Model):
           
     
     def __str__(self):
-        return '{} ({})'.format(self.name, self.user)
+        off_name = self.user.first_name + " " + self.user.last_name
+        if off_name == " ":
+            off_name = str(self.user) 
+        return '{} ({})'.format(self.name, off_name)
         
        
     def display_disciplines(self):
@@ -467,7 +470,7 @@ class Character(Model):
         extra_actions  = ExtraAction.objects.filter(character=self, session=session)
         for title in self.titles.all():
             action_options.extend(list(title.action_options.all()))
-        for ghoul in self.ghouls.all():
+        for ghoul in self.ghouls.filter(hook=None):
             action_options.append(ActionOption.objects.get(name="Ghoul Aid Action"))
         
         return action_options

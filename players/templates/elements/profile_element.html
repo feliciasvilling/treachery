@@ -45,6 +45,14 @@
       <dd>{{character.hidden_goal}}</dd>
       </p>
       
+      <dt>XP</dt>
+      <dd>{{character.exp}}</dd>
+      <dt>Special XP</dt>
+      <dd>{{character.special_exp}}</dd>
+      <dt>Humanity XP</dt>
+      <dd>{{character.humanity_exp}}</dd>
+      </p>
+      
       <dt>Attributes</dt>
       <dd>{{ character.display_attributes|linebreaks }}</dd> 
       
@@ -59,7 +67,6 @@
       <dt>Willpower</dt>
       <dd>{{ character.willpower}} of {{ character.max_willpower}}</dd>      
 
-    {% if character.bashing or character.lethal or character.aggravated %}
           
       <dt>Damage</dt>
       <dd>{% if character.bashing %}
@@ -71,9 +78,11 @@
           {% if character.aggravated %}
                  {{character.aggravated}} aggravated.
           {% endif %}
-          
+          {% if not character.bashing and not character.lethal and not character.aggravated %}
+            No Damage!
+          {% endif %}      
           </dd>
-    {% endif %}
+    
     
 
       <dt>Blood</dt>
