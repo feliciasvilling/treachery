@@ -46,6 +46,9 @@ else:
 EMAIL_PORT = '465'
 EMAIL_USE_SSL = True
 
+
+ADMINS = [('Felicia Svilling','felicia@svilling.eu')]
+
 # Application definition
 
 INSTALLED_APPS = ('django.contrib.admin',

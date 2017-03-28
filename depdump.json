@@ -54,7 +54,7 @@
     "model": "auth.user",
     "fields": {
         "password": "pbkdf2_sha256$24000$TCixvJTeGh6M$4c4xfYyYRcQOMQ9Bru0IfxvLKQF//IRMfrrPqr3wlJE=",
-        "last_login": "2017-02-15T17:20:15Z",
+        "last_login": "2017-03-27T17:37:54.238Z",
         "is_superuser": false,
         "username": "AnMu",
         "first_name": "Anton",
@@ -105,7 +105,7 @@
     "model": "auth.user",
     "fields": {
         "password": "pbkdf2_sha256$24000$wmqhBHA2ByXo$uDoMgKKFll8+fY2oJo6Uuq4xJdy6gO1daLjpGx+FRQE=",
-        "last_login": "2017-03-08T20:29:42.437Z",
+        "last_login": "2017-03-28T14:23:16.524Z",
         "is_superuser": false,
         "username": "EmHa",
         "first_name": "Emil",
@@ -139,7 +139,7 @@
     "model": "auth.user",
     "fields": {
         "password": "pbkdf2_sha256$24000$blIlXuhrUVZu$o/eHe9JH3/yVhydTwObsBj6z8dsmoxaw82B+yahaQEg=",
-        "last_login": "2017-03-27T13:26:44.898Z",
+        "last_login": "2017-03-27T19:09:39.122Z",
         "is_superuser": false,
         "username": "JeGy",
         "first_name": "Jerome",
@@ -173,7 +173,7 @@
     "model": "auth.user",
     "fields": {
         "password": "pbkdf2_sha256$24000$I8XYgZo1woj4$Y1rWzf+JSLP7hgxBFCWaWu2SSt/Yqq/K5yl7ynZmhwc=",
-        "last_login": "2017-03-03T11:38:40Z",
+        "last_login": "2017-03-27T17:27:03.106Z",
         "is_superuser": false,
         "username": "SeLi",
         "first_name": "Sebastian",
@@ -556,6 +556,40 @@
         "is_staff": false,
         "is_active": true,
         "date_joined": "2017-02-27T19:46:01.712Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "fields": {
+        "password": "pbkdf2_sha256$24000$VmLJext3FIVG$eAoLtHrHXZ0urtTor8Kj8DkzShpU30r9C8z5Zra73JM=",
+        "last_login": "2017-03-27T23:22:16.184Z",
+        "is_superuser": false,
+        "username": "WaHa",
+        "first_name": "Wander",
+        "last_name": "Havir",
+        "email": "oliver.havir@gmail.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2017-03-27T16:33:54Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "fields": {
+        "password": "pbkdf2_sha256$24000$AAWdmTIm7gI2$X5fWaoN5VKkKspcrzDx+f+zxs0+E0Vmo1wP9cInRiys=",
+        "last_login": "2017-03-28T07:48:19.468Z",
+        "is_superuser": false,
+        "username": "OrSv",
+        "first_name": "Orion",
+        "last_name": "Sveinsson",
+        "email": "orion1323@outlook.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2017-03-27T16:34:10Z",
         "groups": [],
         "user_permissions": []
     }
@@ -2615,6 +2649,17 @@
     }
 },
 {
+    "model": "players.actionoption",
+    "pk": 17,
+    "fields": {
+        "name": "Ghoul Aid Action",
+        "count": 1,
+        "action_types": [
+            33
+        ]
+    }
+},
+{
     "model": "players.influence",
     "pk": 1,
     "fields": {
@@ -4369,6 +4414,141 @@
     }
 },
 {
+    "model": "players.disciplinerating",
+    "pk": 110,
+    "fields": {
+        "discipline": 8,
+        "value": 1,
+        "learned": false,
+        "learning": false,
+        "elder_blood": false,
+        "in_clan": false,
+        "mentor": false,
+        "exp": 0,
+        "elder_powers": []
+    }
+},
+{
+    "model": "players.disciplinerating",
+    "pk": 111,
+    "fields": {
+        "discipline": 8,
+        "value": 1,
+        "learned": false,
+        "learning": false,
+        "elder_blood": false,
+        "in_clan": false,
+        "mentor": false,
+        "exp": 0,
+        "elder_powers": []
+    }
+},
+{
+    "model": "players.disciplinerating",
+    "pk": 112,
+    "fields": {
+        "discipline": 8,
+        "value": 1,
+        "learned": false,
+        "learning": false,
+        "elder_blood": false,
+        "in_clan": false,
+        "mentor": false,
+        "exp": 0,
+        "elder_powers": []
+    }
+},
+{
+    "model": "players.disciplinerating",
+    "pk": 113,
+    "fields": {
+        "discipline": 8,
+        "value": 1,
+        "learned": false,
+        "learning": false,
+        "elder_blood": false,
+        "in_clan": false,
+        "mentor": false,
+        "exp": 0,
+        "elder_powers": []
+    }
+},
+{
+    "model": "players.disciplinerating",
+    "pk": 114,
+    "fields": {
+        "discipline": 8,
+        "value": 1,
+        "learned": false,
+        "learning": false,
+        "elder_blood": false,
+        "in_clan": false,
+        "mentor": false,
+        "exp": 0,
+        "elder_powers": []
+    }
+},
+{
+    "model": "players.disciplinerating",
+    "pk": 115,
+    "fields": {
+        "discipline": 8,
+        "value": 1,
+        "learned": false,
+        "learning": false,
+        "elder_blood": false,
+        "in_clan": false,
+        "mentor": false,
+        "exp": 0,
+        "elder_powers": []
+    }
+},
+{
+    "model": "players.disciplinerating",
+    "pk": 116,
+    "fields": {
+        "discipline": 2,
+        "value": 1,
+        "learned": false,
+        "learning": false,
+        "elder_blood": false,
+        "in_clan": false,
+        "mentor": false,
+        "exp": 0,
+        "elder_powers": []
+    }
+},
+{
+    "model": "players.disciplinerating",
+    "pk": 117,
+    "fields": {
+        "discipline": 10,
+        "value": 2,
+        "learned": false,
+        "learning": false,
+        "elder_blood": false,
+        "in_clan": false,
+        "mentor": false,
+        "exp": 0,
+        "elder_powers": []
+    }
+},
+{
+    "model": "players.disciplinerating",
+    "pk": 118,
+    "fields": {
+        "discipline": 6,
+        "value": 0,
+        "learned": false,
+        "learning": false,
+        "elder_blood": false,
+        "in_clan": false,
+        "mentor": false,
+        "exp": 0,
+        "elder_powers": []
+    }
+},
+{
     "model": "players.attribute",
     "pk": 1,
     "fields": {
@@ -4548,84 +4728,6 @@
 {
     "model": "players.attributerating",
     "pk": 13,
-    "fields": {
-        "attribute": 2,
-        "learned": false,
-        "learning": false,
-        "elder_blood": false,
-        "mentor": false,
-        "value": 5,
-        "exp": 0
-    }
-},
-{
-    "model": "players.attributerating",
-    "pk": 14,
-    "fields": {
-        "attribute": 1,
-        "learned": false,
-        "learning": false,
-        "elder_blood": false,
-        "mentor": false,
-        "value": 4,
-        "exp": 0
-    }
-},
-{
-    "model": "players.attributerating",
-    "pk": 15,
-    "fields": {
-        "attribute": 3,
-        "learned": false,
-        "learning": false,
-        "elder_blood": false,
-        "mentor": false,
-        "value": 6,
-        "exp": 0
-    }
-},
-{
-    "model": "players.attributerating",
-    "pk": 16,
-    "fields": {
-        "attribute": 2,
-        "learned": false,
-        "learning": false,
-        "elder_blood": false,
-        "mentor": false,
-        "value": 5,
-        "exp": 0
-    }
-},
-{
-    "model": "players.attributerating",
-    "pk": 17,
-    "fields": {
-        "attribute": 1,
-        "learned": false,
-        "learning": false,
-        "elder_blood": false,
-        "mentor": false,
-        "value": 4,
-        "exp": 0
-    }
-},
-{
-    "model": "players.attributerating",
-    "pk": 18,
-    "fields": {
-        "attribute": 3,
-        "learned": false,
-        "learning": false,
-        "elder_blood": false,
-        "mentor": false,
-        "value": 6,
-        "exp": 0
-    }
-},
-{
-    "model": "players.attributerating",
-    "pk": 19,
     "fields": {
         "attribute": 2,
         "learned": false,
@@ -5262,84 +5364,6 @@
 },
 {
     "model": "players.attributerating",
-    "pk": 68,
-    "fields": {
-        "attribute": 1,
-        "learned": false,
-        "learning": false,
-        "elder_blood": false,
-        "mentor": false,
-        "value": 0,
-        "exp": 0
-    }
-},
-{
-    "model": "players.attributerating",
-    "pk": 69,
-    "fields": {
-        "attribute": 3,
-        "learned": false,
-        "learning": false,
-        "elder_blood": false,
-        "mentor": false,
-        "value": 0,
-        "exp": 0
-    }
-},
-{
-    "model": "players.attributerating",
-    "pk": 70,
-    "fields": {
-        "attribute": 2,
-        "learned": false,
-        "learning": false,
-        "elder_blood": false,
-        "mentor": false,
-        "value": 0,
-        "exp": 0
-    }
-},
-{
-    "model": "players.attributerating",
-    "pk": 71,
-    "fields": {
-        "attribute": 1,
-        "learned": false,
-        "learning": false,
-        "elder_blood": false,
-        "mentor": false,
-        "value": 0,
-        "exp": 0
-    }
-},
-{
-    "model": "players.attributerating",
-    "pk": 72,
-    "fields": {
-        "attribute": 3,
-        "learned": false,
-        "learning": false,
-        "elder_blood": false,
-        "mentor": false,
-        "value": 0,
-        "exp": 0
-    }
-},
-{
-    "model": "players.attributerating",
-    "pk": 73,
-    "fields": {
-        "attribute": 2,
-        "learned": false,
-        "learning": false,
-        "elder_blood": false,
-        "mentor": false,
-        "value": 0,
-        "exp": 0
-    }
-},
-{
-    "model": "players.attributerating",
     "pk": 74,
     "fields": {
         "attribute": 1,
@@ -5413,6 +5437,45 @@
         "elder_blood": false,
         "mentor": false,
         "value": 3,
+        "exp": 0
+    }
+},
+{
+    "model": "players.attributerating",
+    "pk": 80,
+    "fields": {
+        "attribute": 1,
+        "learned": false,
+        "learning": false,
+        "elder_blood": false,
+        "mentor": false,
+        "value": 1,
+        "exp": 0
+    }
+},
+{
+    "model": "players.attributerating",
+    "pk": 81,
+    "fields": {
+        "attribute": 2,
+        "learned": false,
+        "learning": false,
+        "elder_blood": false,
+        "mentor": false,
+        "value": 1,
+        "exp": 0
+    }
+},
+{
+    "model": "players.attributerating",
+    "pk": 82,
+    "fields": {
+        "attribute": 3,
+        "learned": false,
+        "learning": false,
+        "elder_blood": false,
+        "mentor": false,
+        "value": 1,
         "exp": 0
     }
 },
@@ -7240,6 +7303,32 @@
     }
 },
 {
+    "model": "players.hook",
+    "pk": 132,
+    "fields": {
+        "name": "Pierre Johansson",
+        "concept": "dirty cop",
+        "influence": 1,
+        "attributes": [
+            1,
+            4
+        ]
+    }
+},
+{
+    "model": "players.hook",
+    "pk": 133,
+    "fields": {
+        "name": "Aron Pawson",
+        "concept": "failing student",
+        "influence": 6,
+        "attributes": [
+            2,
+            3
+        ]
+    }
+},
+{
     "model": "players.equipment",
     "pk": 1,
     "fields": {
@@ -7255,7 +7344,8 @@
         "level": 3,
         "hook": null,
         "disciplines": [
-            7
+            7,
+            115
         ],
         "specializations": [
             3,
@@ -7288,7 +7378,7 @@
     "fields": {
         "name": "Loranna Hart",
         "level": 1,
-        "hook": null,
+        "hook": 66,
         "disciplines": [
             70,
             71
@@ -7307,7 +7397,8 @@
         "hook": 93,
         "disciplines": [
             21,
-            42
+            42,
+            113
         ],
         "specializations": [
             10
@@ -7322,7 +7413,8 @@
         "level": 3,
         "hook": null,
         "disciplines": [
-            101
+            101,
+            112
         ],
         "specializations": [
             3,
@@ -7339,7 +7431,8 @@
         "level": 1,
         "hook": null,
         "disciplines": [
-            107
+            107,
+            111
         ],
         "specializations": [
             3
@@ -7354,7 +7447,8 @@
         "level": 3,
         "hook": null,
         "disciplines": [
-            108
+            108,
+            110
         ],
         "specializations": [
             4,
@@ -7435,7 +7529,7 @@
         "name": "Innerstaden",
         "feeding_capacity": 25,
         "status": "3",
-        "owner": null,
+        "owner": 27,
         "influence": "-",
         "masquerade": "Normal",
         "population": []
@@ -7474,7 +7568,7 @@
         "name": "Soptippen",
         "feeding_capacity": 0,
         "status": "0",
-        "owner": null,
+        "owner": 13,
         "influence": "-",
         "masquerade": "Worse",
         "population": []
@@ -7527,9 +7621,7 @@
         "humanity_exp": 0,
         "special_exp": 0,
         "additional_notes": "",
-        "titles": [
-            3
-        ],
+        "titles": [],
         "attributes": [
             2,
             3,
@@ -7639,8 +7731,8 @@
         "equipment": [],
         "weapons": [],
         "ghouls": [
-            1,
-            9
+            9,
+            1
         ]
     }
 },
@@ -7896,9 +7988,9 @@
             6
         ],
         "attributes": [
-            29,
             30,
-            31
+            31,
+            29
         ],
         "specializations": [
             7,
@@ -7908,9 +8000,9 @@
             15
         ],
         "disciplines": [
-            45,
             46,
-            47
+            47,
+            45
         ],
         "hooks": [
             42,
@@ -8103,7 +8195,9 @@
         "humanity_exp": 2,
         "special_exp": 0,
         "additional_notes": "",
-        "titles": [],
+        "titles": [
+            4
+        ],
         "attributes": [
             38,
             39,
@@ -8800,6 +8894,65 @@
         "hooks": [
             130,
             131
+        ],
+        "rituals": [],
+        "boons": [],
+        "relationships": [],
+        "canon_fact": [],
+        "equipment": [],
+        "weapons": [],
+        "ghouls": []
+    }
+},
+{
+    "model": "players.character",
+    "pk": 35,
+    "fields": {
+        "name": "Amadeus",
+        "user": [
+            "WaHa"
+        ],
+        "nature": 3,
+        "demeanor": 11,
+        "sire": 5,
+        "clan": 2,
+        "generation": 7,
+        "age": 2,
+        "open_goal1": "Min karakt\u00e4r tycker att Einar Brorson \u00e4r en gudomlig varelse och vill f\u00f6lja sina f\u00f6rebild in i d\u00f6den och d\u00e4rf\u00f6r kommer min karakt\u00e4r att g\u00f6ra allt f\u00f6r att imponera p\u00e5 hans sire.",
+        "open_goal2": "Min karakt\u00e4r tycker att det \u00e4r viktigt att ha h\u00f6g kvalite mat och vill d\u00e4rf\u00f6r avla m\u00e4nniskor till det b\u00e4ttre.",
+        "hidden_goal": "Min karakt\u00e4r tycker att alla \u00e4r ett hot mot gangrel klanen och vill d\u00e4rf\u00f6r eliminera ALLA.",
+        "humanity": 7,
+        "max_willpower": 5,
+        "willpower": 0,
+        "blood": 10,
+        "bashing": 0,
+        "lethal": 0,
+        "aggravated": 0,
+        "resources": 0,
+        "frenzyTriggers": "",
+        "political_faction": 1,
+        "concept": "Attention craving neonate",
+        "herd": 1,
+        "haven": 0,
+        "exp": 0,
+        "humanity_exp": 0,
+        "special_exp": 0,
+        "additional_notes": "",
+        "titles": [],
+        "attributes": [
+            80,
+            81,
+            82
+        ],
+        "specializations": [],
+        "disciplines": [
+            116,
+            117,
+            118
+        ],
+        "hooks": [
+            132,
+            133
         ],
         "rituals": [],
         "boons": [],
@@ -10354,6 +10507,357 @@
     }
 },
 {
+    "model": "players.action",
+    "pk": 501,
+    "fields": {
+        "action_type": 11,
+        "character": 19,
+        "session": 2,
+        "willpower": false,
+        "description": "Diakon Whinther is investigating: ALIENS!!!!",
+        "resolved": "UNRESOLVED",
+        "helpers": []
+    }
+},
+{
+    "model": "players.action",
+    "pk": 502,
+    "fields": {
+        "action_type": 28,
+        "character": 19,
+        "session": 2,
+        "willpower": false,
+        "description": "Diakon Whinther is learning Fortitude. ",
+        "resolved": "UNRESOLVED",
+        "helpers": []
+    }
+},
+{
+    "model": "players.action",
+    "pk": 503,
+    "fields": {
+        "action_type": 26,
+        "character": 19,
+        "session": 2,
+        "willpower": false,
+        "description": "Diakon Whinther is investing in the weapon Explosives.",
+        "resolved": "UNRESOLVED",
+        "helpers": []
+    }
+},
+{
+    "model": "players.action",
+    "pk": 504,
+    "fields": {
+        "action_type": 3,
+        "character": 19,
+        "session": 2,
+        "willpower": false,
+        "description": "Diakon Whinther is conserving Innerstaden.",
+        "resolved": "UNRESOLVED",
+        "helpers": []
+    }
+},
+{
+    "model": "players.action",
+    "pk": 505,
+    "fields": {
+        "action_type": 16,
+        "character": 19,
+        "session": 2,
+        "willpower": false,
+        "description": "Diakon Whinther is resting.",
+        "resolved": "UNRESOLVED",
+        "helpers": []
+    }
+},
+{
+    "model": "players.action",
+    "pk": 506,
+    "fields": {
+        "action_type": 28,
+        "character": 19,
+        "session": 2,
+        "willpower": false,
+        "description": "Diakon Whinther is learning Potence. ",
+        "resolved": "UNRESOLVED",
+        "helpers": []
+    }
+},
+{
+    "model": "players.action",
+    "pk": 507,
+    "fields": {
+        "action_type": 28,
+        "character": 19,
+        "session": 2,
+        "willpower": false,
+        "description": "Diakon Whinther is learning Fortitude. ",
+        "resolved": "UNRESOLVED",
+        "helpers": []
+    }
+},
+{
+    "model": "players.action",
+    "pk": 514,
+    "fields": {
+        "action_type": 16,
+        "character": 12,
+        "session": 2,
+        "willpower": false,
+        "description": "Erik is resting.",
+        "resolved": "UNRESOLVED",
+        "helpers": []
+    }
+},
+{
+    "model": "players.action",
+    "pk": 515,
+    "fields": {
+        "action_type": 29,
+        "character": 12,
+        "session": 2,
+        "willpower": false,
+        "description": "Erik is learning Interogation,replacing Protection. ",
+        "resolved": "UNRESOLVED",
+        "helpers": []
+    }
+},
+{
+    "model": "players.action",
+    "pk": 516,
+    "fields": {
+        "action_type": 5,
+        "character": 12,
+        "session": 2,
+        "willpower": false,
+        "description": "Erik is stealing cederqvist in the influence Universitet.",
+        "resolved": "UNRESOLVED",
+        "helpers": []
+    }
+},
+{
+    "model": "players.action",
+    "pk": 517,
+    "fields": {
+        "action_type": 12,
+        "character": 12,
+        "session": 2,
+        "willpower": true,
+        "description": "Erik is investigating Universitet.",
+        "resolved": "UNRESOLVED",
+        "helpers": []
+    }
+},
+{
+    "model": "players.action",
+    "pk": 518,
+    "fields": {
+        "action_type": 28,
+        "character": 12,
+        "session": 2,
+        "willpower": false,
+        "description": "Erik is learning Presence. With Hans as teacher.",
+        "resolved": "UNRESOLVED",
+        "helpers": []
+    }
+},
+{
+    "model": "players.action",
+    "pk": 519,
+    "fields": {
+        "action_type": 22,
+        "character": 12,
+        "session": 2,
+        "willpower": false,
+        "description": "Erik is investing in the equipment Laptop, which is used for Investigation.",
+        "resolved": "UNRESOLVED",
+        "helpers": []
+    }
+},
+{
+    "model": "players.action",
+    "pk": 527,
+    "fields": {
+        "action_type": 11,
+        "character": 2,
+        "session": 2,
+        "willpower": false,
+        "description": "Crane Mikkelsen is investigating: mysko g\u00f6rningar i skatteverket",
+        "resolved": "UNRESOLVED",
+        "helpers": []
+    }
+},
+{
+    "model": "players.action",
+    "pk": 528,
+    "fields": {
+        "action_type": 11,
+        "character": 2,
+        "session": 2,
+        "willpower": false,
+        "description": "Crane Mikkelsen is investigating: trash kids that lived on the garbage pile",
+        "resolved": "UNRESOLVED",
+        "helpers": []
+    }
+},
+{
+    "model": "players.action",
+    "pk": 529,
+    "fields": {
+        "action_type": 9,
+        "character": 2,
+        "session": 2,
+        "willpower": true,
+        "description": "Crane Mikkelsen is investigating Diakon Whinther's downtime actions.",
+        "resolved": "UNRESOLVED",
+        "helpers": []
+    }
+},
+{
+    "model": "players.action",
+    "pk": 530,
+    "fields": {
+        "action_type": 23,
+        "character": 2,
+        "session": 2,
+        "willpower": false,
+        "description": "Crane Mikkelsen is investing in the ghoul Sydney Pope, which is getting Animalism and Subterfuge.",
+        "resolved": "UNRESOLVED",
+        "helpers": []
+    }
+},
+{
+    "model": "players.action",
+    "pk": 531,
+    "fields": {
+        "action_type": 28,
+        "character": 2,
+        "session": 2,
+        "willpower": false,
+        "description": "Crane Mikkelsen is learning Celerity. With Crane Mikkelsen as teacher.",
+        "resolved": "UNRESOLVED",
+        "helpers": []
+    }
+},
+{
+    "model": "players.action",
+    "pk": 532,
+    "fields": {
+        "action_type": 28,
+        "character": 2,
+        "session": 2,
+        "willpower": false,
+        "description": "Crane Mikkelsen is learning Fortitude. ",
+        "resolved": "UNRESOLVED",
+        "helpers": []
+    }
+},
+{
+    "model": "players.action",
+    "pk": 533,
+    "fields": {
+        "action_type": 33,
+        "character": 2,
+        "session": 2,
+        "willpower": false,
+        "description": "Sydney Pope is helping Crane Mikkelsen with Investigate (Phenomenon) .\n ",
+        "resolved": "UNRESOLVED",
+        "helpers": []
+    }
+},
+{
+    "model": "players.action",
+    "pk": 548,
+    "fields": {
+        "action_type": 5,
+        "character": 13,
+        "session": 2,
+        "willpower": false,
+        "description": "",
+        "resolved": "UNRESOLVED",
+        "helpers": []
+    }
+},
+{
+    "model": "players.action",
+    "pk": 549,
+    "fields": {
+        "action_type": 5,
+        "character": 13,
+        "session": 2,
+        "willpower": false,
+        "description": "",
+        "resolved": "UNRESOLVED",
+        "helpers": []
+    }
+},
+{
+    "model": "players.action",
+    "pk": 550,
+    "fields": {
+        "action_type": 5,
+        "character": 13,
+        "session": 2,
+        "willpower": false,
+        "description": "",
+        "resolved": "UNRESOLVED",
+        "helpers": []
+    }
+},
+{
+    "model": "players.action",
+    "pk": 551,
+    "fields": {
+        "action_type": 5,
+        "character": 13,
+        "session": 2,
+        "willpower": false,
+        "description": "",
+        "resolved": "UNRESOLVED",
+        "helpers": []
+    }
+},
+{
+    "model": "players.action",
+    "pk": 552,
+    "fields": {
+        "action_type": 28,
+        "character": 13,
+        "session": 2,
+        "willpower": false,
+        "description": "",
+        "resolved": "UNRESOLVED",
+        "helpers": []
+    }
+},
+{
+    "model": "players.action",
+    "pk": 553,
+    "fields": {
+        "action_type": 27,
+        "character": 13,
+        "session": 2,
+        "willpower": false,
+        "description": "",
+        "resolved": "UNRESOLVED",
+        "helpers": []
+    }
+},
+{
+    "model": "players.action",
+    "pk": 554,
+    "fields": {
+        "action_type": 12,
+        "character": 13,
+        "session": 2,
+        "willpower": false,
+        "description": "",
+        "resolved": "UNRESOLVED",
+        "helpers": []
+    }
+},
+{
     "model": "players.aidaction",
     "pk": 245,
     "fields": {
@@ -10425,6 +10929,18 @@
     "fields": {
         "helpee": 17,
         "action": 28,
+        "name": "",
+        "betrayal": false,
+        "helpers": []
+    }
+},
+{
+    "model": "players.ghoulaidaction",
+    "pk": 533,
+    "fields": {
+        "ghoul": 8,
+        "helpee": 2,
+        "action": 11,
         "name": "",
         "betrayal": false,
         "helpers": []
@@ -10535,6 +11051,14 @@
     }
 },
 {
+    "model": "players.conservedomain",
+    "pk": 504,
+    "fields": {
+        "domain": 6,
+        "helpers": []
+    }
+},
+{
     "model": "players.influencesteal",
     "pk": 113,
     "fields": {
@@ -10621,6 +11145,15 @@
     "fields": {
         "name": "Bandmedlem i ett band (Gl\u00f6mt namnet.)",
         "influence": 3,
+        "helpers": []
+    }
+},
+{
+    "model": "players.influencesteal",
+    "pk": 516,
+    "fields": {
+        "name": "cederqvist",
+        "influence": 6,
         "helpers": []
     }
 },
@@ -10928,6 +11461,14 @@
     }
 },
 {
+    "model": "players.investigatecharacterdowntimeactions",
+    "pk": 529,
+    "fields": {
+        "target": 19,
+        "helpers": []
+    }
+},
+{
     "model": "players.investigatecounterspionage",
     "pk": 138,
     "fields": {
@@ -11109,6 +11650,30 @@
     }
 },
 {
+    "model": "players.investigatephenomenon",
+    "pk": 501,
+    "fields": {
+        "phenonemon": "ALIENS!!!!",
+        "helpers": []
+    }
+},
+{
+    "model": "players.investigatephenomenon",
+    "pk": 527,
+    "fields": {
+        "phenonemon": "mysko g\u00f6rningar i skatteverket",
+        "helpers": []
+    }
+},
+{
+    "model": "players.investigatephenomenon",
+    "pk": 528,
+    "fields": {
+        "phenonemon": "trash kids that lived on the garbage pile",
+        "helpers": []
+    }
+},
+{
     "model": "players.investigateinfluence",
     "pk": 115,
     "fields": {
@@ -11177,6 +11742,14 @@
     "pk": 436,
     "fields": {
         "influence": 5,
+        "helpers": []
+    }
+},
+{
+    "model": "players.investigateinfluence",
+    "pk": 517,
+    "fields": {
+        "influence": 6,
         "helpers": []
     }
 },
@@ -11371,6 +11944,76 @@
     }
 },
 {
+    "model": "players.learndiscipline",
+    "pk": 502,
+    "fields": {
+        "discipline": 6,
+        "trainer": null,
+        "blood": true,
+        "helpers": []
+    }
+},
+{
+    "model": "players.learndiscipline",
+    "pk": 506,
+    "fields": {
+        "discipline": 8,
+        "trainer": null,
+        "blood": true,
+        "helpers": []
+    }
+},
+{
+    "model": "players.learndiscipline",
+    "pk": 507,
+    "fields": {
+        "discipline": 6,
+        "trainer": null,
+        "blood": true,
+        "helpers": []
+    }
+},
+{
+    "model": "players.learndiscipline",
+    "pk": 518,
+    "fields": {
+        "discipline": 9,
+        "trainer": 13,
+        "blood": true,
+        "helpers": []
+    }
+},
+{
+    "model": "players.learndiscipline",
+    "pk": 531,
+    "fields": {
+        "discipline": 3,
+        "trainer": 2,
+        "blood": true,
+        "helpers": []
+    }
+},
+{
+    "model": "players.learndiscipline",
+    "pk": 532,
+    "fields": {
+        "discipline": 6,
+        "trainer": null,
+        "blood": false,
+        "helpers": []
+    }
+},
+{
+    "model": "players.learnspecialization",
+    "pk": 515,
+    "fields": {
+        "new_specialization": 5,
+        "old_specialization": 9,
+        "trainer": null,
+        "helpers": []
+    }
+},
+{
     "model": "players.investghoul",
     "pk": 101,
     "fields": {
@@ -11411,6 +12054,16 @@
     }
 },
 {
+    "model": "players.investghoul",
+    "pk": 530,
+    "fields": {
+        "name": "Sydney Pope",
+        "discipline": 2,
+        "specialization": 11,
+        "helpers": []
+    }
+},
+{
     "model": "players.investequipment",
     "pk": 67,
     "fields": {
@@ -11429,8 +12082,25 @@
     }
 },
 {
+    "model": "players.investequipment",
+    "pk": 519,
+    "fields": {
+        "name": "Laptop",
+        "specialization": 10,
+        "helpers": []
+    }
+},
+{
     "model": "players.investweapon",
     "pk": 298,
+    "fields": {
+        "weapon": 8,
+        "helpers": []
+    }
+},
+{
+    "model": "players.investweapon",
+    "pk": 503,
     "fields": {
         "weapon": 8,
         "helpers": []
@@ -11519,6 +12189,20 @@
     }
 },
 {
+    "model": "players.rest",
+    "pk": 505,
+    "fields": {
+        "helpers": []
+    }
+},
+{
+    "model": "players.rest",
+    "pk": 514,
+    "fields": {
+        "helpers": []
+    }
+},
+{
     "model": "players.neglectdomain",
     "pk": 106,
     "fields": {
@@ -11590,14 +12274,74 @@
 },
 {
     "model": "players.eventreport",
-    "pk": 1,
+    "pk": 3,
+    "fields": {
+        "character": 19,
+        "session": 2,
+        "open_goal1": true,
+        "open_goal2": true,
+        "hidden_goal": true,
+        "humanity_exp": true,
+        "humanity": 3,
+        "willpower_dots": 0,
+        "willpower_points": 3,
+        "blood": 0,
+        "resources": 0,
+        "bashing": 0,
+        "lethal": 0,
+        "aggravated": 4
+    }
+},
+{
+    "model": "players.eventreport",
+    "pk": 4,
+    "fields": {
+        "character": 12,
+        "session": 2,
+        "open_goal1": true,
+        "open_goal2": false,
+        "hidden_goal": false,
+        "humanity_exp": true,
+        "humanity": 0,
+        "willpower_dots": 0,
+        "willpower_points": 3,
+        "blood": 1,
+        "resources": 0,
+        "bashing": 0,
+        "lethal": 0,
+        "aggravated": 0
+    }
+},
+{
+    "model": "players.eventreport",
+    "pk": 5,
+    "fields": {
+        "character": 2,
+        "session": 2,
+        "open_goal1": true,
+        "open_goal2": true,
+        "hidden_goal": false,
+        "humanity_exp": false,
+        "humanity": 0,
+        "willpower_dots": 0,
+        "willpower_points": 1,
+        "blood": 0,
+        "resources": 0,
+        "bashing": 0,
+        "lethal": 0,
+        "aggravated": 0
+    }
+},
+{
+    "model": "players.eventreport",
+    "pk": 7,
     "fields": {
         "character": 13,
         "session": 2,
         "open_goal1": true,
         "open_goal2": true,
         "hidden_goal": true,
-        "humanity_exp": false,
+        "humanity_exp": true,
         "humanity": 0,
         "willpower_dots": 0,
         "willpower_points": 0,
@@ -11610,13 +12354,123 @@
 },
 {
     "model": "players.changegoals",
-    "pk": 1,
+    "pk": 3,
+    "fields": {
+        "character": 19,
+        "session": 2,
+        "open_goal1": "Den d\u00f6dliga v\u00e4rlden \u00e4r v\u00e4gen till makt. Crane \u00e4r f\u00f6r ond f\u00f6r att ha den makten. Jag skall ta reda p\u00e5 vem hans hooks \u00e4r och ber\u00f6va honom dem.",
+        "open_goal2": "Apologismen \u00e4r den enda moraliska politiska faktionen och passion \u00e4r v\u00e4gen till makt. Jag m\u00e5ste f\u00e5 en Brujha utanf\u00f6r mitt coateri att h\u00e5lla ett rant om apologismen.",
+        "hidden_goal": "Gorillan Eva \u00e4r den godaste varelsen i staden. Jag skall skydda henne fr\u00e5n alla vampyrerna i den h\u00e4r j\u00e4vla staden."
+    }
+},
+{
+    "model": "players.changegoals",
+    "pk": 4,
+    "fields": {
+        "character": 12,
+        "session": 2,
+        "open_goal1": "F\u00f6rb\u00e4ttra min status genom att F\u00e5 bort diakonvinter fr\u00e5n sin post som sherrif och harpya.",
+        "open_goal2": "H\u00e5lla mig utanf\u00f6r kriget med hamskiftarna genom att f\u00e5 eniar att skydda mig fr\u00e5n att f\u00e5 mig inblandad",
+        "hidden_goal": "Bli m\u00e4niska igen genom att ge upp allt v\u00e5ld genom att f\u00e5 hans att ocks\u00e5 ge upp v\u00e5ld."
+    }
+},
+{
+    "model": "players.changegoals",
+    "pk": 5,
+    "fields": {
+        "character": 2,
+        "session": 2,
+        "open_goal1": "Min karakt\u00e4r tycker DIakon WInther \u00e4r skum och ska f\u00e5 hundarna att pissa p\u00e5 honom, bokstavligt eller metaforsikt",
+        "open_goal2": "Min karakt\u00e4r tycker att det \u00e4r st\u00f6rigt med krig och vill motst\u00e5 alla f\u00f6rs\u00f6k till att f\u00f6ra krig mot hamnskiftare",
+        "hidden_goal": "min karakt\u00e4r tycker fursten f\u00f6rr\u00e5tt alla och honom och vill att gangrel eldsten ska ers\u00e4tta fursten"
+    }
+},
+{
+    "model": "players.changegoals",
+    "pk": 7,
     "fields": {
         "character": 13,
         "session": 2,
-        "open_goal1": "In all things, we all want to feel needed. To be loved, to be the special one for someone. Hans wants to be the only special special one to his Elder, not share this with anyone else. This might be his Blood Bound taking, however Hans will remove any obstacles.\r\nWork on this things: \r\n-  Put the current Brujah Ancilla in bad lights, and then become the elysium keeper",
-        "open_goal2": "Increase the wealth and build out the new Domain into becoming the trendy SoHo with a thriving hipp night life and resturant life",
-        "hidden_goal": "Work towards diminish  the Tremere influence in the City, \r\n- Take out Tremere Neonates - Faye is high the list as the Tremere have been stealing rumours and not cooperating on information shared\r\n- Find other kindred who wants to take out the Tremere Ancilla\r\n- Steal FP from Tremere domains not belonging to the tremere queen"
+        "open_goal1": "Invest time and resources into Hans own domain. Will build a new ShoHo like trendy new part of the city, with a \r\nblossoming resturants life and a trendy hot night life.",
+        "open_goal2": "Everyone wants to feel special, everyone wants to be the special one for someone. And most doesnt want to share this. \r\nThis is how Hans feel towards his Elder, who is also shares a special bound to. \r\nHans want his eldest full attention, encouragement and be the special someone without sharing this with anyone. \r\n- Will fight for the full attention of his elder\r\n- Will work towards becoming the next Elysium Keeper.",
+        "hidden_goal": "Continue to diminish the Tremere influence in the city. \r\n- Take care of some minor Tremere Neonates\r\n\tFaye: Stole a rumour who were shared, and acted alone without telling\r\n\t(cant remember his name): Killed an hook from Hans\r\n- Work towards removing FP from Thomas Lilja domain."
+    }
+},
+{
+    "model": "players.expdisciplinespending",
+    "pk": 3,
+    "fields": {
+        "character": 19,
+        "session": 2,
+        "discipline": 106,
+        "exp": true,
+        "special_exp": 0
+    }
+},
+{
+    "model": "players.expdisciplinespending",
+    "pk": 4,
+    "fields": {
+        "character": 19,
+        "session": 2,
+        "discipline": 65,
+        "exp": false,
+        "special_exp": 0
+    }
+},
+{
+    "model": "players.expdisciplinespending",
+    "pk": 5,
+    "fields": {
+        "character": 12,
+        "session": 2,
+        "discipline": 102,
+        "exp": true,
+        "special_exp": 0
+    }
+},
+{
+    "model": "players.expdisciplinespending",
+    "pk": 6,
+    "fields": {
+        "character": 2,
+        "session": 2,
+        "discipline": 105,
+        "exp": true,
+        "special_exp": 1
+    }
+},
+{
+    "model": "players.expdisciplinespending",
+    "pk": 7,
+    "fields": {
+        "character": 2,
+        "session": 2,
+        "discipline": 104,
+        "exp": true,
+        "special_exp": 1
+    }
+},
+{
+    "model": "players.expdisciplinespending",
+    "pk": 12,
+    "fields": {
+        "character": 13,
+        "session": 2,
+        "discipline": 47,
+        "exp": true,
+        "special_exp": 2
+    }
+},
+{
+    "model": "players.expdisciplinespending",
+    "pk": 13,
+    "fields": {
+        "character": 13,
+        "session": 2,
+        "discipline": 45,
+        "exp": false,
+        "special_exp": 3
     }
 },
 {
@@ -11943,6 +12797,74 @@
     }
 },
 {
+    "model": "players.feeding",
+    "pk": 46,
+    "fields": {
+        "character": 19,
+        "session": 2,
+        "domain": 6,
+        "feeding_points": 10,
+        "discipline": null,
+        "description": "Jag \u00e4ter nattvandrare. Fuck nattvandrare! De tror de \u00e4r s\u00e5 j\u00e4vla bra!",
+        "has_good_method": true,
+        "has_permission": true,
+        "incidents": 0,
+        "incident_roll": 0,
+        "resolved": "UNRESOLVED"
+    }
+},
+{
+    "model": "players.feeding",
+    "pk": 47,
+    "fields": {
+        "character": 12,
+        "session": 2,
+        "domain": 2,
+        "feeding_points": 5,
+        "discipline": null,
+        "description": "Forts\u00e4tta dricka blood fr\u00e5n m\u00e4niskor som jag skyddar i min uniform som medborgar gardist",
+        "has_good_method": true,
+        "has_permission": true,
+        "incidents": 0,
+        "incident_roll": 0,
+        "resolved": "UNRESOLVED"
+    }
+},
+{
+    "model": "players.feeding",
+    "pk": 48,
+    "fields": {
+        "character": 2,
+        "session": 2,
+        "domain": 3,
+        "feeding_points": 5,
+        "discipline": null,
+        "description": "Feed discretely on people in alleys. Also kidnap and bring one as gift for the great brujah elder and owner of that domain",
+        "has_good_method": true,
+        "has_permission": true,
+        "incidents": 0,
+        "incident_roll": 0,
+        "resolved": "UNRESOLVED"
+    }
+},
+{
+    "model": "players.feeding",
+    "pk": 50,
+    "fields": {
+        "character": 13,
+        "session": 2,
+        "domain": 3,
+        "feeding_points": 5,
+        "discipline": 47,
+        "description": "Hans seduces his targets with Presence, and in the heat of action he takes the vitae from them,",
+        "has_good_method": true,
+        "has_permission": true,
+        "incidents": 0,
+        "incident_roll": 0,
+        "resolved": "UNRESOLVED"
+    }
+},
+{
     "model": "players.activedisciplines",
     "pk": 3,
     "fields": {
@@ -12042,6 +12964,17 @@
             42,
             51,
             1
+        ]
+    }
+},
+{
+    "model": "players.activedisciplines",
+    "pk": 16,
+    "fields": {
+        "character": 13,
+        "session": 2,
+        "disciplines": [
+            47
         ]
     }
 },
@@ -12216,8 +13149,8 @@
         "gm_note": "-Parcelplot- Biddingwar- Katt + Papyrus = Artefakter, information eller resurser-",
         "rumor_type": "Reliable",
         "recipients": [
-            2,
             13,
+            2,
             25
         ]
     }
@@ -12264,8 +13197,8 @@
         "rumor_type": "Reliable",
         "recipients": [
             8,
-            5,
             16,
+            5,
             32
         ]
     }
