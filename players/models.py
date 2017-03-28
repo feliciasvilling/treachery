@@ -439,7 +439,10 @@ class Character(Model):
           
     
     def __str__(self):
-        off_name = self.user.first_name + " " + self.user.last_name
+        try:
+            off_name = self.user.first_name + " " + self.user.last_name
+        except:
+            off_name = " " 
         if off_name == " ":
             off_name = str(self.user) 
         return '{} ({})'.format(self.name, off_name)
