@@ -255,7 +255,7 @@ def healing(request, session):
     if request.method == 'POST':
         form = forms.healing_report_form(character,session)(request.POST)
         if form.is_valid():
-            form.fill_save()
+            form.save()
             return redirect('profile')   
     else:                             
         return render(request, 'healing.html', data)                  

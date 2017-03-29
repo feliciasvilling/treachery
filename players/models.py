@@ -8,10 +8,11 @@ RESOLVED = 'RESOLVED'
 PENDING = 'PENDING'
 NO_ACTIONS = 'NO_ACTIONS'
 # Rumor Types
-RUMOR_UNRELIABLE = 'Unreliable'
-RUMOR_RELIABLE = 'Reliable'
+RUMOR_INFLUENCE = "Influence"
 RUMOR_FACT = 'Fact'
 RUMOR_VAMPIRE = 'Vampire'
+RUMOR_ANIMAL = 'Animal'
+RUMOR_FACTION = "Faction"
 #DROP TABLE players_historicalcharacter
 
 def toStrList(qrySet):
@@ -645,7 +646,7 @@ class Action(Model):
         help_result = 0
         for help in help_actions:
             if help.character in helpers:
-                help_roll = self.roll_target(1,help.character,attribute,specialization,discipline)
+                help_roll = help.roll(1,attribute,specialization,discipline)
                 if help.betrayal:
                     help_result -= help_roll[0]
                 else:
@@ -698,7 +699,6 @@ class Action(Model):
                 discipline_value = 0
             else:
                 discipline_value = disp[0].value    
-           
             
         have_spec = False
         for spec in target.specializations.all():
@@ -820,7 +820,41 @@ class GhoulAidAction(Action):
             self.action.name,
             hook,
             betrayal if self.betrayal else "")          
-                    
+    
+    def get_att(self,attribute):    
+        return self.ghoul.attributes.get(attribute__name=attribute).value
+    
+    def get_att(self,attribute):    
+        return self.ghoul.disciplines.get(discipline__name=attribute).value
+    
+            
+    def roll(self,bonus,attribute,specialization,discipline):
+    
+        have_spec = False
+        for spec in self.ghoul.specializations.all():
+            if spec.name == specialization:
+                have_spec = True
+                
+        dice = self.get_att(attribute) + \
+               self.get_dis(discipline) + \
+               (3 if have_spec else 0) + \
+               (1 if self.willpower else 0)
+                 
+        result = help_result + bonus
+        for die in range(0,dice):
+            result += random.randint(0, 1)                 
+            
+        lst = "{} successes ({} {} + {} {}".format(
+            result, 
+            attribute, self.get_att(attribute), 
+            discipline, self.get_dis(discipline),
+            )
+        if have_spec:
+            lst += " + {}" .format(specialization)
+        if self.willpower:
+            lst += " + Willpower"    
+        lst += ")"
+        return (result,lst)
         
 class ConserveInfluence(Action): 
     influence = ForeignKey(Influence,help_text="Which of your influences are you trying to conserve? (Warning: Don't choose an influence where you have no hooks.)")
@@ -1578,10 +1612,12 @@ class Rumor(Model):
     gm_note = TextField(blank=True)
     rumor_type = CharField(
         max_length=15,
-        choices=((RUMOR_UNRELIABLE, 'Unreliable'), (
-            RUMOR_RELIABLE, 'Reliable'), (RUMOR_FACT, 'Fact'), (RUMOR_VAMPIRE,
-                                                                'Vampire')),
-        default=RUMOR_UNRELIABLE)
+        choices=((RUMOR_INFLUENCE, 'Influence'), 
+                 (RUMOR_ANIMAL, 'Animal'), 
+                 (RUMOR_FACTION, 'Faction'), 
+                 (RUMOR_FACT, 'Fact'), 
+                 (RUMOR_VAMPIRE, 'Vampire')),
+        default=RUMOR_INFLUENCE)
     def __str__(self):
         return '[{}] {} - {}: {}'.format(self.session.name, self.influence,
                                      self.rumor_type, self.description)

@@ -16,6 +16,7 @@ def close(request):
 ActionClasses = [
     AidAction,
     PrimogensAidAction,
+    GhoulAidAction,
     ConserveInfluence,
     ConserveDomain,
     InfluenceForge,
@@ -84,6 +85,10 @@ def resolve_action(request, pk):
 
 def assign_rumors(request, session):
 
+    rumors = Rumor.objects.all()
+    for rumor in rumors:
+        rumor.recipients = []
+
     # for each <influence> in influences
     influences = Influence.objects.all()
     for influence in influences:
@@ -91,11 +96,12 @@ def assign_rumors(request, session):
         # get all unassigned rumors, UR, in <influence>
         unassigned = Rumor.objects.filter(session=session,
                                           recipients=None,
-                                          influence=influence).exclude(
-                                              rumor_type=RUMOR_FACT).exclude(
-                                                  rumor_type=RUMOR_VAMPIRE)
+                                          influence=influence,
+                                     rumor_type=RUMOR_INFLUENCE)
 
         # get all characters that requires more rumors.
+        
+        
         characters = [h.master.all()[0] 
                       for h in Hook.objects.filter(influence=influence) 
                       if list(h.master.all()) != []]
@@ -109,20 +115,41 @@ def assign_rumors(request, session):
             rumor.recipients.add(character)
             rumor.save()
 
+        def assign(rumor,characters):
+            character = characters.pop()
+            
+            char_rumors = set(
+                Rumor.objects.filter(session=session,
+                                     recipients=character,
+                                     influence=influence,
+                                     rumor_type=RUMOR_INFLUENCE))
+            if not rumor in char_rumors:        
+                rumor.recipients.add(character)
+                rumor.save()
+                return characters
+            else:
+                characters.append(character)
+                return assign(rumor,characters)    
+                
+        for rumor in unassigned:
+            if len(characters) == 0:
+                break
+            characters = assign(rumor,characters)
+            
+
         if len(characters) != 0:
             # when no more unique rumors assign already assigned rumors
             all_rumors = set(Rumor.objects.filter(
                 session=session,
-                influence=influence).exclude(rumor_type=RUMOR_FACT).exclude(
-                    rumor_type=RUMOR_VAMPIRE))
+                influence=influence,
+                rumor_type=RUMOR_INFLUENCE))
 
             for character in characters:
                 char_rumors = set(
                     Rumor.objects.filter(session=session,
-                                         recipients=character,
-                                         influence=influence).exclude(
-                                             rumor_type=RUMOR_FACT).exclude(
-                                                 rumor_type=RUMOR_VAMPIRE))
+                                     recipients=character,
+                                     influence=influence,
+                                     rumor_type=RUMOR_INFLUENCE))
                 rumors = all_rumors - char_rumors
                 if len(rumors) > 0:
                     rumor = random.sample(rumors, 1)[0]
@@ -143,6 +170,24 @@ def assign_rumors(request, session):
                 for fact in facts:
                     fact.recipients.add(char)
                     fact.save()
+
+        # assign animal rumors
+        animals = Rumor.objects.filter(session=session,
+                                     influence=influence,
+                                     rumor_type=RUMOR_ANIMAL)
+                                     
+     #   characters = [rat.character for rat in 
+     #                 DisciplineRating.objects.filter(discipline__name=="Animalism")]
+
+     #   for i in range(1,(len(characters)/len(animals))):
+     #       for rumor in animals:
+    #           if len(characters) == 0:
+     #               break
+     #           character = characters.pop()
+     #           rumor.recipients.add(character)
+     #           rumor.save()
+
+
 
 
     return redirect('rumors', session=session)

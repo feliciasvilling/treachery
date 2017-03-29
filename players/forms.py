@@ -253,7 +253,7 @@ def exp_spending_form(char,session):
         special_exp = IntegerField(initial=0)
         help = CharField(max_length=200,required=False)
         
-        def fill_save(self):
+        def save(self):
             v = self.cleaned_data
             if 'attribute' in v:
                 ExpAttributeSpending.objects.filter(
