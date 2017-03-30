@@ -1,5 +1,5 @@
 import random
-
+import math
 from django.shortcuts import get_object_or_404, render
 from django.core.urlresolvers import reverse_lazy
 from django.views.generic.list import ListView
@@ -17,6 +17,7 @@ ActionClasses = [
     AidAction,
     PrimogensAidAction,
     GhoulAidAction,
+    InvestigateCharacterDowntimeActions,
     ConserveInfluence,
     ConserveDomain,
     InfluenceForge,
@@ -40,11 +41,17 @@ ActionClasses = [
     InvestigateCounterSpionage,
     InvestigateCharacterInfluence,
     InvestigateCharacterResources,
-    InvestigateCharacterDowntimeActions,
     InvestigatePhenomenon,
     InvestigateInfluence,    
     Rest,
     ]
+
+def resolve_reports(request, session):
+    for report in EventReport.objects.all():
+        report.resolve()
+    for report in ChangeGoals.objects.all():
+        report.resolve()        
+    return redirect('characters', session=session)
 
 def resolve_actions(request, session):
     actions = []
@@ -67,11 +74,19 @@ def resolve_feedings(request, session):
     return redirect('feedings', session=session)
 
 def resolve_characters(request, session):
-    chars = Character.objects.all()
-    for char in chars:
+    for report in ExpDisciplineSpending.objects.all():
+        report.resolve()
+    for report in ExpAttributeSpending.objects.all():
+        report.resolve()
+    for report in HealingReport.objects.all():
+        report.resolve()
+    for char in Character.objects.all():
         char.resolve()
         
     return redirect('characters', session=session)
+
+
+
 
 def resolve_action(request, pk):
     actions = []
@@ -83,6 +98,7 @@ def resolve_action(request, pk):
     return redirect('action', pk)
 
 
+    
 def assign_rumors(request, session):
 
     rumors = Rumor.objects.all()
@@ -165,30 +181,27 @@ def assign_rumors(request, session):
               for h in Hook.objects.filter(influence=influence) 
               if list(h.master.all()) != []]
         
+
+        
         for char in set(characters):
             if len([c for c in characters if c == char])>1:
                 for fact in facts:
                     fact.recipients.add(char)
                     fact.save()
 
-        # assign animal rumors
-        animals = Rumor.objects.filter(session=session,
-                                     influence=influence,
-                                     rumor_type=RUMOR_ANIMAL)
-                                     
-     #   characters = [rat.character for rat in 
-     #                 DisciplineRating.objects.filter(discipline__name=="Animalism")]
-
-     #   for i in range(1,(len(characters)/len(animals))):
-     #       for rumor in animals:
-    #           if len(characters) == 0:
-     #               break
-     #           character = characters.pop()
-     #           rumor.recipients.add(character)
-     #           rumor.save()
-
-
-
+    # assign animal rumors
+    animals = Rumor.objects.filter(session=session,
+                                 rumor_type=RUMOR_ANIMAL)
+                                 
+    characters =  list(Character.objects.filter(disciplines__discipline__name="Animalism"))
+    
+    for i in range(1,math.ceil((len(characters)/len(animals)))):
+        for rumor in animals:
+            if len(characters) == 0:
+                break
+            character = characters.pop()
+            rumor.recipients.add(character)
+            rumor.save()
 
     return redirect('rumors', session=session)
 

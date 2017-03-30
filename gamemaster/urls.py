@@ -34,9 +34,14 @@ urlpatterns = [
         staff_member_required(views.resolve_feedings),
         name='resolve_feedings'),     
            
-    url(r'^session/(?P<session>\d+)/characters/resolve$',
+    url(r'^session/(?P<session>\d+)/characters/resolve_characters$',
         staff_member_required(views.resolve_characters),
         name='resolve_characters'),     
+    
+    url(r'^session/(?P<session>\d+)/characters/resolve_reports$',
+        staff_member_required(views.resolve_reports),
+        name='resolve_reports'),     
+    
     
     url(r'^session/(?P<session>\d+)/feedings$',
         staff_member_required(views.FeedingListView.as_view()),

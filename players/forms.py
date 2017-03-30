@@ -478,7 +478,7 @@ class CharacterForm(Form):
 
 
 
-excludedFields  = ['character','action_type','session','description','resolved']
+excludedFields  = ['character','action_type','session','description','resolved','result']
 
 no_roll_excluded = ['willpower','helpers']
 aid_excluded = ['helpers']

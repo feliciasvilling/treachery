@@ -6,6 +6,8 @@ import random
 UNRESOLVED = 'UNRESOLVED'
 RESOLVED = 'RESOLVED'
 PENDING = 'PENDING'
+GM = 'Need GM attention'
+
 NO_ACTIONS = 'NO_ACTIONS'
 # Rumor Types
 RUMOR_INFLUENCE = "Influence"
@@ -17,6 +19,11 @@ RUMOR_FACTION = "Faction"
 
 def toStrList(qrySet):
     return ','.join(map(str,list(qrySet))) 
+    
+def prnt(x):
+    print("{}".format(x))
+    return x    
+    
 class ActionType(Model):
     name = CharField(max_length=200)
     template = TextField(blank=True)
@@ -84,34 +91,67 @@ class DisciplineRating(Model):
     
     def __str__(self):
         return '{} {}'.format(self.discipline.name, str(self.value))
+
+    def get_needed(self):
+        needed = DISPLINE_TABLE[self.value] 
+        #the table in the rule is for the level wanted, we use the existing 
+        #level here, which compensates for lists being zero indexed.
+        bonus = []
+        if self.elder_blood:
+            needed -= 1
+            bonus += ["Elder Blood"]
+        if self.in_clan:
+            needed -= 1
+            bonus += ["Clan"]
+        if self.mentor:
+            needed -= 1
+            bonus += ["Mentor"]
+            
+        bonus = ','.join(bonus)
+        if bonus != "":
+           bonus = "({})".format(bonus)  
+        return {'needed':needed,'bonus':bonus}
         
     def spending(self):
         if self.learned:
-            needed = DISPLINE_TABLE[self.value] 
-            #the table in the rule is for the level wanted, we use the existing 
-            #level here, which compensates for lists being zero indexed.
-            bonus = []
-            if self.elder_blood:
-                needed -= 1
-                bonus += ["Elder Blood"]
-            if self.in_clan:
-                needed -= 1
-                bonus += ["Clan"]
-            if self.mentor:
-                needed -= 1
-                bonus += ["Mentor"]
-                
-            bonus = ','.join(bonus)
-            if bonus != "":
-               bonus = "({})".format(bonus)     
-                            
-            return ". Spent {} of {} exp needed for raise. {}" .format(self.exp,needed,bonus)
+            need = self.get_needed()                            
+            return ". Spent {} of {} exp needed for raise. {}"\
+             .format(self.exp,need['needed'],need['bonus'])
         else:    
             return ""
             
     def display(self):
         
         return '{} {}{}'.format(self.discipline.name, self.value,self.spending())
+       
+       
+class ExpDisciplineSpending(Model):
+    character = ForeignKey('Character', related_name='exp_dis_spending', blank=True,null=True)
+    session = ForeignKey('Session', related_name='exp_dis_spending', blank=True,null=True)
+
+    discipline = ForeignKey(DisciplineRating)
+    exp = BooleanField()
+    special_exp = PositiveIntegerField()
+
+    def __str__(self):
+        return '{}: {}'.format(
+            self.session, 
+            self.character) 
+            
+    def resolve(self):
+        if self.exp:
+            self.discipline.exp += 1
+        
+        self.discipline.exp += self.special_exp
+        
+        if self.discipline.exp >= self.discipline.get_needed()['needed']:
+           self.discipline.value += 1
+           self.discipline.exp -= self.discipline.get_needed()['needed']
+           self.discipline.learned = False
+           self.discipline.mentor = False
+            
+        self.discipline.save()
+        
                 
 class Attribute(Model):
     name = CharField(max_length=200)
@@ -139,29 +179,64 @@ class AttributeRating(Model):
         return master
     def __str__(self):
         return  '{} {}'.format(self.attribute.name, str(self.value))
-    
+        
+        
+        
+    def get_needed(self):
+        needed = ATTRIBUTE_TABLE[self.value] 
+        #the table in the rule is for the level wanted, we use the existing 
+        #level here, which compensates for lists being zero indexed.
+        bonus = []
+        if self.elder_blood:
+            needed -= 1
+            bonus += ["Elder Blood"]
+        if self.mentor:
+            needed -= 1
+            bonus += ["Mentor"]
+            
+        bonus = ','.join(bonus)
+        if bonus != "":
+           bonus = "({})".format(bonus)     
+        return {'needed':needed,'bonus':bonus}
+        
     def spending(self):
         if self.learned:
-            needed = ATTRIBUTE_TABLE[self.value] 
-            #the table in the rule is for the level wanted, we use the existing 
-            #level here, which compensates for lists being zero indexed.
-            bonus = []
-            if self.elder_blood:
-                needed -= 1
-                bonus += ["Elder Blood"]
-            if self.mentor:
-                needed -= 1
-                bonus += ["Mentor"]
-                
-            bonus = ','.join(bonus)
-            if bonus != "":
-               bonus = "({})".format(bonus)     
-                            
-            return ". Spent {} of {} exp needed for raise. {}" .format(self.exp,needed,bonus)
+            need = self.get_needed()                            
+            return ". Spent {} of {} exp needed for raise. {}"\
+             .format(self.exp,need['needed'],need['bonus'])
         else:    
             return ""
+    
     def display(self):
         return '{} {}{}'.format(self.attribute.name, self.value,self.spending()) 
+        
+        
+class ExpAttributeSpending(Model):
+    character = ForeignKey('Character', related_name='exp_atr_spending', blank=True,null=True)
+    session = ForeignKey('Session', related_name='exp_atr_spending', blank=True,null=True)
+
+    attribute = ForeignKey(AttributeRating)
+    exp = BooleanField()
+    special_exp = PositiveIntegerField()
+
+    def __str__(self):
+        return '{}: {}'.format(
+            self.session, 
+            self.character) 
+            
+    def resolve(self):
+        if self.exp:
+            self.attribute.exp += 1
+        
+        self.attribute.exp += self.special_exp
+        
+        if self.attribute.exp >= self.attribute.get_needed()['needed']:
+           self.attribute.value += 1
+           self.attribute.exp -= self.attribute.get_needed()['needed']
+           self.attribute.learned = False
+           self.attribute.mentor = False
+            
+        self.attribute.save()
         
 class Specialization(Model):
     name = CharField(max_length=200)
@@ -254,6 +329,15 @@ class Hook(Model):
     concept = CharField(max_length=200,blank=True)
     influence = ForeignKey(Influence)
     attributes = ManyToManyField(HookAttribute,blank=True)  
+  #  master = ForeignKey('Character',blank=True,null=True,related_name='hooks')
+    
+    def master(self):
+        masters = list(self.master.all())
+        if masters == []:
+            return None
+        else:
+            return masters[0]
+    
     def __master__(self):
         try:
             master = Character.objects.filter(hooks__name = self.name)[0].name
@@ -597,6 +681,7 @@ class Session(Model):
         return state
 
 class Action(Model):
+    result = PositiveIntegerField(default=0)
     action_type = ForeignKey(ActionType)
     character = ForeignKey(Character)
     session = ForeignKey(Session, related_name='actions')
@@ -609,13 +694,16 @@ class Action(Model):
     description = TextField(blank=True)
     resolved = CharField(
         max_length=10,
-        choices=((UNRESOLVED, 'Unresolved'), (PENDING, 'Pending'), (
-            RESOLVED, 'Resolved')),
+        choices=(
+            (UNRESOLVED, 'Unresolved'), 
+            (PENDING, 'Pending'), 
+            (GM, 'Need GM attention'), 
+            (RESOLVED, 'Resolved')),
         default=UNRESOLVED)
     
     def resolve(self):
-        self.description = self.to_description() +"\n\n"+ self.get_resolution()
         self.resolved = PENDING
+        self.description = self.to_description() +"\n\n"+ self.get_resolution()
         self.save()
         
     def get_resolution(self):
@@ -759,6 +847,8 @@ class AidAction(Action):
             )
             
     def get_resolution(self):
+        self.resolved = RESOLVED 
+        self.save()
         return ""
         
         
@@ -789,6 +879,11 @@ class PrimogensAidAction(Action):
             self.action.name,
             hook,
             betrayal if self.betrayal else "")
+            
+    def get_resolution(self):
+        self.resolved = RESOLVED 
+        self.save()
+        return ""
             
 class GhoulAidAction(Action):
     ghoul = ForeignKey(Ghoul)
@@ -856,6 +951,11 @@ class GhoulAidAction(Action):
         lst += ")"
         return (result,lst)
         
+    def get_resolution(self):
+        self.resolved = RESOLVED 
+        self.save()
+        return ""
+        
 class ConserveInfluence(Action): 
     influence = ForeignKey(Influence,help_text="Which of your influences are you trying to conserve? (Warning: Don't choose an influence where you have no hooks.)")
     def to_description(self):
@@ -865,7 +965,9 @@ class ConserveInfluence(Action):
           
     def get_resolution(self):
       #  lst = "{} rolls {} to prevent attacks." .format(self.character.name, self.roll(1, "Social",self.influence.name,"Dominate")[1])
-      #  lst += "\n{} rolls {} to detect attacks." .format(self.character.name, self.roll (1,"Social",self.influence.name,"Auspex")[1])        
+      #  lst += "\n{} rolls {} to detect attacks." .format(self.character.name, self.roll (1,"Social",self.influence.name,"Auspex")[1])     
+        self.resolved = RESOLVED 
+        self.save()   
         return ""    
 
 class ConserveDomain(Action): 
@@ -887,16 +989,17 @@ class ConserveDomain(Action):
              .format(self.character.name, 
                 self.roll(1,"Mental","Protection","Animalism")[1])
         
-        feeds = Feeding.objects.filter(session=self.session,domain=self.domain)
+        feeds = Feeding.objects.filter(session=self.session,domain=self.domain,has_permission=False)
         
         for feed in feeds:
             stealth_roll = feed.roll("Mental","Stealth","---")
             detect_roll = self.roll(1,"Mental","Protection","Protean")
             if detect_roll >= stealth_roll:
-                lst += "\n{} have been feeding on {}."\
+                lst += "\n{} have been feeding on {} without permission."\
                   .format(feed.character.name,self.domain.name)
-        
-      #  lst += "\n{} rolls {} to detect poaching. {}" .format(self.character.name, detect_roll[1],detected)        
+                  
+        self.resolved = RESOLVED 
+        self.save()
         return lst
 
 class InfluenceForge(Action): 
@@ -909,8 +1012,12 @@ class InfluenceForge(Action):
             self.influence.name)
             
     def get_resolution(self):
-        lst = "{} rolls {} to to create a hook." .format(self.character.name, self.roll(1, "Social",self.influence.name,"Prescence")[1])
-     #   lst += "\n{} rolls {} to hide their involvement." .format(self.character.name, self.roll (1, "Social","Subterfuge","Obfuscate")[1])        
+        creation_roll = self.roll(1, "Social",self.influence.name,"Prescence")
+        lst = "{} rolls {} to to create a hook." .format(self.character.name, creation_roll[1])
+        
+     #   lst += "\n{} rolls {} to hide their involvement." .format(self.character.name, self.roll (1, "Social","Subterfuge","Obfuscate")[1])       
+        self.result = creation_roll[0]
+        self.save() 
         return lst
         
 class InfluenceSteal(Action):
@@ -925,11 +1032,15 @@ class InfluenceSteal(Action):
     def get_resolution(self):
         targets = list(Character.objects.filter(hooks__name=self.name))
         if targets==[]:
+            self.resolve = GM
+            self.save()
             return "no hook matching the discription"
         else:
             target = targets[0]    
         stealth_roll = self.roll (1,"Social",self.influence.name,"Obfuscate")
         attack_roll = self.roll(1, "Social",self.influence.name,"Prescence")
+
+        
         conservation = list(ConserveInfluence.objects.filter(
                 character=target,
                 session=self.session,
@@ -943,14 +1054,18 @@ class InfluenceSteal(Action):
             detection_roll = conserve_action.roll(1,"Social",self.influence.name,"Auspex")
             if detection_roll[0] >= stealth_roll[0]:
                 if attack_roll[0] < defense_roll[0]:
-                    conserve_action.description += "{} rolls {} to prevent attacks, and {} to detect attacks. {} attempted to steal {} in the influence {}."\
-                         .format(target.name, defense_roll[1], detection_roll[1], self.character.name,self.name,self.influence)
+                    conserve_action.description += \
+                    "{} rolls {} to prevent attacks, and {} to detect attacks. {} attempted to steal {} in the influence {}."\
+                         .format(target.name, defense_roll[1], detection_roll[1],
+                                 self.character.name,self.name,self.influence)
+                    self.result = 0 
                 else: 
-                    conserve_action.description += "{} rolls {} to prevent attacks, and {} to detect attacks. {} stole {} in the influence {}."\
-                         .format(target.name, defense_roll[1], detection_roll[1],self.character.name,self.name,self.influence)
+                    conserve_action.description += \
+                    "{} rolls {} to prevent attacks, and {} to detect attacks. {} stole {} in the influence {}."\
+                         .format(target.name, defense_roll[1], detection_roll[1],
+                                 self.character.name,self.name,self.influence)
                 conserve_action.save()
-        
-        print(target.name)
+        self.save()
         lst = "{} rolls {} to steal the hook." .format(self.character.name, attack_roll[1])
         lst += "The owner of {} rolls {} to resist." .format(self.name, defense_roll[1])
         lst += "\n{} rolls {} to hide their involvement." .format(self.character.name, stealth_roll[1])        
@@ -975,8 +1090,6 @@ class InfluencePriority(Model):
        
 class InvestigateCharacterInfluence(Action): 
     target = ForeignKey(Character,related_name="investigate_influence",help_text="Which character are you interested in?")
-    
-   
     priority1 = ForeignKey(InfluencePriority,blank=True,null=True,related_name="priority1")
     priority2 = ForeignKey(InfluencePriority,blank=True,null=True,related_name="priority2")
     priority3 = ForeignKey(InfluencePriority,blank=True,null=True,related_name="priority3")
@@ -1051,14 +1164,34 @@ class InvestigateCharacterDowntimeActions(Action):
             )
             
     def get_resolution(self):
-        lst = "{} rolls {}." .format(self.character.name, self.roll(1,"Mental","Investigation","Protean")[1])
-        lst += "{} rolls {}." .format(self.target.name, self.roll_target(self.target,0,"Mental","Subterfugue","Obfuscate")[1])
+        investigation_roll = self.roll(1,"Mental","Investigation","Protean")
+        defense_roll = self.roll_target(self.target,0,"Mental","Subterfugue","Obfuscate")
+        
+        lst = "{} rolls {}.\n" .format(self.character.name, investigation_roll[1])
+        lst += "{} rolls {}.\n" .format(self.target.name, defense_roll[1])
+        
+        if investigation_roll[0] >= defense_roll[0]:
+            lst += "{} is doing the following actions:".format(self.target)
+            actions = Action.objects.filter(character=self.target, session=self.session)
+            i = 1
+            for action in actions:
+                lst += "\n\n{}: " .format(i)
+                lst += action.description
+                i += 1
+            
+            lst += "\n\n You may set a scene and intervene in one of these actions (With the exception of investigate and conserve actions)."
+        else:
+            lst += "\n\n Your investigation failed!"
+            
+        self.resolved = RESOLVED 
+        self.save()
         return lst        
     
 class InvestigateCounterSpionage(Action):
     pass
     def to_description(self):
         return '{} is doing counter espionage.' .format(self.character.name)
+        
     def get_resolution(self):
         spy_actions = list(InvestigateCharacterInfluence.objects.filter(target=self.character,session=self.session))
         spy_actions += list(InvestigateCharacterResources.objects.filter(target=self.character,session=self.session))
@@ -1066,8 +1199,8 @@ class InvestigateCounterSpionage(Action):
         
         investigation_roll = self.roll(1,"Mental","Investigation","Protean")
         
-        print(str(investigation_roll[1]))
-        
+        self.roll = investigation_roll[0]        
+       
         detected = ""
         
         for act in spy_actions:
@@ -1075,10 +1208,10 @@ class InvestigateCounterSpionage(Action):
             if spy_roll[0]<=investigation_roll[0]: 
                 detected +="\n{} is doing {} on you. They rolled {} succes to try to hide it, but you caught them."\
                     .format(act.character.name,act.action_type,spy_roll[0])
-            
-            
-        print(detected)
         lst = "{} rolls {}.\n{}" .format(self.character.name, investigation_roll[1],detected)
+        
+        self.resolved = RESOLVED 
+        self.save()
         return lst  
         
         
@@ -1091,13 +1224,62 @@ class InvestigatePhenomenon(Action):
     def get_resolution(self):
         lst = "{} rolls {}." .format(self.character.name, self.roll(1,"Mental","Legwork","Dementation")[1])
         return lst  
+        
+def fact_recievers(influence):
+    characters = [h.master.all()[0] 
+              for h in Hook.objects.filter(influence=influence) 
+              if list(h.master.all()) != []]
+    contenders = []
+    master = None
+    for char in set(characters):
+        if len([c for c in characters if c == char])==2:
+            contenders.append(char)
+        if len([c for c in characters if c == char])==3:
+            master = char
+    return {'contenders':contenders,'master':master}
+        
+    
 
 class InvestigateInfluence(Action): 
     influence = ForeignKey(Influence,help_text="What influence area are you interested in?")
     def to_description(self):
         return '{} is investigating {}.'.format(self.character.name,self.influence.name)
     def get_resolution(self):
-        lst = "{} rolls {}." .format(self.character.name, self.roll(1,"Social",self.influence.name,"Auspex")[1])
+        inestigation_roll = self.roll(1,"Social",self.influence.name,"Auspex")
+        self.result = inestigation_roll[0]
+        
+        lst = "{} rolls {}." .format(self.character.name, inestigation_roll[1])
+        
+        
+        if self.result >= 1:
+            self.result -= 1
+            cam = fact_recievers(self.influence)
+            
+            if cam['master']:
+                lst += "\nMaster: {}" .format(cam['master'].name)            
+            for contender in cam['contenders']:
+                lst += "\nContender: {}" .format(contender.name)    
+            
+            hooks = list(Hook.objects.filter(influence=self.influence))
+            random.shuffle(hooks)
+            if self.result >= 1:
+                lst += "\n\nHooks: "
+                for hook in hooks[0:(self.result)]:
+                    lst += "\n{} {}" .format(hook,hook.master.all())
+                    if hook.master in cam['contenders']:
+                        lst += " (Contender)"
+                    else:
+                        if hook.master == cam['master']:
+                            lst += " (Master)"
+                        else:
+                            if hook.master == None:
+                                lst += " (None)"
+                            else:
+                                lst += " (Lurker)"
+                        
+                    
+        self.resolved = RESOLVED
+        self.save()        
         return lst      
 
 class LearnAttribute(Action): 
@@ -1389,8 +1571,10 @@ class EventReport(Model):
     def __str__(self):
         return '{}: {}'.format(
             self.session, 
-            self.character)  
+            self.character) 
+            
     def resolve(self):
+        char = self.character
            
         if self.open_goal1:
             char.exp += 1
@@ -1398,7 +1582,7 @@ class EventReport(Model):
             char.exp += 1                    
         if self.hidden_goal:
             char.exp += 1        
-        if self.humantiy_goal:
+        if self.humanity_exp:
             char.exp -= 1
             char.humanity_exp += 1
             
@@ -1406,15 +1590,12 @@ class EventReport(Model):
         char.humanity -= self.humanity
         char.blood -= self.blood
         
-        if self.willpower_points != 0:
-            char.additional_notes += '\nspent willpower: {}' .format(self.willpower_points)
-        if self.bashing != 0:
-            char.additional_notes +='\ntaken bashing damage: {}' .format( self.bashing)
-        if self.lethal != 0:
-            char.additional_notes +='\ntaken lethal damage: {}' .format( self.lethal)
-        if self.aggravated != 0:
-            char.additional_notes +='\ntaken aggravated damage: {}' .format( self.aggravated)
-        
+        char.willpower -= self.willpower_points
+        char.max_willpower -= self.willpower_dots
+        char.bashing += self.bashing
+        char.lethal += self.lethal
+        char.aggravated += self.aggravated
+              
         char.save()    
                          
             
@@ -1429,8 +1610,14 @@ class ChangeGoals(Model):
     def __str__(self):
         return '{}: {}'.format(
             self.session, 
-            self.character)             
-                          
+            self.character)   
+                      
+    def resolve(self):   
+        char = self.character
+        char.open_goal1 = self.open_goal1
+        char.open_goal2 = self.open_goal2
+        char.hidden_goal = self.hidden_goal
+        char.save()                   
                                
 class HealingReport(Model):
     character = ForeignKey(Character, related_name='healing', blank=True,null=True)
@@ -1445,32 +1632,20 @@ class HealingReport(Model):
             self.session, 
             self.character) 
             
+    def resolve(self):
+        char = self.character
+           
+        char.bashing -= self.bashing
+        char.blood -= self.bashing
+        char.lethal -= self.lethal
+        char.blood -= 2 * self.lethal
+        char.aggravated -= self.aggravated
+        char.willpower -= self.aggravated
+        char.blood -= 5 * self.aggravated
+        
+        char.save() 
             
-class ExpDisciplineSpending(Model):
-    character = ForeignKey(Character, related_name='exp_dis_spending', blank=True,null=True)
-    session = ForeignKey(Session, related_name='exp_dis_spending', blank=True,null=True)
 
-    discipline = ForeignKey(DisciplineRating)
-    exp = BooleanField()
-    special_exp = PositiveIntegerField()
-
-    def __str__(self):
-        return '{}: {}'.format(
-            self.session, 
-            self.character) 
-            
-class ExpAttributeSpending(Model):
-    character = ForeignKey(Character, related_name='exp_atr_spending', blank=True,null=True)
-    session = ForeignKey(Session, related_name='exp_atr_spending', blank=True,null=True)
-
-    attribute = ForeignKey(AttributeRating)
-    exp = BooleanField()
-    special_exp = PositiveIntegerField()
-
-    def __str__(self):
-        return '{}: {}'.format(
-            self.session, 
-            self.character) 
            
            
 
