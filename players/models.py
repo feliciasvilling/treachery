@@ -748,17 +748,17 @@ class Action(Model):
         return lst
         
     def resolve(self):
-        self.resolved = UNRESOLVED
-        if self.willpower:
-            if self.character.willpower == 0:
-                self.willpower = False
-            else:
-                self.character.willpower -= 1
-                self.character.save()
-        self.save()    
-        self.description = self.to_description() + self.help_description()\
-             + "\n\n"+ self.get_resolution()
-        self.save()
+        if self.resolved == UNRESOLVED:
+            if self.willpower:
+                if self.character.willpower == 0:
+                    self.willpower = False
+                else:
+                    self.character.willpower -= 1
+                    self.character.save()
+            self.save()    
+            self.description = self.to_description() + self.help_description()\
+                 + "\n\n"+ self.get_resolution()
+            self.save()
         
     def get_resolution(self):
         return "X"    

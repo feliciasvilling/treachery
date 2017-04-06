@@ -8220,14 +8220,14 @@
         "clan": 2,
         "generation": 7,
         "age": 2,
-        "open_goal1": "Min karakt\u00e4r tycker Brujah Eldern Henrietta \u00e4r den mest imponerande och vackraste varelsen bland alla od\u00f6da, och ska d\u00e4rf\u00f6r g\u00f6ra allt f\u00f6r att f\u00e5 hennes uppm\u00e4rksamhet.",
-        "open_goal2": "Min karakt\u00e4r tycker att det \u00e4r b\u00e4ttre om klan Gangrel \u00e4ger hela m\u00e4nnisko populationen och ist\u00e4llet ransonerar ut m\u00e4nniskor \u00e5t de andra klanerna, och ska d\u00e4rf\u00f6r anv\u00e4nda sin post som sheriff f\u00f6r att ut\u00f6ka gangrels dom\u00e4n storlek s\u00e5 det t\u00e4cker st\u00f6rre delen av populationen.",
-        "hidden_goal": "Dom som tjuvjagar skadar v\u00e5r symbios med m\u00e4nniskorna, jag ska bringa dom till r\u00e4ttvisa.",
+        "open_goal1": "Min karakt\u00e4r tycker att Diakon Winther \u00e4r att absolut arsle och vill d\u00e4rf\u00f6r att hundarna ska pissa p\u00e5 honom bokstavligt och metaforiskt.",
+        "open_goal2": "Min karakt\u00e4r tycker att sm\u00e4rta \u00e4r n\u00e4sta niv\u00e5 av att f\u00f6rh\u00f6ja k\u00e4nslor och m\u00e4nnsklighet och vill d\u00e4rf\u00f6r f\u00f6lja lilliths v\u00e4g och f\u00f6rs\u00e4tta andra i psykisk och fysisk sm\u00e4rta.",
+        "hidden_goal": "Min karakt\u00e4r tycker att fursten har f\u00f6r\u00e5dit alla och \u00e4r korrupterar camarillan och vill d\u00e4rf\u00f6r jobba f\u00f6r att ers\u00e4tta fursten med gangrel eldsten.",
         "humanity": 8,
         "max_willpower": 3,
-        "willpower": 3,
-        "blood": 10,
-        "bashing": 0,
+        "willpower": 2,
+        "blood": 8,
+        "bashing": 5,
         "lethal": 0,
         "aggravated": 0,
         "resources": 6,
@@ -8236,7 +8236,7 @@
         "concept": "Investigator mer fokuserad p\u00e5 personliga intriger \u00e4n att faktiskt g\u00f6ra sitt jobb",
         "herd": 1,
         "haven": 1,
-        "exp": 1,
+        "exp": 3,
         "humanity_exp": 0,
         "special_exp": 0,
         "additional_notes": "",
@@ -8292,12 +8292,12 @@
         "clan": 7,
         "generation": 8,
         "age": 3,
-        "open_goal1": "Kunskap: Man kan kan inte var Helsingkrona Seneschal utan att k\u00e4nner till var folks makt ligger. Jag ska d\u00e4rf\u00f6r samla information om vampyrers hooks",
+        "open_goal1": "Kunskap: Det b\u00e4sta s\u00e4ttet att komma n\u00e4rmare Lilith \u00e4r att f\u00f6rst\u00e5 hennes lidande. Jag ska d\u00e4rf\u00f6r f\u00f6rr\u00e5da n\u00e5gon jag \u00e4lskar",
         "open_goal2": "M\u00e4nsklighet: Att ha ett d\u00e5ligt rykte p\u00e5verkar mig negativt, jag ska d\u00e4rf\u00f6r f\u00f6rb\u00e4ttra dom\u00e4nens f\u00f6rtroende f\u00f6r mig genom att hj\u00e4lpa n\u00e5gon utsatt",
         "hidden_goal": "Nature: Andras svagheter blir min styrka. D\u00e4rf\u00f6r ska jag finna n\u00e5gons svaghet och l\u00e5ta dom lida f\u00f6r den.",
-        "humanity": 6,
+        "humanity": 3,
         "max_willpower": 5,
-        "willpower": 2,
+        "willpower": 0,
         "blood": 10,
         "bashing": 0,
         "lethal": 0,
@@ -8308,8 +8308,8 @@
         "concept": "Jag vill skrapa bort det tunna lagret av m\u00e4nsklighet och se om d\u00e4r finns n\u00e5gon som \u00e4r verkligt god p\u00e5 insidan. Resten vill jag bestraffa och dominera.",
         "herd": 0,
         "haven": 1,
-        "exp": 3,
-        "humanity_exp": 0,
+        "exp": 4,
+        "humanity_exp": 1,
         "special_exp": 0,
         "additional_notes": "Ritualer: Deflection of Wooden Doom\r\n\r\nHooks: Jag samlade v\u00e4ldigt m\u00e5nga hooks, s\u00e5 resterade kan f\u00e5 random namn och random attribut\r\n\r\nGhoul: Eva Lord \u00e4r en Femme Fatale infiltration-ghoul med ritualerna Disrupt Technology, Open Passage och Magic of the Smith.\r\nspent willpower: 3",
         "titles": [
@@ -8372,9 +8372,9 @@
         "open_goal1": "St\u00e4rka maskeraden. B\u00e5de i den egna dom\u00e4nen och i Helsingkrona som helhet.",
         "open_goal2": "\u00d6ka f\u00f6rst\u00e5elsen f\u00f6r Liliths mysterier.",
         "hidden_goal": "F\u00e5 Tremererna att officielt be om urs\u00e4kt f\u00f6r deras hemska experiment p\u00e5 gangreler och andra.",
-        "humanity": 6,
-        "max_willpower": 7,
-        "willpower": 7,
+        "humanity": 5,
+        "max_willpower": 6,
+        "willpower": 6,
         "blood": 10,
         "bashing": 0,
         "lethal": 0,
@@ -8385,7 +8385,7 @@
         "concept": "Gamal gangrel som blivit traditionalist f\u00f6r att hlla forna synder hemliga.",
         "herd": 3,
         "haven": 1,
-        "exp": 1,
+        "exp": 3,
         "humanity_exp": 0,
         "special_exp": 1,
         "additional_notes": "Amadeus (Wanders karakt\u00e4r) \u00e4r blodsbunden steg tv\u00e5 till Einar.",
@@ -8442,9 +8442,9 @@
         "clan": 1,
         "generation": 7,
         "age": 3,
-        "open_goal1": "1. Jag \u00e4lskar [Marys karakt\u00e4r] trots v\u00e5ra meningsskiljaktigheter. Jag\r\nskall g\u00f6ra n\u00e5gonting osj\u00e4lviskt f\u00f6r henne f\u00f6r att bef\u00e4sta v\u00e5r k\u00e4rlek.\r\n(\u00f6ppet, m\u00e4nsklighet)",
-        "open_goal2": "2. Filch \u00e4r ung och riskerar falla offer f\u00f6r sin nyfikenhet. Jag skall\r\nskydda honom fr\u00e5n att hamna i farliga situationer. (\u00f6ppet, nyfikenhet)",
-        "hidden_goal": "3. Att s\u00f6ka kunskap genom forskning \u00e4r arrogant och sker alltf\u00f6r ofta\r\nutan eftertanke. Jag skall f\u00f6rst\u00f6ra Universitetet som\r\ninflytandeomr\u00e5de. (hemligt, kunskap)",
+        "open_goal1": "Vi \u00e4r inte b\u00e4ttre personer \u00e4n hur vi behandlar v\u00e5ra unga. Jag skall g\u00f6ra n\u00e5got osj\u00e4lviskt f\u00f6r en neonat f\u00f6r att inte tappa greppet om min m\u00e4nsklighet.",
+        "open_goal2": "Filch \u00e4r ung och riskerar falla offer f\u00f6r sin nyfikenhet. Jag skall\r\nskydda honom fr\u00e5n att hamna i farliga situationer.",
+        "hidden_goal": "Att s\u00f6ka kunskap genom forskning \u00e4r arrogant och sker alltf\u00f6r ofta\r\nutan eftertanke. Jag skall f\u00f6rst\u00f6ra Universitetet som\r\ninflytandeomr\u00e5de.",
         "humanity": 7,
         "max_willpower": 5,
         "willpower": 5,
@@ -8514,13 +8514,13 @@
         "clan": 1,
         "generation": 8,
         "age": 2,
-        "open_goal1": "Skapa fred mellan vampirer och hamskiftatare. Genom att ligga med en av dem",
-        "open_goal2": "Protect humanity from other kinredes",
-        "hidden_goal": "Become human once again",
+        "open_goal1": "F\u00f6rb\u00e4ttra min status genom att F\u00e5 bort diakonvinter fr\u00e5n sin post som sherrif och harpya.",
+        "open_goal2": "H\u00e5lla mig utanf\u00f6r kriget med hamskiftarna genom att f\u00e5 eniar att skydda mig fr\u00e5n att f\u00e5 mig inblandad",
+        "hidden_goal": "Bli m\u00e4niska igen genom att ge upp allt v\u00e5ld genom att f\u00e5 hans att ocks\u00e5 ge upp v\u00e5ld.",
         "humanity": 8,
         "max_willpower": 6,
-        "willpower": 4,
-        "blood": 10,
+        "willpower": 1,
+        "blood": 9,
         "bashing": 0,
         "lethal": 0,
         "aggravated": 0,
@@ -8531,7 +8531,7 @@
         "herd": 0,
         "haven": 0,
         "exp": 1,
-        "humanity_exp": 2,
+        "humanity_exp": 3,
         "special_exp": 0,
         "additional_notes": "spent willpower: 2",
         "titles": [],
@@ -8582,9 +8582,9 @@
         "clan": 1,
         "generation": 9,
         "age": 2,
-        "open_goal1": "Work towards getting Erik (Anton Muller ) to drink the 3rd time from you, \r\nthis is due to strenghten my own saftey and to secure my exsistance.",
-        "open_goal2": "To make contact with K-Mart to make them get rid of a Tremere Ancilla\r\nReason one - Tremere has to much influence and power in the city\r\nReason two - Two place my self i this position to gain more influence in the city",
-        "hidden_goal": "To talk to Robin (Zeta) about me and Angelika complicated relation\r\nreason- It would be better to inform Robin my self then letting him find out this on his own. The secret is that me and angelika had a child together before we booth were sired.",
+        "open_goal1": "Invest time and resources into Hans own domain. Will build a new ShoHo like trendy new part of the city, with a \r\nblossoming resturants life and a trendy hot night life.",
+        "open_goal2": "Everyone wants to feel special, everyone wants to be the special one for someone. And most doesnt want to share this. \r\nThis is how Hans feel towards his Elder, who is also shares a special bound to. \r\nHans want his eldest full attention, encouragement and be the special someone without sharing this with anyone. \r\n- Will fight for the full attention of his elder\r\n- Will work towards becoming the next Elysium Keeper.",
+        "hidden_goal": "Continue to diminish the Tremere influence in the city. \r\n- Take care of some minor Tremere Neonates\r\n\tFaye: Stole a rumour who were shared, and acted alone without telling\r\n\t(cant remember his name): Killed an hook from Hans\r\n- Work towards removing FP from Thomas Lilja domain.",
         "humanity": 8,
         "max_willpower": 5,
         "willpower": 5,
@@ -8598,8 +8598,8 @@
         "concept": "",
         "herd": 3,
         "haven": 0,
-        "exp": 0,
-        "humanity_exp": 0,
+        "exp": 2,
+        "humanity_exp": 1,
         "special_exp": 4,
         "additional_notes": "",
         "titles": [
@@ -8726,7 +8726,7 @@
         "hidden_goal": "\u00d6verlevnad- identifiera, hitta och eliminera det st\u00f6rsta hotet mot min \u00f6verlevnad",
         "humanity": 6,
         "max_willpower": 6,
-        "willpower": 6,
+        "willpower": 2,
         "blood": 10,
         "bashing": 0,
         "lethal": 0,
@@ -8737,8 +8737,8 @@
         "concept": "Bitter gammal vision\u00e4r som \u00e4r besviken p\u00e5 och n\u00e4stan tappat tron p\u00e5 sina \u00e4ttlingar, den unga generationen och framtiden.",
         "herd": 3,
         "haven": 2,
-        "exp": 2,
-        "humanity_exp": 1,
+        "exp": 4,
+        "humanity_exp": 2,
         "special_exp": 2,
         "additional_notes": "Komplicerade relationer:\r\nBrujahneonaten Hans \u00e4r blodsbunden till mig grad 3 (detaljer p\u00e5 beg\u00e4ran)\r\nJonas (ancilla primogen)- ideologiska mots\u00e4ttningar\r\nJason (Neonat i klan Brujah)- ideologiska mots\u00e4ttningar\r\nJerome (Sheriff och harpya, neonat i klan gangrel) -\u00e4lskare \r\nThordon (Harpya och neonat i klan gangrel)-\u00e4lskare \r\nHannes (\u00e4ldste gangrel)-Hemlighet\r\nJanni (furste)- k\u00e4rlek (plus att hon \u00e4r blodsbunden till mig grad 3)",
         "titles": [
@@ -8793,11 +8793,11 @@
         "generation": 7,
         "age": 2,
         "open_goal1": "Jag vill f\u00f6rb\u00e4ttra mitt dom\u00e4n",
-        "open_goal2": "Jag vill organisera ett \u00e5tertagande av Stockholm",
-        "hidden_goal": "Jag vill blodsbinda fler werecreatures till mig",
-        "humanity": 5,
+        "open_goal2": "Jag vill \u00e5terta stockholm fr\u00e5n werecreatures",
+        "hidden_goal": "Jag vill minska vampyrers agerande i den m\u00e4nskliga v\u00e4rlden",
+        "humanity": 4,
         "max_willpower": 9,
-        "willpower": 9,
+        "willpower": 3,
         "blood": 10,
         "bashing": 0,
         "lethal": 0,
@@ -8808,8 +8808,8 @@
         "concept": "",
         "herd": 0,
         "haven": 0,
-        "exp": 2,
-        "humanity_exp": 2,
+        "exp": 4,
+        "humanity_exp": 3,
         "special_exp": 0,
         "additional_notes": "",
         "titles": [
@@ -8879,7 +8879,7 @@
         "concept": "Golcondist",
         "herd": 2,
         "haven": 0,
-        "exp": 0,
+        "exp": 2,
         "humanity_exp": 0,
         "special_exp": 0,
         "additional_notes": "Derangement: Tror att alla runtomkring honom \u00e4r fiktiva och bara en del av hans fantasi.",
@@ -8929,9 +8929,9 @@
         "generation": 10,
         "age": 2,
         "open_goal1": "Mitt f\u00f6rsta m\u00e5l \u00e4r samma som min familjs, att \u00f6verleva i denna h\u00e5rda v\u00e4rld som f\u00f6rtrycker oss malkaver.",
-        "open_goal2": "Jag vill att vampyrerna skall vara mer som m\u00e4nnisskor d\u00e4rf\u00f6r skall jag jobba f\u00f6r att vi skall outa oss och leva tillsamans med m\u00e4nniskorna.",
-        "hidden_goal": "Att passa p\u00e5 och njuta s\u00e5 mycket jag kan av allt det som jag finner njutbart samt f\u00e5 min b\u00e4sta v\u00e4n/ bror Robin att njuta med mig och f\u00f6rst\u00e5 att mina njutningar \u00e4r b\u00e4st.",
-        "humanity": 7,
+        "open_goal2": "Att passa p\u00e5 och njuta s\u00e5 mycket jag kan av allt det som jag finner njutbart samt f\u00e5 min b\u00e4sta v\u00e4n/ bror Robin att njuta med mig och f\u00f6rst\u00e5 att mina njutningar \u00e4r b\u00e4st.",
+        "hidden_goal": "Jag vill att vampyrerna skall vara mer som m\u00e4nnisskor d\u00e4rf\u00f6r skall jag jobba f\u00f6r att vi skall outa oss och leva tillsamans med m\u00e4nniskorna.",
+        "humanity": 6,
         "max_willpower": 5,
         "willpower": 5,
         "blood": 10,
@@ -8944,7 +8944,7 @@
         "concept": "En film\u00e4lskande kvinna med starka k\u00e4nslor f\u00f6r sin b\u00e4sta v\u00e4n/bror och sin familj.",
         "herd": 3,
         "haven": 0,
-        "exp": 0,
+        "exp": 2,
         "humanity_exp": 0,
         "special_exp": 0,
         "additional_notes": "Hon \u00e4r s\u00e5 klart lite galen som alla malkaver. Hon lider av vanf\u00f6rest\u00e4llningar som f\u00e5r henne att tro att hon \u00e4r mitt i en film ibland. Det kan vara alla grader fr\u00e5n att hon kallar sin pappa f\u00f6r Dart Wader till att hon blir f\u00f6rkrossad f\u00f6r att Leeloo h\u00e5ller p\u00e5 att d\u00f6 och the Mondoshawans \u00e4r p\u00e5 v\u00e4g.",
@@ -8997,21 +8997,21 @@
         "open_goal1": "Den d\u00f6dliga v\u00e4rlden \u00e4r v\u00e4gen till makt. Crane \u00e4r f\u00f6r ond f\u00f6r att ha den makten. Jag skall ta reda p\u00e5 vem hans hooks \u00e4r och ber\u00f6va honom dem.",
         "open_goal2": "Apologismen \u00e4r den enda moraliska politiska faktionen och passion \u00e4r v\u00e4gen till makt. Jag m\u00e5ste f\u00e5 en Brujha utanf\u00f6r mitt coateri att h\u00e5lla ett rant om apologismen.",
         "hidden_goal": "Gorillan Eva \u00e4r den godaste varelsen i staden. Jag skall skydda henne fr\u00e5n alla vampyrerna i den h\u00e4r j\u00e4vla staden.",
-        "humanity": 8,
+        "humanity": 4,
         "max_willpower": 8,
-        "willpower": 8,
+        "willpower": 6,
         "blood": 10,
         "bashing": 0,
         "lethal": 0,
-        "aggravated": 0,
+        "aggravated": 4,
         "resources": 0,
         "frenzyTriggers": "",
         "political_faction": null,
         "concept": "Combat",
         "herd": 0,
         "haven": 2,
-        "exp": 0,
-        "humanity_exp": 0,
+        "exp": 2,
+        "humanity_exp": 1,
         "special_exp": 0,
         "additional_notes": "Investing 1 in Explosives.",
         "titles": [
@@ -9062,9 +9062,9 @@
         "clan": 4,
         "generation": 9,
         "age": 3,
-        "open_goal1": "Jag vill att min klan ska \u00f6verleva. D\u00e4rf\u00f6r ska jag skaffa oss en dom\u00e4n.",
-        "open_goal2": "Jag vill vinna furstens gunst.D\u00e4rf\u00f6r ska jag hj\u00e4lpa henne att f\u00e5 sin ockult influens.",
-        "hidden_goal": "Jag vill ha mer makt f\u00f6r att leda v\u00e4gen f\u00f6r min klan. D\u00e4rf\u00f6r ska jag motarbeta de andra ancillornas m\u00e5l.",
+        "open_goal1": "Jag vill att min klan ska \u00f6verleva. D\u00e4rf\u00f6r ska jag f\u00f6rst\u00e4rka erh\u00e5llandet av dom\u00e4n och min influerns i andras.",
+        "open_goal2": "Maskeraden \u00e4r viktig f\u00f6r v\u00e5r \u00f6verlevnad. D\u00e4rf\u00f6r s\u00f6ker jag rykten g\u00e4llande maskeraden/maskeradbrott.",
+        "hidden_goal": "Jag vill ha mer makt f\u00f6r att leda v\u00e4gen f\u00f6r min klan. D\u00e4rf\u00f6r ska jag motarbeta de andra ancillornas och elders m\u00e5l.",
         "humanity": 5,
         "max_willpower": 7,
         "willpower": 7,
@@ -9216,8 +9216,8 @@
         "concept": "Bruiser-boy, attackdog of gangrel Hell.",
         "herd": 1,
         "haven": 0,
-        "exp": 2,
-        "humanity_exp": 0,
+        "exp": 3,
+        "humanity_exp": 1,
         "special_exp": 0,
         "additional_notes": "Saknar huntingground ?\r\nspent willpower: 2",
         "titles": [
@@ -9270,9 +9270,9 @@
         "clan": 7,
         "generation": 7,
         "age": 4,
-        "open_goal1": "Det ockulta inflytande h\u00f6r r\u00e4ttm\u00e4tigen till klan Tremere, jag ska d\u00e4rf\u00f6r ta \u00f6ver det.",
-        "open_goal2": "F\u00f6r att kunna beh\u00e5lla v\u00e5r m\u00e4nsklighet m\u00e5ste vi agera m\u00e4nskligt och uppr\u00e4tth\u00e5lla maskeraden, jag ska d\u00e4rmed tills\u00e4tta n\u00e5gon som kan f\u00e5 ordning p\u00e5 dom\u00e4nens maskerad.",
-        "hidden_goal": "Demoner p\u00e5 dom\u00e4nen kan riskera att locka besl\u00e4ktade i f\u00f6rd\u00e4rvet och utg\u00f6r en stor risk i fel h\u00e4nder. Jag vill d\u00e4rf\u00f6r hitta demonen som ryktas befinna sig i staden och personen som \u00e4r ansvarig f\u00f6r att demonen kommit hit.",
+        "open_goal1": "Jag vill ha Harriet f\u00f6r mig sj\u00e4lv. D\u00e4rf\u00f6r ska jag driva hennes \u00e4lskare ifr\u00e5n henne.",
+        "open_goal2": "Det ockulta inflytande h\u00f6r r\u00e4ttm\u00e4tigen till klan Tremere, jag ska d\u00e4rf\u00f6r ta \u00f6ver det.",
+        "hidden_goal": "M\u00e4nsklighet \u00e4r ett klurigt koncept, d\u00e4rav b\u00f6r jag inleda en relation med en neonat.",
         "humanity": 5,
         "max_willpower": 8,
         "willpower": 7,
@@ -9286,7 +9286,7 @@
         "concept": "Influence/information",
         "herd": 0,
         "haven": 2,
-        "exp": 2,
+        "exp": 4,
         "humanity_exp": 0,
         "special_exp": 0,
         "additional_notes": "+ 2 dottar i extra ritualer (Thaumaturgy)\r\nspent willpower: 1",
@@ -9338,12 +9338,12 @@
         "clan": 7,
         "generation": 10,
         "age": 2,
-        "open_goal1": "Pierre tycker att lojalitet \u00e4r grunden f\u00f6r stabilitet, och vill d\u00e4rf\u00f6r bli accepterad av sin klan.",
-        "open_goal2": "Pierre tycker att kunskap blir b\u00e4ttre n\u00e4r den delas, och vill d\u00e4rf\u00f6r hj\u00e4lpa andra till insikter.",
-        "hidden_goal": "Pierre tror att Besten kan t\u00e4mjas om man f\u00f6rst\u00e5r den tillr\u00e4ckligt, och vill d\u00e4rf\u00f6r l\u00e4ra sig hur den fungerar.",
-        "humanity": 7,
+        "open_goal1": "Pierre \u00e5ngrar bittert att hans M\u00e4nsklighet b\u00f6rjat vittra s\u00f6nder, och vill \u00e5teruppbygga den.",
+        "open_goal2": "Pierre har b\u00f6rjat se hur kall vampyrv\u00e4rlden kan vara, och vill undfly detta genom f\u00f6rdjupade k\u00e4rleksrelationer.",
+        "hidden_goal": "Pierre inser i efterhand att Hans utkr\u00e4vde ett orimligt \u00f6verpris f\u00f6r en d\u00f6dad hook, och s\u00f6ker uppr\u00e4ttelse.",
+        "humanity": 6,
         "max_willpower": 4,
-        "willpower": 4,
+        "willpower": 3,
         "blood": 10,
         "bashing": 0,
         "lethal": 0,
@@ -9354,8 +9354,8 @@
         "concept": "utredare",
         "herd": 1,
         "haven": 1,
-        "exp": 0,
-        "humanity_exp": 1,
+        "exp": 2,
+        "humanity_exp": 2,
         "special_exp": 0,
         "additional_notes": "",
         "titles": [],
@@ -9404,8 +9404,8 @@
         "clan": 2,
         "generation": 13,
         "age": 2,
-        "open_goal1": "Att ta reda p\u00e5 exakt vad Winter planerar och hindra det.",
-        "open_goal2": "Att arbeta p\u00e5 att bli fiskal.",
+        "open_goal1": "Att se till att inkommande element inte g\u00f6r sig till destruktiva element.",
+        "open_goal2": "Att underminera Winters sheriffskap och ta redap\u00e5 hur i helvete han fick det.",
         "hidden_goal": "Att se till att Winters dumheter inte tar d\u00f6d p\u00e5 honom.",
         "humanity": 7,
         "max_willpower": 4,
@@ -9486,7 +9486,7 @@
         "concept": "Occult Researcher/Investigator",
         "herd": 1,
         "haven": 1,
-        "exp": 2,
+        "exp": 4,
         "humanity_exp": 0,
         "special_exp": 0,
         "additional_notes": "",
@@ -11412,8 +11412,8 @@
         "character": 20,
         "session": 2,
         "willpower": false,
-        "description": "Kato is conserving Konst och Underh\u00e5llning.",
-        "resolved": "UNRESOLVED",
+        "description": "Kato is conserving Konst och Underh\u00e5llning.\n\n",
+        "resolved": "RESOLVED",
         "helpers": []
     }
 },
@@ -11510,8 +11510,8 @@
         "character": 20,
         "session": 2,
         "willpower": false,
-        "description": "Kato is helping their clanmember Marion with Invest (Weapon) .\n ",
-        "resolved": "UNRESOLVED",
+        "description": "Kato is helping their clanmember Marion with Invest (Weapon) .\n \n\n",
+        "resolved": "RESOLVED",
         "helpers": []
     }
 },
@@ -11608,8 +11608,8 @@
         "character": 2,
         "session": 2,
         "willpower": false,
-        "description": "Sydney Pope is helping Crane Mikkelsen with Investigate (Phenomenon) .\n ",
-        "resolved": "UNRESOLVED",
+        "description": "Sydney Pope is helping Crane Mikkelsen with Investigate (Phenomenon) .\n \n\n",
+        "resolved": "RESOLVED",
         "helpers": []
     }
 },
@@ -11720,8 +11720,8 @@
         "character": 17,
         "session": 2,
         "willpower": false,
-        "description": "Robin is helping Kato with Influence (Steal) on Virginia Varg.\n ",
-        "resolved": "UNRESOLVED",
+        "description": "Robin is helping Kato with Influence (Steal) on Virginia Varg.\n \n\n",
+        "resolved": "RESOLVED",
         "helpers": []
     }
 },
@@ -11804,8 +11804,8 @@
         "character": 5,
         "session": 2,
         "willpower": false,
-        "description": "Einar Brorsson is helping Kato with Influence (Steal) on Virginia Varg.\n ",
-        "resolved": "UNRESOLVED",
+        "description": "Einar Brorsson is helping Kato with Influence (Steal) on Virginia Varg.\n \n\n",
+        "resolved": "RESOLVED",
         "helpers": []
     }
 },
@@ -11818,8 +11818,8 @@
         "character": 5,
         "session": 2,
         "willpower": true,
-        "description": "Einar Brorsson is conserving Ockult.",
-        "resolved": "UNRESOLVED",
+        "description": "Einar Brorsson is conserving Ockult.Einar Brorsson spends willpower\n\nEinar Brorsson rolls 5 successes (Social 4 + Dominate 0 + Willpower) to prevent attacks, and 3 successes (Social 4 + Auspex 0 + Willpower) to detect attacks. Samuel Lilja attempted to steal Sverker Olofson in the influence Ockult.",
+        "resolved": "RESOLVED",
         "helpers": []
     }
 },
@@ -11832,8 +11832,8 @@
         "character": 5,
         "session": 2,
         "willpower": false,
-        "description": "Einar Brorsson is conserving Varbyskogen.",
-        "resolved": "UNRESOLVED",
+        "description": "Einar Brorsson is conserving Varbyskogen.\n\nEinar Brorsson rolls 8 successes (Mental 5 + Animalism 5) to prevent problems.",
+        "resolved": "RESOLVED",
         "helpers": []
     }
 },
@@ -11841,12 +11841,12 @@
     "model": "players.action",
     "pk": 644,
     "fields": {
-        "result": 0,
+        "result": 2,
         "action_type": 4,
         "character": 5,
         "session": 2,
         "willpower": false,
-        "description": "Einar Brorsson is forging Kommunpolitikern Karl in the influence Politik.",
+        "description": "Einar Brorsson is forging Kommunpolitikern Karl in the influence Politik.\n\nEinar Brorsson rolls 2 successes (Social 4 + Prescence 0) to to create a hook.",
         "resolved": "UNRESOLVED",
         "helpers": []
     }
@@ -11888,8 +11888,8 @@
         "character": 5,
         "session": 2,
         "willpower": false,
-        "description": "Einar Brorsson is helping their clanmember Crane Mikkelsen with Conserve (Influence) .\n ",
-        "resolved": "UNRESOLVED",
+        "description": "Einar Brorsson is helping their clanmember Crane Mikkelsen with Conserve (Influence) .\n \n\n",
+        "resolved": "RESOLVED",
         "helpers": []
     }
 },
@@ -11902,8 +11902,8 @@
         "character": 5,
         "session": 2,
         "willpower": false,
-        "description": "Konstapel Karl is helping Einar Brorsson with Conserve (Influence) .\n ",
-        "resolved": "UNRESOLVED",
+        "description": "Konstapel Karl is helping Einar Brorsson with Conserve (Influence) .\n \n\n",
+        "resolved": "RESOLVED",
         "helpers": []
     }
 },
@@ -11916,8 +11916,8 @@
         "character": 16,
         "session": 2,
         "willpower": false,
-        "description": "Filch is conserving \u00c5ngsholmen.",
-        "resolved": "UNRESOLVED",
+        "description": "Filch is conserving \u00c5ngsholmen.\n\nFilch rolls 4 successes (Mental 3 + Animalism 0 + Protection) to prevent problems.",
+        "resolved": "RESOLVED",
         "helpers": []
     }
 },
@@ -11930,8 +11930,8 @@
         "character": 16,
         "session": 2,
         "willpower": false,
-        "description": "Filch is conserving Skogsomr\u00e5det.",
-        "resolved": "UNRESOLVED",
+        "description": "Filch is conserving Skogsomr\u00e5det.\n\nFilch rolls 5 successes (Mental 3 + Animalism 0 + Protection) to prevent problems.",
+        "resolved": "RESOLVED",
         "helpers": []
     }
 },
@@ -11953,12 +11953,12 @@
     "model": "players.action",
     "pk": 659,
     "fields": {
-        "result": 0,
+        "result": 3,
         "action_type": 4,
         "character": 16,
         "session": 2,
         "willpower": true,
-        "description": "Filch is forging Police in the influence Kyrkan.",
+        "description": "Filch is forging Police in the influence Kyrkan.Filch spends willpower\n\nFilch rolls 3 successes (Social 2 + Prescence 0 + Willpower) to to create a hook.",
         "resolved": "UNRESOLVED",
         "helpers": []
     }
@@ -12042,8 +12042,8 @@
         "character": 8,
         "session": 2,
         "willpower": false,
-        "description": "Primus is conserving Universitet.",
-        "resolved": "UNRESOLVED",
+        "description": "Primus is conserving Universitet.\n\n",
+        "resolved": "RESOLVED",
         "helpers": []
     }
 },
@@ -12056,8 +12056,8 @@
         "character": 8,
         "session": 2,
         "willpower": false,
-        "description": "Primus is conserving K\u00e4rnkraftverket.",
-        "resolved": "UNRESOLVED",
+        "description": "Primus is conserving K\u00e4rnkraftverket.\n\nPrimus rolls 4 successes (Mental 2 + Animalism 1 + Protection) to prevent problems.",
+        "resolved": "RESOLVED",
         "helpers": []
     }
 },
@@ -12135,12 +12135,12 @@
     "model": "players.action",
     "pk": 715,
     "fields": {
-        "result": 0,
+        "result": 4,
         "action_type": 4,
         "character": 27,
         "session": 2,
         "willpower": false,
-        "description": "Lydia Pauli is forging Vira Bergman (Nytt inflytande: Polis - Ej politik) in the influence Politik.",
+        "description": "Lydia Pauli is forging Vira Bergman (Nytt inflytande: Polis - Ej politik) in the influence Politik.\n\nLydia Pauli rolls 4 successes (Social 6 + Prescence 0) to to create a hook.",
         "resolved": "UNRESOLVED",
         "helpers": []
     }
@@ -12149,12 +12149,12 @@
     "model": "players.action",
     "pk": 716,
     "fields": {
-        "result": 0,
+        "result": 4,
         "action_type": 4,
         "character": 27,
         "session": 2,
         "willpower": false,
-        "description": "Lydia Pauli is forging Sam Hansson (Nytt inflytande: polis - Ej politik) in the influence Politik.",
+        "description": "Lydia Pauli is forging Sam Hansson (Nytt inflytande: polis - Ej politik) in the influence Politik.\n\nLydia Pauli rolls 4 successes (Social 6 + Prescence 0) to to create a hook.",
         "resolved": "UNRESOLVED",
         "helpers": []
     }
@@ -12182,8 +12182,8 @@
         "character": 27,
         "session": 2,
         "willpower": false,
-        "description": "Lydia Pauli is conserving Media.",
-        "resolved": "UNRESOLVED",
+        "description": "Lydia Pauli is conserving Media.\n\n",
+        "resolved": "RESOLVED",
         "helpers": []
     }
 },
@@ -12224,8 +12224,8 @@
         "character": 27,
         "session": 2,
         "willpower": false,
-        "description": "Lydia Pauli is conserving Politik.",
-        "resolved": "UNRESOLVED",
+        "description": "Lydia Pauli is conserving Politik.\n\n",
+        "resolved": "RESOLVED",
         "helpers": []
     }
 },
@@ -12238,8 +12238,8 @@
         "character": 4,
         "session": 2,
         "willpower": false,
-        "description": "Samuel Lilja is conserving Universitet.",
-        "resolved": "UNRESOLVED",
+        "description": "Samuel Lilja is conserving Universitet.\n\n",
+        "resolved": "RESOLVED",
         "helpers": []
     }
 },
@@ -12308,8 +12308,8 @@
         "character": 4,
         "session": 2,
         "willpower": false,
-        "description": "Samuel Lilja is stealing Sverker Olofson in the influence Ockult.",
-        "resolved": "UNRESOLVED",
+        "description": "Samuel Lilja is stealing Sverker Olofson in the influence Ockult.\n\nSamuel Lilja rolls 2 successes (Social 5 + Prescence 0) to steal the hook.The owner of Sverker Olofson rolls 5 successes (Social 4 + Dominate 0 + Willpower) to resist.\nSamuel Lilja rolls 3 successes (Social 5 + Obfuscate 0) to hide their involvement.",
+        "resolved": "RESOLVED",
         "helpers": []
     }
 },
@@ -12336,8 +12336,8 @@
         "character": 4,
         "session": 2,
         "willpower": false,
-        "description": "Eva Lord is helping Samuel Lilja with Investigate (Phenomenon) .\n ",
-        "resolved": "UNRESOLVED",
+        "description": "Eva Lord is helping Samuel Lilja with Investigate (Phenomenon) .\n \n\n",
+        "resolved": "RESOLVED",
         "helpers": []
     }
 },
@@ -12350,8 +12350,8 @@
         "character": 4,
         "session": 2,
         "willpower": false,
-        "description": "Lilja Jr, Ephraim is helping Samuel Lilja with Investigate (Phenomenon) .\n ",
-        "resolved": "UNRESOLVED",
+        "description": "Lilja Jr, Ephraim is helping Samuel Lilja with Investigate (Phenomenon) .\n \n\n",
+        "resolved": "RESOLVED",
         "helpers": []
     }
 },
@@ -12364,8 +12364,8 @@
         "character": 18,
         "session": 2,
         "willpower": false,
-        "description": "Marion is helping Kato with Aid Action on Virginia Varg.\n ",
-        "resolved": "UNRESOLVED",
+        "description": "Marion is helping Kato with Aid Action on Virginia Varg.\n \n\n",
+        "resolved": "RESOLVED",
         "helpers": []
     }
 },
@@ -12448,8 +12448,8 @@
         "character": 19,
         "session": 2,
         "willpower": false,
-        "description": "Diakon Whinther is conserving Innerstaden.",
-        "resolved": "UNRESOLVED",
+        "description": "Diakon Whinther is conserving Innerstaden.\n\nDiakon Whinther rolls 1 successes (Mental 1 + Animalism 0) to prevent problems.",
+        "resolved": "RESOLVED",
         "helpers": []
     }
 },
@@ -12518,8 +12518,8 @@
         "character": 29,
         "session": 2,
         "willpower": false,
-        "description": "Albin Bonde is conserving Universitet.",
-        "resolved": "UNRESOLVED",
+        "description": "Albin Bonde is conserving Universitet.\n\n",
+        "resolved": "RESOLVED",
         "helpers": []
     }
 },
@@ -12574,8 +12574,8 @@
         "character": 15,
         "session": 2,
         "willpower": false,
-        "description": "Harriet is conserving Politik.",
-        "resolved": "UNRESOLVED",
+        "description": "Harriet is conserving Politik.\n\n",
+        "resolved": "RESOLVED",
         "helpers": []
     }
 },
@@ -12672,8 +12672,8 @@
         "character": 15,
         "session": 2,
         "willpower": false,
-        "description": "Harriet is helping their clanmember Hans with Influence (Steal) on Inga Fj\u00e4llstr\u00f6m.\n ",
-        "resolved": "UNRESOLVED",
+        "description": "Harriet is helping their clanmember Hans with Influence (Steal) on Inga Fj\u00e4llstr\u00f6m.\n \n\n",
+        "resolved": "RESOLVED",
         "helpers": []
     }
 },
@@ -12784,8 +12784,8 @@
         "character": 26,
         "session": 2,
         "willpower": false,
-        "description": "Thordon is conserving Universitet.",
-        "resolved": "UNRESOLVED",
+        "description": "Thordon is conserving Universitet.\n\n",
+        "resolved": "RESOLVED",
         "helpers": []
     }
 },
@@ -12798,8 +12798,8 @@
         "character": 26,
         "session": 2,
         "willpower": false,
-        "description": "Thordon is conserving Kyrkan.",
-        "resolved": "UNRESOLVED",
+        "description": "Thordon is conserving Kyrkan.\n\n",
+        "resolved": "RESOLVED",
         "helpers": []
     }
 },
@@ -15845,6 +15845,17 @@
     }
 },
 {
+    "model": "players.healingreport",
+    "pk": 2,
+    "fields": {
+        "character": 19,
+        "session": 2,
+        "bashing": 0,
+        "lethal": 0,
+        "aggravated": 4
+    }
+},
+{
     "model": "players.feeding",
     "pk": 4,
     "fields": {
@@ -16281,8 +16292,8 @@
         "description": "I sneak up on people and drink their blood.",
         "has_good_method": true,
         "has_permission": true,
-        "incidents": 0,
-        "incident_roll": 0,
+        "incidents": 2,
+        "incident_roll": 22,
         "resolved": "UNRESOLVED"
     }
 },
@@ -16792,8 +16803,8 @@
         "gm_note": "F\u00f6re detta Ghoul fr\u00e5n J\u00f6nk\u00f6ping har funnit Jesus och brutit blodsbandet. Kan ber\u00e4tta om De olika medlemmarna i Sabbaten -J\u00f6nk\u00f6ping.",
         "rumor_type": "Unreliable",
         "recipients": [
-            16,
-            14
+            14,
+            16
         ]
     }
 },
@@ -16824,8 +16835,8 @@
         "gm_note": "Plot: Parcelplot: Biddingwar: Katt + Papyrus = V\u00e4lsignelse alt. information/instruktion",
         "rumor_type": "Reliable",
         "recipients": [
-            12,
             17,
+            12,
             25
         ]
     }
@@ -16948,8 +16959,8 @@
         "gm_note": "",
         "rumor_type": "Fact",
         "recipients": [
-            8,
             2,
+            8,
             20
         ]
     }
@@ -16965,9 +16976,9 @@
         "gm_note": "Parcelplot; Papyrus som g\u00f6r Bastet-statyetten mer efterfr\u00e5gad av olika samlare.",
         "rumor_type": "Reliable",
         "recipients": [
+            5,
             16,
             8,
-            5,
             32
         ]
     }
@@ -16983,8 +16994,8 @@
         "gm_note": "M\u00f6jlighet: Vandrar man bland Eli\u2019s konst s\u00e5 hittar man bilder om som p\u00e5minner om ens d\u00f6dliga liv, v\u00e4cker k\u00e4nslor till liv. 1 Humanity XP. Hot: Folk som kommer efter\u00e5t kan se en av dina hemligheter p\u00e5 v\u00e4ggarna.",
         "rumor_type": "Unreliable",
         "recipients": [
-            8,
             2,
+            8,
             20
         ]
     }
@@ -17254,8 +17265,8 @@
         "rumor_type": "Reliable",
         "recipients": [
             13,
-            8,
-            5
+            5,
+            8
         ]
     }
 },
@@ -17270,8 +17281,8 @@
         "gm_note": "",
         "rumor_type": "Unreliable",
         "recipients": [
-            25,
-            28
+            28,
+            25
         ]
     }
 },
@@ -17334,8 +17345,8 @@
         "gm_note": "",
         "rumor_type": "Unreliable",
         "recipients": [
-            20,
-            15
+            15,
+            20
         ]
     }
 },
@@ -17458,10 +17469,10 @@
         "gm_note": "[ALIEN JIGSAW]",
         "rumor_type": "Unreliable",
         "recipients": [
-            8,
             17,
-            25,
-            4
+            8,
+            4,
+            25
         ]
     }
 },
