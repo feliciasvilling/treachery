@@ -1,0 +1,46 @@
+{% extends "gm_base.html" %}
+
+{% block head %}
+  {% load staticfiles %}
+  <script src="{% static "gamemaster/js/jquery.dynatable.js" %}"></script>
+  <script src="{% static "gamemaster/js/dynatableWriters.js" %}"></script>
+  <script src="{% static "gamemaster/js/clickable.js" %}"></script>
+  <link rel="stylesheet" href="{% static "gamemaster/css/jquery.dynatable.css" %}" />
+{% endblock %}
+
+{% block content %}
+
+<div class="row">
+  <div class="col-md-10 col-md-offset-1">
+    <h1>Influence List</h1>
+  </div>
+</div>
+
+
+
+<div class="row">
+  <div class="col-md-offset-1 col-md-10">
+    <table id="action-table" class="table table-hover">
+      <thead>
+        <tr>
+          <th class="dynatable-head">Influence</th>
+          <th class="dynatable-head">Master</th>
+          <th class="dynatable-head">Contenders</th>
+          <th class="dynatable-head">Lurkers</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for influence in influence_list %}
+        <tr>
+          <td>{{ influence.influence.name }}</td>
+          <td>{{ influence.master.name }}</td>
+          <td>{{ influence.contenders_name|join:", "  }}</td>
+          <td>{{ influence.lurkers_name|join:", " }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+{% endblock %}

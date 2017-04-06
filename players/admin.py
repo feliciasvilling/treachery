@@ -34,6 +34,7 @@ class CharacterAdmin(admin.ModelAdmin):
 admin.site.register(ChangeGoals)       
 admin.site.register(EventReport)  
 admin.site.register(HealingReport)  
+admin.site.register(LostHook) 
 
 admin.site.register(Discipline)
 admin.site.register(DisciplineRating)

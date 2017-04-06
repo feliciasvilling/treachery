@@ -11,6 +11,10 @@ urlpatterns = [
     url(r'^$',
         staff_member_required(views.SessionListView.as_view()),
         name='sessions'),
+
+    url(r'^influence_list$',
+        staff_member_required(views.influence_list),
+        name='influence_list'),
     
     url(r'^session/(?P<session>\d+)/toggle$',
         staff_member_required(views.toggle_session),
@@ -29,6 +33,11 @@ urlpatterns = [
     url(r'^session/(?P<session>\d+)/actions/resolve$',
         staff_member_required(views.resolve_actions),
         name='resolve_actions'),
+        
+                
+    url(r'^session/(?P<session>\d+)/actions/resolve_investigation$',
+        staff_member_required(views.resolve_investigation_actions),
+        name='resolve_investigation_actions'),
         
     url(r'^session/(?P<session>\d+)/feedings/resolve$',
         staff_member_required(views.resolve_feedings),

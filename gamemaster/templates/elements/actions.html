@@ -37,6 +37,7 @@
           <option>Unresolved</option>
           <option>Pending</option>
           <option>Resolved</option>
+          <option>Need GM attention</option>
         </select>
       </span>
     </div>
@@ -75,7 +76,10 @@
 
 <div class="row">
   <div class="col-md-offset-1 col-md-10 text-right">
-    <a class="btn btn-primary" href="{% url 'resolve_actions' session_id %}">Roll Dice</a>
+    <a class="btn btn-primary" href="{% url 'resolve_actions' session_id %}">Resolve Actions</a>
+  </div>
+  <div class="col-md-offset-1 col-md-10 text-right">
+    <a class="btn btn-primary" href="{% url 'resolve_investigation_actions' session_id %}">Resolve Investigation Actions</a>
   </div>
 </div>
 

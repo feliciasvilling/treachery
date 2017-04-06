@@ -6,7 +6,7 @@ from django.views.generic.list import ListView
 from django.views.generic.edit import UpdateView
 from django.utils import timezone
 from django.shortcuts import redirect
-
+from operator import itemgetter
 from players.models import *
 
 
@@ -45,22 +45,159 @@ ActionClasses = [
     InvestigateInfluence,    
     Rest,
     ]
+    
+AidClasses = [
+    AidAction,
+    PrimogensAidAction,
+    GhoulAidAction]
+    
+ConserveClasses = [
+    ConserveInfluence,
+    ConserveDomain]
+    
+OtherClasses = [
+    InfluenceForge,
+    InfluenceSteal,
+    InfluenceDestroy,
+    MentorAttribute,
+    MentorDiscipline,
+    MentorSpecialization,
+    LearnAttribute,
+    LearnDiscipline,
+    LearnSpecialization,
+    InvestGhoul,
+    InvestEquipment,
+    InvestWeapon,
+    InvestHerd,
+    InvestHaven,
+    NeglectDomain,
+    PatrolDomain,
+    KeepersQuestion,
+    PrimogensQuestion]
+    
+InvestigateClasses = [
+    InvestigateCharacterDowntimeActions,
+    InvestigateCounterSpionage,
+    InvestigateCharacterInfluence,
+    InvestigateCharacterResources,
+    InvestigatePhenomenon,
+    InvestigateInfluence]    
+    
+    
+def handle_influence():    
+       for influence in Influence.objects.all():
+    
+        cam = fact_recievers(influence)
+        
+        wannabe_masters = []
+        wannabe_contenders = [] 
+        
+        for action in InfluenceSteal.objects.filter(
+            session=session,
+            influence=influence,
+            resolved=PENDING):
+        
+            hook = Hook.objects.get(name=action.name)
+            
+            lost_hooks = LostHook.objects.filter(
+                session=session,
+                character=action.character,
+                hook__influence=influence)
+                
+            lost = lost_hooks != []
+            
+            char = (action.character,lost,action.result)
+        
+            level = action.character.influence_level(influence)
+            if level == 0:
+                action.character.add(hook)
+                action.resolved = RESOLVED
+            if level == 1:
+                if action.character in wannabe_contenders:
+                    wannabe_masters.append(char)
+                else:    
+                    wannabe_contenders.append(char)
+            if level == 2:
+                wannabe_masters.append(char)
+                           
+        if cam['master'] == None and wannabe_masters != []:
+            wannabe_masters = sorted(wannabe_masters,key=itemgetter(1))
+            wannabe_masters = sorted(wannabe_masters,key=itemgetter(2))
+            wannabe_masters.reverse()
+
+            new_master = wannabe_masters.pop()[0]
+            prnt(new_master)
+            
+            actions = InfluenceSteal.objects.filter(
+                session=session,
+                influence=influence,
+                resolved=PENDING,
+                character=new_master)
+               
+            for action in actions:
+                hook = Hook.objects.get(name=action.name)
+                new_master.hooks.add(hook)
+                action.resolved = RESOLVED
+        
+        cam = fact_recievers(influence)
+        places = 2 - len(cam['contenders'])
+        if cam['master'] == None:
+            places += 1
+        
+        if places>0  and wannabe_contenders != []:
+            wannabe_contenders = sorted(wannabe_contenders,key=itemgetter(1))
+            wannabe_contenders = sorted(wannabe_contenders,key=itemgetter(2))
+            
+            new_contenders = wannabe_contenders[0:places]
+
+            for new_contender in new_contenders:            
+                actions = InfluenceSteal.objects.filter(
+                    session=session,
+                    influence=influence,
+                    resolved=PENDING,
+                    character=new_contender)
+                    
+                for action in actions:
+                    hook = Hook.objects.get(name=action.name)
+                    new_contender.hooks.extend(hook)
+                    action.resolved = RESOLVED
+    
 
 def resolve_reports(request, session):
-    for report in EventReport.objects.all():
+    for report in EventReport.objects.filter(session=session):
         report.resolve()
-    for report in ChangeGoals.objects.all():
+    for report in ChangeGoals.objects.filter(session=session):
         report.resolve()        
     return redirect('characters', session=session)
 
 def resolve_actions(request, session):
-    actions = []
-    for ActionClass in ActionClasses:
-        actions += list(ActionClass.objects.filter(session=session))
-    for action in actions:
-        action.resolve()
+    for ActionClass in AidClasses:
+        for action in ActionClass.objects.filter(session=session):
+            action.resolve()
+            
+    for ActionClass in ConserveClasses:
+        for action in ActionClass.objects.filter(session=session):
+            action.resolve()        
+
+    for ActionClass in OtherClasses:
+        for action in ActionClass.objects.filter(session=session):
+            action.resolve()        
+            
         
     return redirect('actions', session=session)
+    
+
+def resolve_investigation_actions(request, session):
+ 
+    for ActionClass in InvestigateClasses:
+        for action in ActionClass.objects.filter(session=session):
+            action.resolve()        
+            
+    for action in Rest.objects.filter(session=session):
+            action.resolve()  
+        
+    return redirect('actions', session=session)    
+    
     
 def resolve_feedings(request, session):
     feedings = Feeding.objects.filter(session=session)
@@ -74,14 +211,14 @@ def resolve_feedings(request, session):
     return redirect('feedings', session=session)
 
 def resolve_characters(request, session):
-    for report in ExpDisciplineSpending.objects.all():
+    for report in ExpDisciplineSpending.objects.filter(session=session):
         report.resolve()
-    for report in ExpAttributeSpending.objects.all():
+    for report in ExpAttributeSpending.objects.filter(session=session):
         report.resolve()
-    for report in HealingReport.objects.all():
+    for report in HealingReport.objects.filter(session=session):
         report.resolve()
     for char in Character.objects.all():
-        char.resolve()
+        char.resolve(session)
         
     return redirect('characters', session=session)
 
@@ -205,6 +342,12 @@ def assign_rumors(request, session):
 
     return redirect('rumors', session=session)
 
+def influence_list(request):
+    influences = [fact_recievers(influence) for influence in Influence.objects.all()]
+    data = {'influence_list':influences}    
+    prnt(data)
+    return render(request, 'influence_list.html', data)    
+        
 
 def character_sheet(request, session, char):
     session = get_object_or_404(Session, pk=session)
