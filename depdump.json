@@ -71,7 +71,7 @@
     "model": "auth.user",
     "fields": {
         "password": "pbkdf2_sha256$24000$DUDYQW5oMsi8$/PoMbY0Y07dxEUpGBnwdkHKRTUXa9yBeLqJXr82fNjI=",
-        "last_login": "2017-03-06T22:39:00Z",
+        "last_login": "2017-04-05T20:07:55.096Z",
         "is_superuser": false,
         "username": "DeLi",
         "first_name": "Dennis",
@@ -241,7 +241,7 @@
     "model": "auth.user",
     "fields": {
         "password": "pbkdf2_sha256$24000$DhTumR1vfiER$HJqx6nlumFA9e7cIleeLvhxC5DolBD/E48x+5ukvh7E=",
-        "last_login": "2017-02-22T20:24:48Z",
+        "last_login": "2017-04-04T22:41:24.657Z",
         "is_superuser": false,
         "username": "MaOr",
         "first_name": "Max",
@@ -496,7 +496,7 @@
     "model": "auth.user",
     "fields": {
         "password": "pbkdf2_sha256$24000$6MZFRxYDG2mB$vfpcMInErglk26JLoUekey4HSxa+sbOK5XoA/wT/3Ho=",
-        "last_login": "2017-03-07T16:20:35Z",
+        "last_login": "2017-04-05T20:24:41.284Z",
         "is_superuser": false,
         "username": "MaDa",
         "first_name": "Matilda",
@@ -598,7 +598,7 @@
     "model": "auth.user",
     "fields": {
         "password": "pbkdf2_sha256$24000$Pb7ShxKx6uUP$mYARJFZkxzJQ0tZhvIpTflScPYhhQ9Ne8egwotFeakU=",
-        "last_login": "2017-04-03T13:16:33.312Z",
+        "last_login": "2017-04-05T20:31:34.716Z",
         "is_superuser": false,
         "username": "DaSt",
         "first_name": "Daniel",
@@ -2155,6 +2155,52 @@
         "user_url": "",
         "comment": "Erbjuder blod om han vill",
         "submit_date": "2017-04-04T14:19:00.685Z",
+        "ip_address": "172.17.0.1",
+        "is_public": true,
+        "is_removed": false
+    }
+},
+{
+    "model": "django_comments.comment",
+    "pk": 68,
+    "fields": {
+        "content_type": [
+            "players",
+            "action"
+        ],
+        "object_pk": "458",
+        "site": 1,
+        "user": [
+            "DeLi"
+        ],
+        "user_name": "Dennis Lindberg",
+        "user_email": "dennis.lindberg93@gmail.com",
+        "user_url": "",
+        "comment": "Investigate action nr 1.",
+        "submit_date": "2017-04-05T20:17:58.996Z",
+        "ip_address": "172.17.0.1",
+        "is_public": true,
+        "is_removed": false
+    }
+},
+{
+    "model": "django_comments.comment",
+    "pk": 69,
+    "fields": {
+        "content_type": [
+            "players",
+            "action"
+        ],
+        "object_pk": "460",
+        "site": 1,
+        "user": [
+            "DeLi"
+        ],
+        "user_name": "Dennis Lindberg",
+        "user_email": "dennis.lindberg93@gmail.com",
+        "user_url": "",
+        "comment": "Jag vill ta med henne till min sire och fr\u00e5ga vad vi ska g\u00f6ra f\u00f6r med henne.",
+        "submit_date": "2017-04-05T20:27:09.193Z",
         "ip_address": "172.17.0.1",
         "is_public": true,
         "is_removed": false
@@ -4799,6 +4845,252 @@
     }
 },
 {
+    "model": "players.disciplinerating",
+    "pk": 133,
+    "fields": {
+        "discipline": 4,
+        "value": 0,
+        "learned": true,
+        "learning": true,
+        "elder_blood": false,
+        "in_clan": false,
+        "mentor": false,
+        "exp": 0,
+        "elder_powers": []
+    }
+},
+{
+    "model": "players.expdisciplinespending",
+    "pk": 5,
+    "fields": {
+        "character": 12,
+        "session": 2,
+        "discipline": 102,
+        "exp": true,
+        "special_exp": 0
+    }
+},
+{
+    "model": "players.expdisciplinespending",
+    "pk": 14,
+    "fields": {
+        "character": 20,
+        "session": 2,
+        "discipline": 67,
+        "exp": true,
+        "special_exp": 1
+    }
+},
+{
+    "model": "players.expdisciplinespending",
+    "pk": 15,
+    "fields": {
+        "character": 2,
+        "session": 2,
+        "discipline": 105,
+        "exp": true,
+        "special_exp": 1
+    }
+},
+{
+    "model": "players.expdisciplinespending",
+    "pk": 16,
+    "fields": {
+        "character": 2,
+        "session": 2,
+        "discipline": 104,
+        "exp": true,
+        "special_exp": 1
+    }
+},
+{
+    "model": "players.expdisciplinespending",
+    "pk": 25,
+    "fields": {
+        "character": 13,
+        "session": 2,
+        "discipline": 47,
+        "exp": true,
+        "special_exp": 2
+    }
+},
+{
+    "model": "players.expdisciplinespending",
+    "pk": 26,
+    "fields": {
+        "character": 13,
+        "session": 2,
+        "discipline": 45,
+        "exp": false,
+        "special_exp": 0
+    }
+},
+{
+    "model": "players.expdisciplinespending",
+    "pk": 27,
+    "fields": {
+        "character": 17,
+        "session": 2,
+        "discipline": 60,
+        "exp": true,
+        "special_exp": 0
+    }
+},
+{
+    "model": "players.expdisciplinespending",
+    "pk": 28,
+    "fields": {
+        "character": 17,
+        "session": 2,
+        "discipline": 61,
+        "exp": true,
+        "special_exp": 0
+    }
+},
+{
+    "model": "players.expdisciplinespending",
+    "pk": 30,
+    "fields": {
+        "character": 5,
+        "session": 2,
+        "discipline": 24,
+        "exp": false,
+        "special_exp": 0
+    }
+},
+{
+    "model": "players.expdisciplinespending",
+    "pk": 31,
+    "fields": {
+        "character": 16,
+        "session": 2,
+        "discipline": 103,
+        "exp": true,
+        "special_exp": 0
+    }
+},
+{
+    "model": "players.expdisciplinespending",
+    "pk": 32,
+    "fields": {
+        "character": 16,
+        "session": 2,
+        "discipline": 58,
+        "exp": false,
+        "special_exp": 0
+    }
+},
+{
+    "model": "players.expdisciplinespending",
+    "pk": 33,
+    "fields": {
+        "character": 16,
+        "session": 2,
+        "discipline": 131,
+        "exp": true,
+        "special_exp": 0
+    }
+},
+{
+    "model": "players.expdisciplinespending",
+    "pk": 34,
+    "fields": {
+        "character": 27,
+        "session": 2,
+        "discipline": 90,
+        "exp": true,
+        "special_exp": 1
+    }
+},
+{
+    "model": "players.expdisciplinespending",
+    "pk": 35,
+    "fields": {
+        "character": 4,
+        "session": 2,
+        "discipline": 109,
+        "exp": true,
+        "special_exp": 1
+    }
+},
+{
+    "model": "players.expdisciplinespending",
+    "pk": 36,
+    "fields": {
+        "character": 18,
+        "session": 2,
+        "discipline": 132,
+        "exp": true,
+        "special_exp": 0
+    }
+},
+{
+    "model": "players.expdisciplinespending",
+    "pk": 37,
+    "fields": {
+        "character": 19,
+        "session": 2,
+        "discipline": 106,
+        "exp": true,
+        "special_exp": 0
+    }
+},
+{
+    "model": "players.expdisciplinespending",
+    "pk": 38,
+    "fields": {
+        "character": 19,
+        "session": 2,
+        "discipline": 65,
+        "exp": true,
+        "special_exp": 0
+    }
+},
+{
+    "model": "players.expdisciplinespending",
+    "pk": 39,
+    "fields": {
+        "character": 15,
+        "session": 2,
+        "discipline": 55,
+        "exp": true,
+        "special_exp": 2
+    }
+},
+{
+    "model": "players.expdisciplinespending",
+    "pk": 40,
+    "fields": {
+        "character": 32,
+        "session": 2,
+        "discipline": 100,
+        "exp": true,
+        "special_exp": 0
+    }
+},
+{
+    "model": "players.expdisciplinespending",
+    "pk": 41,
+    "fields": {
+        "character": 28,
+        "session": 2,
+        "discipline": 92,
+        "exp": false,
+        "special_exp": 0
+    }
+},
+{
+    "model": "players.expdisciplinespending",
+    "pk": 42,
+    "fields": {
+        "character": 28,
+        "session": 2,
+        "discipline": 133,
+        "exp": true,
+        "special_exp": 0
+    }
+},
+{
     "model": "players.attribute",
     "pk": 1,
     "fields": {
@@ -5766,6 +6058,50 @@
         "mentor": false,
         "value": 1,
         "exp": 0
+    }
+},
+{
+    "model": "players.expattributespending",
+    "pk": 1,
+    "fields": {
+        "character": 13,
+        "session": 2,
+        "attribute": 1,
+        "exp": true,
+        "special_exp": 0
+    }
+},
+{
+    "model": "players.expattributespending",
+    "pk": 2,
+    "fields": {
+        "character": 18,
+        "session": 2,
+        "attribute": 44,
+        "exp": true,
+        "special_exp": 0
+    }
+},
+{
+    "model": "players.expattributespending",
+    "pk": 4,
+    "fields": {
+        "character": 29,
+        "session": 2,
+        "attribute": 57,
+        "exp": true,
+        "special_exp": 0
+    }
+},
+{
+    "model": "players.expattributespending",
+    "pk": 5,
+    "fields": {
+        "character": 28,
+        "session": 2,
+        "attribute": 53,
+        "exp": true,
+        "special_exp": 0
     }
 },
 {
@@ -8096,7 +8432,7 @@
         "haven": 1,
         "exp": 1,
         "humanity_exp": 0,
-        "special_exp": 0,
+        "special_exp": 1,
         "additional_notes": "",
         "titles": [
             9
@@ -8309,7 +8645,7 @@
         "haven": 0,
         "exp": 0,
         "humanity_exp": 0,
-        "special_exp": 0,
+        "special_exp": 3,
         "additional_notes": "",
         "titles": [
             4,
@@ -9084,7 +9420,8 @@
         ],
         "disciplines": [
             91,
-            92
+            92,
+            133
         ],
         "hooks": [
             103,
@@ -9366,6 +9703,7 @@
     "pk": 1,
     "fields": {
         "name": "inf\u00f6r lajv 2",
+        "previous": null,
         "is_open": false,
         "is_special": false,
         "action_set": null,
@@ -9377,7 +9715,8 @@
     "pk": 2,
     "fields": {
         "name": "inf\u00f6r lajv 3",
-        "is_open": true,
+        "previous": null,
+        "is_open": false,
         "is_special": false,
         "action_set": null,
         "feeding_domains": []
@@ -9387,6 +9726,7 @@
     "model": "players.action",
     "pk": 40,
     "fields": {
+        "result": 0,
         "action_type": 3,
         "character": 16,
         "session": 1,
@@ -9400,6 +9740,7 @@
     "model": "players.action",
     "pk": 41,
     "fields": {
+        "result": 0,
         "action_type": 16,
         "character": 16,
         "session": 1,
@@ -9413,6 +9754,7 @@
     "model": "players.action",
     "pk": 42,
     "fields": {
+        "result": 0,
         "action_type": 28,
         "character": 16,
         "session": 1,
@@ -9426,6 +9768,7 @@
     "model": "players.action",
     "pk": 43,
     "fields": {
+        "result": 0,
         "action_type": 28,
         "character": 16,
         "session": 1,
@@ -9439,6 +9782,7 @@
     "model": "players.action",
     "pk": 44,
     "fields": {
+        "result": 0,
         "action_type": 31,
         "character": 16,
         "session": 1,
@@ -9452,6 +9796,7 @@
     "model": "players.action",
     "pk": 65,
     "fields": {
+        "result": 0,
         "action_type": 28,
         "character": 12,
         "session": 1,
@@ -9465,6 +9810,7 @@
     "model": "players.action",
     "pk": 66,
     "fields": {
+        "result": 0,
         "action_type": 11,
         "character": 12,
         "session": 1,
@@ -9478,6 +9824,7 @@
     "model": "players.action",
     "pk": 67,
     "fields": {
+        "result": 0,
         "action_type": 22,
         "character": 12,
         "session": 1,
@@ -9491,6 +9838,7 @@
     "model": "players.action",
     "pk": 68,
     "fields": {
+        "result": 0,
         "action_type": 11,
         "character": 12,
         "session": 1,
@@ -9504,6 +9852,7 @@
     "model": "players.action",
     "pk": 69,
     "fields": {
+        "result": 0,
         "action_type": 28,
         "character": 12,
         "session": 1,
@@ -9517,6 +9866,7 @@
     "model": "players.action",
     "pk": 70,
     "fields": {
+        "result": 0,
         "action_type": 28,
         "character": 12,
         "session": 1,
@@ -9530,6 +9880,7 @@
     "model": "players.action",
     "pk": 99,
     "fields": {
+        "result": 0,
         "action_type": 9,
         "character": 2,
         "session": 1,
@@ -9543,6 +9894,7 @@
     "model": "players.action",
     "pk": 100,
     "fields": {
+        "result": 0,
         "action_type": 22,
         "character": 2,
         "session": 1,
@@ -9556,6 +9908,7 @@
     "model": "players.action",
     "pk": 101,
     "fields": {
+        "result": 0,
         "action_type": 23,
         "character": 2,
         "session": 1,
@@ -9569,6 +9922,7 @@
     "model": "players.action",
     "pk": 102,
     "fields": {
+        "result": 0,
         "action_type": 11,
         "character": 2,
         "session": 1,
@@ -9582,6 +9936,7 @@
     "model": "players.action",
     "pk": 103,
     "fields": {
+        "result": 0,
         "action_type": 28,
         "character": 2,
         "session": 1,
@@ -9595,6 +9950,7 @@
     "model": "players.action",
     "pk": 104,
     "fields": {
+        "result": 0,
         "action_type": 28,
         "character": 2,
         "session": 1,
@@ -9608,6 +9964,7 @@
     "model": "players.action",
     "pk": 105,
     "fields": {
+        "result": 0,
         "action_type": 17,
         "character": 2,
         "session": 1,
@@ -9621,6 +9978,7 @@
     "model": "players.action",
     "pk": 106,
     "fields": {
+        "result": 0,
         "action_type": 18,
         "character": 2,
         "session": 1,
@@ -9634,6 +9992,7 @@
     "model": "players.action",
     "pk": 113,
     "fields": {
+        "result": 0,
         "action_type": 5,
         "character": 13,
         "session": 1,
@@ -9647,6 +10006,7 @@
     "model": "players.action",
     "pk": 114,
     "fields": {
+        "result": 0,
         "action_type": 5,
         "character": 13,
         "session": 1,
@@ -9660,6 +10020,7 @@
     "model": "players.action",
     "pk": 115,
     "fields": {
+        "result": 0,
         "action_type": 12,
         "character": 13,
         "session": 1,
@@ -9673,6 +10034,7 @@
     "model": "players.action",
     "pk": 116,
     "fields": {
+        "result": 0,
         "action_type": 12,
         "character": 13,
         "session": 1,
@@ -9686,6 +10048,7 @@
     "model": "players.action",
     "pk": 117,
     "fields": {
+        "result": 0,
         "action_type": 25,
         "character": 13,
         "session": 1,
@@ -9699,6 +10062,7 @@
     "model": "players.action",
     "pk": 118,
     "fields": {
+        "result": 0,
         "action_type": 28,
         "character": 13,
         "session": 1,
@@ -9712,6 +10076,7 @@
     "model": "players.action",
     "pk": 136,
     "fields": {
+        "result": 0,
         "action_type": 2,
         "character": 8,
         "session": 1,
@@ -9725,6 +10090,7 @@
     "model": "players.action",
     "pk": 137,
     "fields": {
+        "result": 0,
         "action_type": 3,
         "character": 8,
         "session": 1,
@@ -9738,6 +10104,7 @@
     "model": "players.action",
     "pk": 138,
     "fields": {
+        "result": 0,
         "action_type": 10,
         "character": 8,
         "session": 1,
@@ -9751,6 +10118,7 @@
     "model": "players.action",
     "pk": 139,
     "fields": {
+        "result": 0,
         "action_type": 5,
         "character": 8,
         "session": 1,
@@ -9764,6 +10132,7 @@
     "model": "players.action",
     "pk": 141,
     "fields": {
+        "result": 0,
         "action_type": 5,
         "character": 8,
         "session": 1,
@@ -9777,6 +10146,7 @@
     "model": "players.action",
     "pk": 142,
     "fields": {
+        "result": 0,
         "action_type": 19,
         "character": 8,
         "session": 1,
@@ -9790,6 +10160,7 @@
     "model": "players.action",
     "pk": 143,
     "fields": {
+        "result": 0,
         "action_type": 19,
         "character": 8,
         "session": 1,
@@ -9803,6 +10174,7 @@
     "model": "players.action",
     "pk": 144,
     "fields": {
+        "result": 0,
         "action_type": 19,
         "character": 8,
         "session": 1,
@@ -9816,6 +10188,7 @@
     "model": "players.action",
     "pk": 242,
     "fields": {
+        "result": 0,
         "action_type": 3,
         "character": 5,
         "session": 1,
@@ -9829,6 +10202,7 @@
     "model": "players.action",
     "pk": 243,
     "fields": {
+        "result": 0,
         "action_type": 2,
         "character": 5,
         "session": 1,
@@ -9842,6 +10216,7 @@
     "model": "players.action",
     "pk": 244,
     "fields": {
+        "result": 0,
         "action_type": 11,
         "character": 5,
         "session": 1,
@@ -9855,6 +10230,7 @@
     "model": "players.action",
     "pk": 245,
     "fields": {
+        "result": 0,
         "action_type": 1,
         "character": 5,
         "session": 1,
@@ -9868,6 +10244,7 @@
     "model": "players.action",
     "pk": 246,
     "fields": {
+        "result": 0,
         "action_type": 21,
         "character": 5,
         "session": 1,
@@ -9881,6 +10258,7 @@
     "model": "players.action",
     "pk": 247,
     "fields": {
+        "result": 0,
         "action_type": 20,
         "character": 5,
         "session": 1,
@@ -9894,6 +10272,7 @@
     "model": "players.action",
     "pk": 254,
     "fields": {
+        "result": 0,
         "action_type": 11,
         "character": 29,
         "session": 1,
@@ -9907,6 +10286,7 @@
     "model": "players.action",
     "pk": 255,
     "fields": {
+        "result": 0,
         "action_type": 11,
         "character": 29,
         "session": 1,
@@ -9920,6 +10300,7 @@
     "model": "players.action",
     "pk": 256,
     "fields": {
+        "result": 0,
         "action_type": 7,
         "character": 29,
         "session": 1,
@@ -9933,6 +10314,7 @@
     "model": "players.action",
     "pk": 257,
     "fields": {
+        "result": 0,
         "action_type": 8,
         "character": 29,
         "session": 1,
@@ -9946,6 +10328,7 @@
     "model": "players.action",
     "pk": 258,
     "fields": {
+        "result": 0,
         "action_type": 25,
         "character": 29,
         "session": 1,
@@ -9959,6 +10342,7 @@
     "model": "players.action",
     "pk": 259,
     "fields": {
+        "result": 0,
         "action_type": 27,
         "character": 29,
         "session": 1,
@@ -9972,6 +10356,7 @@
     "model": "players.action",
     "pk": 276,
     "fields": {
+        "result": 0,
         "action_type": 23,
         "character": 4,
         "session": 1,
@@ -9985,6 +10370,7 @@
     "model": "players.action",
     "pk": 277,
     "fields": {
+        "result": 0,
         "action_type": 23,
         "character": 4,
         "session": 1,
@@ -9998,6 +10384,7 @@
     "model": "players.action",
     "pk": 278,
     "fields": {
+        "result": 0,
         "action_type": 11,
         "character": 4,
         "session": 1,
@@ -10011,6 +10398,7 @@
     "model": "players.action",
     "pk": 279,
     "fields": {
+        "result": 0,
         "action_type": 11,
         "character": 4,
         "session": 1,
@@ -10024,6 +10412,7 @@
     "model": "players.action",
     "pk": 280,
     "fields": {
+        "result": 0,
         "action_type": 23,
         "character": 4,
         "session": 1,
@@ -10037,6 +10426,7 @@
     "model": "players.action",
     "pk": 281,
     "fields": {
+        "result": 0,
         "action_type": 5,
         "character": 4,
         "session": 1,
@@ -10050,6 +10440,7 @@
     "model": "players.action",
     "pk": 283,
     "fields": {
+        "result": 0,
         "action_type": 20,
         "character": 4,
         "session": 1,
@@ -10063,6 +10454,7 @@
     "model": "players.action",
     "pk": 284,
     "fields": {
+        "result": 0,
         "action_type": 1,
         "character": 4,
         "session": 1,
@@ -10076,6 +10468,7 @@
     "model": "players.action",
     "pk": 293,
     "fields": {
+        "result": 0,
         "action_type": 16,
         "character": 19,
         "session": 1,
@@ -10089,6 +10482,7 @@
     "model": "players.action",
     "pk": 294,
     "fields": {
+        "result": 0,
         "action_type": 3,
         "character": 19,
         "session": 1,
@@ -10102,6 +10496,7 @@
     "model": "players.action",
     "pk": 295,
     "fields": {
+        "result": 0,
         "action_type": 3,
         "character": 19,
         "session": 1,
@@ -10115,6 +10510,7 @@
     "model": "players.action",
     "pk": 296,
     "fields": {
+        "result": 0,
         "action_type": 28,
         "character": 19,
         "session": 1,
@@ -10128,6 +10524,7 @@
     "model": "players.action",
     "pk": 297,
     "fields": {
+        "result": 0,
         "action_type": 31,
         "character": 19,
         "session": 1,
@@ -10141,6 +10538,7 @@
     "model": "players.action",
     "pk": 298,
     "fields": {
+        "result": 0,
         "action_type": 26,
         "character": 19,
         "session": 1,
@@ -10154,6 +10552,7 @@
     "model": "players.action",
     "pk": 299,
     "fields": {
+        "result": 0,
         "action_type": 11,
         "character": 19,
         "session": 1,
@@ -10167,6 +10566,7 @@
     "model": "players.action",
     "pk": 349,
     "fields": {
+        "result": 0,
         "action_type": 10,
         "character": 32,
         "session": 1,
@@ -10180,6 +10580,7 @@
     "model": "players.action",
     "pk": 350,
     "fields": {
+        "result": 0,
         "action_type": 11,
         "character": 32,
         "session": 1,
@@ -10193,6 +10594,7 @@
     "model": "players.action",
     "pk": 351,
     "fields": {
+        "result": 0,
         "action_type": 5,
         "character": 32,
         "session": 1,
@@ -10206,6 +10608,7 @@
     "model": "players.action",
     "pk": 352,
     "fields": {
+        "result": 0,
         "action_type": 5,
         "character": 32,
         "session": 1,
@@ -10221,6 +10624,7 @@
     "model": "players.action",
     "pk": 353,
     "fields": {
+        "result": 0,
         "action_type": 28,
         "character": 32,
         "session": 1,
@@ -10234,6 +10638,7 @@
     "model": "players.action",
     "pk": 354,
     "fields": {
+        "result": 0,
         "action_type": 28,
         "character": 32,
         "session": 1,
@@ -10247,6 +10652,7 @@
     "model": "players.action",
     "pk": 355,
     "fields": {
+        "result": 0,
         "action_type": 11,
         "character": 32,
         "session": 1,
@@ -10260,6 +10666,7 @@
     "model": "players.action",
     "pk": 368,
     "fields": {
+        "result": 0,
         "action_type": 2,
         "character": 27,
         "session": 1,
@@ -10273,6 +10680,7 @@
     "model": "players.action",
     "pk": 369,
     "fields": {
+        "result": 0,
         "action_type": 12,
         "character": 27,
         "session": 1,
@@ -10286,6 +10694,7 @@
     "model": "players.action",
     "pk": 370,
     "fields": {
+        "result": 0,
         "action_type": 7,
         "character": 27,
         "session": 1,
@@ -10299,6 +10708,7 @@
     "model": "players.action",
     "pk": 371,
     "fields": {
+        "result": 0,
         "action_type": 11,
         "character": 27,
         "session": 1,
@@ -10312,6 +10722,7 @@
     "model": "players.action",
     "pk": 372,
     "fields": {
+        "result": 0,
         "action_type": 28,
         "character": 27,
         "session": 1,
@@ -10325,6 +10736,7 @@
     "model": "players.action",
     "pk": 373,
     "fields": {
+        "result": 0,
         "action_type": 2,
         "character": 27,
         "session": 1,
@@ -10338,6 +10750,7 @@
     "model": "players.action",
     "pk": 380,
     "fields": {
+        "result": 0,
         "action_type": 8,
         "character": 18,
         "session": 1,
@@ -10351,6 +10764,7 @@
     "model": "players.action",
     "pk": 381,
     "fields": {
+        "result": 0,
         "action_type": 9,
         "character": 18,
         "session": 1,
@@ -10364,6 +10778,7 @@
     "model": "players.action",
     "pk": 382,
     "fields": {
+        "result": 0,
         "action_type": 12,
         "character": 18,
         "session": 1,
@@ -10377,6 +10792,7 @@
     "model": "players.action",
     "pk": 383,
     "fields": {
+        "result": 0,
         "action_type": 11,
         "character": 18,
         "session": 1,
@@ -10390,6 +10806,7 @@
     "model": "players.action",
     "pk": 384,
     "fields": {
+        "result": 0,
         "action_type": 27,
         "character": 18,
         "session": 1,
@@ -10403,6 +10820,7 @@
     "model": "players.action",
     "pk": 385,
     "fields": {
+        "result": 0,
         "action_type": 25,
         "character": 18,
         "session": 1,
@@ -10416,6 +10834,7 @@
     "model": "players.action",
     "pk": 392,
     "fields": {
+        "result": 0,
         "action_type": 7,
         "character": 28,
         "session": 1,
@@ -10429,6 +10848,7 @@
     "model": "players.action",
     "pk": 393,
     "fields": {
+        "result": 0,
         "action_type": 12,
         "character": 28,
         "session": 1,
@@ -10442,6 +10862,7 @@
     "model": "players.action",
     "pk": 394,
     "fields": {
+        "result": 0,
         "action_type": 12,
         "character": 28,
         "session": 1,
@@ -10455,6 +10876,7 @@
     "model": "players.action",
     "pk": 395,
     "fields": {
+        "result": 0,
         "action_type": 11,
         "character": 28,
         "session": 1,
@@ -10468,6 +10890,7 @@
     "model": "players.action",
     "pk": 396,
     "fields": {
+        "result": 0,
         "action_type": 27,
         "character": 28,
         "session": 1,
@@ -10481,6 +10904,7 @@
     "model": "players.action",
     "pk": 397,
     "fields": {
+        "result": 0,
         "action_type": 28,
         "character": 28,
         "session": 1,
@@ -10494,6 +10918,7 @@
     "model": "players.action",
     "pk": 406,
     "fields": {
+        "result": 0,
         "action_type": 2,
         "character": 15,
         "session": 1,
@@ -10507,6 +10932,7 @@
     "model": "players.action",
     "pk": 407,
     "fields": {
+        "result": 0,
         "action_type": 5,
         "character": 15,
         "session": 1,
@@ -10520,6 +10946,7 @@
     "model": "players.action",
     "pk": 408,
     "fields": {
+        "result": 0,
         "action_type": 2,
         "character": 15,
         "session": 1,
@@ -10533,6 +10960,7 @@
     "model": "players.action",
     "pk": 409,
     "fields": {
+        "result": 0,
         "action_type": 5,
         "character": 15,
         "session": 1,
@@ -10546,6 +10974,7 @@
     "model": "players.action",
     "pk": 410,
     "fields": {
+        "result": 0,
         "action_type": 31,
         "character": 15,
         "session": 1,
@@ -10559,6 +10988,7 @@
     "model": "players.action",
     "pk": 411,
     "fields": {
+        "result": 0,
         "action_type": 31,
         "character": 15,
         "session": 1,
@@ -10572,6 +11002,7 @@
     "model": "players.action",
     "pk": 412,
     "fields": {
+        "result": 0,
         "action_type": 21,
         "character": 15,
         "session": 1,
@@ -10585,6 +11016,7 @@
     "model": "players.action",
     "pk": 413,
     "fields": {
+        "result": 0,
         "action_type": 20,
         "character": 15,
         "session": 1,
@@ -10598,6 +11030,7 @@
     "model": "players.action",
     "pk": 420,
     "fields": {
+        "result": 0,
         "action_type": 1,
         "character": 17,
         "session": 1,
@@ -10611,6 +11044,7 @@
     "model": "players.action",
     "pk": 421,
     "fields": {
+        "result": 0,
         "action_type": 7,
         "character": 17,
         "session": 1,
@@ -10624,6 +11058,7 @@
     "model": "players.action",
     "pk": 422,
     "fields": {
+        "result": 0,
         "action_type": 12,
         "character": 17,
         "session": 1,
@@ -10637,6 +11072,7 @@
     "model": "players.action",
     "pk": 423,
     "fields": {
+        "result": 0,
         "action_type": 12,
         "character": 17,
         "session": 1,
@@ -10650,6 +11086,7 @@
     "model": "players.action",
     "pk": 424,
     "fields": {
+        "result": 0,
         "action_type": 28,
         "character": 17,
         "session": 1,
@@ -10663,6 +11100,7 @@
     "model": "players.action",
     "pk": 425,
     "fields": {
+        "result": 0,
         "action_type": 28,
         "character": 17,
         "session": 1,
@@ -10676,6 +11114,7 @@
     "model": "players.action",
     "pk": 434,
     "fields": {
+        "result": 0,
         "action_type": 7,
         "character": 20,
         "session": 1,
@@ -10689,6 +11128,7 @@
     "model": "players.action",
     "pk": 435,
     "fields": {
+        "result": 0,
         "action_type": 2,
         "character": 20,
         "session": 1,
@@ -10702,6 +11142,7 @@
     "model": "players.action",
     "pk": 436,
     "fields": {
+        "result": 0,
         "action_type": 12,
         "character": 20,
         "session": 1,
@@ -10715,6 +11156,7 @@
     "model": "players.action",
     "pk": 437,
     "fields": {
+        "result": 0,
         "action_type": 28,
         "character": 20,
         "session": 1,
@@ -10728,6 +11170,7 @@
     "model": "players.action",
     "pk": 438,
     "fields": {
+        "result": 0,
         "action_type": 25,
         "character": 20,
         "session": 1,
@@ -10741,6 +11184,7 @@
     "model": "players.action",
     "pk": 439,
     "fields": {
+        "result": 0,
         "action_type": 5,
         "character": 20,
         "session": 1,
@@ -10754,6 +11198,7 @@
     "model": "players.action",
     "pk": 440,
     "fields": {
+        "result": 0,
         "action_type": 21,
         "character": 20,
         "session": 1,
@@ -10767,6 +11212,7 @@
     "model": "players.action",
     "pk": 441,
     "fields": {
+        "result": 0,
         "action_type": 20,
         "character": 20,
         "session": 1,
@@ -10780,6 +11226,7 @@
     "model": "players.action",
     "pk": 458,
     "fields": {
+        "result": 0,
         "action_type": 9,
         "character": 26,
         "session": 1,
@@ -10793,6 +11240,7 @@
     "model": "players.action",
     "pk": 459,
     "fields": {
+        "result": 0,
         "action_type": 3,
         "character": 26,
         "session": 1,
@@ -10806,6 +11254,7 @@
     "model": "players.action",
     "pk": 460,
     "fields": {
+        "result": 0,
         "action_type": 11,
         "character": 26,
         "session": 1,
@@ -10819,6 +11268,7 @@
     "model": "players.action",
     "pk": 461,
     "fields": {
+        "result": 0,
         "action_type": 10,
         "character": 26,
         "session": 1,
@@ -10832,6 +11282,7 @@
     "model": "players.action",
     "pk": 466,
     "fields": {
+        "result": 0,
         "action_type": 11,
         "character": 25,
         "session": 1,
@@ -10845,6 +11296,7 @@
     "model": "players.action",
     "pk": 467,
     "fields": {
+        "result": 0,
         "action_type": 11,
         "character": 25,
         "session": 1,
@@ -10858,6 +11310,7 @@
     "model": "players.action",
     "pk": 468,
     "fields": {
+        "result": 0,
         "action_type": 11,
         "character": 25,
         "session": 1,
@@ -10871,6 +11324,7 @@
     "model": "players.action",
     "pk": 469,
     "fields": {
+        "result": 0,
         "action_type": 11,
         "character": 25,
         "session": 1,
@@ -10884,6 +11338,7 @@
     "model": "players.action",
     "pk": 471,
     "fields": {
+        "result": 0,
         "action_type": 7,
         "character": 14,
         "session": 1,
@@ -10897,6 +11352,7 @@
     "model": "players.action",
     "pk": 472,
     "fields": {
+        "result": 0,
         "action_type": 11,
         "character": 8,
         "session": 1,
@@ -10910,6 +11366,7 @@
     "model": "players.action",
     "pk": 514,
     "fields": {
+        "result": 0,
         "action_type": 16,
         "character": 12,
         "session": 2,
@@ -10923,6 +11380,7 @@
     "model": "players.action",
     "pk": 515,
     "fields": {
+        "result": 0,
         "action_type": 29,
         "character": 12,
         "session": 2,
@@ -10936,6 +11394,7 @@
     "model": "players.action",
     "pk": 516,
     "fields": {
+        "result": 0,
         "action_type": 5,
         "character": 12,
         "session": 2,
@@ -10949,6 +11408,7 @@
     "model": "players.action",
     "pk": 517,
     "fields": {
+        "result": 0,
         "action_type": 12,
         "character": 12,
         "session": 2,
@@ -10962,6 +11422,7 @@
     "model": "players.action",
     "pk": 518,
     "fields": {
+        "result": 0,
         "action_type": 28,
         "character": 12,
         "session": 2,
@@ -10975,6 +11436,7 @@
     "model": "players.action",
     "pk": 519,
     "fields": {
+        "result": 0,
         "action_type": 22,
         "character": 12,
         "session": 2,
@@ -10988,6 +11450,7 @@
     "model": "players.action",
     "pk": 579,
     "fields": {
+        "result": 0,
         "action_type": 2,
         "character": 20,
         "session": 2,
@@ -11001,6 +11464,7 @@
     "model": "players.action",
     "pk": 580,
     "fields": {
+        "result": 0,
         "action_type": 6,
         "character": 20,
         "session": 2,
@@ -11014,6 +11478,7 @@
     "model": "players.action",
     "pk": 581,
     "fields": {
+        "result": 0,
         "action_type": 12,
         "character": 20,
         "session": 2,
@@ -11027,6 +11492,7 @@
     "model": "players.action",
     "pk": 582,
     "fields": {
+        "result": 0,
         "action_type": 16,
         "character": 20,
         "session": 2,
@@ -11040,6 +11506,7 @@
     "model": "players.action",
     "pk": 583,
     "fields": {
+        "result": 0,
         "action_type": 31,
         "character": 20,
         "session": 2,
@@ -11053,6 +11520,7 @@
     "model": "players.action",
     "pk": 584,
     "fields": {
+        "result": 0,
         "action_type": 5,
         "character": 20,
         "session": 2,
@@ -11066,6 +11534,7 @@
     "model": "players.action",
     "pk": 585,
     "fields": {
+        "result": 0,
         "action_type": 21,
         "character": 20,
         "session": 2,
@@ -11079,6 +11548,7 @@
     "model": "players.action",
     "pk": 586,
     "fields": {
+        "result": 0,
         "action_type": 20,
         "character": 20,
         "session": 2,
@@ -11092,6 +11562,7 @@
     "model": "players.action",
     "pk": 594,
     "fields": {
+        "result": 0,
         "action_type": 11,
         "character": 2,
         "session": 2,
@@ -11105,6 +11576,7 @@
     "model": "players.action",
     "pk": 595,
     "fields": {
+        "result": 0,
         "action_type": 23,
         "character": 2,
         "session": 2,
@@ -11118,6 +11590,7 @@
     "model": "players.action",
     "pk": 596,
     "fields": {
+        "result": 0,
         "action_type": 11,
         "character": 2,
         "session": 2,
@@ -11131,6 +11604,7 @@
     "model": "players.action",
     "pk": 597,
     "fields": {
+        "result": 0,
         "action_type": 9,
         "character": 2,
         "session": 2,
@@ -11144,6 +11618,7 @@
     "model": "players.action",
     "pk": 598,
     "fields": {
+        "result": 0,
         "action_type": 28,
         "character": 2,
         "session": 2,
@@ -11157,6 +11632,7 @@
     "model": "players.action",
     "pk": 599,
     "fields": {
+        "result": 0,
         "action_type": 28,
         "character": 2,
         "session": 2,
@@ -11170,6 +11646,7 @@
     "model": "players.action",
     "pk": 600,
     "fields": {
+        "result": 0,
         "action_type": 33,
         "character": 2,
         "session": 2,
@@ -11183,6 +11660,7 @@
     "model": "players.action",
     "pk": 608,
     "fields": {
+        "result": 0,
         "action_type": 5,
         "character": 13,
         "session": 2,
@@ -11196,6 +11674,7 @@
     "model": "players.action",
     "pk": 609,
     "fields": {
+        "result": 0,
         "action_type": 5,
         "character": 13,
         "session": 2,
@@ -11209,6 +11688,7 @@
     "model": "players.action",
     "pk": 610,
     "fields": {
+        "result": 0,
         "action_type": 5,
         "character": 13,
         "session": 2,
@@ -11222,6 +11702,7 @@
     "model": "players.action",
     "pk": 611,
     "fields": {
+        "result": 0,
         "action_type": 5,
         "character": 13,
         "session": 2,
@@ -11235,6 +11716,7 @@
     "model": "players.action",
     "pk": 612,
     "fields": {
+        "result": 0,
         "action_type": 28,
         "character": 13,
         "session": 2,
@@ -11248,6 +11730,7 @@
     "model": "players.action",
     "pk": 613,
     "fields": {
+        "result": 0,
         "action_type": 27,
         "character": 13,
         "session": 2,
@@ -11261,6 +11744,7 @@
     "model": "players.action",
     "pk": 614,
     "fields": {
+        "result": 0,
         "action_type": 12,
         "character": 13,
         "session": 2,
@@ -11274,6 +11758,7 @@
     "model": "players.action",
     "pk": 627,
     "fields": {
+        "result": 0,
         "action_type": 1,
         "character": 17,
         "session": 2,
@@ -11287,6 +11772,7 @@
     "model": "players.action",
     "pk": 628,
     "fields": {
+        "result": 0,
         "action_type": 5,
         "character": 17,
         "session": 2,
@@ -11300,6 +11786,7 @@
     "model": "players.action",
     "pk": 629,
     "fields": {
+        "result": 0,
         "action_type": 5,
         "character": 17,
         "session": 2,
@@ -11313,6 +11800,7 @@
     "model": "players.action",
     "pk": 630,
     "fields": {
+        "result": 0,
         "action_type": 12,
         "character": 17,
         "session": 2,
@@ -11326,6 +11814,7 @@
     "model": "players.action",
     "pk": 631,
     "fields": {
+        "result": 0,
         "action_type": 28,
         "character": 17,
         "session": 2,
@@ -11339,6 +11828,7 @@
     "model": "players.action",
     "pk": 632,
     "fields": {
+        "result": 0,
         "action_type": 28,
         "character": 17,
         "session": 2,
@@ -11352,6 +11842,7 @@
     "model": "players.action",
     "pk": 641,
     "fields": {
+        "result": 0,
         "action_type": 1,
         "character": 5,
         "session": 2,
@@ -11365,6 +11856,7 @@
     "model": "players.action",
     "pk": 642,
     "fields": {
+        "result": 0,
         "action_type": 2,
         "character": 5,
         "session": 2,
@@ -11378,6 +11870,7 @@
     "model": "players.action",
     "pk": 643,
     "fields": {
+        "result": 0,
         "action_type": 3,
         "character": 5,
         "session": 2,
@@ -11391,6 +11884,7 @@
     "model": "players.action",
     "pk": 644,
     "fields": {
+        "result": 0,
         "action_type": 4,
         "character": 5,
         "session": 2,
@@ -11404,6 +11898,7 @@
     "model": "players.action",
     "pk": 645,
     "fields": {
+        "result": 0,
         "action_type": 28,
         "character": 5,
         "session": 2,
@@ -11417,6 +11912,7 @@
     "model": "players.action",
     "pk": 646,
     "fields": {
+        "result": 0,
         "action_type": 21,
         "character": 5,
         "session": 2,
@@ -11430,6 +11926,7 @@
     "model": "players.action",
     "pk": 647,
     "fields": {
+        "result": 0,
         "action_type": 20,
         "character": 5,
         "session": 2,
@@ -11443,6 +11940,7 @@
     "model": "players.action",
     "pk": 648,
     "fields": {
+        "result": 0,
         "action_type": 33,
         "character": 5,
         "session": 2,
@@ -11456,6 +11954,7 @@
     "model": "players.action",
     "pk": 656,
     "fields": {
+        "result": 0,
         "action_type": 3,
         "character": 16,
         "session": 2,
@@ -11469,6 +11968,7 @@
     "model": "players.action",
     "pk": 657,
     "fields": {
+        "result": 0,
         "action_type": 3,
         "character": 16,
         "session": 2,
@@ -11482,6 +11982,7 @@
     "model": "players.action",
     "pk": 658,
     "fields": {
+        "result": 0,
         "action_type": 16,
         "character": 16,
         "session": 2,
@@ -11495,6 +11996,7 @@
     "model": "players.action",
     "pk": 659,
     "fields": {
+        "result": 0,
         "action_type": 4,
         "character": 16,
         "session": 2,
@@ -11508,6 +12010,7 @@
     "model": "players.action",
     "pk": 660,
     "fields": {
+        "result": 0,
         "action_type": 26,
         "character": 16,
         "session": 2,
@@ -11521,6 +12024,7 @@
     "model": "players.action",
     "pk": 661,
     "fields": {
+        "result": 0,
         "action_type": 28,
         "character": 16,
         "session": 2,
@@ -11534,6 +12038,7 @@
     "model": "players.action",
     "pk": 662,
     "fields": {
+        "result": 0,
         "action_type": 11,
         "character": 16,
         "session": 2,
@@ -11547,6 +12052,7 @@
     "model": "players.action",
     "pk": 699,
     "fields": {
+        "result": 0,
         "action_type": 9,
         "character": 8,
         "session": 2,
@@ -11560,6 +12066,7 @@
     "model": "players.action",
     "pk": 700,
     "fields": {
+        "result": 0,
         "action_type": 7,
         "character": 8,
         "session": 2,
@@ -11573,6 +12080,7 @@
     "model": "players.action",
     "pk": 701,
     "fields": {
+        "result": 0,
         "action_type": 2,
         "character": 8,
         "session": 2,
@@ -11586,6 +12094,7 @@
     "model": "players.action",
     "pk": 702,
     "fields": {
+        "result": 0,
         "action_type": 3,
         "character": 8,
         "session": 2,
@@ -11599,6 +12108,7 @@
     "model": "players.action",
     "pk": 703,
     "fields": {
+        "result": 0,
         "action_type": 25,
         "character": 8,
         "session": 2,
@@ -11612,6 +12122,7 @@
     "model": "players.action",
     "pk": 704,
     "fields": {
+        "result": 0,
         "action_type": 5,
         "character": 8,
         "session": 2,
@@ -11625,6 +12136,7 @@
     "model": "players.action",
     "pk": 705,
     "fields": {
+        "result": 0,
         "action_type": 19,
         "character": 8,
         "session": 2,
@@ -11638,6 +12150,7 @@
     "model": "players.action",
     "pk": 706,
     "fields": {
+        "result": 0,
         "action_type": 19,
         "character": 8,
         "session": 2,
@@ -11651,6 +12164,7 @@
     "model": "players.action",
     "pk": 707,
     "fields": {
+        "result": 0,
         "action_type": 19,
         "character": 8,
         "session": 2,
@@ -11664,6 +12178,7 @@
     "model": "players.action",
     "pk": 715,
     "fields": {
+        "result": 0,
         "action_type": 4,
         "character": 27,
         "session": 2,
@@ -11677,6 +12192,7 @@
     "model": "players.action",
     "pk": 716,
     "fields": {
+        "result": 0,
         "action_type": 4,
         "character": 27,
         "session": 2,
@@ -11690,6 +12206,7 @@
     "model": "players.action",
     "pk": 717,
     "fields": {
+        "result": 0,
         "action_type": 5,
         "character": 27,
         "session": 2,
@@ -11703,6 +12220,7 @@
     "model": "players.action",
     "pk": 718,
     "fields": {
+        "result": 0,
         "action_type": 2,
         "character": 27,
         "session": 2,
@@ -11716,6 +12234,7 @@
     "model": "players.action",
     "pk": 719,
     "fields": {
+        "result": 0,
         "action_type": 25,
         "character": 27,
         "session": 2,
@@ -11729,6 +12248,7 @@
     "model": "players.action",
     "pk": 720,
     "fields": {
+        "result": 0,
         "action_type": 31,
         "character": 27,
         "session": 2,
@@ -11742,6 +12262,7 @@
     "model": "players.action",
     "pk": 721,
     "fields": {
+        "result": 0,
         "action_type": 2,
         "character": 27,
         "session": 2,
@@ -11755,6 +12276,7 @@
     "model": "players.action",
     "pk": 731,
     "fields": {
+        "result": 0,
         "action_type": 2,
         "character": 4,
         "session": 2,
@@ -11768,6 +12290,7 @@
     "model": "players.action",
     "pk": 732,
     "fields": {
+        "result": 0,
         "action_type": 11,
         "character": 4,
         "session": 2,
@@ -11781,6 +12304,7 @@
     "model": "players.action",
     "pk": 733,
     "fields": {
+        "result": 0,
         "action_type": 11,
         "character": 4,
         "session": 2,
@@ -11794,6 +12318,7 @@
     "model": "players.action",
     "pk": 734,
     "fields": {
+        "result": 0,
         "action_type": 16,
         "character": 4,
         "session": 2,
@@ -11807,6 +12332,7 @@
     "model": "players.action",
     "pk": 735,
     "fields": {
+        "result": 0,
         "action_type": 28,
         "character": 4,
         "session": 2,
@@ -11820,6 +12346,7 @@
     "model": "players.action",
     "pk": 736,
     "fields": {
+        "result": 0,
         "action_type": 5,
         "character": 4,
         "session": 2,
@@ -11833,6 +12360,7 @@
     "model": "players.action",
     "pk": 737,
     "fields": {
+        "result": 0,
         "action_type": 21,
         "character": 4,
         "session": 2,
@@ -11846,6 +12374,7 @@
     "model": "players.action",
     "pk": 738,
     "fields": {
+        "result": 0,
         "action_type": 33,
         "character": 4,
         "session": 2,
@@ -11859,6 +12388,7 @@
     "model": "players.action",
     "pk": 739,
     "fields": {
+        "result": 0,
         "action_type": 33,
         "character": 4,
         "session": 2,
@@ -11872,6 +12402,7 @@
     "model": "players.action",
     "pk": 746,
     "fields": {
+        "result": 0,
         "action_type": 1,
         "character": 18,
         "session": 2,
@@ -11885,6 +12416,7 @@
     "model": "players.action",
     "pk": 747,
     "fields": {
+        "result": 0,
         "action_type": 5,
         "character": 18,
         "session": 2,
@@ -11898,6 +12430,7 @@
     "model": "players.action",
     "pk": 748,
     "fields": {
+        "result": 0,
         "action_type": 12,
         "character": 18,
         "session": 2,
@@ -11911,6 +12444,7 @@
     "model": "players.action",
     "pk": 749,
     "fields": {
+        "result": 0,
         "action_type": 12,
         "character": 18,
         "session": 2,
@@ -11924,6 +12458,7 @@
     "model": "players.action",
     "pk": 750,
     "fields": {
+        "result": 0,
         "action_type": 27,
         "character": 18,
         "session": 2,
@@ -11937,6 +12472,7 @@
     "model": "players.action",
     "pk": 751,
     "fields": {
+        "result": 0,
         "action_type": 28,
         "character": 18,
         "session": 2,
@@ -11950,6 +12486,7 @@
     "model": "players.action",
     "pk": 757,
     "fields": {
+        "result": 0,
         "action_type": 3,
         "character": 19,
         "session": 2,
@@ -11963,6 +12500,7 @@
     "model": "players.action",
     "pk": 758,
     "fields": {
+        "result": 0,
         "action_type": 28,
         "character": 19,
         "session": 2,
@@ -11976,6 +12514,7 @@
     "model": "players.action",
     "pk": 759,
     "fields": {
+        "result": 0,
         "action_type": 11,
         "character": 19,
         "session": 2,
@@ -11989,6 +12528,7 @@
     "model": "players.action",
     "pk": 760,
     "fields": {
+        "result": 0,
         "action_type": 26,
         "character": 19,
         "session": 2,
@@ -12002,6 +12542,7 @@
     "model": "players.action",
     "pk": 761,
     "fields": {
+        "result": 0,
         "action_type": 28,
         "character": 19,
         "session": 2,
@@ -12015,6 +12556,7 @@
     "model": "players.action",
     "pk": 768,
     "fields": {
+        "result": 0,
         "action_type": 2,
         "character": 29,
         "session": 2,
@@ -12028,6 +12570,7 @@
     "model": "players.action",
     "pk": 769,
     "fields": {
+        "result": 0,
         "action_type": 9,
         "character": 29,
         "session": 2,
@@ -12041,6 +12584,7 @@
     "model": "players.action",
     "pk": 770,
     "fields": {
+        "result": 0,
         "action_type": 8,
         "character": 29,
         "session": 2,
@@ -12054,6 +12598,7 @@
     "model": "players.action",
     "pk": 771,
     "fields": {
+        "result": 0,
         "action_type": 11,
         "character": 29,
         "session": 2,
@@ -12067,6 +12612,7 @@
     "model": "players.action",
     "pk": 796,
     "fields": {
+        "result": 0,
         "action_type": 2,
         "character": 15,
         "session": 2,
@@ -12080,6 +12626,7 @@
     "model": "players.action",
     "pk": 797,
     "fields": {
+        "result": 0,
         "action_type": 16,
         "character": 15,
         "session": 2,
@@ -12093,6 +12640,7 @@
     "model": "players.action",
     "pk": 798,
     "fields": {
+        "result": 0,
         "action_type": 23,
         "character": 15,
         "session": 2,
@@ -12106,6 +12654,7 @@
     "model": "players.action",
     "pk": 799,
     "fields": {
+        "result": 0,
         "action_type": 28,
         "character": 15,
         "session": 2,
@@ -12119,6 +12668,7 @@
     "model": "players.action",
     "pk": 800,
     "fields": {
+        "result": 0,
         "action_type": 30,
         "character": 15,
         "session": 2,
@@ -12132,6 +12682,7 @@
     "model": "players.action",
     "pk": 801,
     "fields": {
+        "result": 0,
         "action_type": 31,
         "character": 15,
         "session": 2,
@@ -12145,6 +12696,7 @@
     "model": "players.action",
     "pk": 802,
     "fields": {
+        "result": 0,
         "action_type": 21,
         "character": 15,
         "session": 2,
@@ -12158,6 +12710,7 @@
     "model": "players.action",
     "pk": 803,
     "fields": {
+        "result": 0,
         "action_type": 20,
         "character": 15,
         "session": 2,
@@ -12171,11 +12724,264 @@
     "model": "players.action",
     "pk": 805,
     "fields": {
+        "result": 0,
         "action_type": 16,
         "character": 14,
         "session": 2,
         "willpower": false,
         "description": "Dante is resting.",
+        "resolved": "UNRESOLVED",
+        "helpers": []
+    }
+},
+{
+    "model": "players.action",
+    "pk": 812,
+    "fields": {
+        "result": 0,
+        "action_type": 10,
+        "character": 32,
+        "session": 2,
+        "willpower": false,
+        "description": "Faye Morgan is doing counter espionage.",
+        "resolved": "UNRESOLVED",
+        "helpers": []
+    }
+},
+{
+    "model": "players.action",
+    "pk": 813,
+    "fields": {
+        "result": 0,
+        "action_type": 11,
+        "character": 32,
+        "session": 2,
+        "willpower": false,
+        "description": "Faye Morgan is investigating: Jag vill unders\u00f6ka villakvarterets grann-organisation. Ta reda p\u00e5 varf\u00f6r den b\u00f6rjade, vem som organiserar, hur mycket dem vet (Maskeradproblem?), osv.",
+        "resolved": "UNRESOLVED",
+        "helpers": []
+    }
+},
+{
+    "model": "players.action",
+    "pk": 814,
+    "fields": {
+        "result": 0,
+        "action_type": 12,
+        "character": 32,
+        "session": 2,
+        "willpower": false,
+        "description": "Faye Morgan is investigating Ockult.",
+        "resolved": "UNRESOLVED",
+        "helpers": []
+    }
+},
+{
+    "model": "players.action",
+    "pk": 815,
+    "fields": {
+        "result": 0,
+        "action_type": 11,
+        "character": 32,
+        "session": 2,
+        "willpower": false,
+        "description": "Faye Morgan is investigating: Signs of demonic activity? I'm gonna try to find a demon. And either try to exorcise it or control it and then exorcise.",
+        "resolved": "UNRESOLVED",
+        "helpers": []
+    }
+},
+{
+    "model": "players.action",
+    "pk": 816,
+    "fields": {
+        "result": 0,
+        "action_type": 25,
+        "character": 32,
+        "session": 2,
+        "willpower": false,
+        "description": "Faye Morgan is investing in their herd.",
+        "resolved": "UNRESOLVED",
+        "helpers": []
+    }
+},
+{
+    "model": "players.action",
+    "pk": 817,
+    "fields": {
+        "result": 0,
+        "action_type": 24,
+        "character": 32,
+        "session": 2,
+        "willpower": false,
+        "description": "Faye Morgan is investing in their haven.",
+        "resolved": "UNRESOLVED",
+        "helpers": []
+    }
+},
+{
+    "model": "players.action",
+    "pk": 836,
+    "fields": {
+        "result": 0,
+        "action_type": 2,
+        "character": 26,
+        "session": 2,
+        "willpower": false,
+        "description": "Thordon is conserving Universitet.",
+        "resolved": "UNRESOLVED",
+        "helpers": []
+    }
+},
+{
+    "model": "players.action",
+    "pk": 837,
+    "fields": {
+        "result": 0,
+        "action_type": 2,
+        "character": 26,
+        "session": 2,
+        "willpower": false,
+        "description": "Thordon is conserving Kyrkan.",
+        "resolved": "UNRESOLVED",
+        "helpers": []
+    }
+},
+{
+    "model": "players.action",
+    "pk": 838,
+    "fields": {
+        "result": 0,
+        "action_type": 9,
+        "character": 26,
+        "session": 2,
+        "willpower": true,
+        "description": "Thordon is investigating Harriet's downtime actions.",
+        "resolved": "UNRESOLVED",
+        "helpers": []
+    }
+},
+{
+    "model": "players.action",
+    "pk": 839,
+    "fields": {
+        "result": 0,
+        "action_type": 8,
+        "character": 26,
+        "session": 2,
+        "willpower": false,
+        "description": "Thordon is investigating Harriet's resources. \n Priorities: Hur m\u00e5nga Resource points karakt\u00e4ren har (3 successes),En vald typ av background (haven) (1 successes),En vald typ av background (herd) (1 successes),None,None,None,None,None",
+        "resolved": "UNRESOLVED",
+        "helpers": []
+    }
+},
+{
+    "model": "players.action",
+    "pk": 840,
+    "fields": {
+        "result": 0,
+        "action_type": 25,
+        "character": 26,
+        "session": 2,
+        "willpower": false,
+        "description": "Thordon is investing in their herd.",
+        "resolved": "UNRESOLVED",
+        "helpers": []
+    }
+},
+{
+    "model": "players.action",
+    "pk": 841,
+    "fields": {
+        "result": 0,
+        "action_type": 25,
+        "character": 26,
+        "session": 2,
+        "willpower": false,
+        "description": "Thordon is investing in their herd.",
+        "resolved": "UNRESOLVED",
+        "helpers": []
+    }
+},
+{
+    "model": "players.action",
+    "pk": 848,
+    "fields": {
+        "result": 0,
+        "action_type": 11,
+        "character": 28,
+        "session": 2,
+        "willpower": false,
+        "description": "Pierre Steen is investigating: N\u00e5gon annan \u00e4n jag jagade i Villakvarteret f\u00f6rra m\u00e5naden. Vem?",
+        "resolved": "UNRESOLVED",
+        "helpers": []
+    }
+},
+{
+    "model": "players.action",
+    "pk": 849,
+    "fields": {
+        "result": 0,
+        "action_type": 11,
+        "character": 28,
+        "session": 2,
+        "willpower": false,
+        "description": "Pierre Steen is investigating: Kato hade h\u00f6rt talas om en gotisk individ som p\u00e5st\u00e5r sig vara Lilith inkarnerad, och f\u00f6refaller ha krafter. Unders\u00f6k detta n\u00e4rmare. [Jag fick dessutom veta namnet p\u00e5 nattklubben d\u00e4r personen ifr\u00e5ga h\u00e4ngde, men jag verkar ha tappat bort mina anteckningar om saken.]",
+        "resolved": "UNRESOLVED",
+        "helpers": []
+    }
+},
+{
+    "model": "players.action",
+    "pk": 850,
+    "fields": {
+        "result": 0,
+        "action_type": 7,
+        "character": 28,
+        "session": 2,
+        "willpower": false,
+        "description": "Pierre Steen is investigating Hans's influence. \n Priorities: Alla Master och Contenderniv\u00e5er (2 successes),Namn p\u00e5 en hook i ett valt inflytande (Ockult) (1 successes),Namn p\u00e5 en hook i ett valt inflytande (Universitet) (1 successes),Namn p\u00e5 en hook i ett valt inflytande (Media) (1 successes),Namn p\u00e5 en hook i ett valt inflytande (Politik) (1 successes),Namn p\u00e5 en hook i ett valt inflytande (Konst och Underh\u00e5llning) (1 successes),Namn p\u00e5 en hook i ett valt inflytande (Kyrkan) (1 successes),None \n with hooks: ",
+        "resolved": "UNRESOLVED",
+        "helpers": []
+    }
+},
+{
+    "model": "players.action",
+    "pk": 851,
+    "fields": {
+        "result": 0,
+        "action_type": 9,
+        "character": 28,
+        "session": 2,
+        "willpower": false,
+        "description": "Pierre Steen is investigating Hans's downtime actions.",
+        "resolved": "UNRESOLVED",
+        "helpers": []
+    }
+},
+{
+    "model": "players.action",
+    "pk": 852,
+    "fields": {
+        "result": 0,
+        "action_type": 24,
+        "character": 28,
+        "session": 2,
+        "willpower": false,
+        "description": "Pierre Steen is investing in their haven.",
+        "resolved": "UNRESOLVED",
+        "helpers": []
+    }
+},
+{
+    "model": "players.action",
+    "pk": 853,
+    "fields": {
+        "result": 0,
+        "action_type": 28,
+        "character": 28,
+        "session": 2,
+        "willpower": false,
+        "description": "Pierre Steen is learning Demenation. With Kato as teacher.",
         "resolved": "UNRESOLVED",
         "helpers": []
     }
@@ -12488,6 +13294,22 @@
     "pk": 796,
     "fields": {
         "influence": 1,
+        "helpers": []
+    }
+},
+{
+    "model": "players.conserveinfluence",
+    "pk": 836,
+    "fields": {
+        "influence": 6,
+        "helpers": []
+    }
+},
+{
+    "model": "players.conserveinfluence",
+    "pk": 837,
+    "fields": {
+        "influence": 4,
         "helpers": []
     }
 },
@@ -13025,6 +13847,23 @@
     }
 },
 {
+    "model": "players.investigatecharacterinfluence",
+    "pk": 850,
+    "fields": {
+        "target": 13,
+        "priority1": 9,
+        "priority2": 5,
+        "priority3": 6,
+        "priority4": 2,
+        "priority5": 1,
+        "priority6": 3,
+        "priority7": 4,
+        "priority8": null,
+        "hooks": "",
+        "helpers": []
+    }
+},
+{
     "model": "players.resourcepriority",
     "pk": 1,
     "fields": {
@@ -13137,6 +13976,22 @@
     }
 },
 {
+    "model": "players.investigatecharacterresources",
+    "pk": 839,
+    "fields": {
+        "target": 15,
+        "priority1": 6,
+        "priority2": 4,
+        "priority3": 1,
+        "priority4": null,
+        "priority5": null,
+        "priority6": null,
+        "priority7": null,
+        "priority8": null,
+        "helpers": []
+    }
+},
+{
     "model": "players.investigatecharacterdowntimeactions",
     "pk": 99,
     "fields": {
@@ -13185,6 +14040,22 @@
     }
 },
 {
+    "model": "players.investigatecharacterdowntimeactions",
+    "pk": 838,
+    "fields": {
+        "target": 15,
+        "helpers": []
+    }
+},
+{
+    "model": "players.investigatecharacterdowntimeactions",
+    "pk": 851,
+    "fields": {
+        "target": 13,
+        "helpers": []
+    }
+},
+{
     "model": "players.investigatecounterspionage",
     "pk": 138,
     "fields": {
@@ -13201,6 +14072,13 @@
 {
     "model": "players.investigatecounterspionage",
     "pk": 461,
+    "fields": {
+        "helpers": []
+    }
+},
+{
+    "model": "players.investigatecounterspionage",
+    "pk": 812,
     "fields": {
         "helpers": []
     }
@@ -13422,6 +14300,38 @@
     }
 },
 {
+    "model": "players.investigatephenomenon",
+    "pk": 813,
+    "fields": {
+        "phenonemon": "Jag vill unders\u00f6ka villakvarterets grann-organisation. Ta reda p\u00e5 varf\u00f6r den b\u00f6rjade, vem som organiserar, hur mycket dem vet (Maskeradproblem?), osv.",
+        "helpers": []
+    }
+},
+{
+    "model": "players.investigatephenomenon",
+    "pk": 815,
+    "fields": {
+        "phenonemon": "Signs of demonic activity? I'm gonna try to find a demon. And either try to exorcise it or control it and then exorcise.",
+        "helpers": []
+    }
+},
+{
+    "model": "players.investigatephenomenon",
+    "pk": 848,
+    "fields": {
+        "phenonemon": "N\u00e5gon annan \u00e4n jag jagade i Villakvarteret f\u00f6rra m\u00e5naden. Vem?",
+        "helpers": []
+    }
+},
+{
+    "model": "players.investigatephenomenon",
+    "pk": 849,
+    "fields": {
+        "phenonemon": "Kato hade h\u00f6rt talas om en gotisk individ som p\u00e5st\u00e5r sig vara Lilith inkarnerad, och f\u00f6refaller ha krafter. Unders\u00f6k detta n\u00e4rmare. [Jag fick dessutom veta namnet p\u00e5 nattklubben d\u00e4r personen ifr\u00e5ga h\u00e4ngde, men jag verkar ha tappat bort mina anteckningar om saken.]",
+        "helpers": []
+    }
+},
+{
     "model": "players.investigateinfluence",
     "pk": 115,
     "fields": {
@@ -13538,6 +14448,14 @@
     "pk": 749,
     "fields": {
         "influence": 1,
+        "helpers": []
+    }
+},
+{
+    "model": "players.investigateinfluence",
+    "pk": 814,
+    "fields": {
+        "influence": 5,
         "helpers": []
     }
 },
@@ -13882,6 +14800,16 @@
     }
 },
 {
+    "model": "players.learndiscipline",
+    "pk": 853,
+    "fields": {
+        "discipline": 4,
+        "trainer": 20,
+        "blood": false,
+        "helpers": []
+    }
+},
+{
     "model": "players.learnspecialization",
     "pk": 515,
     "fields": {
@@ -14040,6 +14968,41 @@
 {
     "model": "players.investherd",
     "pk": 719,
+    "fields": {
+        "helpers": []
+    }
+},
+{
+    "model": "players.investherd",
+    "pk": 816,
+    "fields": {
+        "helpers": []
+    }
+},
+{
+    "model": "players.investherd",
+    "pk": 840,
+    "fields": {
+        "helpers": []
+    }
+},
+{
+    "model": "players.investherd",
+    "pk": 841,
+    "fields": {
+        "helpers": []
+    }
+},
+{
+    "model": "players.investhaven",
+    "pk": 817,
+    "fields": {
+        "helpers": []
+    }
+},
+{
+    "model": "players.investhaven",
+    "pk": 852,
     "fields": {
         "helpers": []
     }
@@ -14614,6 +15577,86 @@
     }
 },
 {
+    "model": "players.eventreport",
+    "pk": 30,
+    "fields": {
+        "character": 32,
+        "session": 2,
+        "open_goal1": false,
+        "open_goal2": true,
+        "hidden_goal": true,
+        "humanity_exp": false,
+        "humanity": 0,
+        "willpower_dots": 0,
+        "willpower_points": 0,
+        "blood": 0,
+        "resources": 0,
+        "bashing": 0,
+        "lethal": 0,
+        "aggravated": 0
+    }
+},
+{
+    "model": "players.eventreport",
+    "pk": 31,
+    "fields": {
+        "character": 25,
+        "session": 2,
+        "open_goal1": false,
+        "open_goal2": false,
+        "hidden_goal": false,
+        "humanity_exp": false,
+        "humanity": 0,
+        "willpower_dots": 0,
+        "willpower_points": 0,
+        "blood": 0,
+        "resources": 0,
+        "bashing": 0,
+        "lethal": 0,
+        "aggravated": 0
+    }
+},
+{
+    "model": "players.eventreport",
+    "pk": 33,
+    "fields": {
+        "character": 26,
+        "session": 2,
+        "open_goal1": true,
+        "open_goal2": false,
+        "hidden_goal": true,
+        "humanity_exp": true,
+        "humanity": 0,
+        "willpower_dots": 0,
+        "willpower_points": 0,
+        "blood": 0,
+        "resources": 0,
+        "bashing": 0,
+        "lethal": 0,
+        "aggravated": 0
+    }
+},
+{
+    "model": "players.eventreport",
+    "pk": 34,
+    "fields": {
+        "character": 28,
+        "session": 2,
+        "open_goal1": true,
+        "open_goal2": true,
+        "hidden_goal": true,
+        "humanity_exp": true,
+        "humanity": 1,
+        "willpower_dots": 0,
+        "willpower_points": 1,
+        "blood": 0,
+        "resources": 0,
+        "bashing": 0,
+        "lethal": 0,
+        "aggravated": 0
+    }
+},
+{
     "model": "players.changegoals",
     "pk": 4,
     "fields": {
@@ -14779,6 +15822,50 @@
     }
 },
 {
+    "model": "players.changegoals",
+    "pk": 30,
+    "fields": {
+        "character": 32,
+        "session": 2,
+        "open_goal1": "Find out how magic affects humanity.",
+        "open_goal2": "Aquire obscure occult knowledge",
+        "hidden_goal": "Control information for Tremere's benefit"
+    }
+},
+{
+    "model": "players.changegoals",
+    "pk": 31,
+    "fields": {
+        "character": 25,
+        "session": 2,
+        "open_goal1": "F\u00f6rs\u00f6ka hitta s\u00e4tt att skapa b\u00e4ttre s\u00e4tt f\u00f6r neonater och andra som inte har makt att g\u00f6ra sina \u00e5sikter h\u00f6rda hos de styrande, ergo - f\u00e5 mer inflytande inom camarilla.",
+        "open_goal2": "F\u00e5 reda p\u00e5 v\u00e4rdefull information om fursten,\r\n\u00e4ldste, primogener och andra personer av vikt.",
+        "hidden_goal": "Se till att ingen f\u00e5r reda p\u00e5 hennes hemligheter, men samtidigt se om hon kan hitta mer information om det sj\u00e4lv."
+    }
+},
+{
+    "model": "players.changegoals",
+    "pk": 33,
+    "fields": {
+        "character": 26,
+        "session": 2,
+        "open_goal1": "Ta reda p\u00e5 vem som \u00e4r den  vampyr som l\u00e4kt info till en goul om camarillan.",
+        "open_goal2": "F\u00e5 en ny tittel.",
+        "hidden_goal": "Ta reda p\u00e5 vad Samuel Lilja vill och vad hans slutna m\u00e5l \u00e4r.\r\nG\u00e4rna s\u00e4tta dig honnom f\u00f6r n\u00e5got."
+    }
+},
+{
+    "model": "players.changegoals",
+    "pk": 34,
+    "fields": {
+        "character": 28,
+        "session": 2,
+        "open_goal1": "Pierre \u00e5ngrar bittert att hans M\u00e4nsklighet b\u00f6rjat vittra s\u00f6nder, och vill \u00e5teruppbygga den.",
+        "open_goal2": "Pierre har b\u00f6rjat se hur kall vampyrv\u00e4rlden kan vara, och vill undfly detta genom f\u00f6rdjupade k\u00e4rleksrelationer.",
+        "hidden_goal": "Pierre inser i efterhand att Hans utkr\u00e4vde ett orimligt \u00f6verpris f\u00f6r en d\u00f6dad hook, och s\u00f6ker uppr\u00e4ttelse."
+    }
+},
+{
     "model": "players.healingreport",
     "pk": 1,
     "fields": {
@@ -14787,237 +15874,6 @@
         "bashing": 5,
         "lethal": 0,
         "aggravated": 0
-    }
-},
-{
-    "model": "players.expdisciplinespending",
-    "pk": 5,
-    "fields": {
-        "character": 12,
-        "session": 2,
-        "discipline": 102,
-        "exp": true,
-        "special_exp": 0
-    }
-},
-{
-    "model": "players.expdisciplinespending",
-    "pk": 14,
-    "fields": {
-        "character": 20,
-        "session": 2,
-        "discipline": 67,
-        "exp": true,
-        "special_exp": 1
-    }
-},
-{
-    "model": "players.expdisciplinespending",
-    "pk": 15,
-    "fields": {
-        "character": 2,
-        "session": 2,
-        "discipline": 105,
-        "exp": true,
-        "special_exp": 1
-    }
-},
-{
-    "model": "players.expdisciplinespending",
-    "pk": 16,
-    "fields": {
-        "character": 2,
-        "session": 2,
-        "discipline": 104,
-        "exp": true,
-        "special_exp": 1
-    }
-},
-{
-    "model": "players.expdisciplinespending",
-    "pk": 25,
-    "fields": {
-        "character": 13,
-        "session": 2,
-        "discipline": 47,
-        "exp": true,
-        "special_exp": 2
-    }
-},
-{
-    "model": "players.expdisciplinespending",
-    "pk": 26,
-    "fields": {
-        "character": 13,
-        "session": 2,
-        "discipline": 45,
-        "exp": false,
-        "special_exp": 0
-    }
-},
-{
-    "model": "players.expdisciplinespending",
-    "pk": 27,
-    "fields": {
-        "character": 17,
-        "session": 2,
-        "discipline": 60,
-        "exp": true,
-        "special_exp": 0
-    }
-},
-{
-    "model": "players.expdisciplinespending",
-    "pk": 28,
-    "fields": {
-        "character": 17,
-        "session": 2,
-        "discipline": 61,
-        "exp": true,
-        "special_exp": 0
-    }
-},
-{
-    "model": "players.expdisciplinespending",
-    "pk": 30,
-    "fields": {
-        "character": 5,
-        "session": 2,
-        "discipline": 24,
-        "exp": false,
-        "special_exp": 0
-    }
-},
-{
-    "model": "players.expdisciplinespending",
-    "pk": 31,
-    "fields": {
-        "character": 16,
-        "session": 2,
-        "discipline": 103,
-        "exp": true,
-        "special_exp": 0
-    }
-},
-{
-    "model": "players.expdisciplinespending",
-    "pk": 32,
-    "fields": {
-        "character": 16,
-        "session": 2,
-        "discipline": 58,
-        "exp": false,
-        "special_exp": 0
-    }
-},
-{
-    "model": "players.expdisciplinespending",
-    "pk": 33,
-    "fields": {
-        "character": 16,
-        "session": 2,
-        "discipline": 131,
-        "exp": true,
-        "special_exp": 0
-    }
-},
-{
-    "model": "players.expdisciplinespending",
-    "pk": 34,
-    "fields": {
-        "character": 27,
-        "session": 2,
-        "discipline": 90,
-        "exp": true,
-        "special_exp": 1
-    }
-},
-{
-    "model": "players.expdisciplinespending",
-    "pk": 35,
-    "fields": {
-        "character": 4,
-        "session": 2,
-        "discipline": 109,
-        "exp": true,
-        "special_exp": 1
-    }
-},
-{
-    "model": "players.expdisciplinespending",
-    "pk": 36,
-    "fields": {
-        "character": 18,
-        "session": 2,
-        "discipline": 132,
-        "exp": true,
-        "special_exp": 0
-    }
-},
-{
-    "model": "players.expdisciplinespending",
-    "pk": 37,
-    "fields": {
-        "character": 19,
-        "session": 2,
-        "discipline": 106,
-        "exp": true,
-        "special_exp": 0
-    }
-},
-{
-    "model": "players.expdisciplinespending",
-    "pk": 38,
-    "fields": {
-        "character": 19,
-        "session": 2,
-        "discipline": 65,
-        "exp": true,
-        "special_exp": 0
-    }
-},
-{
-    "model": "players.expdisciplinespending",
-    "pk": 39,
-    "fields": {
-        "character": 15,
-        "session": 2,
-        "discipline": 55,
-        "exp": true,
-        "special_exp": 2
-    }
-},
-{
-    "model": "players.expattributespending",
-    "pk": 1,
-    "fields": {
-        "character": 13,
-        "session": 2,
-        "attribute": 1,
-        "exp": true,
-        "special_exp": 0
-    }
-},
-{
-    "model": "players.expattributespending",
-    "pk": 2,
-    "fields": {
-        "character": 18,
-        "session": 2,
-        "attribute": 44,
-        "exp": true,
-        "special_exp": 0
-    }
-},
-{
-    "model": "players.expattributespending",
-    "pk": 4,
-    "fields": {
-        "character": 29,
-        "session": 2,
-        "attribute": 57,
-        "exp": true,
-        "special_exp": 0
     }
 },
 {
@@ -15616,6 +16472,74 @@
     }
 },
 {
+    "model": "players.feeding",
+    "pk": 73,
+    "fields": {
+        "character": 32,
+        "session": 2,
+        "domain": 8,
+        "feeding_points": 5,
+        "discipline": null,
+        "description": "Avoid the neighbourhood watch, drink from sleeping people and/or anyone caught alone.",
+        "has_good_method": true,
+        "has_permission": true,
+        "incidents": 0,
+        "incident_roll": 0,
+        "resolved": "UNRESOLVED"
+    }
+},
+{
+    "model": "players.feeding",
+    "pk": 74,
+    "fields": {
+        "character": 25,
+        "session": 2,
+        "domain": 4,
+        "feeding_points": 5,
+        "discipline": null,
+        "description": "Seriem\u00f6rdarstylejakt.",
+        "has_good_method": true,
+        "has_permission": false,
+        "incidents": 0,
+        "incident_roll": 0,
+        "resolved": "UNRESOLVED"
+    }
+},
+{
+    "model": "players.feeding",
+    "pk": 76,
+    "fields": {
+        "character": 26,
+        "session": 2,
+        "domain": 2,
+        "feeding_points": 5,
+        "discipline": 1,
+        "description": "Jag vill skr\u00e4mma mina offer s\u00e5 de springer iv\u00e4g s\u00e5 jag f\u00e5r jaga dem lite innan ja tuggar.",
+        "has_good_method": true,
+        "has_permission": true,
+        "incidents": 0,
+        "incident_roll": 0,
+        "resolved": "UNRESOLVED"
+    }
+},
+{
+    "model": "players.feeding",
+    "pk": 77,
+    "fields": {
+        "character": 28,
+        "session": 2,
+        "domain": 7,
+        "feeding_points": 5,
+        "discipline": null,
+        "description": "Pierre drar runt p\u00e5 zooet vid st\u00e4ngningsdags och tar blod fr\u00e5n ensamma eftersl\u00e4ntare.",
+        "has_good_method": true,
+        "has_permission": true,
+        "incidents": 0,
+        "incident_roll": 0,
+        "resolved": "UNRESOLVED"
+    }
+},
+{
     "model": "players.activedisciplines",
     "pk": 3,
     "fields": {
@@ -15834,6 +16758,28 @@
     }
 },
 {
+    "model": "players.activedisciplines",
+    "pk": 34,
+    "fields": {
+        "character": 26,
+        "session": 2,
+        "disciplines": [
+            1
+        ]
+    }
+},
+{
+    "model": "players.activedisciplines",
+    "pk": 35,
+    "fields": {
+        "character": 28,
+        "session": 2,
+        "disciplines": [
+            91
+        ]
+    }
+},
+{
     "model": "players.rumor",
     "pk": 1,
     "fields": {
@@ -16004,8 +16950,8 @@
         "gm_note": "-Parcelplot- Biddingwar- Katt + Papyrus = Artefakter, information eller resurser-",
         "rumor_type": "Reliable",
         "recipients": [
-            13,
             2,
+            13,
             25
         ]
     }

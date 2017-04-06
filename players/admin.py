@@ -63,7 +63,7 @@ admin.site.register(Age)
 
 @admin.register(Hook)
 class HookAdmin(admin.ModelAdmin):
-    list_display = ('name','influence','__master__') 
+    list_display = ('name','influence','concept','__master__') 
 
 admin.site.register(HookAttribute)
 admin.site.register(Nature)
