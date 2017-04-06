@@ -6,7 +6,7 @@ import random
 UNRESOLVED = 'UNRESOLVED'
 RESOLVED = 'RESOLVED'
 PENDING = 'PENDING'
-GM = 'Need GM attention'
+GM = 'GM'
 
 NO_ACTIONS = 'NO_ACTIONS'
 # Rumor Types
