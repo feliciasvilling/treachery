@@ -723,7 +723,7 @@ class Action(Model):
     willpower = BooleanField(default=False,help_text="Do you want to spend a point of willpower for an automatic succses?")
     description = TextField(blank=True)
     resolved = CharField(
-        max_length=10,
+        max_length=20,
         choices=(
             (UNRESOLVED, 'Unresolved'), 
             (PENDING, 'Pending'), 
