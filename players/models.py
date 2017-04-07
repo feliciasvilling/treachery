@@ -161,12 +161,13 @@ class ExpDisciplineSpending(Model):
             self.character) 
             
     def resolve(self):
-        if self.exp:
+        if self.exp and self.character.exp > 0:
             self.discipline.exp += 1
-        
-        if self.special_exp < 0:
-            print ( "en idiot!")
-        self.discipline.exp += self.special_exp
+            self.character.exp -= 1        
+
+        if (self.character.special_exp >= self.special_exp):
+            self.discipline.exp += self.special_exp
+            self.character.special_exp -= self.special_exp
         
         if self.discipline.exp >= self.discipline.get_needed()['needed']:
         
@@ -260,10 +261,15 @@ class ExpAttributeSpending(Model):
             self.character) 
             
     def resolve(self):
-        if self.exp:
+        if self.exp and self.character.exp > 0:
             self.attribute.exp += 1
+            self.character.exp -= 1
         
-        self.attribute.exp += self.special_exp
+        if self.character.special_exp >= self.special_exp:
+            self.attribute.exp += self.special_exp
+            self.character.special_exp -= self.special_exp
+            
+        
         
         if self.attribute.exp >= self.attribute.get_needed()['needed']:
            self.attribute.value += 1
