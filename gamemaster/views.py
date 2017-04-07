@@ -213,8 +213,8 @@ def resolve_feedings(request, session):
 def resolve_characters(request, session):
    # for report in ExpDisciplineSpending.objects.filter(session=session):
    #     report.resolve()
-    for report in ExpAttributeSpending.objects.filter(session=session):
-        report.resolve()
+   # for report in ExpAttributeSpending.objects.filter(session=session):
+   #     report.resolve()
     for report in HealingReport.objects.filter(session=session):
         report.resolve()
     for char in Character.objects.all():
