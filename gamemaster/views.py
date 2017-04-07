@@ -215,8 +215,8 @@ def resolve_characters(request, session):
    #     report.resolve()
    # for report in ExpAttributeSpending.objects.filter(session=session):
    #     report.resolve()
-    for report in HealingReport.objects.filter(session=session):
-        report.resolve()
+  #  for report in HealingReport.objects.filter(session=session):
+  #      report.resolve()
     for char in Character.objects.all():
         char.resolve(session)
         
