@@ -139,7 +139,7 @@
     "model": "auth.user",
     "fields": {
         "password": "pbkdf2_sha256$24000$blIlXuhrUVZu$o/eHe9JH3/yVhydTwObsBj6z8dsmoxaw82B+yahaQEg=",
-        "last_login": "2017-03-28T22:56:48.840Z",
+        "last_login": "2017-04-07T17:32:24.312Z",
         "is_superuser": false,
         "username": "JeGy",
         "first_name": "Jerome",
@@ -479,7 +479,7 @@
     "model": "auth.user",
     "fields": {
         "password": "pbkdf2_sha256$24000$LyWAr0P3k7sj$4jSE79SHJd/wpL1P4aQOB7nbRYos7I08KRT1QWPqiiE=",
-        "last_login": "2017-03-10T19:28:23.215Z",
+        "last_login": "2017-04-07T16:22:23.497Z",
         "is_superuser": true,
         "username": "Frans",
         "first_name": "",
@@ -2207,6 +2207,259 @@
     }
 },
 {
+    "model": "django_comments.comment",
+    "pk": 70,
+    "fields": {
+        "content_type": [
+            "players",
+            "action"
+        ],
+        "object_pk": "585",
+        "site": 1,
+        "user": [
+            "felicia"
+        ],
+        "user_name": "Felicia Svilling",
+        "user_email": "felicia@svilling.eu",
+        "user_url": "",
+        "comment": "Lydia Pauli \u00e4r inte en medlem i din klan, s\u00e5 du kan inte fr\u00e5ga henne.",
+        "submit_date": "2017-04-07T11:03:46.129Z",
+        "ip_address": "172.17.0.1",
+        "is_public": true,
+        "is_removed": false
+    }
+},
+{
+    "model": "django_comments.comment",
+    "pk": 71,
+    "fields": {
+        "content_type": [
+            "players",
+            "action"
+        ],
+        "object_pk": "707",
+        "site": 1,
+        "user": [
+            "felicia"
+        ],
+        "user_name": "Felicia Svilling",
+        "user_email": "felicia@svilling.eu",
+        "user_url": "",
+        "comment": "Being rejected by my sier/senpi",
+        "submit_date": "2017-04-07T11:04:21.635Z",
+        "ip_address": "172.17.0.1",
+        "is_public": true,
+        "is_removed": false
+    }
+},
+{
+    "model": "django_comments.comment",
+    "pk": 72,
+    "fields": {
+        "content_type": [
+            "players",
+            "action"
+        ],
+        "object_pk": "706",
+        "site": 1,
+        "user": [
+            "felicia"
+        ],
+        "user_name": "Felicia Svilling",
+        "user_email": "felicia@svilling.eu",
+        "user_url": "",
+        "comment": "Winther vill inte svara p\u00e5 den fr\u00e5gan och blir ist\u00e4llet skyldig dig en liten g\u00e4ld.",
+        "submit_date": "2017-04-07T11:32:38.646Z",
+        "ip_address": "172.17.0.1",
+        "is_public": true,
+        "is_removed": false
+    }
+},
+{
+    "model": "django_comments.comment",
+    "pk": 73,
+    "fields": {
+        "content_type": [
+            "players",
+            "action"
+        ],
+        "object_pk": "646",
+        "site": 1,
+        "user": [
+            "felicia"
+        ],
+        "user_name": "Felicia Svilling",
+        "user_email": "felicia@svilling.eu",
+        "user_url": "",
+        "comment": "Winther vill inte svara p\u00e5 den fr\u00e5gan utan blir ist\u00e4llet skyldig dig en enkel g\u00e4ld.",
+        "submit_date": "2017-04-07T11:33:53.334Z",
+        "ip_address": "172.17.0.1",
+        "is_public": true,
+        "is_removed": false
+    }
+},
+{
+    "model": "django_comments.comment",
+    "pk": 74,
+    "fields": {
+        "content_type": [
+            "players",
+            "action"
+        ],
+        "object_pk": "802",
+        "site": 1,
+        "user": [
+            "felicia"
+        ],
+        "user_name": "Felicia Svilling",
+        "user_email": "felicia@svilling.eu",
+        "user_url": "",
+        "comment": "hamnbytare eller sabbaten, os\u00e4ker p\u00e5 vilken jag tycker kan vara st\u00f6rsta hotet dock",
+        "submit_date": "2017-04-07T13:31:16.191Z",
+        "ip_address": "172.17.0.1",
+        "is_public": true,
+        "is_removed": false
+    }
+},
+{
+    "model": "django_comments.comment",
+    "pk": 75,
+    "fields": {
+        "content_type": [
+            "players",
+            "action"
+        ],
+        "object_pk": "704",
+        "site": 1,
+        "user": [
+            "felicia"
+        ],
+        "user_name": "Felicia Svilling",
+        "user_email": "felicia@svilling.eu",
+        "user_url": "",
+        "comment": "You succed, but there is no space available above you in Universitet, so the hook becomes dislodged.",
+        "submit_date": "2017-04-07T17:11:02.080Z",
+        "ip_address": "172.17.0.1",
+        "is_public": true,
+        "is_removed": false
+    }
+},
+{
+    "model": "django_comments.comment",
+    "pk": 76,
+    "fields": {
+        "content_type": [
+            "players",
+            "action"
+        ],
+        "object_pk": "611",
+        "site": 1,
+        "user": [
+            "felicia"
+        ],
+        "user_name": "Felicia Svilling",
+        "user_email": "felicia@svilling.eu",
+        "user_url": "",
+        "comment": "Succes",
+        "submit_date": "2017-04-07T17:11:28.812Z",
+        "ip_address": "172.17.0.1",
+        "is_public": true,
+        "is_removed": false
+    }
+},
+{
+    "model": "django_comments.comment",
+    "pk": 77,
+    "fields": {
+        "content_type": [
+            "players",
+            "action"
+        ],
+        "object_pk": "717",
+        "site": 1,
+        "user": [
+            "felicia"
+        ],
+        "user_name": "Felicia Svilling",
+        "user_email": "felicia@svilling.eu",
+        "user_url": "",
+        "comment": "Success!",
+        "submit_date": "2017-04-07T17:12:09.786Z",
+        "ip_address": "172.17.0.1",
+        "is_public": true,
+        "is_removed": false
+    }
+},
+{
+    "model": "django_comments.comment",
+    "pk": 78,
+    "fields": {
+        "content_type": [
+            "players",
+            "action"
+        ],
+        "object_pk": "747",
+        "site": 1,
+        "user": [
+            "felicia"
+        ],
+        "user_name": "Felicia Svilling",
+        "user_email": "felicia@svilling.eu",
+        "user_url": "",
+        "comment": "Success!",
+        "submit_date": "2017-04-07T17:12:30.019Z",
+        "ip_address": "172.17.0.1",
+        "is_public": true,
+        "is_removed": false
+    }
+},
+{
+    "model": "django_comments.comment",
+    "pk": 79,
+    "fields": {
+        "content_type": [
+            "players",
+            "action"
+        ],
+        "object_pk": "628",
+        "site": 1,
+        "user": [
+            "felicia"
+        ],
+        "user_name": "Felicia Svilling",
+        "user_email": "felicia@svilling.eu",
+        "user_url": "",
+        "comment": "Success!",
+        "submit_date": "2017-04-07T17:12:44.101Z",
+        "ip_address": "172.17.0.1",
+        "is_public": true,
+        "is_removed": false
+    }
+},
+{
+    "model": "django_comments.comment",
+    "pk": 80,
+    "fields": {
+        "content_type": [
+            "players",
+            "action"
+        ],
+        "object_pk": "629",
+        "site": 1,
+        "user": [
+            "felicia"
+        ],
+        "user_name": "Felicia Svilling",
+        "user_email": "felicia@svilling.eu",
+        "user_url": "",
+        "comment": "Success!",
+        "submit_date": "2017-04-07T17:12:59.080Z",
+        "ip_address": "172.17.0.1",
+        "is_public": true,
+        "is_removed": false
+    }
+},
+{
     "model": "players.actiontype",
     "pk": 1,
     "fields": {
@@ -2788,6 +3041,13 @@
     }
 },
 {
+    "model": "players.influence",
+    "pk": 8,
+    "fields": {
+        "name": "Polis"
+    }
+},
+{
     "model": "players.discipline",
     "pk": 1,
     "fields": {
@@ -3215,7 +3475,7 @@
     "fields": {
         "discipline": 10,
         "value": 6,
-        "learned": false,
+        "learned": true,
         "learning": false,
         "elder_blood": false,
         "in_clan": true,
@@ -3530,7 +3790,7 @@
     "fields": {
         "discipline": 3,
         "value": 0,
-        "learned": false,
+        "learned": true,
         "learning": false,
         "elder_blood": false,
         "in_clan": true,
@@ -3680,7 +3940,7 @@
     "fields": {
         "discipline": 6,
         "value": 2,
-        "learned": false,
+        "learned": true,
         "learning": false,
         "elder_blood": false,
         "in_clan": false,
@@ -3770,7 +4030,7 @@
     "fields": {
         "discipline": 7,
         "value": 2,
-        "learned": false,
+        "learned": true,
         "learning": false,
         "elder_blood": false,
         "in_clan": true,
@@ -3830,7 +4090,7 @@
     "fields": {
         "discipline": 6,
         "value": 1,
-        "learned": false,
+        "learned": true,
         "learning": false,
         "elder_blood": false,
         "in_clan": true,
@@ -4210,7 +4470,7 @@
         "elder_blood": false,
         "in_clan": false,
         "mentor": false,
-        "exp": 1,
+        "exp": 3,
         "elder_powers": []
     }
 },
@@ -4390,7 +4650,7 @@
         "elder_blood": false,
         "in_clan": true,
         "mentor": false,
-        "exp": 1,
+        "exp": 2,
         "elder_powers": []
     }
 },
@@ -4450,7 +4710,7 @@
         "elder_blood": false,
         "in_clan": false,
         "mentor": true,
-        "exp": 0,
+        "exp": 1,
         "elder_powers": []
     }
 },
@@ -4490,12 +4750,12 @@
     "fields": {
         "discipline": 2,
         "value": 1,
-        "learned": false,
+        "learned": true,
         "learning": false,
         "elder_blood": false,
         "in_clan": false,
         "mentor": false,
-        "exp": 0,
+        "exp": 2,
         "elder_powers": []
     }
 },
@@ -4820,11 +5080,11 @@
     "fields": {
         "discipline": 1,
         "value": 0,
-        "learned": false,
+        "learned": true,
         "learning": false,
         "elder_blood": false,
         "in_clan": false,
-        "mentor": false,
+        "mentor": true,
         "exp": 0,
         "elder_powers": []
     }
@@ -4835,6 +5095,36 @@
     "fields": {
         "discipline": 5,
         "value": 0,
+        "learned": true,
+        "learning": false,
+        "elder_blood": false,
+        "in_clan": false,
+        "mentor": false,
+        "exp": 1,
+        "elder_powers": []
+    }
+},
+{
+    "model": "players.disciplinerating",
+    "pk": 133,
+    "fields": {
+        "discipline": 4,
+        "value": 0,
+        "learned": true,
+        "learning": false,
+        "elder_blood": false,
+        "in_clan": false,
+        "mentor": true,
+        "exp": 0,
+        "elder_powers": []
+    }
+},
+{
+    "model": "players.disciplinerating",
+    "pk": 134,
+    "fields": {
+        "discipline": 2,
+        "value": 1,
         "learned": false,
         "learning": false,
         "elder_blood": false,
@@ -4846,12 +5136,27 @@
 },
 {
     "model": "players.disciplinerating",
-    "pk": 133,
+    "pk": 135,
     "fields": {
-        "discipline": 4,
-        "value": 0,
-        "learned": true,
-        "learning": true,
+        "discipline": 8,
+        "value": 1,
+        "learned": false,
+        "learning": false,
+        "elder_blood": false,
+        "in_clan": false,
+        "mentor": false,
+        "exp": 0,
+        "elder_powers": []
+    }
+},
+{
+    "model": "players.disciplinerating",
+    "pk": 136,
+    "fields": {
+        "discipline": 9,
+        "value": 1,
+        "learned": false,
+        "learning": false,
         "elder_blood": false,
         "in_clan": false,
         "mentor": false,
@@ -5402,10 +5707,10 @@
     "pk": 29,
     "fields": {
         "attribute": 1,
-        "learned": false,
+        "learned": true,
         "learning": false,
         "elder_blood": false,
-        "mentor": false,
+        "mentor": true,
         "value": 4,
         "exp": 0
     }
@@ -6966,7 +7271,7 @@
     "model": "players.hook",
     "pk": 35,
     "fields": {
-        "name": "Profeser Wallenberg",
+        "name": "Professor Wallenberg",
         "concept": "",
         "influence": 6,
         "attributes": [
@@ -7728,19 +8033,6 @@
 },
 {
     "model": "players.hook",
-    "pk": 120,
-    "fields": {
-        "name": "Edith Nordek",
-        "concept": "",
-        "influence": 1,
-        "attributes": [
-            3,
-            4
-        ]
-    }
-},
-{
-    "model": "players.hook",
     "pk": 121,
     "fields": {
         "name": "Lova Vinge",
@@ -7948,11 +8240,62 @@
     }
 },
 {
+    "model": "players.hook",
+    "pk": 137,
+    "fields": {
+        "name": "Karl Lindstr\u00f6m",
+        "concept": "Kommunpolitiker",
+        "influence": 1,
+        "attributes": []
+    }
+},
+{
+    "model": "players.hook",
+    "pk": 138,
+    "fields": {
+        "name": "Vira Bergman",
+        "concept": "",
+        "influence": 8,
+        "attributes": []
+    }
+},
+{
+    "model": "players.hook",
+    "pk": 139,
+    "fields": {
+        "name": "Sam Hansson",
+        "concept": "",
+        "influence": 8,
+        "attributes": []
+    }
+},
+{
+    "model": "players.hook",
+    "pk": 140,
+    "fields": {
+        "name": "Natanael Augustsson",
+        "concept": "korrupt sm\u00e5 polis som inte har n\u00e5gra problem med att s\u00e4lja information relaterad till utredningar",
+        "influence": 8,
+        "attributes": [
+            1,
+            2
+        ]
+    }
+},
+{
     "model": "players.equipment",
     "pk": 1,
     "fields": {
         "name": "Axebody spray",
         "specialization": 3
+    }
+},
+{
+    "model": "players.equipment",
+    "pk": 2,
+    "fields": {
+        "name": "Laptop",
+        "specialization": 10
     }
 },
 {
@@ -8047,14 +8390,16 @@
     "pk": 8,
     "fields": {
         "name": "Sydney Pope",
-        "level": 1,
+        "level": 2,
         "hook": null,
         "disciplines": [
             107,
-            111
+            111,
+            134
         ],
         "specializations": [
-            3
+            3,
+            8
         ]
     }
 },
@@ -8073,6 +8418,22 @@
             4,
             10,
             11
+        ]
+    }
+},
+{
+    "model": "players.ghoul",
+    "pk": 10,
+    "fields": {
+        "name": "Iris Horner",
+        "level": 1,
+        "hook": null,
+        "disciplines": [
+            135,
+            136
+        ],
+        "specializations": [
+            10
         ]
     }
 },
@@ -8225,7 +8586,7 @@
         "hidden_goal": "Min karakt\u00e4r tycker att fursten har f\u00f6r\u00e5dit alla och \u00e4r korrupterar camarillan och vill d\u00e4rf\u00f6r jobba f\u00f6r att ers\u00e4tta fursten med gangrel eldsten.",
         "humanity": 8,
         "max_willpower": 3,
-        "willpower": 2,
+        "willpower": 1,
         "blood": 8,
         "bashing": 5,
         "lethal": 0,
@@ -8254,8 +8615,8 @@
             15
         ],
         "disciplines": [
-            105,
             1,
+            105,
             104
         ],
         "hooks": [
@@ -8297,7 +8658,7 @@
         "hidden_goal": "Nature: Andras svagheter blir min styrka. D\u00e4rf\u00f6r ska jag finna n\u00e5gons svaghet och l\u00e5ta dom lida f\u00f6r den.",
         "humanity": 3,
         "max_willpower": 5,
-        "willpower": 0,
+        "willpower": 5,
         "blood": 10,
         "bashing": 0,
         "lethal": 0,
@@ -8410,10 +8771,9 @@
             107,
             16,
             12,
-            13,
             14,
             15,
-            11
+            137
         ],
         "rituals": [],
         "boons": [],
@@ -8456,7 +8816,7 @@
         "frenzyTriggers": "",
         "political_faction": 3,
         "concept": "F\u00f6re detta forskare som har v\u00e4nt sig ifr\u00e5n det vetenskapliga.",
-        "herd": 2,
+        "herd": 3,
         "haven": 1,
         "exp": 1,
         "humanity_exp": 1,
@@ -8519,7 +8879,7 @@
         "hidden_goal": "Bli m\u00e4niska igen genom att ge upp allt v\u00e5ld genom att f\u00e5 hans att ocks\u00e5 ge upp v\u00e5ld.",
         "humanity": 8,
         "max_willpower": 6,
-        "willpower": 1,
+        "willpower": 6,
         "blood": 9,
         "bashing": 0,
         "lethal": 0,
@@ -8544,8 +8904,8 @@
             8,
             1,
             10,
-            9,
-            15
+            15,
+            5
         ],
         "disciplines": [
             42,
@@ -8553,16 +8913,14 @@
             43,
             102
         ],
-        "hooks": [
-            36,
-            35
-        ],
+        "hooks": [],
         "rituals": [],
         "boons": [],
         "relationships": [],
         "canon_fact": [],
         "equipment": [
-            1
+            1,
+            2
         ],
         "weapons": [],
         "ghouls": []
@@ -8587,7 +8945,7 @@
         "hidden_goal": "Continue to diminish the Tremere influence in the city. \r\n- Take care of some minor Tremere Neonates\r\n\tFaye: Stole a rumour who were shared, and acted alone without telling\r\n\t(cant remember his name): Killed an hook from Hans\r\n- Work towards removing FP from Thomas Lilja domain.",
         "humanity": 8,
         "max_willpower": 5,
-        "willpower": 5,
+        "willpower": 1,
         "blood": 10,
         "bashing": 0,
         "lethal": 0,
@@ -8624,6 +8982,9 @@
             45
         ],
         "hooks": [
+            47,
+            39,
+            11,
             42,
             38,
             94,
@@ -8726,7 +9087,7 @@
         "hidden_goal": "\u00d6verlevnad- identifiera, hitta och eliminera det st\u00f6rsta hotet mot min \u00f6verlevnad",
         "humanity": 6,
         "max_willpower": 6,
-        "willpower": 2,
+        "willpower": 6,
         "blood": 10,
         "bashing": 0,
         "lethal": 0,
@@ -8762,8 +9123,6 @@
             51,
             50,
             48,
-            47,
-            39,
             46,
             105,
             49,
@@ -8775,7 +9134,9 @@
         "canon_fact": [],
         "equipment": [],
         "weapons": [],
-        "ghouls": []
+        "ghouls": [
+            10
+        ]
     }
 },
 {
@@ -8797,7 +9158,7 @@
         "hidden_goal": "Jag vill minska vampyrers agerande i den m\u00e4nskliga v\u00e4rlden",
         "humanity": 4,
         "max_willpower": 9,
-        "willpower": 3,
+        "willpower": 9,
         "blood": 10,
         "bashing": 0,
         "lethal": 0,
@@ -8811,7 +9172,7 @@
         "exp": 4,
         "humanity_exp": 3,
         "special_exp": 0,
-        "additional_notes": "",
+        "additional_notes": "Filch is investing in the weapon Sword.",
         "titles": [
             4
         ],
@@ -8836,7 +9197,8 @@
         ],
         "hooks": [
             52,
-            53
+            53,
+            140
         ],
         "rituals": [],
         "boons": [],
@@ -8868,7 +9230,7 @@
         "hidden_goal": "S\u00e4tta pappa p\u00e5 tronen",
         "humanity": 7,
         "max_willpower": 2,
-        "willpower": 2,
+        "willpower": 0,
         "blood": 10,
         "bashing": 0,
         "lethal": 0,
@@ -8897,10 +9259,12 @@
             17
         ],
         "disciplines": [
-            60,
-            61
+            61,
+            60
         ],
         "hooks": [
+            90,
+            131,
             58,
             57,
             56
@@ -8933,7 +9297,7 @@
         "hidden_goal": "Jag vill att vampyrerna skall vara mer som m\u00e4nnisskor d\u00e4rf\u00f6r skall jag jobba f\u00f6r att vi skall outa oss och leva tillsamans med m\u00e4nniskorna.",
         "humanity": 6,
         "max_willpower": 5,
-        "willpower": 5,
+        "willpower": 4,
         "blood": 10,
         "bashing": 0,
         "lethal": 0,
@@ -8967,6 +9331,7 @@
             132
         ],
         "hooks": [
+            36,
             59,
             61,
             112
@@ -9013,7 +9378,7 @@
         "exp": 2,
         "humanity_exp": 1,
         "special_exp": 0,
-        "additional_notes": "Investing 1 in Explosives.",
+        "additional_notes": "",
         "titles": [
             4,
             6
@@ -9031,9 +9396,9 @@
             8
         ],
         "disciplines": [
-            106,
             64,
-            65
+            65,
+            106
         ],
         "hooks": [
             63,
@@ -9044,7 +9409,9 @@
         "relationships": [],
         "canon_fact": [],
         "equipment": [],
-        "weapons": [],
+        "weapons": [
+            8
+        ],
         "ghouls": []
     }
 },
@@ -9172,7 +9539,6 @@
         ],
         "hooks": [
             91,
-            90,
             89,
             92,
             88
@@ -9214,7 +9580,7 @@
         "frenzyTriggers": "",
         "political_faction": null,
         "concept": "Bruiser-boy, attackdog of gangrel Hell.",
-        "herd": 1,
+        "herd": 3,
         "haven": 0,
         "exp": 3,
         "humanity_exp": 1,
@@ -9275,7 +9641,7 @@
         "hidden_goal": "M\u00e4nsklighet \u00e4r ett klurigt koncept, d\u00e4rav b\u00f6r jag inleda en relation med en neonat.",
         "humanity": 5,
         "max_willpower": 8,
-        "willpower": 7,
+        "willpower": 6,
         "blood": 8,
         "bashing": 0,
         "lethal": 0,
@@ -9284,7 +9650,7 @@
         "frenzyTriggers": "",
         "political_faction": null,
         "concept": "Influence/information",
-        "herd": 0,
+        "herd": 1,
         "haven": 2,
         "exp": 4,
         "humanity_exp": 0,
@@ -9300,20 +9666,21 @@
         ],
         "specializations": [],
         "disciplines": [
-            90,
             87,
             88,
-            89
+            89,
+            90
         ],
         "hooks": [
             98,
             117,
             118,
             119,
-            120,
             97,
             99,
-            100
+            100,
+            13,
+            138
         ],
         "rituals": [],
         "boons": [],
@@ -9353,7 +9720,7 @@
         "political_faction": null,
         "concept": "utredare",
         "herd": 1,
-        "haven": 1,
+        "haven": 2,
         "exp": 2,
         "humanity_exp": 2,
         "special_exp": 0,
@@ -9484,8 +9851,8 @@
         "frenzyTriggers": "",
         "political_faction": 1,
         "concept": "Occult Researcher/Investigator",
-        "herd": 1,
-        "haven": 1,
+        "herd": 2,
+        "haven": 2,
         "exp": 4,
         "humanity_exp": 0,
         "special_exp": 0,
@@ -9513,7 +9880,6 @@
         ],
         "hooks": [
             130,
-            131,
             41,
             40
         ],
@@ -11328,8 +11694,8 @@
         "character": 12,
         "session": 2,
         "willpower": false,
-        "description": "Erik is resting.",
-        "resolved": "UNRESOLVED",
+        "description": "Erik is resting.\n\nYou now have max willpower.",
+        "resolved": "RESOLVED",
         "helpers": []
     }
 },
@@ -11342,8 +11708,8 @@
         "character": 12,
         "session": 2,
         "willpower": false,
-        "description": "Erik is learning Interogation,replacing Protection. ",
-        "resolved": "UNRESOLVED",
+        "description": "Erik is learning Interogation,replacing Protection. \n\nErik does not have the specialization Protection",
+        "resolved": "RESOLVED",
         "helpers": []
     }
 },
@@ -11356,8 +11722,8 @@
         "character": 12,
         "session": 2,
         "willpower": false,
-        "description": "Erik is stealing cederqvist in the influence Universitet.",
-        "resolved": "UNRESOLVED",
+        "description": "Erik is stealing cederqvist in the influence Universitet.\r\n\r\nno hook matching the discription",
+        "resolved": "RESOLVED",
         "helpers": []
     }
 },
@@ -11365,13 +11731,13 @@
     "model": "players.action",
     "pk": 517,
     "fields": {
-        "result": 0,
+        "result": 1,
         "action_type": 12,
         "character": 12,
         "session": 2,
         "willpower": true,
-        "description": "Erik is investigating Universitet.",
-        "resolved": "UNRESOLVED",
+        "description": "Erik is investigating Universitet.Erik spends willpower\n\nErik rolls 2 successes (Social 1 + Auspex 0 + Willpower).\n\nMaster: Samuel Lilja\nContender: Primus\nContender: Hans\n\nHooks: \nElvira (Lurker)",
+        "resolved": "RESOLVED",
         "helpers": []
     }
 },
@@ -11384,8 +11750,8 @@
         "character": 12,
         "session": 2,
         "willpower": false,
-        "description": "Erik is learning Presence. With Hans as teacher.",
-        "resolved": "UNRESOLVED",
+        "description": "Erik is learning Presence. With Hans as teacher.\n\nHans have not made a mentor action to train Erik in Presence",
+        "resolved": "RESOLVED",
         "helpers": []
     }
 },
@@ -11398,8 +11764,8 @@
         "character": 12,
         "session": 2,
         "willpower": false,
-        "description": "Erik is investing in the equipment Laptop, which is used for Investigation.",
-        "resolved": "UNRESOLVED",
+        "description": "Erik is investing in the equipment Laptop, which is used for Investigation.\n\nEquipment is acquierd.",
+        "resolved": "RESOLVED",
         "helpers": []
     }
 },
@@ -11426,7 +11792,7 @@
         "character": 20,
         "session": 2,
         "willpower": true,
-        "description": "Kato is destroying Edith Nordek in the influence Politik.",
+        "description": "Kato is destroying Edith Nordek in the influence Politik.Kato spends willpower\n\nX",
         "resolved": "UNRESOLVED",
         "helpers": []
     }
@@ -11435,13 +11801,13 @@
     "model": "players.action",
     "pk": 581,
     "fields": {
-        "result": 0,
+        "result": 3,
         "action_type": 12,
         "character": 20,
         "session": 2,
         "willpower": false,
-        "description": "Kato is investigating Politik.",
-        "resolved": "UNRESOLVED",
+        "description": "Kato is investigating Politik.\n\nKato rolls 4 successes (Social 4 + Auspex 1).\n\nContender: Einar Brorsson\nContender: Harriet\nContender: Lydia Pauli\n\nHooks: \nLasse Lasseson (Lurker)\nGregg Stone (Lurker)\nAva Neros (Lurker)",
+        "resolved": "RESOLVED",
         "helpers": []
     }
 },
@@ -11454,8 +11820,8 @@
         "character": 20,
         "session": 2,
         "willpower": false,
-        "description": "Kato is resting.",
-        "resolved": "UNRESOLVED",
+        "description": "Kato is resting.\n\nYou now have max willpower.",
+        "resolved": "RESOLVED",
         "helpers": []
     }
 },
@@ -11468,8 +11834,8 @@
         "character": 20,
         "session": 2,
         "willpower": false,
-        "description": "Kato is mentoring Pierre Steen on Demenation and offering their blood.",
-        "resolved": "UNRESOLVED",
+        "description": "Kato is mentoring Pierre Steen on Demenation and offering their blood.\n\n",
+        "resolved": "RESOLVED",
         "helpers": []
     }
 },
@@ -11482,8 +11848,8 @@
         "character": 20,
         "session": 2,
         "willpower": true,
-        "description": "Kato is stealing Virginia Varg in the influence Politik.",
-        "resolved": "UNRESOLVED",
+        "description": "Kato is stealing Virginia Varg in the influence Politik.Kato spends willpower\n\nKato rolls 3 successes (Social 4 + Prescence 0 + Willpower) to steal the hook.The owner of Virginia Varg rolls 8 successes (Social 6 + Dominate 5) to resist.\nKato rolls 6 successes (Social 4 + Obfuscate 3 + Willpower) to hide their involvement.",
+        "resolved": "RESOLVED",
         "helpers": []
     }
 },
@@ -11496,8 +11862,8 @@
         "character": 20,
         "session": 2,
         "willpower": false,
-        "description": "Kato asked their clanmember Lydia Pauli: Vem skr\u00e4mmer dig?",
-        "resolved": "UNRESOLVED",
+        "description": "Kato asked their clanmember Lydia Pauli: Vem skr\u00e4mmer dig?\n\n",
+        "resolved": "GM",
         "helpers": []
     }
 },
@@ -11524,8 +11890,8 @@
         "character": 2,
         "session": 2,
         "willpower": false,
-        "description": "Crane Mikkelsen is investigating: trash kids from the garbage dump",
-        "resolved": "UNRESOLVED",
+        "description": "Crane Mikkelsen is investigating: trash kids from the garbage dump\n\nCrane Mikkelsen rolls 6 successes (Mental 4 + Dementation 0 + Legwork).",
+        "resolved": "GM",
         "helpers": []
     }
 },
@@ -11538,8 +11904,8 @@
         "character": 2,
         "session": 2,
         "willpower": false,
-        "description": "Crane Mikkelsen is investing in the ghoul Sydney Pope, which is getting Animalism and Stealth.",
-        "resolved": "UNRESOLVED",
+        "description": "Crane Mikkelsen is investing in the ghoul Sydney Pope, which is getting Animalism and Stealth.\n\nThe level of the ghoul is raised.",
+        "resolved": "RESOLVED",
         "helpers": []
     }
 },
@@ -11552,8 +11918,8 @@
         "character": 2,
         "session": 2,
         "willpower": false,
-        "description": "Crane Mikkelsen is investigating: Magical/Cursed/Weird Items.",
-        "resolved": "UNRESOLVED",
+        "description": "Crane Mikkelsen is investigating: Magical/Cursed/Weird Items.\n\nCrane Mikkelsen rolls 4 successes (Mental 4 + Dementation 0 + Legwork).",
+        "resolved": "GM",
         "helpers": []
     }
 },
@@ -11566,8 +11932,8 @@
         "character": 2,
         "session": 2,
         "willpower": true,
-        "description": "Crane Mikkelsen is investigating Diakon Whinther's downtime actions.",
-        "resolved": "UNRESOLVED",
+        "description": "Crane Mikkelsen is investigating Diakon Whinther's downtime actions.Crane Mikkelsen spends willpower\n\nCrane Mikkelsen rolls 4 successes (Mental 4 + Protean 0 + Investigation + Willpower).\nDiakon Whinther rolls 1 successes (Mental 1 + Obfuscate 0 ).\nDiakon Whinther (Sebastian Lindeberg) is doing the following actions:\n\n1: Diakon Whinther is investigating: Diakon Whinther is investigating: ALIENS!!!!\n\n2: Diakon Whinther is conserving Innerstaden.\n\nDiakon Whinther rolls 1 successes (Mental 1 + Animalism 0) to prevent problems.\n\n3: Diakon Whinther is investing in the weapon Explosives.\n\n4: Diakon Whinther is learning Fortitude. \n\nDiakon Whinther trains succesfully.\n\n5: Diakon Whinther is learning Potence. \n\nDiakon Whinther trains succesfully.\n\n You may set a scene and intervene in one of these actions (With the exception of investigate and conserve actions).",
+        "resolved": "RESOLVED",
         "helpers": []
     }
 },
@@ -11580,8 +11946,8 @@
         "character": 2,
         "session": 2,
         "willpower": false,
-        "description": "Crane Mikkelsen is learning Celerity. With Crane Mikkelsen as teacher.",
-        "resolved": "UNRESOLVED",
+        "description": "Crane Mikkelsen is learning Celerity. With Crane Mikkelsen as teacher.\n\nCrane Mikkelsen have not made a mentor action to train Crane Mikkelsen in Celerity",
+        "resolved": "RESOLVED",
         "helpers": []
     }
 },
@@ -11594,8 +11960,8 @@
         "character": 2,
         "session": 2,
         "willpower": false,
-        "description": "Crane Mikkelsen is learning Fortitude. ",
-        "resolved": "UNRESOLVED",
+        "description": "Crane Mikkelsen is learning Fortitude. \n\nCrane Mikkelsen trains succesfully.",
+        "resolved": "RESOLVED",
         "helpers": []
     }
 },
@@ -11622,8 +11988,8 @@
         "character": 13,
         "session": 2,
         "willpower": true,
-        "description": "Hans is stealing Klaus Dow in the influence Kyrkan.",
-        "resolved": "UNRESOLVED",
+        "description": "Hans is stealing Klaus Dow in the influence Kyrkan.Hans spends willpower\r\n\r\nHans rolls 3 successes (Social 4 + Prescence 3 + Willpower) to steal the hook.The owner of Klaus Dow rolls 2 successes (Social 6 + Dominate 0 ) to resist.\r\nHans rolls 4 successes (Social 4 + Obfuscate 0 + Willpower) to hide their involvement.\r\n\r\nSucces!",
+        "resolved": "RESOLVED",
         "helpers": []
     }
 },
@@ -11631,13 +11997,13 @@
     "model": "players.action",
     "pk": 609,
     "fields": {
-        "result": 0,
+        "result": 3,
         "action_type": 5,
         "character": 13,
         "session": 2,
         "willpower": true,
-        "description": "Hans is stealing Mahmoud Nejem in the influence Kyrkan.",
-        "resolved": "UNRESOLVED",
+        "description": "Hans is stealing Mahmoud Nejem in the influence Kyrkan.Hans spends willpower\r\n\r\nHans rolls 3 successes (Social 4 + Prescence 0 + Willpower) to steal the hook.The owner of Mahmoud Nejem rolls 3 successes (Social 6 + Dominate 0 ) to resist.\r\nHans rolls 4 successes (Social 4 + Obfuscate 0 + Willpower) to hide their involvement.\r\n\r\nSucces!",
+        "resolved": "RESOLVED",
         "helpers": []
     }
 },
@@ -11650,8 +12016,8 @@
         "character": 13,
         "session": 2,
         "willpower": true,
-        "description": "Hans is stealing Inga Fj\u00e4llstr\u00f6m in the influence Ockult.",
-        "resolved": "UNRESOLVED",
+        "description": "Hans is stealing Inga Fj\u00e4llstr\u00f6m in the influence Ockult.Hans spends willpower\r\n\r\nHans rolls 4 successes (Social 4 + Prescence 3 + Ockult + Willpower) to steal the hook.The owner of Inga Fj\u00e4llstr\u00f6m rolls 5 successes (Social 4 + Dominate 0 + Willpower) to resist.\r\nHans rolls 6 successes (Social 4 + Obfuscate 0 + Ockult + Willpower) to hide their involvement.\r\n\r\nfailure",
+        "resolved": "RESOLVED",
         "helpers": []
     }
 },
@@ -11659,13 +12025,13 @@
     "model": "players.action",
     "pk": 611,
     "fields": {
-        "result": 0,
+        "result": 5,
         "action_type": 5,
         "character": 13,
         "session": 2,
         "willpower": true,
-        "description": "Hans is stealing Sven-G\u00f6ran Gelin in the influence Ockult.",
-        "resolved": "UNRESOLVED",
+        "description": "Hans is stealing Sven-G\u00f6ran Gelin in the influence Ockult.Hans spends willpower\r\n\r\nHans rolls 5 successes (Social 4 + Prescence 0 + Ockult + Willpower) to steal the hook.The owner of Sven-G\u00f6ran Gelin rolls 5 successes (Social 4 + Dominate 0 + Willpower) to resist.\r\nHans rolls 5 successes (Social 4 + Obfuscate 0 + Ockult + Willpower) to hide their involvement.",
+        "resolved": "RESOLVED",
         "helpers": []
     }
 },
@@ -11678,8 +12044,8 @@
         "character": 13,
         "session": 2,
         "willpower": false,
-        "description": "Hans is learning Celerity. With Harriet as teacher.",
-        "resolved": "UNRESOLVED",
+        "description": "Hans is learning Celerity. With Harriet as teacher.\n\nHarriet have not made a mentor action to train Hans in Celerity",
+        "resolved": "RESOLVED",
         "helpers": []
     }
 },
@@ -11692,8 +12058,8 @@
         "character": 13,
         "session": 2,
         "willpower": false,
-        "description": "Hans is learning Social. With Harriet as teacher.",
-        "resolved": "UNRESOLVED",
+        "description": "Hans is learning Social. With Harriet as teacher.\n\nHarriet successfully trains Hans in Social.Hans drinks the blood of Harriet.",
+        "resolved": "RESOLVED",
         "helpers": []
     }
 },
@@ -11701,13 +12067,13 @@
     "model": "players.action",
     "pk": 614,
     "fields": {
-        "result": 0,
+        "result": 2,
         "action_type": 12,
         "character": 13,
         "session": 2,
         "willpower": false,
-        "description": "Hans is investigating Kyrkan.",
-        "resolved": "UNRESOLVED",
+        "description": "Hans is investigating Kyrkan.\n\nHans rolls 3 successes (Social 4 + Auspex 0).\n\nContender: Hans\nContender: Dante\nContender: Thordon\n\nHooks: \nMaria Mattisdotter (Lurker)\nTilde Christersson (Lurker)",
+        "resolved": "RESOLVED",
         "helpers": []
     }
 },
@@ -11729,13 +12095,13 @@
     "model": "players.action",
     "pk": 628,
     "fields": {
-        "result": 0,
+        "result": 3,
         "action_type": 5,
         "character": 17,
         "session": 2,
         "willpower": true,
-        "description": "Robin is stealing Karl Vansten in the influence Ockult.",
-        "resolved": "UNRESOLVED",
+        "description": "Robin is stealing Karl Vansten in the influence Ockult.Robin spends willpower\r\n\r\nRobin rolls 3 successes (Social 1 + Prescence 0 + Willpower) to steal the hook.The owner of Karl Vansten rolls 2 successes (Social 1 + Dominate 0  + Ockult) to resist.\r\nRobin rolls 2 successes (Social 1 + Obfuscate 2 + Willpower) to hide their involvement.",
+        "resolved": "RESOLVED",
         "helpers": []
     }
 },
@@ -11743,13 +12109,13 @@
     "model": "players.action",
     "pk": 629,
     "fields": {
-        "result": 0,
+        "result": 3,
         "action_type": 5,
         "character": 17,
         "session": 2,
         "willpower": true,
-        "description": "Robin is stealing Cassandra Kahn in the influence Ockult.",
-        "resolved": "UNRESOLVED",
+        "description": "Robin is stealing Cassandra Kahn in the influence Ockult.Robin spends willpower\r\n\r\nRobin rolls 3 successes (Social 1 + Prescence 0 + Willpower) to steal the hook.The owner of Cassandra Kahn rolls 3 successes (Social 2 + Dominate 0  + Ockult) to resist.\r\nRobin rolls 3 successes (Social 1 + Obfuscate 2 + Willpower) to hide their involvement.",
+        "resolved": "RESOLVED",
         "helpers": []
     }
 },
@@ -11762,8 +12128,8 @@
         "character": 17,
         "session": 2,
         "willpower": false,
-        "description": "Robin is investigating Politik.",
-        "resolved": "UNRESOLVED",
+        "description": "Robin is investigating Politik.\n\nRobin rolls 1 successes (Social 1 + Auspex 0).\n\nContender: Einar Brorsson\nContender: Harriet\nContender: Lydia Pauli",
+        "resolved": "RESOLVED",
         "helpers": []
     }
 },
@@ -11776,8 +12142,8 @@
         "character": 17,
         "session": 2,
         "willpower": false,
-        "description": "Robin is learning Obfuscate. With Kato as teacher.",
-        "resolved": "UNRESOLVED",
+        "description": "Robin is learning Obfuscate. With Kato as teacher.\n\nKato have not made a mentor action to train Robin in Obfuscate",
+        "resolved": "RESOLVED",
         "helpers": []
     }
 },
@@ -11790,8 +12156,8 @@
         "character": 17,
         "session": 2,
         "willpower": false,
-        "description": "Robin is learning Demenation. With Kato as teacher.",
-        "resolved": "UNRESOLVED",
+        "description": "Robin is learning Demenation. With Kato as teacher.\n\nKato have not made a mentor action to train Robin in Demenation",
+        "resolved": "RESOLVED",
         "helpers": []
     }
 },
@@ -11841,12 +12207,12 @@
     "model": "players.action",
     "pk": 644,
     "fields": {
-        "result": 2,
+        "result": 3,
         "action_type": 4,
         "character": 5,
         "session": 2,
         "willpower": false,
-        "description": "Einar Brorsson is forging Kommunpolitikern Karl in the influence Politik.\n\nEinar Brorsson rolls 2 successes (Social 4 + Prescence 0) to to create a hook.",
+        "description": "Einar Brorsson is forging Kommunpolitikern Karl in the influence Politik.\n\nEinar Brorsson rolls 3 successes (Social 4 + Prescence 0) to to create a hook.",
         "resolved": "UNRESOLVED",
         "helpers": []
     }
@@ -11860,8 +12226,8 @@
         "character": 5,
         "session": 2,
         "willpower": false,
-        "description": "Einar Brorsson is learning Protean. ",
-        "resolved": "UNRESOLVED",
+        "description": "Einar Brorsson is learning Protean. \n\nEinar Brorsson trains succesfully.",
+        "resolved": "RESOLVED",
         "helpers": []
     }
 },
@@ -11875,7 +12241,7 @@
         "session": 2,
         "willpower": false,
         "description": "Einar Brorsson asked their clanmember Diakon Whinther: \u00c4r du lojal mot mig och klanen?",
-        "resolved": "UNRESOLVED",
+        "resolved": "RESOLVED",
         "helpers": []
     }
 },
@@ -11944,8 +12310,8 @@
         "character": 16,
         "session": 2,
         "willpower": false,
-        "description": "Filch is resting.",
-        "resolved": "UNRESOLVED",
+        "description": "Filch is resting.\n\nYou now have max willpower.",
+        "resolved": "RESOLVED",
         "helpers": []
     }
 },
@@ -11953,12 +12319,12 @@
     "model": "players.action",
     "pk": 659,
     "fields": {
-        "result": 3,
+        "result": 2,
         "action_type": 4,
         "character": 16,
         "session": 2,
-        "willpower": true,
-        "description": "Filch is forging Police in the influence Kyrkan.Filch spends willpower\n\nFilch rolls 3 successes (Social 2 + Prescence 0 + Willpower) to to create a hook.",
+        "willpower": false,
+        "description": "Filch is forging Police in the influence Kyrkan.\n\nFilch rolls 2 successes (Social 2 + Prescence 0) to to create a hook.",
         "resolved": "UNRESOLVED",
         "helpers": []
     }
@@ -11973,7 +12339,7 @@
         "session": 2,
         "willpower": false,
         "description": "Filch is investing in the weapon Sword.",
-        "resolved": "UNRESOLVED",
+        "resolved": "RESOLVED",
         "helpers": []
     }
 },
@@ -11986,8 +12352,8 @@
         "character": 16,
         "session": 2,
         "willpower": false,
-        "description": "Filch is learning Auspex. With Lydia Pauli as teacher.",
-        "resolved": "UNRESOLVED",
+        "description": "Filch is learning Auspex. With Lydia Pauli as teacher.\n\nLydia Pauli successfully trains Filch in Auspex.",
+        "resolved": "RESOLVED",
         "helpers": []
     }
 },
@@ -11999,9 +12365,9 @@
         "action_type": 11,
         "character": 16,
         "session": 2,
-        "willpower": true,
-        "description": "Filch is investigating: I wish to search for magical weapons, like a magic sword.",
-        "resolved": "UNRESOLVED",
+        "willpower": false,
+        "description": "Filch is investigating: I wish to search for magical weapons, like a magic sword.\n\nFilch rolls 1 successes (Mental 3 + Dementation 0).",
+        "resolved": "GM",
         "helpers": []
     }
 },
@@ -12014,8 +12380,8 @@
         "character": 8,
         "session": 2,
         "willpower": false,
-        "description": "Primus is investigating Filch's downtime actions.",
-        "resolved": "UNRESOLVED",
+        "description": "Primus is investigating Filch's downtime actions.\n\nPrimus rolls 2 successes (Mental 2 + Protean 0).\nFilch rolls 2 successes (Mental 3 + Obfuscate 0 ).\nFilch (Peter Bj\u00f6rklund) is doing the following actions:\n\n1: Filch is resting.\n\n2: Filch is investigating: I wish to search for magical weapons, like a magic sword.\n\n3: Filch is conserving \u00c5ngsholmen.\n\nFilch rolls 4 successes (Mental 3 + Animalism 0 + Protection) to prevent problems.\n\n4: Filch is conserving Skogsomr\u00e5det.\n\nFilch rolls 5 successes (Mental 3 + Animalism 0 + Protection) to prevent problems.\n\n5: Filch is investing in the weapon Sword.\n\n6: Filch is learning Auspex. With Lydia Pauli as teacher.\n\nLydia Pauli successfully trains Filch in Auspex.\n\n7: Filch is forging Police in the influence Kyrkan.\n\nFilch rolls 2 successes (Social 2 + Prescence 0) to to create a hook.\n\n You may set a scene and intervene in one of these actions (With the exception of investigate and conserve actions).",
+        "resolved": "RESOLVED",
         "helpers": []
     }
 },
@@ -12023,13 +12389,13 @@
     "model": "players.action",
     "pk": 700,
     "fields": {
-        "result": 0,
+        "result": 2,
         "action_type": 7,
         "character": 8,
         "session": 2,
         "willpower": false,
-        "description": "Primus is investigating Samuel Lilja's influence. \n Priorities: Namn p\u00e5 en hook i ett valt inflytande (Universitet) (1 successes),Namn p\u00e5 en hook i ett valt inflytande (Universitet) (1 successes),Namn p\u00e5 en hook i ett valt inflytande (Universitet) (1 successes),Namn p\u00e5 en hook i ett valt inflytande (Media) (1 successes),Namn p\u00e5 en hook i ett valt inflytande (Media) (1 successes),Namn p\u00e5 en hook i ett valt inflytande (Media) (1 successes),Alla Inflytandeniv\u00e5er (3 successes),Alla Inflytandeniv\u00e5er (3 successes) \n with hooks: ",
-        "resolved": "UNRESOLVED",
+        "description": "Primus is investigating Samuel Lilja's influence. \n Priorities: Namn p\u00e5 en hook i ett valt inflytande (Universitet) (1 successes),Namn p\u00e5 en hook i ett valt inflytande (Universitet) (1 successes),Namn p\u00e5 en hook i ett valt inflytande (Universitet) (1 successes),Namn p\u00e5 en hook i ett valt inflytande (Media) (1 successes),Namn p\u00e5 en hook i ett valt inflytande (Media) (1 successes),Namn p\u00e5 en hook i ett valt inflytande (Media) (1 successes),Alla Inflytandeniv\u00e5er (3 successes),Alla Inflytandeniv\u00e5er (3 successes) \n with hooks: \n\nPrimus rolls 2 successes (Social 4 + Auspex 0).\nHook: Paula M\u00e5rdh (in Universitet)\nHook: Sture V\u00e5ng (in Universitet)\n",
+        "resolved": "RESOLVED",
         "helpers": []
     }
 },
@@ -12070,8 +12436,8 @@
         "character": 8,
         "session": 2,
         "willpower": false,
-        "description": "Primus is investing in their herd.",
-        "resolved": "UNRESOLVED",
+        "description": "Primus is investing in their herd.\n\nLevel of herd raised.",
+        "resolved": "RESOLVED",
         "helpers": []
     }
 },
@@ -12079,13 +12445,13 @@
     "model": "players.action",
     "pk": 704,
     "fields": {
-        "result": 0,
+        "result": 3,
         "action_type": 5,
         "character": 8,
         "session": 2,
         "willpower": false,
-        "description": "Primus is stealing Professor Wallenberg in the influence Universitet.",
-        "resolved": "UNRESOLVED",
+        "description": "Primus is stealing Professor Wallenberg in the influence Universitet.\r\n\r\nPrimus rolls 3 successes (Social 4 + Prescence 0) to steal the hook.The owner of Professor Wallenberg rolls 0 successes (Social 1 + Dominate 0 ) to resist.\r\nPrimus rolls 4 successes (Social 4 + Obfuscate 0) to hide their involvement.",
+        "resolved": "RESOLVED",
         "helpers": []
     }
 },
@@ -12098,8 +12464,8 @@
         "character": 8,
         "session": 2,
         "willpower": false,
-        "description": "Primus asked their visitor Samuel Lilja: Vad \u00e4r din st\u00f6rsta r\u00e4dsla?",
-        "resolved": "UNRESOLVED",
+        "description": "Primus asked their visitor Samuel Lilja: Vad \u00e4r din st\u00f6rsta r\u00e4dsla?\n\n",
+        "resolved": "GM",
         "helpers": []
     }
 },
@@ -12113,7 +12479,7 @@
         "session": 2,
         "willpower": false,
         "description": "Primus asked their visitor Diakon Whinther: Vad \u00e4r din st\u00f6rsta r\u00e4dsla?",
-        "resolved": "UNRESOLVED",
+        "resolved": "RESOLVED",
         "helpers": []
     }
 },
@@ -12127,7 +12493,7 @@
         "session": 2,
         "willpower": false,
         "description": "Primus asked their visitor Amadeus: Vad \u00e4r din st\u00f6rsta r\u00e4dsla?",
-        "resolved": "UNRESOLVED",
+        "resolved": "RESOLVED",
         "helpers": []
     }
 },
@@ -12135,12 +12501,12 @@
     "model": "players.action",
     "pk": 715,
     "fields": {
-        "result": 4,
+        "result": 5,
         "action_type": 4,
         "character": 27,
         "session": 2,
         "willpower": false,
-        "description": "Lydia Pauli is forging Vira Bergman (Nytt inflytande: Polis - Ej politik) in the influence Politik.\n\nLydia Pauli rolls 4 successes (Social 6 + Prescence 0) to to create a hook.",
+        "description": "Lydia Pauli is forging Vira Bergman (Nytt inflytande: Polis - Ej politik) in the influence Politik.\n\nLydia Pauli rolls 5 successes (Social 6 + Prescence 0) to to create a hook.",
         "resolved": "UNRESOLVED",
         "helpers": []
     }
@@ -12149,12 +12515,12 @@
     "model": "players.action",
     "pk": 716,
     "fields": {
-        "result": 4,
+        "result": 2,
         "action_type": 4,
         "character": 27,
         "session": 2,
         "willpower": false,
-        "description": "Lydia Pauli is forging Sam Hansson (Nytt inflytande: polis - Ej politik) in the influence Politik.\n\nLydia Pauli rolls 4 successes (Social 6 + Prescence 0) to to create a hook.",
+        "description": "Lydia Pauli is forging Sam Hansson (Nytt inflytande: polis - Ej politik) in the influence Politik.\n\nLydia Pauli rolls 2 successes (Social 6 + Prescence 0) to to create a hook.",
         "resolved": "UNRESOLVED",
         "helpers": []
     }
@@ -12163,13 +12529,13 @@
     "model": "players.action",
     "pk": 717,
     "fields": {
-        "result": 0,
+        "result": 6,
         "action_type": 5,
         "character": 27,
         "session": 2,
         "willpower": true,
-        "description": "Lydia Pauli is stealing Sverker Olofson in the influence Ockult.",
-        "resolved": "UNRESOLVED",
+        "description": "Lydia Pauli is stealing Sverker Olofson in the influence Ockult.Lydia Pauli spends willpower\r\n\r\nLydia Pauli rolls 6 successes (Social 6 + Prescence 0 + Willpower) to steal the hook.The owner of Sverker Olofson rolls 6 successes (Social 4 + Dominate 0 + Willpower) to resist.\r\nLydia Pauli rolls 5 successes (Social 6 + Obfuscate 0 + Willpower) to hide their involvement.",
+        "resolved": "RESOLVED",
         "helpers": []
     }
 },
@@ -12196,8 +12562,8 @@
         "character": 27,
         "session": 2,
         "willpower": false,
-        "description": "Lydia Pauli is investing in their herd.",
-        "resolved": "UNRESOLVED",
+        "description": "Lydia Pauli is investing in their herd.\n\nLevel of herd raised.",
+        "resolved": "RESOLVED",
         "helpers": []
     }
 },
@@ -12210,8 +12576,8 @@
         "character": 27,
         "session": 2,
         "willpower": false,
-        "description": "Lydia Pauli is mentoring Filch on Auspex.",
-        "resolved": "UNRESOLVED",
+        "description": "Lydia Pauli is mentoring Filch on Auspex.\n\n",
+        "resolved": "RESOLVED",
         "helpers": []
     }
 },
@@ -12252,8 +12618,8 @@
         "character": 4,
         "session": 2,
         "willpower": false,
-        "description": "Samuel Lilja is investigating: Jag vill unders\u00f6ka Sabbat aktivitet i dom\u00e4nen f\u00f6r att kunna ta en tillf\u00e5nga",
-        "resolved": "UNRESOLVED",
+        "description": "Samuel Lilja is investigating: Jag vill unders\u00f6ka Sabbat aktivitet i dom\u00e4nen f\u00f6r att kunna ta en tillf\u00e5nga\n\nSamuel Lilja rolls 2 successes (Mental 3 + Dementation 0).",
+        "resolved": "GM",
         "helpers": []
     }
 },
@@ -12266,8 +12632,8 @@
         "character": 4,
         "session": 2,
         "willpower": false,
-        "description": "Samuel Lilja is investigating: Jag vill l\u00e5ta min ghoul stalka Harriet denna downtimen f\u00f6r att finna hennes haven",
-        "resolved": "UNRESOLVED",
+        "description": "Samuel Lilja is investigating: Jag vill l\u00e5ta min ghoul stalka Harriet denna downtimen f\u00f6r att finna hennes haven\n\nSamuel Lilja rolls 3 successes (Mental 3 + Dementation 0).",
+        "resolved": "GM",
         "helpers": []
     }
 },
@@ -12280,8 +12646,8 @@
         "character": 4,
         "session": 2,
         "willpower": false,
-        "description": "Samuel Lilja is resting.",
-        "resolved": "UNRESOLVED",
+        "description": "Samuel Lilja is resting.\n\nYou now have max willpower.",
+        "resolved": "RESOLVED",
         "helpers": []
     }
 },
@@ -12294,8 +12660,8 @@
         "character": 4,
         "session": 2,
         "willpower": false,
-        "description": "Samuel Lilja is learning Animalism. With Lydia Pauli as teacher.",
-        "resolved": "UNRESOLVED",
+        "description": "Samuel Lilja is learning Animalism. With Lydia Pauli as teacher.\n\nLydia Pauli have not made a mentor action to train Samuel Lilja in Animalism",
+        "resolved": "RESOLVED",
         "helpers": []
     }
 },
@@ -12322,8 +12688,8 @@
         "character": 4,
         "session": 2,
         "willpower": false,
-        "description": "Samuel Lilja asked their clanmember Lydia Pauli: Vad tycker du om Harriet?",
-        "resolved": "UNRESOLVED",
+        "description": "Samuel Lilja asked their clanmember Lydia Pauli: Vad tycker du om Harriet?\n\n",
+        "resolved": "GM",
         "helpers": []
     }
 },
@@ -12373,13 +12739,13 @@
     "model": "players.action",
     "pk": 747,
     "fields": {
-        "result": 0,
+        "result": 5,
         "action_type": 5,
         "character": 18,
         "session": 2,
         "willpower": true,
-        "description": "Marion is stealing Ivan Kallenberg in the influence Ockult.",
-        "resolved": "UNRESOLVED",
+        "description": "Marion is stealing Ivan Kallenberg in the influence Ockult.Marion spends willpower\r\n\r\nMarion rolls 5 successes (Social 3 + Prescence 0 + Willpower) to steal the hook.The owner of Ivan Kallenberg rolls 1 successes (Social 1 + Dominate 0  + Ockult) to resist.\r\nMarion rolls 5 successes (Social 3 + Obfuscate 2 + Willpower) to hide their involvement.",
+        "resolved": "RESOLVED",
         "helpers": []
     }
 },
@@ -12387,13 +12753,13 @@
     "model": "players.action",
     "pk": 748,
     "fields": {
-        "result": 0,
+        "result": 2,
         "action_type": 12,
         "character": 18,
         "session": 2,
         "willpower": false,
-        "description": "Marion is investigating Universitet.",
-        "resolved": "UNRESOLVED",
+        "description": "Marion is investigating Universitet.\n\nMarion rolls 3 successes (Social 3 + Auspex 0).\n\nMaster: Samuel Lilja\nContender: Primus\nContender: Hans\n\nHooks: \nSam Nordblom (Contender)\nAron Pawson (Lurker)",
+        "resolved": "RESOLVED",
         "helpers": []
     }
 },
@@ -12406,8 +12772,8 @@
         "character": 18,
         "session": 2,
         "willpower": false,
-        "description": "Marion is investigating Politik.",
-        "resolved": "UNRESOLVED",
+        "description": "Marion is investigating Politik.\n\nMarion rolls 1 successes (Social 3 + Auspex 0).\n\nContender: Einar Brorsson\nContender: Harriet\nContender: Lydia Pauli",
+        "resolved": "RESOLVED",
         "helpers": []
     }
 },
@@ -12420,8 +12786,8 @@
         "character": 18,
         "session": 2,
         "willpower": false,
-        "description": "Marion is learning Social. With Hans as teacher.",
-        "resolved": "UNRESOLVED",
+        "description": "Marion is learning Social. With Hans as teacher.\n\nHans have not made a mentor action to train Marion in Social",
+        "resolved": "RESOLVED",
         "helpers": []
     }
 },
@@ -12434,8 +12800,8 @@
         "character": 18,
         "session": 2,
         "willpower": false,
-        "description": "Marion is learning Dominate. With Kato as teacher.",
-        "resolved": "UNRESOLVED",
+        "description": "Marion is learning Dominate. With Kato as teacher.\n\nKato have not made a mentor action to train Marion in Dominate",
+        "resolved": "RESOLVED",
         "helpers": []
     }
 },
@@ -12462,8 +12828,8 @@
         "character": 19,
         "session": 2,
         "willpower": false,
-        "description": "Diakon Whinther is learning Potence. ",
-        "resolved": "UNRESOLVED",
+        "description": "Diakon Whinther is learning Potence. \n\nDiakon Whinther trains succesfully.",
+        "resolved": "RESOLVED",
         "helpers": []
     }
 },
@@ -12476,8 +12842,8 @@
         "character": 19,
         "session": 2,
         "willpower": false,
-        "description": "Diakon Whinther is investigating: Diakon Whinther is investigating: ALIENS!!!!",
-        "resolved": "UNRESOLVED",
+        "description": "Diakon Whinther is investigating: Diakon Whinther is investigating: ALIENS!!!!\n\nDiakon Whinther rolls 2 successes (Mental 1 + Dementation 0 + Legwork).",
+        "resolved": "GM",
         "helpers": []
     }
 },
@@ -12491,7 +12857,7 @@
         "session": 2,
         "willpower": false,
         "description": "Diakon Whinther is investing in the weapon Explosives.",
-        "resolved": "UNRESOLVED",
+        "resolved": "RESOLVED",
         "helpers": []
     }
 },
@@ -12504,8 +12870,8 @@
         "character": 19,
         "session": 2,
         "willpower": false,
-        "description": "Diakon Whinther is learning Fortitude. ",
-        "resolved": "UNRESOLVED",
+        "description": "Diakon Whinther is learning Fortitude. \n\nDiakon Whinther trains succesfully.",
+        "resolved": "RESOLVED",
         "helpers": []
     }
 },
@@ -12532,8 +12898,8 @@
         "character": 29,
         "session": 2,
         "willpower": false,
-        "description": "Albin Bonde is investigating Diakon Whinther's downtime actions.",
-        "resolved": "UNRESOLVED",
+        "description": "Albin Bonde is investigating Diakon Whinther's downtime actions.\n\nAlbin Bonde rolls 5 successes (Mental 4 + Protean 0 + Investigation).\nDiakon Whinther rolls 1 successes (Mental 1 + Obfuscate 0 ).\nDiakon Whinther (Sebastian Lindeberg) is doing the following actions:\n\n1: Diakon Whinther is investigating: Diakon Whinther is investigating: ALIENS!!!!\n\n2: Diakon Whinther is conserving Innerstaden.\n\nDiakon Whinther rolls 1 successes (Mental 1 + Animalism 0) to prevent problems.\n\n3: Diakon Whinther is investing in the weapon Explosives.\n\n4: Diakon Whinther is learning Fortitude. \n\nDiakon Whinther trains succesfully.\n\n5: Diakon Whinther is learning Potence. \n\nDiakon Whinther trains succesfully.\n\n You may set a scene and intervene in one of these actions (With the exception of investigate and conserve actions).",
+        "resolved": "RESOLVED",
         "helpers": []
     }
 },
@@ -12541,13 +12907,13 @@
     "model": "players.action",
     "pk": 770,
     "fields": {
-        "result": 0,
+        "result": 4,
         "action_type": 8,
         "character": 29,
         "session": 2,
         "willpower": false,
-        "description": "Albin Bonde is investigating J\u00f6rgen Sallerup's resources. \n Priorities: Hur m\u00e5nga Resource points karakt\u00e4ren har (3 successes),En vald typ av background (haven) (1 successes),En slumpm\u00e4ssig background (1 successes),En slumpm\u00e4ssig background (1 successes),En slumpm\u00e4ssig background (1 successes),None,None,None",
-        "resolved": "UNRESOLVED",
+        "description": "Albin Bonde is investigating J\u00f6rgen Sallerup's resources. \n Priorities: Hur m\u00e5nga Resource points karakt\u00e4ren har (3 successes),En vald typ av background (haven) (1 successes),En slumpm\u00e4ssig background (1 successes),En slumpm\u00e4ssig background (1 successes),En slumpm\u00e4ssig background (1 successes),None,None,None\n\nAlbin Bonde rolls 4 successes (Social 1 + Protean 0 + Investigation).\nJ\u00f6rgen Sallerup has 1 resource points.\nJ\u00f6rgen Sallerup have a haven of rating 0. You know where it is.\n",
+        "resolved": "RESOLVED",
         "helpers": []
     }
 },
@@ -12560,8 +12926,8 @@
         "character": 29,
         "session": 2,
         "willpower": false,
-        "description": "Albin Bonde is investigating: Vem eller vilka ligger bakom gossip Vampire och vad \u00e4r dennes eller deras m\u00e5l med den?",
-        "resolved": "UNRESOLVED",
+        "description": "Albin Bonde is investigating: Vem eller vilka ligger bakom gossip Vampire och vad \u00e4r dennes eller deras m\u00e5l med den?\n\nAlbin Bonde rolls 6 successes (Mental 4 + Dementation 0 + Legwork).",
+        "resolved": "GM",
         "helpers": []
     }
 },
@@ -12588,8 +12954,8 @@
         "character": 15,
         "session": 2,
         "willpower": false,
-        "description": "Harriet is resting.",
-        "resolved": "UNRESOLVED",
+        "description": "Harriet is resting.\n\nYou now have max willpower.",
+        "resolved": "RESOLVED",
         "helpers": []
     }
 },
@@ -12602,8 +12968,8 @@
         "character": 15,
         "session": 2,
         "willpower": false,
-        "description": "Harriet is investing in the ghoul Iris Horner, which is getting Presence and Investigation.",
-        "resolved": "UNRESOLVED",
+        "description": "Harriet is investing in the ghoul Iris Horner, which is getting Presence and Investigation.\n\nThe ghoul is created.",
+        "resolved": "RESOLVED",
         "helpers": []
     }
 },
@@ -12616,8 +12982,8 @@
         "character": 15,
         "session": 2,
         "willpower": false,
-        "description": "Harriet is learning Fortitude. ",
-        "resolved": "UNRESOLVED",
+        "description": "Harriet is learning Fortitude. \n\nHarriet trains succesfully.",
+        "resolved": "RESOLVED",
         "helpers": []
     }
 },
@@ -12630,8 +12996,8 @@
         "character": 15,
         "session": 2,
         "willpower": false,
-        "description": "Harriet is mentoring Hans on Social and offering their blood.",
-        "resolved": "UNRESOLVED",
+        "description": "Harriet is mentoring Hans on Social and offering their blood.\n\n",
+        "resolved": "RESOLVED",
         "helpers": []
     }
 },
@@ -12644,8 +13010,8 @@
         "character": 15,
         "session": 2,
         "willpower": false,
-        "description": "Harriet is mentoring Filch on Presence and offering their blood.",
-        "resolved": "UNRESOLVED",
+        "description": "Harriet is mentoring Filch on Presence and offering their blood.\n\n",
+        "resolved": "RESOLVED",
         "helpers": []
     }
 },
@@ -12659,7 +13025,7 @@
         "session": 2,
         "willpower": false,
         "description": "Harriet asked their clanmember Filch: Vilket \u00e4r det st\u00f6rsta hotet mot kamarillan i dom\u00e4nen?",
-        "resolved": "UNRESOLVED",
+        "resolved": "RESOLVED",
         "helpers": []
     }
 },
@@ -12686,8 +13052,8 @@
         "character": 14,
         "session": 2,
         "willpower": false,
-        "description": "Dante is resting.",
-        "resolved": "UNRESOLVED",
+        "description": "Dante is resting.\n\nYou now have max willpower.",
+        "resolved": "RESOLVED",
         "helpers": []
     }
 },
@@ -12700,8 +13066,8 @@
         "character": 32,
         "session": 2,
         "willpower": false,
-        "description": "Faye Morgan is doing counter espionage.",
-        "resolved": "UNRESOLVED",
+        "description": "Faye Morgan is doing counter espionage.\n\nFaye Morgan rolls 7 successes (Mental 5 + Protean 0 + Investigation).\n",
+        "resolved": "RESOLVED",
         "helpers": []
     }
 },
@@ -12714,8 +13080,8 @@
         "character": 32,
         "session": 2,
         "willpower": false,
-        "description": "Faye Morgan is investigating: Jag vill unders\u00f6ka villakvarterets grann-organisation. Ta reda p\u00e5 varf\u00f6r den b\u00f6rjade, vem som organiserar, hur mycket dem vet (Maskeradproblem?), osv.",
-        "resolved": "UNRESOLVED",
+        "description": "Faye Morgan is investigating: Jag vill unders\u00f6ka villakvarterets grann-organisation. Ta reda p\u00e5 varf\u00f6r den b\u00f6rjade, vem som organiserar, hur mycket dem vet (Maskeradproblem?), osv.\n\nFaye Morgan rolls 6 successes (Mental 5 + Dementation 0 + Legwork).",
+        "resolved": "GM",
         "helpers": []
     }
 },
@@ -12728,8 +13094,8 @@
         "character": 32,
         "session": 2,
         "willpower": false,
-        "description": "Faye Morgan is investigating Ockult.",
-        "resolved": "UNRESOLVED",
+        "description": "Faye Morgan is investigating Ockult.\n\nFaye Morgan rolls 1 successes (Social 1 + Auspex 0 + Ockult).\n\nMaster: Robin\nContender: Lydia Pauli",
+        "resolved": "RESOLVED",
         "helpers": []
     }
 },
@@ -12742,8 +13108,8 @@
         "character": 32,
         "session": 2,
         "willpower": false,
-        "description": "Faye Morgan is investigating: Signs of demonic activity? I'm gonna try to find a demon. And either try to exorcise it or control it and then exorcise.",
-        "resolved": "UNRESOLVED",
+        "description": "Faye Morgan is investigating: Signs of demonic activity? I'm gonna try to find a demon. And either try to exorcise it or control it and then exorcise.\n\nFaye Morgan rolls 6 successes (Mental 5 + Dementation 0 + Legwork).",
+        "resolved": "GM",
         "helpers": []
     }
 },
@@ -12756,8 +13122,8 @@
         "character": 32,
         "session": 2,
         "willpower": false,
-        "description": "Faye Morgan is investing in their herd.",
-        "resolved": "UNRESOLVED",
+        "description": "Faye Morgan is investing in their herd.\n\nLevel of herd raised.",
+        "resolved": "RESOLVED",
         "helpers": []
     }
 },
@@ -12770,8 +13136,8 @@
         "character": 32,
         "session": 2,
         "willpower": false,
-        "description": "Faye Morgan is investing in their haven.",
-        "resolved": "UNRESOLVED",
+        "description": "Faye Morgan is investing in their haven.\n\nLevel of haven raised.",
+        "resolved": "RESOLVED",
         "helpers": []
     }
 },
@@ -12811,9 +13177,9 @@
         "action_type": 9,
         "character": 26,
         "session": 2,
-        "willpower": true,
-        "description": "Thordon is investigating Harriet's downtime actions.",
-        "resolved": "UNRESOLVED",
+        "willpower": false,
+        "description": "Thordon is investigating Harriet's downtime actions.\n\nThordon rolls 6 successes (Mental 3 + Protean 3 + Investigation).\nHarriet rolls 2 successes (Mental 3 + Obfuscate 0 ).\nHarriet (Sara Magnusson) is doing the following actions:\n\n1: Harriet is resting.\n\n2: Harriet is helping their clanmember Hans with Influence (Steal) on Inga Fj\u00e4llstr\u00f6m.\n \n\n\n\n3: Harriet is conserving Politik.\n\n\n\n4: Harriet is investing in the ghoul Iris Horner, which is getting Presence and Investigation.\n\nThe ghoul is created.\n\n5: Harriet is mentoring Hans on Social and offering their blood.\n\n\n\n6: Harriet is mentoring Filch on Presence and offering their blood.\n\n\n\n7: Harriet is learning Fortitude. \n\nHarriet trains succesfully.\n\n8: Harriet asked their clanmember Filch: Vilket \u00e4r det st\u00f6rsta hotet mot kamarillan i dom\u00e4nen?\n\n You may set a scene and intervene in one of these actions (With the exception of investigate and conserve actions).",
+        "resolved": "RESOLVED",
         "helpers": []
     }
 },
@@ -12821,13 +13187,13 @@
     "model": "players.action",
     "pk": 839,
     "fields": {
-        "result": 0,
+        "result": 3,
         "action_type": 8,
         "character": 26,
         "session": 2,
         "willpower": false,
-        "description": "Thordon is investigating Harriet's resources. \n Priorities: Hur m\u00e5nga Resource points karakt\u00e4ren har (3 successes),En vald typ av background (haven) (1 successes),En vald typ av background (herd) (1 successes),None,None,None,None,None",
-        "resolved": "UNRESOLVED",
+        "description": "Thordon is investigating Harriet's resources. \n Priorities: Hur m\u00e5nga Resource points karakt\u00e4ren har (3 successes),En vald typ av background (haven) (1 successes),En vald typ av background (herd) (1 successes),None,None,None,None,None\n\nThordon rolls 3 successes (Social 1 + Protean 3 + Investigation).\nHarriet has 9 resource points.\n",
+        "resolved": "RESOLVED",
         "helpers": []
     }
 },
@@ -12840,8 +13206,8 @@
         "character": 26,
         "session": 2,
         "willpower": false,
-        "description": "Thordon is investing in their herd.",
-        "resolved": "UNRESOLVED",
+        "description": "Thordon is investing in their herd.\n\nLevel of herd raised.",
+        "resolved": "RESOLVED",
         "helpers": []
     }
 },
@@ -12854,8 +13220,8 @@
         "character": 26,
         "session": 2,
         "willpower": false,
-        "description": "Thordon is investing in their herd.",
-        "resolved": "UNRESOLVED",
+        "description": "Thordon is investing in their herd.\n\nLevel of herd raised.",
+        "resolved": "RESOLVED",
         "helpers": []
     }
 },
@@ -12868,8 +13234,8 @@
         "character": 28,
         "session": 2,
         "willpower": false,
-        "description": "Pierre Steen is investigating: N\u00e5gon annan \u00e4n jag jagade i Villakvarteret f\u00f6rra m\u00e5naden. Vem?",
-        "resolved": "UNRESOLVED",
+        "description": "Pierre Steen is investigating: N\u00e5gon annan \u00e4n jag jagade i Villakvarteret f\u00f6rra m\u00e5naden. Vem?\n\nPierre Steen rolls 4 successes (Mental 5 + Dementation 0 + Legwork).",
+        "resolved": "GM",
         "helpers": []
     }
 },
@@ -12882,8 +13248,8 @@
         "character": 28,
         "session": 2,
         "willpower": false,
-        "description": "Pierre Steen is investigating: Kato hade h\u00f6rt talas om en gotisk individ som p\u00e5st\u00e5r sig vara Lilith inkarnerad, och f\u00f6refaller ha krafter. Unders\u00f6k detta n\u00e4rmare. [Jag fick dessutom veta namnet p\u00e5 nattklubben d\u00e4r personen ifr\u00e5ga h\u00e4ngde, men jag verkar ha tappat bort mina anteckningar om saken.]",
-        "resolved": "UNRESOLVED",
+        "description": "Pierre Steen is investigating: Kato hade h\u00f6rt talas om en gotisk individ som p\u00e5st\u00e5r sig vara Lilith inkarnerad, och f\u00f6refaller ha krafter. Unders\u00f6k detta n\u00e4rmare. [Jag fick dessutom veta namnet p\u00e5 nattklubben d\u00e4r personen ifr\u00e5ga h\u00e4ngde, men jag verkar ha tappat bort mina anteckningar om saken.]\n\nPierre Steen rolls 6 successes (Mental 5 + Dementation 0 + Legwork).",
+        "resolved": "GM",
         "helpers": []
     }
 },
@@ -12891,13 +13257,13 @@
     "model": "players.action",
     "pk": 850,
     "fields": {
-        "result": 0,
+        "result": 3,
         "action_type": 7,
         "character": 28,
         "session": 2,
         "willpower": false,
-        "description": "Pierre Steen is investigating Hans's influence. \n Priorities: Alla Master och Contenderniv\u00e5er (2 successes),Namn p\u00e5 en hook i ett valt inflytande (Ockult) (1 successes),Namn p\u00e5 en hook i ett valt inflytande (Universitet) (1 successes),Namn p\u00e5 en hook i ett valt inflytande (Media) (1 successes),Namn p\u00e5 en hook i ett valt inflytande (Politik) (1 successes),Namn p\u00e5 en hook i ett valt inflytande (Konst och Underh\u00e5llning) (1 successes),Namn p\u00e5 en hook i ett valt inflytande (Kyrkan) (1 successes),None \n with hooks: ",
-        "resolved": "UNRESOLVED",
+        "description": "Pierre Steen is investigating Hans's influence. \n Priorities: Alla Master och Contenderniv\u00e5er (2 successes),Namn p\u00e5 en hook i ett valt inflytande (Ockult) (1 successes),Namn p\u00e5 en hook i ett valt inflytande (Universitet) (1 successes),Namn p\u00e5 en hook i ett valt inflytande (Media) (1 successes),Namn p\u00e5 en hook i ett valt inflytande (Politik) (1 successes),Namn p\u00e5 en hook i ett valt inflytande (Konst och Underh\u00e5llning) (1 successes),Namn p\u00e5 en hook i ett valt inflytande (Kyrkan) (1 successes),None \n with hooks: \n\nPierre Steen rolls 3 successes (Social 2 + Auspex 2 + Investigation).\nContender: Media\nContender: Kyrkan\nContender: Ockult\nContender: Universitet\nHook: Greta Star (in Ockult)\n",
+        "resolved": "RESOLVED",
         "helpers": []
     }
 },
@@ -12910,8 +13276,8 @@
         "character": 28,
         "session": 2,
         "willpower": false,
-        "description": "Pierre Steen is investigating Hans's downtime actions.",
-        "resolved": "UNRESOLVED",
+        "description": "Pierre Steen is investigating Hans's downtime actions.\n\nPierre Steen rolls 6 successes (Mental 5 + Protean 0 + Investigation).\nHans rolls 1 successes (Mental 1 + Obfuscate 0 ).\nHans (Henrik Roos) is doing the following actions:\n\n1: Hans is investigating Kyrkan.\n\n2: Hans is learning Social. With Harriet as teacher.\n\nHarriet successfully trains Hans in Social.Hans drinks the blood of Harriet.\n\n3: Hans is learning Celerity. With Harriet as teacher.\n\nHarriet have not made a mentor action to train Hans in Celerity\n\n4: Hans is stealing Sven-G\u00f6ran Gelin in the influence Ockult.Hans spends willpower\r\n\r\nHans rolls 5 successes (Social 4 + Prescence 0 + Ockult + Willpower) to steal the hook.The owner of Sven-G\u00f6ran Gelin rolls 5 successes (Social 4 + Dominate 0 + Willpower) to resist.\r\nHans rolls 5 successes (Social 4 + Obfuscate 0 + Ockult + Willpower) to hide their involvement.\n\n5: Hans is stealing Inga Fj\u00e4llstr\u00f6m in the influence Ockult.Hans spends willpower\r\n\r\nHans rolls 4 successes (Social 4 + Prescence 3 + Ockult + Willpower) to steal the hook.The owner of Inga Fj\u00e4llstr\u00f6m rolls 5 successes (Social 4 + Dominate 0 + Willpower) to resist.\r\nHans rolls 6 successes (Social 4 + Obfuscate 0 + Ockult + Willpower) to hide their involvement.\r\n\r\nfailure\n\n6: Hans is stealing Klaus Dow in the influence Kyrkan.Hans spends willpower\r\n\r\nHans rolls 3 successes (Social 4 + Prescence 3 + Willpower) to steal the hook.The owner of Klaus Dow rolls 2 successes (Social 6 + Dominate 0 ) to resist.\r\nHans rolls 4 successes (Social 4 + Obfuscate 0 + Willpower) to hide their involvement.\r\n\r\nSucces!\n\n7: Hans is stealing Mahmoud Nejem in the influence Kyrkan.Hans spends willpower\r\n\r\nHans rolls 3 successes (Social 4 + Prescence 0 + Willpower) to steal the hook.The owner of Mahmoud Nejem rolls 3 successes (Social 6 + Dominate 0 ) to resist.\r\nHans rolls 4 successes (Social 4 + Obfuscate 0 + Willpower) to hide their involvement.\r\n\r\nSucces!\n\n You may set a scene and intervene in one of these actions (With the exception of investigate and conserve actions).",
+        "resolved": "RESOLVED",
         "helpers": []
     }
 },
@@ -12924,8 +13290,8 @@
         "character": 28,
         "session": 2,
         "willpower": false,
-        "description": "Pierre Steen is investing in their haven.",
-        "resolved": "UNRESOLVED",
+        "description": "Pierre Steen is investing in their haven.\n\nLevel of haven raised.",
+        "resolved": "RESOLVED",
         "helpers": []
     }
 },
@@ -12938,8 +13304,8 @@
         "character": 28,
         "session": 2,
         "willpower": false,
-        "description": "Pierre Steen is learning Demenation. With Kato as teacher.",
-        "resolved": "UNRESOLVED",
+        "description": "Pierre Steen is learning Demenation. With Kato as teacher.\n\nKato successfully trains Pierre Steen in Demenation.",
+        "resolved": "RESOLVED",
         "helpers": []
     }
 },
@@ -13401,6 +13767,69 @@
         "character": 13,
         "session": 1,
         "hook": 41
+    }
+},
+{
+    "model": "players.losthook",
+    "pk": 2,
+    "fields": {
+        "character": 32,
+        "session": 2,
+        "hook": 131
+    }
+},
+{
+    "model": "players.losthook",
+    "pk": 3,
+    "fields": {
+        "character": 15,
+        "session": 2,
+        "hook": 47
+    }
+},
+{
+    "model": "players.losthook",
+    "pk": 4,
+    "fields": {
+        "character": 5,
+        "session": 2,
+        "hook": 11
+    }
+},
+{
+    "model": "players.losthook",
+    "pk": 5,
+    "fields": {
+        "character": 5,
+        "session": 2,
+        "hook": 13
+    }
+},
+{
+    "model": "players.losthook",
+    "pk": 6,
+    "fields": {
+        "character": 12,
+        "session": 2,
+        "hook": 36
+    }
+},
+{
+    "model": "players.losthook",
+    "pk": 7,
+    "fields": {
+        "character": 25,
+        "session": 2,
+        "hook": 90
+    }
+},
+{
+    "model": "players.losthook",
+    "pk": 8,
+    "fields": {
+        "character": 12,
+        "session": 2,
+        "hook": 35
     }
 },
 {
@@ -16687,8 +17116,8 @@
         "character": 27,
         "session": 2,
         "disciplines": [
-            90,
-            89
+            89,
+            90
         ]
     }
 },
@@ -16769,8 +17198,8 @@
         "gm_note": "",
         "rumor_type": "Fact",
         "recipients": [
-            13,
             5,
+            13,
             25
         ]
     }
@@ -16786,8 +17215,8 @@
         "gm_note": "",
         "rumor_type": "Fact",
         "recipients": [
-            13,
             14,
+            13,
             26
         ]
     }
@@ -16803,8 +17232,8 @@
         "gm_note": "F\u00f6re detta Ghoul fr\u00e5n J\u00f6nk\u00f6ping har funnit Jesus och brutit blodsbandet. Kan ber\u00e4tta om De olika medlemmarna i Sabbaten -J\u00f6nk\u00f6ping.",
         "rumor_type": "Unreliable",
         "recipients": [
-            14,
-            16
+            16,
+            14
         ]
     }
 },
@@ -16897,8 +17326,8 @@
         "gm_note": "Parcelplot; plocka upp den d\u00f6des stuff: Haven och resources.",
         "rumor_type": "Unreliable",
         "recipients": [
-            13,
             17,
+            13,
             15
         ]
     }
@@ -16929,8 +17358,8 @@
         "gm_note": "-Parcelplot- Biddingwar- Katt + Papyrus = Artefakter, information eller resurser-",
         "rumor_type": "Reliable",
         "recipients": [
-            13,
             2,
+            13,
             25
         ]
     }
@@ -16976,8 +17405,8 @@
         "gm_note": "Parcelplot; Papyrus som g\u00f6r Bastet-statyetten mer efterfr\u00e5gad av olika samlare.",
         "rumor_type": "Reliable",
         "recipients": [
-            5,
             16,
+            5,
             8,
             32
         ]
@@ -17247,8 +17676,8 @@
         "gm_note": "",
         "rumor_type": "Unreliable",
         "recipients": [
-            19,
             2,
+            19,
             29
         ]
     }
@@ -17264,9 +17693,9 @@
         "gm_note": "-Parcelplot- Diablerie- \u00c4ldrevampyr i Torpor som kan diableriseas-",
         "rumor_type": "Reliable",
         "recipients": [
-            13,
             5,
-            8
+            8,
+            13
         ]
     }
 },
@@ -17345,8 +17774,8 @@
         "gm_note": "",
         "rumor_type": "Unreliable",
         "recipients": [
-            15,
-            20
+            20,
+            15
         ]
     }
 },
@@ -17614,8 +18043,8 @@
         "gm_note": "Parcelplot; plocka upp den d\u00f6des stuff: Haven och resources.",
         "rumor_type": "Unreliable",
         "recipients": [
-            19,
-            5
+            5,
+            19
         ]
     }
 },

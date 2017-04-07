@@ -102,16 +102,17 @@ DISPLINE_TABLE = [4,4,5,5,6,6,7,7,8,8]
 class DisciplineRating(Model):
     discipline = ForeignKey(Discipline, null=True, blank=True)
     value = PositiveIntegerField(default=1)
+    exp = PositiveIntegerField(default=0)   
     elder_powers = ManyToManyField(ElderPower, blank=True)
     learned = BooleanField(default=False)
     learning = BooleanField(default=False)
     elder_blood = BooleanField(default=False)
     in_clan = BooleanField(default=False)
     mentor = BooleanField(default=False)
-    exp = PositiveIntegerField(default=0)    
+ 
     
     def __str__(self):
-        return '{} {}'.format(self.discipline.name, str(self.value))
+        return '{} {} exp: {}'.format(self.discipline.name, str(self.value),self.exp)
 
     def get_needed(self):
         needed = DISPLINE_TABLE[self.value] 
@@ -163,14 +164,27 @@ class ExpDisciplineSpending(Model):
         if self.exp:
             self.discipline.exp += 1
         
+        if self.special_exp < 0:
+            print ( "en idiot!")
         self.discipline.exp += self.special_exp
         
         if self.discipline.exp >= self.discipline.get_needed()['needed']:
+        
+           print ("{} raising {} from {}, cost {} have {}".format(
+                self.character.name,
+                self.discipline.discipline.name,
+                self.discipline.value,
+                self.discipline.get_needed()['needed'],
+                self.discipline.exp))
+                
            self.discipline.value += 1
            self.discipline.exp -= self.discipline.get_needed()['needed']
            self.discipline.learned = False
            self.discipline.mentor = False
-            
+           
+        if self.discipline.exp < 0:
+          self.discipline.exp = 0
+           
         self.discipline.save()
         
                 
@@ -256,6 +270,9 @@ class ExpAttributeSpending(Model):
            self.attribute.exp -= self.attribute.get_needed()['needed']
            self.attribute.learned = False
            self.attribute.mentor = False
+            
+        if self.attribute.exp < 0:
+          self.attribute.exp = 0    
             
         self.attribute.save()
         
@@ -638,36 +655,37 @@ class Character(Model):
         self.resources += self.resource_income()
         self.resources -= self.background_cost()
         
-        report = EventReport.objects.get(session=session,character=self)
-        
-        if not report.humanity_exp or report.humanity > 0:
-            if self.humanity==1:
-                result = random.randint(0, 10)  
-                if result != 10:
-                    self.humanity -= 1
-                    self.additional_notes += "lost humanity"
-            else:    
-                result = 0
-                for die in range(0,self.humanity):
-                    result += random.randint(0, 1)  
-                if self.clan.name == "Gangrel":
-                    if self.humanity > 2:
-                        if result < 3:
-                            self.humanity -= 1
-                            self.additional_notes += "lost humanity"
+        if not []==list(EventReport.objects.filter(session=session,character=self)):
+            report = EventReport.objects.get(session=session,character=self)
+            
+            if not report.humanity_exp or report.humanity > 0:
+                if self.humanity==1:
+                    result = random.randint(0, 10)  
+                    if result != 10:
+                        self.humanity -= 1
+                        self.additional_notes += "lost humanity"
+                else:    
+                    result = 0
+                    for die in range(0,self.humanity):
+                        result += random.randint(0, 1)  
+                    if self.clan.name == "Gangrel":
+                        if self.humanity > 2:
+                            if result < 3:
+                                self.humanity -= 1
+                                self.additional_notes += "lost humanity"
+                        else:
+                            if result < 2:
+                                self.humanity -= 1
+                                self.additional_notes += "lost humanity"
                     else:
                         if result < 2:
                             self.humanity -= 1
                             self.additional_notes += "lost humanity"
-                else:
-                    if result < 2:
-                        self.humanity -= 1
-                        self.additional_notes += "lost humanity"
-        else:
-            if self.humanity_exp > 1:
-                self.humanity_exp -= 2
-                self.humanity += 1
-        self.save                 
+            else:
+                if self.humanity_exp > 1:
+                    self.humanity_exp -= 2
+                    self.humanity += 1
+            self.save                 
     
 
 class InfluenceRating(Model):
