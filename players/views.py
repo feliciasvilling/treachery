@@ -24,14 +24,19 @@ def logout_view(request):
 def profile(request):
     if not hasattr(request.user,'character'):
        return redirect('make character')
+    character = request.user.character
     session_state = []
     for session in Session.objects.order_by('name').all():
-        state = session.resolved_state(request.user.character)
+        state = session.resolved_state(character)
         session_state.append({'state': state, 'session': session})
          
+    influences = character.get_influence_list()
+    influence_list = [fact_recievers(influence) for influence in influences]
+    prnt(influence_list)
     print (request.user.character.background_cost())
     return render(request, 'profile.html',
-                  {'character': request.user.character,
+                  {'character': character,
+                   'influence_list': influence_list,
                    'session_list': session_state})
 
 @login_required

@@ -620,6 +620,10 @@ class Character(Model):
             
     def get_influences(self):
         return {inf.name:len(self.hooks.filter(influence=inf)) for inf in Influence.objects.all()}
+        
+        
+    def get_influence_list(self):
+        return [inf for inf in Influence.objects.all() if len(self.hooks.filter(influence=inf))>0]
     
     def influence_level(self,influence):    
         return len(self.hooks.filter(influence=influence))
