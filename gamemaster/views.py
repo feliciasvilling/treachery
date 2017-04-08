@@ -352,10 +352,13 @@ def influence_list(request):
 def character_sheet(request, session, char):
     session = get_object_or_404(Session, pk=session)
     character = Character.objects.get(pk=char)
+    influences = character.get_influence_list()
+    influence_list = [fact_recievers(influence) for influence in influences]
     data = {'session': session,
             'character': character,
             'rumor_list': Rumor.objects.filter(session=session,
                                                recipients=character),
+            'influence_list':influence_list,
             'submitted': character.submitted(session),
             'request': request}
     return render(request, 'session.html', data)
