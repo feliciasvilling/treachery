@@ -282,8 +282,20 @@ def assign_rumors(request, session):
                 rumor.save()
                 return characters
             else:
+                recipient = False
+                for char in characters:
+                    char_rumors = set(
+                        Rumor.objects.filter(session=session,
+                                     recipients=character,
+                                     influence=influence,
+                                     rumor_type=RUMOR_INFLUENCE))
+                    if not rumor in char_rumors:                 
+                       recipient = True
                 characters.append(character)
-                return assign(rumor,characters)    
+                if recipient:        
+                    return assign(rumor,characters)    
+                else:
+                    return characters
                 
         for rumor in unassigned:
             if len(characters) == 0:
