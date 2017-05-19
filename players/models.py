@@ -809,20 +809,18 @@ class Action(Model):
                 
     def roll(self,bonus,attribute,specialization,discipline):
     
-        helpers = list(self.helpers.all())
         help_actions = list(AidAction.objects.filter(helpee=self.character,action=self.action_type,session=self.session))
         help_actions += list(PrimogensAidAction.objects.filter(helpee=self.character,action=self.action_type,session=self.session))
         help_actions += list(GhoulAidAction.objects.filter(helpee=self.character,action=self.action_type,session=self.session))
         help_result = 0
         for help in help_actions:
-            if help.character in helpers:
-                help_roll = help.roll(1,attribute,specialization,discipline)
-                if help.betrayal:
-                    help_result -= help_roll[0]
-                else:
-                    help_result += help_roll[0]
-                help.description += "\n"+ help_roll[1]
-                help.save()
+            help_roll = help.roll(1,attribute,specialization,discipline)
+            if help.betrayal:
+                help_result -= help_roll[0]
+            else:
+                help_result += help_roll[0]
+            help.description += "\n"+ help_roll[1]
+            help.save()
                 
         have_spec = False
         for spec in self.character.specializations.all():
@@ -841,7 +839,7 @@ class Action(Model):
         if help_result==0:
             helpers = ""
         else:
-            helpers =" + {} from helpers {}" .format(help_result,[h.name for h in helpers])
+            helpers =" + {} from helpers {}" .format(help_result,[h.character.name for h in help_actions])
        
                  
         lst = "{} successes ({} {} + {} {}{}".format(

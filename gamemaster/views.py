@@ -257,8 +257,9 @@ def assign_rumors(request, session):
         
         characters = [h.master.all()[0] 
                       for h in Hook.objects.filter(influence=influence) 
-                      if list(h.master.all()) != []]
-        print (str(characters))
+                      if list(h.master.all()) != []
+                      and h.master.all()[0].user != None]
+        
         random.shuffle(characters)
 
         for rumor in unassigned:
