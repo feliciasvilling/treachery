@@ -1,4 +1,6 @@
 ssh 'root@46.101.201.193'
+orlok
+
 scp root@46.101.201.193:depdump.json depdump.json
 
 git init
@@ -15,6 +17,7 @@ dokku run downtime python3 manage.py dumpdata --natural-foreign --natural-primar
 scp root@46.101.201.193:depdump.json depdump.json
 
 
+python3 manage.py loaddata depdump.json
 
 
 
