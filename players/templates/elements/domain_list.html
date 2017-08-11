@@ -1,0 +1,43 @@
+
+
+<div class="row">
+  <div class="col-md-offset-1 col-md-10">
+    <table id="action-table" class="table table-hover">
+      <thead>
+        <tr>
+          <th class="dynatable-head">Domain</th>
+          <th class="dynatable-head">Owner</th>
+          <th class="dynatable-head">Status</th>
+          <th class="dynatable-head">Masquerade</th>
+          <th class="dynatable-head">Capacity</th>
+          
+        </tr>
+      </thead>
+      <tbody>
+        {% for dom in domain_list %}
+        
+            {% if character == dom.owner %}
+            
+                <tr>
+                  <td><a href="{% url 'domain' dom.id %}">{{ dom.name }}</a></td>
+                  <td>{{ dom.owner.name }}</td>
+                  <td>{{ dom.status  }}</td>
+                  <td>{{ dom.masquerade  }}</td>
+                  <td>{{ dom.feeding_capacity }}</td>
+                </tr>
+                            
+                
+            {% else %}
+                <tr>
+                  <td>{{ dom.name }}</td>
+                  <td>{{ dom.owner.name }}</td>
+                  <td>{{ dom.status  }}</td>
+                  <td>{{ dom.masquerade  }}</td>
+                  <td>{{ dom.feeding_capacity }}</td>
+                </tr>
+            {% endif %}
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>

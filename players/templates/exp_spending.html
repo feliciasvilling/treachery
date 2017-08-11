@@ -12,15 +12,35 @@
   
   
   
-  You have {{exp}} exp points and {{special_exp}} special exp points to spend. 
+  You have {{exp}} exp points to spend and {{humanity_exp}} humanity exp points to spend. 
   </p> 
   <form class="spending" action="" method="post">{% csrf_token %}
 
         
-  
-        {{discipline_forms}}
-        {{attribute_forms}}
-
+      <table>
+             <tr> <th>Trait</th> 
+             <th> Spend XP? </th> 
+             <th> Spent </th> </tr>
+        {% for form in discipline_forms%}
+             <tr> <td>{{form.discipline.as_hidden}}{{form.initial.discipline.discipline.name}}</td> 
+             <td> {{form.exp}}</td> 
+             <td> {{form.help.value}}</td> </tr>
+        {% endfor %}
+        {% for form in attribute_forms%}
+            <tr> <td>{{form.attribute.as_hidden}}{{form.initial.attribute.attribute.name}}</td> 
+            <td> {{form.exp}}</td> 
+            <td> {{form.help.value}}</td> </tr>
+        {% endfor %}
+        {% for form in advantage_forms%}
+            <tr> <td>{{form.advantage.as_hidden}}{{form.initial.advantage.advantage.name}}</td> 
+            <td> {{form.exp}}</td> 
+            <td> {{form.help.value}}</td> </tr>
+        {% endfor %}
+      </table>
+      {{discipline_forms.management_form}}
+      {{attribute_forms.management_form}}
+      {{advantage_forms.management_form}}
+      
       <div class="text-right">
            <input class="btn btn-primary" type="submit" value="Next"/>
       </div>

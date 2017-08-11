@@ -9,7 +9,6 @@ from django.shortcuts import redirect
 from operator import itemgetter
 from players.models import *
 
-
 def close(request):
     return render(request, 'closewindow.html')
 
@@ -20,12 +19,12 @@ ActionClasses = [
     InvestigateCharacterDowntimeActions,
     ConserveInfluence,
     ConserveDomain,
-    InfluenceForge,
     InfluenceSteal,
     InfluenceDestroy,
     MentorAttribute,
     MentorDiscipline,
     MentorSpecialization,
+    LearnAdvantage,
     LearnAttribute,
     LearnDiscipline,
     LearnSpecialization,
@@ -44,6 +43,7 @@ ActionClasses = [
     InvestigatePhenomenon,
     InvestigateInfluence,    
     Rest,
+    AssignXP,
     ]
     
 AidClasses = [
@@ -56,12 +56,12 @@ ConserveClasses = [
     ConserveDomain]
     
 OtherClasses = [
-    InfluenceForge,
     InfluenceSteal,
     InfluenceDestroy,
     MentorAttribute,
     MentorDiscipline,
-    MentorSpecialization,
+    MentorSpecialization,    
+    LearnAdvantage,
     LearnAttribute,
     LearnDiscipline,
     LearnSpecialization,
@@ -73,7 +73,8 @@ OtherClasses = [
     NeglectDomain,
     PatrolDomain,
     KeepersQuestion,
-    PrimogensQuestion]
+    PrimogensQuestion,
+    AssignXP]
     
 InvestigateClasses = [
     InvestigateCharacterDowntimeActions,
@@ -235,6 +236,101 @@ def resolve_action(request, pk):
     return redirect('action', pk)
 
 
+def assign_influence(request):
+
+
+    
+    chars = {}
+    for char in Character.objects.all():
+        wants = InfluenceWant.objects.filter(character=char)
+        total = 0
+        for want in wants:
+            want.final = False
+            want.wanted += want.dislodged
+            want.dislodged = 0
+            want.save()
+            total += want.wanted
+            
+        chars[char.name] = total
+    
+    inf_list = []
+    for inf in Influence.objects.all():
+        wants = InfluenceWant.objects.filter(influence=inf)
+        inf_list.append((inf,wants.count()))    
+    inf_list.sort(key=lambda inf:inf[1], reverse=True)
+    
+    print (inf_list)
+    print (chars)
+    
+    masters = []
+    mastered = []
+    
+    
+    for inf in inf_list:
+        wants = InfluenceWant.objects.filter(influence=inf[0])
+        pretenders = [{'want':want,
+                        'total':chars[want.character.name],
+                        'missing': not want.character in masters,
+                        'age': age_to_number[want.character.age.name],
+                        'rnd': random.random() } 
+                        for want in wants if want.wanted == 3 and not want.elder]
+        if len(pretenders) > 0:
+            pretenders.sort(key=inforder, reverse=True)
+            mastering = pretenders[0]['want']
+            mastering.final=True
+            mastering.save()
+            masters.append(mastering.character)
+            mastered.append(inf)
+            chars[mastering.character.name] -= 3
+            for w in pretenders:
+                if not w['want'].final:
+                    w['want'].wanted -= 1
+                    w['want'].dislodged += 1
+                    w['want'].save()
+    
+    for inf in inf_list:
+        wants = InfluenceWant.objects.filter(influence=inf[0])
+        pretenders = [{'want':want,
+                        'total':chars[want.character.name],
+                        'missing': not want.character in masters,
+                        'age': age_to_number[want.character.age.name],
+                        'rnd': random.random() } 
+                        for want in wants if want.wanted == 2]
+        if len(pretenders) > 0:
+            pretenders.sort(key=inforder, reverse=True)
+            mastering = pretenders[0]['want']            
+            mastering.final=True
+            mastering.save()
+
+            if len(pretenders) > 1:
+                mastering = pretenders[1]['want']            
+                mastering.final=True
+                mastering.save()
+            
+            if len(pretenders) > 2 and not inf in mastered:
+                mastering = pretenders[2]['want']            
+                mastering.final=True
+                mastering.save()
+            
+            masters.append(mastering.character)
+            chars[mastering.character.name] -= 2
+            for w in pretenders:
+                if not w['want'].final:
+                    w['want'].wanted -= 1
+                    w['want'].dislodged += 1
+                    w['want'].save()    
+            
+    for want in InfluenceWant.objects.all():
+        want.final = True
+        want.save()
+           
+    return redirect('sessions')
+    
+age_to_number = {'Novis':0,'Neonat':1,'Ancilla':2,'Elder':3}    
+    
+def inforder(w):
+    return (w['missing'],w['total'],w['age'],w['rnd'])
+    
     
 def assign_rumors(request, session):
 
@@ -394,6 +490,19 @@ def toggle_session(request, session):
     session_obj = get_object_or_404(Session, id=session)
     session_obj.is_open = not session_obj.is_open
     session_obj.save()
+    if session_obj.is_open:
+        for goal in Goal.objects.all():
+            goal.create_change(session_obj)
+        if Feeding.objects.filter(session=session_obj.previous).exists():
+            for feed in Feeding.objects.filter(session=session_obj.previous):
+                feed.duplicate(session_obj)
+    else:
+        for char in Character.objects.all():
+            char.status=0
+            char.save()
+        for update in StatusAssignment.objects.filter(session=session):
+            update.target.status += update.status
+            update.target.save()
     return redirect('sessions')
 
 
@@ -509,7 +618,7 @@ class FeedingListView(ListView):
 class ActionUpdate(UpdateView):
     model = Action
     template_name = 'editor.html'
-    fields = ['character', 'willpower','helpers','action_type', 'description', 'resolved']
+    fields = ['character', 'willpower','action_type', 'description', 'resolved']
     success_url = reverse_lazy('closewindow')
 
     def get_context_data(self, **kwargs):

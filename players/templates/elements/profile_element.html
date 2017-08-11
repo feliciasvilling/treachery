@@ -1,130 +1,297 @@
 <div class="row">
   <div class="col-md-offset-3 col-md-6">
     <dl class="dl-horizontal">
-      <dt>Name</dt>
-      <dd>{{ character.name }}</dd>
-      <dt>Player</dt>
-      <dd>
-      {% if character.user.first_name %}
-        {{character.user.first_name}} {{character.user.last_name}}
-      {% else %}
-        {{character.user}}
-      {% endif%}      
-      </dd>
-      </p>
-      <dt>Nature</dt>
-      <dd>{{ character.nature }}</dd>
-      <dt>Demeanor</dt>
-      <dd>{{ character.demeanor }}</dd>
-      </p>
-      <dt>Sire</dt>
-      <dd>{{ character.sire }}</dd>
-      <dt>Clan</dt>
-      <dd>{{character.clan}}</dd>
-      <dt>Generation</dt>
-      <dd>{{character.generation}}</dd>
-      
-      <dt>Political Faction</dt>
-      <dd>{{character.political_faction}}</dd>
-      
-      <dt>Age</dt>
-      <dd>{{character.age}}</dd>
-      
-      </p>
-      
-      <dt>Titles</dt>
-      <dd>{{ character.titles.all|join:", " }}</dd>
-      </p>
-      <dt>Goal</dt>
-      <dd>{{character.open_goal1}}</dd>
-      </p>
-      <dt>Goal</dt>
-      <dd>{{character.open_goal2}}</dd>
-      </p>
-      <dt>Goal</dt>
-      <dd>{{character.hidden_goal}}</dd>
-      </p>
-      
-      <dt>XP</dt>
-      <dd>{{character.exp}}</dd>
-      <dt>Special XP</dt>
-      <dd>{{character.special_exp}}</dd>
-      <dt>Humanity XP</dt>
-      <dd>{{character.humanity_exp}}</dd>
-      </p>
-      
-      <dt>Attributes</dt>
-      <dd>{{ character.display_attributes|linebreaks }}</dd> 
-      
-      <dt>Specializations</dt>
-      <dd>{{ character.specializations.all|join:", " }}</dd> 
-      </p>
-      <dt>Disciplines</dt>
-      <dd>{{ character.display_disciplines|linebreaks }}</dd>
-      
-      <dt>Humanity</dt>
-      <dd>{{ character.humanity}}</dd>      
-      <dt>Willpower</dt>
-      <dd>{{ character.willpower}} of {{ character.max_willpower}}</dd>      
-
-          
-      <dt>Damage</dt>
-      <dd>{% if character.bashing %}
-                {{character.bashing}} bashing.
-          {% endif %}
-          {% if character.lethal %}
-                 {{character.lethal}} lethal. 
-          {% endif %}
-          {% if character.aggravated %}
-                 {{character.aggravated}} aggravated.
-          {% endif %}
-          {% if not character.bashing and not character.lethal and not character.aggravated %}
-            No Damage!
-          {% endif %}      
-          </dd>
-    
-    
-
-      <dt>Blood</dt>
-      <dd>{{ character.blood}}</dd>
-      </p>
-      <dt>Influences</dt>
-          {% for influence, rating in character.get_influences.items %} 
-            {% if rating > 0 %} <dd> {{influence}}: {{rating}}</dd> {% endif %}
-          {% endfor %}  
-      </p>
-      <dt>Hooks</dt>
-      <dd>  {{ character.get_hooks | join:"<br>" }} </dd>
-            
-      </p>
-      <dt>Resources</dt>
-      <dd>{{ character.resources}}</dd>          
-      <dt>Resource Income</dt>
-      <dd>{{character.resource_income}}</dd>
-      <dt>Background Cost</dt>
-      <dd>{{character.background_cost}}</dd>
-      </p>
-          {% for background, rating in character.get_backgrounds.items %} 
-            {% if rating > 0 %} <dt> {{background|title}}</dt><dd> {{rating}}</dd> {% endif %}
-          {% endfor %}  
-      </p>
-      <dt>Equipment</dt> <dd>
-          {% for equi in character.equipment.all %} 
-              {{equi}}
-          {% endfor %} </dd>
-      <dt>Weapons</dt>
-        <dd>  {% for weap in character.weapons.all %} 
-              {{weap}}
-          {% endfor %} </dd>
-      <dt>Ghouls</dt>
-      <dd>
-          {{ character.ghouls.all|join:"<br>" }} 
-             
-          </dd>
+    <div class="sheet">
+     
+      <img src="media/{{character.picture}}" alt="img" class="img-responsive img-rounded">
+      <p>
+       <table style="width:100%">
+      <tr>
+           <th>Name</th><td>{{ character.name }}</td> 
+           <th>Pronoun</th><td>{{ character.pronoun }}</td>  
+           <th>Sire</th><td>{{character.sire}}</td>
+      </tr>
+      <tr>      
+          <th>Player</th>
+          <td>
+          {% if character.user.first_name %}
+            {{character.user.first_name}} {{character.user.last_name}}
+          {% else %}
+            {{character.user}}
+          {% endif%}      
+          </td>
+          <th>Clan & Generation </th>
+          <td>{{character.clan}} {{character.generation}} </td>
+          <th>Titles</th>
+          <td>{{character.titles.all|join:", "}}</td>
+      </tr>
+      <tr>
+          <th>Nature</th> <td>{{character.nature}}</td>
+          <th>Theme (Season) </th> <td>{{season.theme}}</td>
+          <th>Theme (Clan) </th> <td>{{character.clan.theme}}</td>
+      </tr>
+      <tr>
+          <th>Political Faction</th>
+          <td>{{character.political_faction}}</td>
+          <th>Age</th>
+          <td>{{character.age}}</td>      
           </p>
-      <dt>Additional Notes</dt>
-      <dd>{{character.additional_notes}}</dd>
-     </dd>
+          <th>Status</th>
+          <td>{{character.status}}</td>      
+      </tr>
+     </table>
+     </p>
+     <p>
+     Goals
+     
+     <table style="width:100%">
+      <tr>
+           
+     {% for goal in goals %}
+      
+      <tr><th>Based on my </th><td> {{goal.theme}}</td><th> I believe that </th><td>{{goal.belief}}</td><th> and will therefor </th><td>{{goal.action}}</td></tr>
+      {% endfor %}
+ 
+      </tr>
+     </table>
+     </p>
+     <p>
+     
+     Attributes
+     
+     <table style="width:100%">
+      <tr>
+      {% for attr in attributes %}
+        <th> {{attr.attribute.name}}</th>
+        <td> {{attr.value}}</td>
+      {% endfor %}
+      </tr>
+     </table>
+     
+     </p>
+     <p>
+          
+     Specializations
+     
+     <table style="width:100%">
+      <tr>
+      {% for spec in character.specializations.all %}
+        <th> {{spec}}</th>
+      {% endfor %}
+      </tr>
+     </table>
+  </p>
+     <p>
+     Disciplines
+     <table style="width:100%">
+      <tr>
+      {% for dis in disciplines %}
+        <th> {{dis.discipline.name}}</th>
+        <td> {{dis.value}}</td>
+       
+
+      {% endfor %}
+      </tr>
+     </table>
+     </p>
+     
+     <p>
+     Rescources
+     <table style="width:100%">
+      <tr>
+          <th>Humanity</th><td>{{ character.display_humanity}}</td>      
+          <th>Willpower</th><td>{{ character.willpower}} of {{ character.display_max_willpower}}</td>      
+          <th>Blood</th><td>{{ character.blood}} of {{blood_max}}</td>
+          
+          
+          <th>Lethal Damage</th><td> {{ character.superficial}} </td>
+      </tr>
+      <tr>
+          <th>Assets</th>
+          <td>{{character.assets}}</td>          
+          <th>Income</th>
+          <td>{{character.asset_income}}</td>
+          <th>Background Cost</th>
+          <td>{{character.background_cost}}</td>
+          <th>Aggravated Damage</th><td> {{ character.aggravated}} </td>
+      </tr>
+      
+      
+      
+      </table>
+      
+      
+      </p>
+     <p>
+            Influences
+        <table style="width:100%">
+      <tr>     
+            
+          {% for influence, rating in character.get_influences.items %} 
+            {% if rating > 0 %} <th> {{influence}}</th> <td> {{rating}}</td> {% endif %}
+          {% endfor %}  
+      </tr>
+      </table>
+      </p>
+     <p>
+      Hooks
+      <table style="width:100%">
+            <tr>     
+     
+             <th> Name </th> 
+             <th> Influence </th>
+             <th> Concept </th>
+             <th> Aspects </th> 
+              </tr>
+          {% for hook in character.hooks.all %} 
+          <tr>     
+     
+             <td> {{hook.name}}</td> 
+              <td> {{hook.influence}}</td> 
+              <td> {{hook.concept }}</td> 
+             <td> {{hook.aspects.all|join:", "}}</td> 
+              </tr>
+     
+          {% endfor %}  
+      </table>
+      </p>
+     <p>
+      Backgrounds
+      <table style="width:100%">
+          <tr> 
+            <th> Haven</th>
+            <td> {{character.haven}}</td>
+            <td> {{character.haven_description}} i {{character.haven_domain.name}}</td>
+         </tr>   
+         <tr> 
+            <th> Herd</th>
+            <td> {{character.herd}}</td>
+            <td> {{character.herd_description}}</td>
+         </tr>   
+         <tr> 
+            <th> Melee Weapon</th>
+            <td> {{character.melee}}</td>
+            
+            <td> {{melee_name}}</td>
+         </tr>   
+         <tr> 
+            <th> Firearms</th>
+            <td> {{character.firearms}}</td>
+            <td> {{firearms_name}}</td>
+            
+         </tr>   
+         <tr> 
+            <th> Equipment</th>
+            <td> {{character.get_backgrounds.equipment}}</td>
+            <td> {{equipments_name|join:", "}}</td>
+         </tr>   
+         <tr> 
+            <th> Ghouls</th>
+            <td> {{character.get_backgrounds.ghouls}}</td>
+            
+            <td> {{ghouls_name |join:", "}}</td>
+         </tr>   
+           
+   
+      </table>
+     
+         
+      </p>
+     <p>
+     Equipment
+      <table style="width:100%">
+      
+          {% for equi in equipments %} 
+          <tr> 
+              <th>{{equi.name}}</th>
+              <td>{{equi.specialization}}</td>
+           </tr>
+          {% endfor %} 
+        </table>
+      
+      </p>
+     <p>
+      Ghouls
+           <table style="width:100%">
+      
+          {% for ghoul in ghouls %} 
+          <tr> 
+              <th>{{ghoul.name}}</th>
+              <td>{{ghoul.level}}</td>
+              <td>{{ghoul.specializations.all|join:", "}}</td>
+              <td>{{ghoul.disciplines.all|join:", "}}</td>
+           </tr>
+          {% endfor %} 
+        </table>
+      
+      
+     </p>
+     <p> 
+     XP
+     
+     <table style="width:100%">
+     <tr> 
+      <th>XP</th> <td>{{character.exp}}</td>
+      <th>Humanity XP</th> <td>{{character.humanity_exp}}</td>
+      </tr>
+     </table>
+     </p>
+     <p>
+     Learning
+    <table style="width:100%">
+      <tr>
+        <th>  </th>
+        <th> Value</th>
+        <th> Spent XP </th>
+        <th> Bonuses </th>
+        </tr>
+      {% for attr in attributes %}
+        {% if attr.learned %} 
+        <tr>
+        <th> {{attr.attribute.name}}</th>
+        <td> {{attr.value}}</td>
+        <td> ({{attr.exp}} of {{attr.get_needed.needed}})</td>
+        <td> {{attr.bonuses|join:", "}}</td>
+        </tr>
+        {% endif %}
+      {% endfor %}
+            
+      {% for dis in disciplines %}
+        {% if dis.learned %}
+        <tr>
+        <th> {{dis.discipline.name}}</th>
+        <td> {{dis.value}}</td>
+        <td> ({{dis.exp}} of {{dis.get_needed.needed}})</td>
+        <td> {{dis.bonuses|join:", "}}</td>
+        </tr>
+         {% endif %}
+        {% endfor %}
+        
+        {% for adv in advantages %}
+        {% if adv.learned %}
+        <tr>
+        <th> {{adv.discipline.name}}</th>
+        <td> {{adv.value}}</td>
+        <td> ({{adv.exp}} of {{adv.get_needed.needed}})</td>
+        <td> </td>
+        </tr>
+         {% endif %}
+        {% endfor %}
+
+     </table>     
+ </p>
+     <p>
+      Additional Notes
+     <table style="width:100%">
+     <tr> 
+    
+      
+      <td>{{character.additional_notes}}</td>
+   </tr>
+     </table>
+     </p>
+      </div>
+
     </dl>
   </div>
 </div>

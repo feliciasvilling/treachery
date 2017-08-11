@@ -15,6 +15,10 @@ urlpatterns = [
     url(r'^influence_list$',
         staff_member_required(views.influence_list),
         name='influence_list'),
+        
+    url(r'^assing_influence$',
+        staff_member_required(views.assign_influence),
+        name='assign influence'),
     
     url(r'^session/(?P<session>\d+)/toggle$',
         staff_member_required(views.toggle_session),

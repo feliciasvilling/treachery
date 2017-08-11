@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+
+<form action="{% url 'assign status' %}" method="post">
+    {% csrf_token %}
+    <table>
+     <tr> <th>Character</th> 
+     <th> Status </th> 
+      </tr>
+    {% for form in forms %}
+    <tr> <td>{{form.target.as_hidden}}{{form.initial.target.name}}</td> <td> {{form.status}}</td> </tr>    
+    {% endfor %}
+    {{forms.management_form}}
+    </table>
+    <input type="submit" value="Submit" />
+</form>
+
+{% endblock %}
