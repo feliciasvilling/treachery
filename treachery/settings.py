@@ -33,10 +33,18 @@ else:
     ALLOWED_HOSTS = []
     SECRET_KEY = 'testkey'
     DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-        }
+       # 'default': {
+       #     'ENGINE': 'django.db.backends.sqlite3',
+       #     'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+       # }
+     'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'downtimebase',
+        'USER': 'felicia',
+        'PASSWORD': 'taire',
+        'HOST': 'localhost',
+        'PORT': '',
+    }  
     }
 
     EMAIL_HOST_USER = ''
@@ -59,6 +67,7 @@ INSTALLED_APPS = ('django.contrib.admin',
                   'django.contrib.staticfiles',
                   'django.contrib.sites',
                   'django_comments',
+                #  'fixture_magic',
                 #  'simple_history',
                   'bootstrap3',
                   'players',

@@ -2237,7 +2237,7 @@ class ActiveDisciplines(Model):
     disciplines = ManyToManyField(Discipline, blank=True,help_text="Which disciplines do you want to use during the downtime?")
     
     def __str__(self):
-        disciplines = ', '.join(d.discipline.name for d in self.disciplines.all())
+        disciplines = ', '.join(d.name for d in self.disciplines.all())
         return '[{}] {}: {}'.format(self.session.name, self.character, disciplines)
 
 
