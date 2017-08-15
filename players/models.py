@@ -2,6 +2,7 @@ from django.db import models
 from django.db.models import *
 from django.contrib.auth.models import User
 import random 
+#from PIL import Image
 
 # Resolved states
 UNRESOLVED = 'UNRESOLVED'
@@ -327,7 +328,7 @@ class Character(Model):
     name = CharField(max_length=200)
     pronoun = ForeignKey(Pronoun)
     user = OneToOneField(User, related_name='character', blank=True, null=True)
-    picture = ImageField(blank=True,null=True)
+  #  picture = ImageField(blank=True,null=True)
     defined = BooleanField(default=False)
     
     nature  = ForeignKey(Nature,blank=True,null=True)
