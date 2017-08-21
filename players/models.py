@@ -352,7 +352,7 @@ class Character(Model):
     rituals = ManyToManyField(RitualRating, blank=True)
     relationships = ManyToManyField(Relationship, related_name='master', blank=True)
     political_faction = ForeignKey(PoliticalFaction, blank=True,null=True)
-    concept = TextField(blank=True)     
+    concept = CharField(blank=True,max_length=50)     
         
     herd     = PositiveIntegerField(choices=((0,0),(1,1),(2,2),(3,3)),default=0)
     herd_description = TextField(blank=True)
@@ -370,7 +370,7 @@ class Character(Model):
     
     def info(self):
         inf = {
-            'picture':self.picture,
+          #  'picture':self.picture,
             'character':self.name,
             'player':(self.user.first_name +" "+ self.user.last_name),
             'pronoun':self.pronoun,

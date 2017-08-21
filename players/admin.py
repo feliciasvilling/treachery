@@ -8,8 +8,7 @@ from players.models import *
 
 @admin.register(Character)
 class CharacterAdmin(admin.ModelAdmin):
-    exclude = ('rituals','boons','frenzyTriggers','relationships',
-    'canon_fact','concept','attributes','disciplines')
+
     filter_horizontal = ('titles','specializations')
    # radio_fields = {"clan": admin.HORIZONTAL,'age': admin.HORIZONTAL}
     
