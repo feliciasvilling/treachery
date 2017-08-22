@@ -520,89 +520,58 @@ BLOODTABLE = [0,0,0,0,45,35,25,15,10,9,8,7,6,5]
 def make_character(request):
         
     if  request.method == 'POST':
-        if hasattr(request.user,'character'):
-            ch = request.user.character
-            form = forms.CharacterForm(request.POST)
-            if form.is_valid():   
-                f = form.cleaned_data
-             
-                if f['sire']:
-                    gen = f['sire'].generation+1
-                else:
-                    gen = f['generation']           
-               
-                
-                    ch.name    = f['name']
-                    ch.age     = f['age']
-                    ch.clan    = f['clan']
-                    ch.sire    = f['sire']
-                    ch.nature  = f['nature']
-                    ch.pronoun = f['pronoun']
-                    ch.concept = f['concept']
-                    ch.political_faction = f['political_faction']
-                                 
-                    ch.firearms  = f['firearms']    
-                    ch.melee    = f['melee_weapons'] 
-                    ch.herd  = f['herd']
-                    ch.haven = f['haven']
-                    ch.herd_description  = f['herd_description']
-                    ch.haven_description = f['haven_description']
-                    ch.haven_domain = f['haven_domain']
-                    
-                    ch.exp          = 0
-                    ch.humanity_exp = 0      
-                    
-                   
-                    ch.superficial = 0
-                    ch.aggravated = 0
-                    ch.blood      = BLOODTABLE[gen]
-                    
-                    ch.generation = gen
-                    
-                    ch.additional_notes = f['additional_notes']
-                    ch.defined = True
-                    ch.save()
-                    
+        
+        ch = request.user.character
+        form = forms.CharacterForm(request.POST)
+        if form.is_valid():   
+            f = form.cleaned_data
+         
+            gen = f['generation']           
+            ch.name    = f['name']
+            ch.age     = f['age']
+            ch.clan    = f['clan']
+            ch.sire    = f['sire']
+            ch.nature  = f['nature']
+            ch.pronoun = f['pronoun']
+            ch.concept = f['concept']
+            ch.political_faction = f['political_faction']
+                         
+            ch.firearms  = f['firearms']    
+            ch.melee    = f['melee_weapons'] 
+            ch.herd  = f['herd']
+            ch.haven = f['haven']
+          #  ch.herd_description  = f['herd_description']
+          #  ch.haven_description = f['haven_description']
+          #  ch.haven_domain = f['haven_domain']
+            
+            ch.exp          = 0
+            ch.humanity_exp = 0      
+            
+           
+            ch.superficial = 0
+            ch.aggravated = 0
+            ch.blood      = BLOODTABLE[gen]
+            
+            ch.generation = gen
+            
+           # ch.additional_notes = f['additional_notes']
+            ch.defined = True
+            ch.save()                   
+       
+       
         else:
-            form = forms.CharacterForm(request.POST)
-            if form.is_valid(): 
-                f = form.cleaned_data
-                
-                if f['sire']:
-                    gen = f['sire'].generation+1
-                else:
-                    gen = f['generation']           
-               
-                ch = Character.objects.create(
-                    name    = f['name'],
-                    age     = f['age'],
-                    clan    = f['clan'],
-                    sire    = f['sire'],
-                    nature  = f['nature'],
-                    pronoun = f['pronoun'],
-                    concept = f['concept'],
-                    political_faction = f['political_faction'],
-                                 
-                    firearms  = f['firearms'],            
-                    melee    = f['melee_weapons'], 
-                    herd  = f['herd'],
-                    haven = f['haven'],
-                    herd_description  = f['herd_description'],
-                    haven_description = f['haven_description'],
-                    haven_domain = f['haven_domain'],
-                    
-                    exp          = 0,
-                    humanity_exp = 0,      
-                    
-                   
-                    superficial = 0,
-                    aggravated = 0,
-                    blood      = BLOODTABLE[gen],
-                    
-                    generation = gen,
-                    
-                    additional_notes = f['additional_notes'],
-                    )
+           print('is not valid :(')
+           print(form.errors)          
+    if hasattr(request.user,'character'):
+        form = forms.CharacterForm()
+    else:
+        form = forms.CharacterForm()
+    
+    return render(request, 'character.html', {'form': form})
+
+
+
+def other_character(request):
         if form.is_valid(): 
             AdvantageRating.objects.create(
                 advantage=Advantage.objects.get(name="Willpower"),
@@ -882,19 +851,5 @@ def make_character(request):
             ch.user = request.user   
             ch.save()   
             return redirect('profile')
-        else:
-           print('is not valid :(')
-           print(form.errors)          
-    if hasattr(request.user,'character'):
-        form = forms.CharacterForm()
-    else:
-        form = forms.CharacterForm()
-    
-    return render(request, 'character.html', {'form': form})
-
-
-
-
-
         
         

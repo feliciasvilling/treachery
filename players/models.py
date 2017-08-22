@@ -196,13 +196,7 @@ class Weapon(Model):
             "ranged" if self.ranged else ""
             )              
         
-class Relationship(Model):
-    character = ForeignKey('Character', related_name='relationship')
-    complicated = BooleanField()
-    description = TextField()
-    blood_bond = PositiveIntegerField(choices=((0,0),(1,1),(2,2),(3,3)),default=0)    
-    def __str__(self):
-        return 'to {}' .format(self.character.name)
+
         
 class Ritual(Model):
     name = CharField(max_length=200)
@@ -350,7 +344,6 @@ class Character(Model):
     assets = PositiveIntegerField(default=0)    
     
     rituals = ManyToManyField(RitualRating, blank=True)
-    relationships = ManyToManyField(Relationship, related_name='master', blank=True)
     political_faction = ForeignKey(PoliticalFaction, blank=True,null=True)
     concept = CharField(blank=True,max_length=50)     
         
@@ -547,6 +540,15 @@ class InfluenceWant(Model):
         return '{} wants {} {}{}'\
             .format(self.character.name,self.influence,self.wanted,info)    
             
+        
+class Relationship(Model):
+    character = ForeignKey('Character', related_name='master')
+    other_character = ForeignKey('Character', related_name='slave',blank=True,null=True)
+    complicated = BooleanField()
+    description = CharField(max_length=100)
+    blood_bond = PositiveIntegerField(choices=((0,0),(1,1),(2,2),(3,3)),default=0)    
+    def __str__(self):
+        return 'to {}' .format(self.character.name)        
         
 class Equipment(Model):
   owner = ForeignKey(Character,blank=True,null=True)

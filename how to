@@ -1,25 +1,23 @@
-ssh 'root@46.101.201.193'
+ssh 'root@185.14.186.239'
 orlok
 
-scp root@46.101.201.193:depdump.json depdump.json
+scp root@185.14.186.239:depdump.json depdump.json
 
 git init
 git add .
 git commit -m "init"
 git remote add server dokku@downtime.treachery.eu:downtime
 
-git push server master
-ssh 'root@46.101.201.193'
-dokku run downtime python3 manage.py migrate
+git push dokku master
+ssh 'root@185.14.186.239'
+dokku run downtime-master python3 manage.py migrate
 
 dokku run downtime python3 manage.py dumpdata --natural-foreign --natural-primary --indent 4 -e sessions -e contenttypes -e auth.Permission -e admin > depdump.json 
 
-scp root@46.101.201.193:depdump.json depdump.json
+scp root@185.14.186.239:depdump.json depdump.json
 
 
 python3 manage.py loaddata depdump.json
-
-
 
 
 

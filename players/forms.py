@@ -398,6 +398,26 @@ class CharacterForm(Form):
 
     specializations = ModelMultipleChoiceField(queryset=Specialization.objects,required=False)
     
+
+    humanity   = IntegerField(initial=0)
+    willpower  = IntegerField(initial=0)
+    generation = IntegerField(initial=13) 
+    
+     
+    haven   = IntegerField(initial=0)
+  #  haven_description = CharField()
+  #  haven_domain = ModelChoiceField(queryset=Domain.objects.all())
+    
+    
+    herd    = IntegerField(initial=0)
+ #    herd_description = CharField(required=False)
+    melee_weapons   = IntegerField(initial=0)
+    firearms = IntegerField(initial=0)
+    ghouls = IntegerField(initial=0)
+       
+ 
+class OtherCharacterForm(Form):      
+       
     discipline1 = ModelChoiceField(queryset=Discipline.objects.all(),required=False)
     discipline1_rating = IntegerField(initial=0)
     discipline2 = ModelChoiceField(queryset=Discipline.objects.all(),required=False)
@@ -410,21 +430,7 @@ class CharacterForm(Form):
     discipline5_rating = IntegerField(initial=0)
     discipline6 = ModelChoiceField(queryset=Discipline.objects.all(),required=False)
     discipline6_rating = IntegerField(initial=0)
-
-    humanity   = IntegerField(initial=0)
-    willpower  = IntegerField(initial=0)
-    generation = IntegerField(initial=13) 
-    
-     
-    haven   = IntegerField(initial=0)
-    haven_description = CharField()
-    haven_domain = ModelChoiceField(queryset=Domain.objects.all())
-    
-    
-    herd    = IntegerField(initial=0)
-    herd_description = CharField(required=False)
-    melee_weapons   = IntegerField(initial=0)
-    firearms = IntegerField(initial=0)
+   
        
     hook1_name        = CharField(required=False)
     hook1_concept        = CharField(required=False)
