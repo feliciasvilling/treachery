@@ -374,29 +374,40 @@ class CharacterForm2(ModelForm):
 
 
 class CharacterForm(Form):
-    name = CharField(max_length=200)
+
+
+   
+
+
+  #  name = CharField(max_length=200)
     pronoun = ModelChoiceField(queryset=Pronoun.objects.all(),empty_label=None)
    # picture = 
-    age     = ModelChoiceField(queryset=Age.objects.all(),empty_label=None)
-    clan    = ModelChoiceField(queryset=Clan.objects.all(),empty_label=None)
+  #  age     = ModelChoiceField(queryset=Age.objects.all(),empty_label=None)
+  #  clan    = ModelChoiceField(queryset=Clan.objects.all(),empty_label=None)
     sire    = ModelChoiceField(queryset=Character.objects.all(),required=False)
     nature  = ModelChoiceField(queryset=Nature.objects.all(),empty_label=None)
     
-    titles = 	ModelMultipleChoiceField(queryset=Title.objects.all(),required=False)
-    domains = 	ModelMultipleChoiceField(queryset=Domain.objects.all(),required=False)
+    titles = 	ModelMultipleChoiceField(queryset=Title.objects.all(),required=False,
+        widget=CheckboxSelectMultiple)
+    domains = 	ModelMultipleChoiceField(queryset=Domain.objects.all(),required=False,
+        widget=CheckboxSelectMultiple)
     political_faction = ModelChoiceField(queryset=PoliticalFaction.objects.all(),empty_label=None)
     
     concept = CharField(
         widget=Textarea(attrs={'col':15,'rows':1}),
         required=False,
         )
+        
+    feeding_restriction = ModelChoiceField(queryset=Population.objects.all(),required=False)  
     
     social_rating = IntegerField(initial=0)
     mental_rating = IntegerField(initial=0)
     physical_rating = IntegerField(initial=0)
 
 
-    specializations = ModelMultipleChoiceField(queryset=Specialization.objects,required=False)
+    specializations = ModelMultipleChoiceField(
+        queryset=Specialization.objects,required=False,
+        widget=CheckboxSelectMultiple)
     
 
     humanity   = IntegerField(initial=0)
@@ -405,108 +416,140 @@ class CharacterForm(Form):
     
      
     haven   = IntegerField(initial=0)
-  #  haven_description = CharField()
-  #  haven_domain = ModelChoiceField(queryset=Domain.objects.all())
+    haven_description = CharField()
+    haven_domain = ModelChoiceField(queryset=Domain.objects.all())
     
     
     herd    = IntegerField(initial=0)
- #    herd_description = CharField(required=False)
+    herd_description = CharField(required=False)
     melee_weapons   = IntegerField(initial=0)
     firearms = IntegerField(initial=0)
     ghouls = IntegerField(initial=0)
        
- 
-class OtherCharacterForm(Form):      
+    
        
-    discipline1 = ModelChoiceField(queryset=Discipline.objects.all(),required=False)
-    discipline1_rating = IntegerField(initial=0)
-    discipline2 = ModelChoiceField(queryset=Discipline.objects.all(),required=False)
-    discipline2_rating = IntegerField(initial=0)
-    discipline3 = ModelChoiceField(queryset=Discipline.objects.all(),required=False)
-    discipline3_rating = IntegerField(initial=0)
-    discipline4 = ModelChoiceField(queryset=Discipline.objects.all(),required=False)
-    discipline4_rating = IntegerField(initial=0)
-    discipline5 = ModelChoiceField(queryset=Discipline.objects.all(),required=False)
-    discipline5_rating = IntegerField(initial=0)
-    discipline6 = ModelChoiceField(queryset=Discipline.objects.all(),required=False)
-    discipline6_rating = IntegerField(initial=0)
+       
+    discipline_1 = ModelChoiceField(queryset=Discipline.objects.all(),required=False)
+    discipline_1_rating = IntegerField(initial=0)
+    discipline_2 = ModelChoiceField(queryset=Discipline.objects.all(),required=False)
+    discipline_2_rating = IntegerField(initial=0)
+    discipline_3 = ModelChoiceField(queryset=Discipline.objects.all(),required=False)
+    discipline_3_rating = IntegerField(initial=0)
+    discipline_4 = ModelChoiceField(queryset=Discipline.objects.all(),required=False)
+    discipline_4_rating = IntegerField(initial=0)
+    discipline_5 = ModelChoiceField(queryset=Discipline.objects.all(),required=False)
+    discipline_5_rating = IntegerField(initial=0)
+    discipline_6 = ModelChoiceField(queryset=Discipline.objects.all(),required=False)
+    discipline_6_rating = IntegerField(initial=0)
    
        
-    hook1_name        = CharField(required=False)
-    hook1_concept        = CharField(required=False)
-    hook1_influence   = ModelChoiceField(queryset=Influence.objects.all(),required=False)
-    hook1_aspects  = ModelMultipleChoiceField(queryset=Aspect.objects.all(),required=False)
+    hook_1_name        = CharField(required=False)
+    hook_1_concept        = CharField(required=False)
+    hook_1_influence   = ModelChoiceField(queryset=Influence.objects.all(),required=False)
+    hook_1_aspects  = ModelMultipleChoiceField(queryset=Aspect.objects.all(),required=False,
+        widget=CheckboxSelectMultiple)
     
-    hook2_name        = CharField(required=False)
-    hook2_concept        = CharField(required=False)
-    hook2_influence   = ModelChoiceField(queryset=Influence.objects.all(),required=False)
-    hook2_aspects  = ModelMultipleChoiceField(queryset=Aspect.objects.all(),required=False)
+    hook_2_name        = CharField(required=False)
+    hook_2_concept        = CharField(required=False)
+    hook_2_influence   = ModelChoiceField(queryset=Influence.objects.all(),required=False)
+    hook_2_aspects  = ModelMultipleChoiceField(queryset=Aspect.objects.all(),required=False,
+        widget=CheckboxSelectMultiple)
     
-    hook3_name        = CharField(required=False)
-    hook3_concept        = CharField(required=False)
-    hook3_influence   = ModelChoiceField(queryset=Influence.objects.all(),required=False)
-    hook3_aspects  = ModelMultipleChoiceField(queryset=Aspect.objects.all(),required=False)
+    hook_3_name        = CharField(required=False)
+    hook_3_concept        = CharField(required=False)
+    hook_3_influence   = ModelChoiceField(queryset=Influence.objects.all(),required=False)
+    hook_3_aspects  = ModelMultipleChoiceField(queryset=Aspect.objects.all(),required=False,
+        widget=CheckboxSelectMultiple)
     
-    hook4_name        = CharField(required=False)
-    hook4_concept        = CharField(required=False)
-    hook4_influence   = ModelChoiceField(queryset=Influence.objects.all(),required=False)
-    hook4_aspects  = ModelMultipleChoiceField(queryset=Aspect.objects.all(),required=False)
+    hook_4_name        = CharField(required=False)
+    hook_4_concept        = CharField(required=False)
+    hook_4_influence   = ModelChoiceField(queryset=Influence.objects.all(),required=False)
+    hook_4_aspects  = ModelMultipleChoiceField(queryset=Aspect.objects.all(),required=False,
+        widget=CheckboxSelectMultiple)
     
     
-    hook5_name        = CharField(required=False)
-    hook5_concept        = CharField(required=False)
-    hook5_influence   = ModelChoiceField(queryset=Influence.objects.all(),required=False)
-    hook5_aspects  = ModelMultipleChoiceField(queryset=Aspect.objects.all(),required=False)
+    hook_5_name        = CharField(required=False)
+    hook_5_concept        = CharField(required=False)
+    hook_5_influence   = ModelChoiceField(queryset=Influence.objects.all(),required=False)
+    hook_5_aspects  = ModelMultipleChoiceField(queryset=Aspect.objects.all(),required=False,
+        widget=CheckboxSelectMultiple)
     
-    hook6_name        = CharField(required=False)
-    hook6_concept     = CharField(required=False)
-    hook6_influence   = ModelChoiceField(queryset=Influence.objects.all(),required=False)
-    hook6_aspects  = ModelMultipleChoiceField(queryset=Aspect.objects.all(),required=False)
-    
-# relationships    
+    hook_6_name        = CharField(required=False)
+    hook_6_concept     = CharField(required=False)
+    hook_6_influence   = ModelChoiceField(queryset=Influence.objects.all(),required=False)
+    hook_6_aspects  = ModelMultipleChoiceField(queryset=Aspect.objects.all(),required=False,
+        widget=CheckboxSelectMultiple)
     
 
+    equipment_1_name = CharField(required=False)
+    equipment_1_specialization = ModelChoiceField(queryset=Specialization.objects.all(),required=False)
+    equipment_2_name = CharField(required=False)
+    equipment_2_specialization = ModelChoiceField(queryset=Specialization.objects.all(),required=False)
+    equipment_3_name = CharField(required=False)
+    equipment_3_specialization = ModelChoiceField(queryset=Specialization.objects.all(),required=False)
+    
+    ghoul_1_name = CharField(required=False)
+    ghoul_1_level = IntegerField(initial=0)
+    ghoul_1_specializations = ModelMultipleChoiceField(queryset=Specialization.objects,required=False,
+        widget=CheckboxSelectMultiple)
+    ghoul_1_discipline1 = ModelChoiceField(queryset=Discipline.objects.all(),required=False)
+    ghoul_1_discipline1_rating = IntegerField(initial=0)
+    ghoul_1_discipline2 = ModelChoiceField(queryset=Discipline.objects.all(),required=False)
+    ghoul_1_discipline2_rating = IntegerField(initial=0)
+    ghoul_1_discipline3 = ModelChoiceField(queryset=Discipline.objects.all(),required=False)
+    ghoul_1_discipline3_rating = IntegerField(initial=0)
+    
+    ghoul_2_name = CharField(required=False)
+    ghoul_2_level = IntegerField(initial=0)
+    ghoul_2_specializations = ModelMultipleChoiceField(queryset=Specialization.objects,required=False,
+        widget=CheckboxSelectMultiple)
+    ghoul_2_discipline1 = ModelChoiceField(queryset=Discipline.objects.all(),required=False)
+    ghoul_2_discipline1_rating = IntegerField(initial=0)
+    ghoul_2_discipline2 = ModelChoiceField(queryset=Discipline.objects.all(),required=False)
+    ghoul_2_discipline2_rating = IntegerField(initial=0)
+    ghoul_2_discipline3 = ModelChoiceField(queryset=Discipline.objects.all(),required=False)
+    ghoul_2_discipline3_rating = IntegerField(initial=0)
+    
+    ghoul_3_name = CharField(required=False)
+    ghoul_3_level = IntegerField(initial=0)
+    ghoul_3_specializations = ModelMultipleChoiceField(queryset=Specialization.objects,required=False,
+        widget=CheckboxSelectMultiple)
+    ghoul_3_discipline1 = ModelChoiceField(queryset=Discipline.objects.all(),required=False)
+    ghoul_3_discipline1_rating = IntegerField(initial=0)
+    ghoul_3_discipline2 = ModelChoiceField(queryset=Discipline.objects.all(),required=False)
+    ghoul_3_discipline2_rating = IntegerField(initial=0)
+    ghoul_3_discipline3 = ModelChoiceField(queryset=Discipline.objects.all(),required=False)
+    ghoul_3_discipline3_rating = IntegerField(initial=0)
+    
+    complicated_relationship_1 = CharField(required=False)
+    character_1 = ModelChoiceField(queryset=Character.objects.all(),required=False)
+    blood_bond_to_you_1  = IntegerField(initial=0)
+    
+    complicated_relationship_2 = CharField(required=False)
+    character_2 = ModelChoiceField(queryset=Character.objects.all(),required=False)
+    blood_bond_to_you_2  = IntegerField(initial=0)
 
-    equipment1_name = CharField(required=False)
-    equipment1_influence = ModelChoiceField(queryset=Influence.objects.all(),required=False)
-    equipment2_name = CharField(required=False)
-    equipment2_influence = ModelChoiceField(queryset=Influence.objects.all(),required=False)
-    equipment3_name = CharField(required=False)
-    equipment3_influence = ModelChoiceField(queryset=Influence.objects.all(),required=False)
+    complicated_relationship_3 = CharField(required=False)
+    character_3 = ModelChoiceField(queryset=Character.objects.all(),required=False)
+    blood_bond_to_you_3  = IntegerField(initial=0)
+
+    complicated_relationship_4 = CharField(required=False)
+    character_4 = ModelChoiceField(queryset=Character.objects.all(),required=False)
+    blood_bond_to_you_4  = IntegerField(initial=0)
+
+    complicated_relationship_5 = CharField(required=False)
+    character_5 = ModelChoiceField(queryset=Character.objects.all(),required=False)
+    blood_bond_to_you_5  = IntegerField(initial=0)
+
+    complicated_relationship_6 = CharField(required=False)
+    character_6 = ModelChoiceField(queryset=Character.objects.all(),required=False)
+    blood_bond_to_you_6  = IntegerField(initial=0)
+
     
-    ghoul1_name = CharField(required=False)
-    ghoul1_level = IntegerField(initial=0)
-    ghoul1_specializations = ModelMultipleChoiceField(queryset=Specialization.objects,required=False)
-    ghoul1_discipline1 = ModelChoiceField(queryset=Discipline.objects.all(),required=False)
-    ghoul1_discipline1_rating = IntegerField(initial=0)
-    ghoul1_discipline2 = ModelChoiceField(queryset=Discipline.objects.all(),required=False)
-    ghoul1_discipline2_rating = IntegerField(initial=0)
-    ghoul1_discipline3 = ModelChoiceField(queryset=Discipline.objects.all(),required=False)
-    ghoul1_discipline3_rating = IntegerField(initial=0)
-    
-    ghoul2_name = CharField(required=False)
-    ghoul2_level = IntegerField(initial=0)
-    ghoul2_specializations = ModelMultipleChoiceField(queryset=Specialization.objects,required=False)
-    ghoul2_discipline1 = ModelChoiceField(queryset=Discipline.objects.all(),required=False)
-    ghoul2_discipline1_rating = IntegerField(initial=0)
-    ghoul2_discipline2 = ModelChoiceField(queryset=Discipline.objects.all(),required=False)
-    ghoul2_discipline2_rating = IntegerField(initial=0)
-    ghoul2_discipline3 = ModelChoiceField(queryset=Discipline.objects.all(),required=False)
-    ghoul2_discipline3_rating = IntegerField(initial=0)
-    
-    ghoul3_name = CharField(required=False)
-    ghoul3_level = IntegerField(initial=0)
-    ghoul3_specializations = ModelMultipleChoiceField(queryset=Specialization.objects,required=False)
-    ghoul3_discipline1 = ModelChoiceField(queryset=Discipline.objects.all(),required=False)
-    ghoul3_discipline1_rating = IntegerField(initial=0)
-    ghoul3_discipline2 = ModelChoiceField(queryset=Discipline.objects.all(),required=False)
-    ghoul3_discipline2_rating = IntegerField(initial=0)
-    ghoul3_discipline3 = ModelChoiceField(queryset=Discipline.objects.all(),required=False)
-    ghoul3_discipline3_rating = IntegerField(initial=0)
     
     additional_notes = CharField(widget=Textarea(attrs={'col':15,'rows':5}),required=False)
 
-
+    
 
 
 excludedFields  = ['character','action_type','session','description','resolved','result']

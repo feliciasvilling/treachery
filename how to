@@ -1,4 +1,3 @@
-ssh 'root@185.14.186.239'
 orlok
 
 scp root@185.14.186.239:depdump.json depdump.json
@@ -20,12 +19,12 @@ scp root@185.14.186.239:depdump.json depdump.json
 python3 manage.py loaddata depdump.json
 
 
+nano /etc/hosts
 
 
 
 
-
-
+git checkout master~6 --/players.view
 
 
 

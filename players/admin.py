@@ -18,7 +18,7 @@ admin.site.register(HealingReport)
 admin.site.register(LostHook) 
 admin.site.register(Pronoun) 
 admin.site.register(Discipline)
-
+admin.site.register(FeedingRestriction)
 admin.site.register(Place)
 admin.site.register(Attribute)
 

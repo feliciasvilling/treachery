@@ -48,6 +48,7 @@ def profile(request):
                    'attributes':attributes,
                    'disciplines':disciplines,
                    'advantages':advantages,
+                   'flaw':character.get_flaw(),
                    'blood_max':BLOODTABLE[character.generation],
                    'ghouls':ghouls,
                    'ghouls_name': [g.name for g in ghouls],
@@ -208,6 +209,7 @@ def wizard(request, session):
    
     if not data['session'].is_open:
         raise PermissionDenied('Session closed')
+        
 
     session = [
     
@@ -240,6 +242,36 @@ def wizard(request, session):
                 formset=forms.ActionFormSet,
                 fields=['action_type'])
         ]
+        
+    if data['session'].is_special:
+        session = [
+            modelformset_factory(
+                ChangeGoal,
+                formset=forms.ChangeGoalFormSet,
+                fields=['theme','belief','action','open_goal','goal'],
+                widgets={'open_goal':HiddenInput,
+                         'goal':HiddenInput,
+                         'theme':Select,
+                         'belief':TextInput(attrs={'size': 41}),
+                         'action':TextInput(attrs={'size': 40})}),
+        
+            modelformset_factory(
+                ActiveDisciplines,
+                formset=forms.DisciplineActivationFormSet,
+                fields=['disciplines'],
+                widgets={'disciplines':CheckboxSelectMultiple}),
+                
+            modelformset_factory(
+                Feeding,
+                formset=forms.FeedingFormSet,
+                fields=['domain', 'feeding_points', 'discipline', 'description'],
+                widgets={'description':Textarea(attrs={'rows': 5})}),
+                
+            modelformset_factory(
+                Action,
+                formset=forms.ActionFormSet,
+                fields=['action_type'])
+        ]     
             
     return SubmitWizard.as_view(session,
         initial_dict=data)(request, **data)
@@ -251,13 +283,17 @@ WIZARD_TEMPLATES = ['submit_wizard.html',
              'submit_wizard.html',
              'submit_wizard.html']
              
+
+             
 class SubmitWizard(SessionWizardView):
     template_name = 'submit_wizard.html'
     
     
     def get_template_names(self):
-        print (self.steps.current)
-        return [WIZARD_TEMPLATES[int(self.steps.current)]]
+        step = int(self.steps.current)
+        if self.initial_dict['session'].is_special:
+            step += 1
+        return [WIZARD_TEMPLATES[step]]
     
     def done(self, form_list, **kwargs):
         
@@ -296,22 +332,19 @@ class SubmitWizard(SessionWizardView):
         if int(step)==0\
         and EventReport.objects.filter(
                 character=init['character'], session=init['session']).exists()\
-        and Goal.objects.filter(character=init['character']).exists():
+        and Goal.objects.filter(character=init['character']).exists():            
             report = model_to_dict(EventReport.objects.get(
                 character=init['character'], session=init['session']))
             goal = Goal.objects.filter(character=init['character'])
             report.update({'open_goal1_text':goal[0],
                            'open_goal2_text':goal[1],
                            'hidden_goal_text':goal[2]})
-            
-            return report
-        else: 
-       
-            return init    
+        else:
+           report = init    
+        return init
 
     def get_context_data(self, form, **kwargs):
-        context = super(SubmitWizard, self).get_context_data(form=form,
-                                                             **kwargs)
+        context = super(SubmitWizard, self).get_context_data(form=form, **kwargs)
         char = self.initial_dict['character']
         season = Season.objects.get(is_open=True)
                                                              
@@ -320,17 +353,23 @@ class SubmitWizard(SessionWizardView):
                   {'title': "Nature", 'text': char.nature},
                   {'title': "Political Faction", 'text': char.political_faction}
                  ]
-        if self.steps.current == '0':
+        step = int(self.steps.current)
+        
+        if self.initial_dict['session'].is_special:
+            step += 1      
+            print ('is special {}'.format(step))
+        
+        if step == 0:
             context.update({'stepTitle': 'After Event Report'})
-        elif self.steps.current == '1':
+        elif step == 1:
             context.update({'stepTitle': 'Set New Goals'})
             context.update({'help_texts': themes})
-        elif self.steps.current == '2': 
+        elif step == 2:
             context.update({'stepTitle': 'Active Disciplines'})
             
-        elif self.steps.current == '3':
+        elif step == 3:
             context.update({'stepTitle': 'Feeding'})
-        elif self.steps.current == '4':
+        elif step == 4:
             context.update({'stepTitle': 'Actions'})
             context.update({'help_texts': ActionType.help_texts()})
         return context
@@ -366,12 +405,16 @@ class ActionWizard(SessionWizardView):
             form.description = form.to_description()        
             form.save()
         Action.objects.filter(description="",character=form.character).delete()
-        return redirect('exp', session= kwargs['session'].id)
+        session= kwargs['session']
+        if session.is_special:
+            return redirect('profile')
+        
+        else:
+            return redirect('exp', session= session.id)
         
     def get_form_initial(self, step):
         #action = self.initial_dict['actions'][int(step)]
         #if action.action_type == 'Aid Action (Ghoul)':
-            
         return self.initial_dict    
         
     def get_context_data(self, form, **kwargs):
@@ -381,6 +424,7 @@ class ActionWizard(SessionWizardView):
         
 def spend_exp(request, session):
     session = get_object_or_404(Session, pk=session)
+    
     character = request.user.character 
     event = EventReport.objects.get(character=character,session=session)
   
@@ -466,7 +510,7 @@ def healing(request, session):
     
     blood = character.blood
     for feed in feedings:
-        blood += 5 * feed.feeding_points
+        blood += feed.feeding_points
     blood -= 25
     
     if "Rest" in [action.action_type for action in actions]:
@@ -518,18 +562,28 @@ BLOODTABLE = [0,0,0,0,45,35,25,15,10,9,8,7,6,5]
 @login_required
 @user_passes_test(lambda u: not u.is_superuser, login_url='/gm/')
 def make_character(request):
-        
+    ch = request.user.character
+    sessions = Session.objects.all()
+    
+    session = Session.objects.get(is_open=True)
+            
     if  request.method == 'POST':
-        
-        ch = request.user.character
+       
         form = forms.CharacterForm(request.POST)
         if form.is_valid():   
             f = form.cleaned_data
+            
+            Goal.objects.filter(character=ch).delete()
+            AdvantageRating.objects.filter(character=ch).delete()
+            AttributeRating.objects.filter(character=ch).delete()
+            DisciplineRating.objects.filter(character=ch).delete()
          
             gen = f['generation']           
-            ch.name    = f['name']
-            ch.age     = f['age']
-            ch.clan    = f['clan']
+           
+            
+        #    ch.name    = f['name']
+        #    ch.age     = f['age']
+        #    ch.clan    = f['clan']
             ch.sire    = f['sire']
             ch.nature  = f['nature']
             ch.pronoun = f['pronoun']
@@ -556,18 +610,38 @@ def make_character(request):
             
             ch.additional_notes = f['additional_notes']
             ch.defined = True
-            ch.save()                   
-       
-       
-        else:
-           print('is not valid :(')
-           print(form.errors)    
-           
-           
-                 
-    if hasattr(request.user,'character'):
-        form = forms.CharacterForm()
-        if form.is_valid(): 
+            ch.save()
+            
+            if f['feeding_restriction'] != None:
+                FeedingRestriction.objects.create(
+                    population = f['feeding_restriction'],
+                    character=ch
+                    )
+                    
+            goal = Goal.objects.create(
+                character = ch,
+                theme = 'Humanity',
+                belief = "",
+                action = "",
+                open_goal = True)
+            goal.create_change(session)
+                
+            goal = Goal.objects.create(
+                character = ch,
+                theme = 'Clan Theme',
+                belief = "",
+                action = "",
+                open_goal = True)
+            goal.create_change(session)
+                
+            goal = Goal.objects.create(
+                character = ch,
+                theme = 'Nature',
+                belief = "",
+                action = "",
+                open_goal = False)
+            goal.create_change(session)
+                     
             AdvantageRating.objects.create(
                 advantage=Advantage.objects.get(name="Willpower"),
                 value=f['willpower'],
@@ -579,157 +653,157 @@ def make_character(request):
                 character=ch
                 )     
                
-            if f['discipline1'] != None:
-                dis = DisciplineRating.objects.create(
-                    discipline=f['discipline1'],
-                    value=f['discipline1_rating'],
+            if f['discipline_1'] != None:
+                DisciplineRating.objects.create(
+                    discipline=f['discipline_1'],
+                    value=f['discipline_1_rating'],
                     character=ch
                     )
             
-            if f['discipline2'] != None:
-                dis = DisciplineRating.objects.create(
-                    discipline=f['discipline2'],
-                    value=f['discipline2_rating'],
+            if f['discipline_2'] != None:
+                DisciplineRating.objects.create(
+                    discipline=f['discipline_2'],
+                    value=f['discipline_2_rating'],
                     character=ch
                     )
                 
-            if f['discipline3'] != None:
+            if f['discipline_3'] != None:
                 dis = DisciplineRating.objects.create(
-                    discipline=f['discipline3'],
-                    value=f['discipline3_rating'],
+                    discipline=f['discipline_3'],
+                    value=f['discipline_3_rating'],
                     character=ch
                     )
             
-            if f['discipline4'] != None:
-                dis = DisciplineRating.objects.create(
-                    discipline=f['discipline4'],
-                    value=f['discipline4_rating'],
+            if f['discipline_4'] != None:
+                DisciplineRating.objects.create(
+                    discipline=f['discipline_4'],
+                    value=f['discipline_4_rating'],
                     character=ch
                     )                
                 
-            if f['discipline5'] != None:
-                dis = DisciplineRating.objects.create(
-                    discipline=f['discipline5'],
-                    value=f['discipline5_rating'],
+            if f['discipline_5'] != None:
+                DisciplineRating.objects.create(
+                    discipline=f['discipline_5'],
+                    value=f['discipline_5_rating'],
                     )
             
-            if f['discipline6'] != None:
-                dis = DisciplineRating.objects.create(
-                    discipline=f['discipline6'],
-                    value=f['discipline6_rating'],
+            if f['discipline_6'] != None:
+                DisciplineRating.objects.create(
+                    discipline=f['discipline_6'],
+                    value=f['discipline_6_rating'],
                     character=ch
                     )
             
             
-            if f['hook1_name'] != "":
+            if f['hook_1_name'] != "":
                 hook = Hook.objects.create(
-                    concept=f['hook1_concept'],
-                    name=f['hook1_name'],
-                    influence=f['hook1_influence'],
+                    concept=f['hook_1_concept'],
+                    name=f['hook_1_name'],
+                    influence=f['hook_1_influence'],
                     character=ch
                     )
-                for attribute in f['hook1_aspects']:
+                for attribute in f['hook_1_aspects']:
                     hook.aspects.add(attribute)    
                     hook.save()   
             
-            if f['hook2_name'] != "":
+            if f['hook_2_name'] != "":
                 hook = Hook.objects.create(
-                    concept=f['hook2_concept'],
-                    name=f['hook2_name'],
-                    influence=f['hook2_influence'],
+                    concept=f['hook_2_concept'],
+                    name=f['hook_2_name'],
+                    influence=f['hook_2_influence'],
                     character=ch
                     )
-                for attribute in f['hook2_aspects']:
+                for attribute in f['hook_2_aspects']:
                     hook.aspects.add(attribute)    
                     hook.save()
                 
-            if f['hook3_name'] != "":
+            if f['hook_3_name'] != "":
                 hook = Hook.objects.create(
-                    concept=f['hook3_concept'],
-                    name=f['hook3_name'],
-                    influence=f['hook3_influence'],
+                    concept=f['hook_3_concept'],
+                    name=f['hook_3_name'],
+                    influence=f['hook_3_influence'],
                     character=ch
                     )
-                for attribute in f['hook3_aspects']:
+                for attribute in f['hook_3_aspects']:
                     hook.aspects.add(attribute)    
                     hook.save()   
             
-            if f['hook4_name'] != "":
+            if f['hook_4_name'] != "":
                 hook = Hook.objects.create(
-                    concept=f['hook4_concept'],
-                    name=f['hook4_name'],
-                    influence=f['hook4_influence'],
+                    concept=f['hook_4_concept'],
+                    name=f['hook_4_name'],
+                    influence=f['hook_4_influence'],
                     character=ch
                     )
-                for attribute in f['hook4_aspects']:
+                for attribute in f['hook_4_aspects']:
                     hook.aspects.add(attribute)    
                     hook.save()
 
-            if f['hook5_name'] != "":
+            if f['hook_5_name'] != "":
                 hook = Hook.objects.create(
-                    concept=f['hook5_concept'],
-                    name=f['hook5_name'],
-                    influence=f['hook5_influence'],
+                    concept=f['hook_5_concept'],
+                    name=f['hook_5_name'],
+                    influence=f['hook_5_influence'],
                     character=ch
                     )
-                for attribute in f['hook5_aspects']:
+                for attribute in f['hook_5_aspects']:
                     hook.aspects.add(attribute)    
                     hook.save()   
             
-            if f['hook6_name'] != "":
+            if f['hook_6_name'] != "":
                 hook = Hook.objects.create(
-                    name=f['hook6_name'],
-                    influence=f['hook6_influence'],
+                    name=f['hook_6_name'],
+                    influence=f['hook_6_influence'],
                     character=ch
                     )
-                for attribute in f['hook6_aspects']:
+                for attribute in f['hook_6_aspects']:
                     hook.aspects.add(attribute)    
                     hook.save() 
             
-            if f['equipment1_name'] != "":
+            if f['equipment_1_name'] != "":
                 equ = Equipment.objects.create(
-                    name=f['equipment1_name'],
-                    influence=f['equipment1_influence'],
+                    name=f['equipment_1_name'],
+                    specialization=f['equipment_1_specialization'],
                     owner=ch
                     )
                 
-            if f['equipment2_name'] != "":
+            if f['equipment_2_name'] != "":
                 equ = Equipment.objects.create(
-                    name=f['equipment2_name'],
-                    influence=f['equipment2_influence'],
+                    name=f['equipment_2_name'],
+                    specialization=f['equipment_2_specialization'],
                     owner=ch
                     )
                 
-            if f['equipment3_name'] != "":
+            if f['equipment_3_name'] != "":
                 equ = Equipment.objects.create(
-                    name=f['equipment3_name'],
-                    influence=f['equipment3_influence'],
+                    name=f['equipment_3_name'],
+                    specialization=f['equipment_3_specialization'],
                     owner=ch
                     )
                 
-            if f['ghoul1_name'] != "":
+            if f['ghoul_1_name'] != "":
                 ghoul = Ghoul.objects.create(
-                    name=f['ghoul1_name'],
-                    level=f['ghoul1_level'],
+                    name=f['ghoul_1_name'],
+                    level=f['ghoul_1_level'],
                     master=ch)
-                for spec in f['ghoul1_specializations']:
+                for spec in f['ghoul_1_specializations']:
                     ghoul.specializations.add(spec)
-                if f['ghoul1_discipline1'] != None:
+                if f['ghoul_1_discipline1'] != None:
                     disp_rate = DisciplineRating.objects.create(
-                        discipline = f['ghoul1_discipline1'],
-                        value = f['ghoul1_discipline1_rating'],
+                        discipline = f['ghoul_1_discipline1'],
+                        value = f['ghoul_1_discipline1_rating'],
                         ghoul = ghoul
                     )
-                if f['ghoul1_discipline2'] != None:
+                if f['ghoul_1_discipline2'] != None:
                     disp_rate = DisciplineRating.objects.create(
-                        discipline = f['ghoul1_discipline2'],
-                        value = f['ghoul1_discipline2_rating'], 
+                        discipline = f['ghoul_1_discipline2'],
+                        value = f['ghoul_1_discipline2_rating'], 
                         ghoul = ghoul
                     )
-                if f['ghoul1_discipline3'] != None:
+                if f['ghoul_1_discipline3'] != None:
                     disp_rate = DisciplineRating.objects.create(
-                        discipline = f['ghoul1_discipline3'],
-                        value = f['ghoul1_discipline3_rating'], 
+                        discipline = f['ghoul_1_discipline3'],
+                        value = f['ghoul_1_discipline3_rating'], 
                         ghoul = ghoul
                     )
                 ghoul.save()
@@ -744,29 +818,29 @@ def make_character(request):
                     disp[0].value += 1 
                     disp[0].save()       
             
-            if f['ghoul2_name'] != "":
+            if f['ghoul_2_name'] != "":
                 ghoul = Ghoul.objects.create(
-                    name=f['ghoul2_name'],
-                    level=f['ghoul2_level'],
+                    name=f['ghoul_2_name'],
+                    level=f['ghoul_2_level'],
                     master=ch)
-                for spec in f['ghoul1_specializations']:
+                for spec in f['ghoul_1_specializations']:
                     ghoul.specializations.add(spec)
-                if f['ghoul2_discipline1'] != None:
+                if f['ghoul_2_discipline1'] != None:
                     disp_rate = DisciplineRating.objects.create(
-                        discipline = f['ghoul2_discipline1'],
-                        value = f['ghoul2_discipline1_rating'],
+                        discipline = f['ghoul_2_discipline1'],
+                        value = f['ghoul_2_discipline1_rating'],
                         ghoul = ghoul
                     )
-                if f['ghoul2_discipline2'] != None:
+                if f['ghoul_2_discipline2'] != None:
                     disp_rate = DisciplineRating.objects.create(
-                        discipline = f['ghoul2_discipline2'],
-                        value = f['ghoul2_discipline2_rating'],
+                        discipline = f['ghoul_2_discipline2'],
+                        value = f['ghoul_2_discipline2_rating'],
                         ghoul = ghoul 
                     )
-                if f['ghoul2_discipline3'] != None:
+                if f['ghoul_2_discipline3'] != None:
                     disp_rate = DisciplineRating.objects.create(
-                        discipline = f['ghoul2_discipline3'],
-                        value = f['ghoul2_discipline3_rating'],
+                        discipline = f['ghoul_2_discipline3'],
+                        value = f['ghoul_2_discipline3_rating'],
                         ghoul = ghoul 
                     )
                 ghoul.save()
@@ -781,29 +855,29 @@ def make_character(request):
                     disp[0].value += 1 
                     disp[0].save()
 
-            if f['ghoul3_name'] != "":
+            if f['ghoul_3_name'] != "":
                 ghoul = Ghoul.objects.create(
-                    name=f['ghoul3_name'],
-                    level=f['ghoul3_level'],
+                    name=f['ghoul_3_name'],
+                    level=f['ghoul_3_level'],
                     master=ch)
-                for spec in f['ghoul1_specializations']:
+                for spec in f['ghoul_1_specializations']:
                     ghoul.specializations.add(spec)
-                if f['ghoul3_discipline1'] != None:
+                if f['ghoul_3_discipline1'] != None:
                     disp_rate = DisciplineRating.objects.create(
-                        discipline = f['ghoul3_discipline1'],
-                        value = f['ghoul3_discipline1_rating'],
+                        discipline = f['ghoul_3_discipline1'],
+                        value = f['ghoul_3_discipline1_rating'],
                         ghoul = ghoul 
                     )
-                if f['ghoul3_discipline2'] != None:
+                if f['ghoul_3_discipline2'] != None:
                     disp_rate = DisciplineRating.objects.create(
-                        discipline = f['ghoul3_discipline2'],
-                        value = f['ghoul3_discipline2_rating'], 
+                        discipline = f['ghoul_3_discipline2'],
+                        value = f['ghoul_3_discipline2_rating'], 
                         ghoul = ghoul
                     )
-                if f['ghoul3_discipline3'] != None:
+                if f['ghoul_3_discipline3'] != None:
                     disp_rate = DisciplineRating.objects.create(
-                        discipline = f['ghoul3_discipline3'],
-                        value = f['ghoul3_discipline3_rating'], 
+                        discipline = f['ghoul_3_discipline3'],
+                        value = f['ghoul_3_discipline3_rating'], 
                         ghoul = ghoul
                     )
                 ghoul.save()
@@ -817,20 +891,73 @@ def make_character(request):
                 else:
                     disp[0].value += 1 
                     disp[0].save()
+                    
+            if f['character_1'] != None:
+                dis = Relationship.objects.create(
+                    other_character=f['character_1'],
+                    description=f['complicated_relationship_1'],
+                    blood_bond=f['blood_bond_to_you_1'],
+                    complicated= True,
+                    character=ch
+                    )
+                    
+            if f['character_2'] != None:
+                dis = Relationship.objects.create(
+                    other_character=f['character_2'],
+                    description=f['complicated_relationship_2'],
+                    blood_bond=f['blood_bond_to_you_2'],
+                    complicated= True,
+                    character=ch
+                    )
+                    
+            if f['character_3'] != None:
+                dis = Relationship.objects.create(
+                    other_character=f['character_3'],
+                    description=f['complicated_relationship_3'],
+                    blood_bond=f['blood_bond_to_you_3'],
+                    complicated= True,
+                    character=ch
+                    )
+            if f['character_4'] != None:
+                dis = Relationship.objects.create(
+                    other_character=f['character_4'],
+                    description=f['complicated_relationship_4'],
+                    blood_bond=f['blood_bond_to_you_4'],
+                    complicated= True,
+                    character=ch
+                    )
+            if f['character_5'] != None:
+                dis = Relationship.objects.create(
+                    other_character=f['character_5'],
+                    description=f['complicated_relationship_5'],
+                    blood_bond=f['blood_bond_to_you_5'],
+                    complicated= True,
+                    character=ch
+                    )
+            if f['character_6'] != None:
+                dis = Relationship.objects.create(
+                    other_character=f['character_6'],
+                    description=f['complicated_relationship_6'],
+                    blood_bond=f['blood_bond_to_you_6'],
+                    complicated= True,
+                    character=ch
+                    )
+                          
                 
-            soc = AttributeRating.objects.create(
+                
+            AttributeRating.objects.create(
                 attribute =Attribute.objects.get(name='Social'),
                 value= f['social_rating'],
                 character=ch
                 )
             
-            phys = AttributeRating.objects.create(
+            AttributeRating.objects.create(
                 attribute =Attribute.objects.get(name='Physical'),
                 value= f['physical_rating'],
                 character=ch
                 )
             
-            men = AttributeRating.objects.create(
+            AttributeRating.objects.create(
                 attribute =Attribute.objects.get(name='Mental'),
                 value= f['mental_rating'],
                 character=ch
@@ -846,13 +973,13 @@ def make_character(request):
             ch.user = request.user   
             ch.save()   
             return redirect('profile')
-        
+        else:
+           print('is not valid :(')
+           print(form.errors)        
+             
     else:
         form = forms.CharacterForm()
     
-    return render(request, 'character.html', {'form': form})
+    return render(request, 'character.html', {'form': form, 'ch':ch})
 
 
-
-def other_character(request):
-        

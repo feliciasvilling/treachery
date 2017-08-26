@@ -238,8 +238,6 @@ def resolve_action(request, pk):
 
 def assign_influence(request):
 
-
-    
     chars = {}
     for char in Character.objects.all():
         wants = InfluenceWant.objects.filter(character=char)
@@ -326,7 +324,7 @@ def assign_influence(request):
            
     return redirect('sessions')
     
-age_to_number = {'Novis':0,'Neonat':1,'Ancilla':2,'Elder':3}    
+age_to_number = {'Novis':0,'Neonat':1,'Ancilla':2,'Äldste':3}    
     
 def inforder(w):
     return (w['missing'],w['total'],w['age'],w['rnd'])

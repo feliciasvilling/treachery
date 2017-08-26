@@ -135,6 +135,7 @@ class Discipline(Model):
 class Clan(Model):
     name = CharField(max_length=200)
     theme = TextField(blank=True)
+    flaw = TextField(blank=True)
     clan_disciplines = ManyToManyField(Discipline, blank=True)
     def __str__(self):
         return self.name
@@ -240,12 +241,19 @@ class Boon(Model):
     
     def __str__(self):
         return str(self.number) +" "+self.size + " från " + self.signer.name          
-        
+
+
 
 class Place(Model):        
     name = CharField(max_length=200)
     
-            
+class FeedingRestriction(Model):
+    character = ForeignKey('Character')
+    population = ForeignKey(Population)
+    
+    def __str__(self):       
+        return "{} is restricted to {}" .format(self.character,self.population)
+      
 class Domain(Model):
     name = CharField(max_length=200)
     feeding_capacity = PositiveIntegerField()
@@ -315,7 +323,8 @@ class Domain(Model):
                     
                          
            # print("overfeeding {}\n{} have incidents at {}" .format(overfeeding,incident_recivers,self.name) )
-            
+
+     
 
                   
 class Character(Model):
@@ -385,6 +394,13 @@ class Character(Model):
         if off_name == " ":
             off_name = str(self.user) 
         return '{} ({})'.format(self.name, off_name)
+        
+    def get_flaw(self):
+        if self.clan.name == "Ventrue":
+            return "Is restricted to feeding on {}." .format(FeedingRestriction.objects.get(character=self).population)
+        else:
+            return self.clan.flaw
+        
  
  
     def display_max_willpower(self):
@@ -540,6 +556,11 @@ class InfluenceWant(Model):
         return '{} wants {} {}{}'\
             .format(self.character.name,self.influence,self.wanted,info)    
             
+  
+        
+
+           
+             
         
 class Relationship(Model):
     character = ForeignKey('Character', related_name='master')
@@ -548,7 +569,11 @@ class Relationship(Model):
     description = CharField(max_length=100)
     blood_bond = PositiveIntegerField(choices=((0,0),(1,1),(2,2),(3,3)),default=0)    
     def __str__(self):
-        return 'to {}' .format(self.character.name)        
+        if self.blood_bond != 0:
+            bond = ", {} has blood bound {} {} steps."  .format(self.character.name,self.other_character.name,self.blood_bond)   
+        else:
+            bond = ""
+        return 'from {} to {}: {}{}' .format(self.character.name,self.other_character.name,self.description,bond)        
         
 class Equipment(Model):
   owner = ForeignKey(Character,blank=True,null=True)
@@ -894,6 +919,9 @@ class Goal(Model):
     belief = CharField(max_length=100)
     action = CharField(max_length=100)
     open_goal = BooleanField(default=True)
+  #  extra = BooleanField(default=False)
+  #  extra_theme = CharField(max_length=100, blank=True)
+    
     def __str__(self):
         return 'Based on {}: {} believes that {} and will therefor {}.'.format(self.theme,self.character.name,self.belief,self.action)  
         
@@ -2103,7 +2131,7 @@ class HealingReport(Model):
         char = self.character
            
         char.superficial -= self.superficial
-        char.blood -= 1 * self.superficial
+        char.w -= self.superficial
         char.aggravated -= self.aggravated
         char.willpower -= self.aggravated
         char.blood -= 5 * self.aggravated

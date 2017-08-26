@@ -2,15 +2,33 @@
 
 {% block content %}
 <form action="" method="post">
+
     {% csrf_token %}
+    {{ form.non_field_errors }}
+    <div class='input_char'>
     <table> 
-    <th>
+    <tr> <td><div class='label'>Name:</div></td> <td>{{ch.name}} </td> </tr> 
+    <tr> <td><div class='label'>Age:</div></td> <td>{{ch.age}}  </td> </tr>
+    <tr> <td><div class='label'>Clan:</div></td> <td>{{ch.clan}}  </td> </tr>
+    
     {% for field in form %}
-    <tr> <td>{{ field.label_tag }}</td> <td>{{field}}  {{ field.errors }}</td> </tr>    
+    {% if field.label != "Feeding restriction" or ch.clan.name == "Ventrue"  and not field.is_hidden %}
+        <tr> <td>{{ field.label_tag }}</td> <td>{{field}}  
+        
+        {% if field.errors %}
+                
+                  {% for error in field.errors %}
+                    {{ error }}
+                  {% endfor %}
+                
+              {% endif %}
+        </td> </tr>    
+        
+    {% endif %}
     
     {% endfor %}
-    </th>
     </table> 
+    </div>
     <input type="submit" value="Submit" />  
 
 </form>

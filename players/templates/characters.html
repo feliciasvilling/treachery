@@ -42,7 +42,12 @@
       <td>{{char.titles.all|join:", "}}</td>
       <td>{{char.concept}}</td>    
       {% for goal in char.goals %}
-       <td>{{goal.belief}} därför kommer jag att {{goal.action}}</td>
+       <td>
+       {%if goal.belief%}
+       {{goal.belief}} därför kommer jag att {{goal.action}}
+       {%endif%}
+       
+       </td>
       {% endfor %}
       
       
