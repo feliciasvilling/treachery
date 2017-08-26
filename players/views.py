@@ -540,9 +540,9 @@ def make_character(request):
             ch.melee    = f['melee_weapons'] 
             ch.herd  = f['herd']
             ch.haven = f['haven']
-          #  ch.herd_description  = f['herd_description']
-          #  ch.haven_description = f['haven_description']
-          #  ch.haven_domain = f['haven_domain']
+            ch.herd_description  = f['herd_description']
+            ch.haven_description = f['haven_description']
+            ch.haven_domain = f['haven_domain']
             
             ch.exp          = 0
             ch.humanity_exp = 0      
@@ -554,24 +554,19 @@ def make_character(request):
             
             ch.generation = gen
             
-           # ch.additional_notes = f['additional_notes']
+            ch.additional_notes = f['additional_notes']
             ch.defined = True
             ch.save()                   
        
        
         else:
            print('is not valid :(')
-           print(form.errors)          
+           print(form.errors)    
+           
+           
+                 
     if hasattr(request.user,'character'):
         form = forms.CharacterForm()
-    else:
-        form = forms.CharacterForm()
-    
-    return render(request, 'character.html', {'form': form})
-
-
-
-def other_character(request):
         if form.is_valid(): 
             AdvantageRating.objects.create(
                 advantage=Advantage.objects.get(name="Willpower"),
@@ -852,4 +847,12 @@ def other_character(request):
             ch.save()   
             return redirect('profile')
         
+    else:
+        form = forms.CharacterForm()
+    
+    return render(request, 'character.html', {'form': form})
+
+
+
+def other_character(request):
         
