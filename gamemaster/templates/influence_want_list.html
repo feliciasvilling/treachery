@@ -1,0 +1,51 @@
+{% extends "gm_base.html" %}
+
+{% block head %}
+  {% load staticfiles %}
+  <script src="{% static "gamemaster/js/jquery.dynatable.js" %}"></script>
+  <script src="{% static "gamemaster/js/dynatableWriters.js" %}"></script>
+  <script src="{% static "gamemaster/js/clickable.js" %}"></script>
+  <link rel="stylesheet" href="{% static "gamemaster/css/jquery.dynatable.css" %}" />
+{% endblock %}
+
+{% block content %}
+
+<div class="row">
+  <div class="col-md-10 col-md-offset-1">
+    <h1>Influence List</h1>
+  </div>
+</div>
+
+
+
+<div class="row">
+  <div class="col-md-offset-1 col-md-10">
+    {% for char in chars %}
+        {{ char.name }}
+        <table >
+            {% for infl in char.infls %}
+            <tr>
+              <th> {{infl.name}} </th>
+              <td> {{infl.val}} </td>
+            </tr>
+            {% endfor %}
+          
+        </table>
+    {% endfor %}
+    
+    {% for infl in infls %}
+        {{ infl.name }}
+        <table >
+            {% for chr in infl.chars %}
+            <tr>
+              <th> {{chr.name}} </th>
+              <td> {{chr.val}} </td>
+            </tr>
+            {% endfor %}
+          
+        </table>
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock %}

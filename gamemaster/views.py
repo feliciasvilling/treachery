@@ -266,25 +266,42 @@ def assign_influence(request):
     
     for inf in inf_list:
         wants = InfluenceWant.objects.filter(influence=inf[0])
-        pretenders = [{'want':want,
-                        'total':chars[want.character.name],
-                        'missing': not want.character in masters,
-                        'age': age_to_number[want.character.age.name],
-                        'rnd': random.random() } 
-                        for want in wants if want.wanted == 3 and not want.elder]
-        if len(pretenders) > 0:
-            pretenders.sort(key=inforder, reverse=True)
-            mastering = pretenders[0]['want']
-            mastering.final=True
-            mastering.save()
-            masters.append(mastering.character)
-            mastered.append(inf)
-            chars[mastering.character.name] -= 3
+        taken = [want for want in wants if want.wanted == 3 and want.elder]
+        if taken != []:
+            for take in taken:
+                take.final = True
+            mastered.append(inf) 
+            pretenders = [{'want':want,
+                            'total':chars[want.character.name],
+                            'missing': not want.character in masters,
+                            'age': age_to_number[want.character.age.name],
+                            'rnd': random.random() } 
+                            for want in wants if want.wanted == 3 and not want.elder]
             for w in pretenders:
                 if not w['want'].final:
                     w['want'].wanted -= 1
                     w['want'].dislodged += 1
-                    w['want'].save()
+                    w['want'].save() 
+        else:
+            pretenders = [{'want':want,
+                            'total':chars[want.character.name],
+                            'missing': not want.character in masters,
+                            'age': age_to_number[want.character.age.name],
+                            'rnd': random.random() } 
+                            for want in wants if want.wanted == 3 and not want.elder]
+            if len(pretenders) > 0:
+                pretenders.sort(key=inforder, reverse=True)
+                mastering = pretenders[0]['want']
+                mastering.final=True
+                mastering.save()
+                masters.append(mastering.character)
+                mastered.append(inf)
+                chars[mastering.character.name] -= 3
+                for w in pretenders:
+                    if not w['want'].final:
+                        w['want'].wanted -= 1
+                        w['want'].dislodged += 1
+                        w['want'].save()
     
     for inf in inf_list:
         wants = InfluenceWant.objects.filter(influence=inf[0])
@@ -317,12 +334,33 @@ def assign_influence(request):
                     w['want'].wanted -= 1
                     w['want'].dislodged += 1
                     w['want'].save()    
+    
+    players = {}
+    influences = {}
             
     for want in InfluenceWant.objects.all():
         want.final = True
         want.save()
-           
-    return redirect('sessions')
+        
+    chars = []  
+    for char in Character.objects.all():    
+        dislodged = 0
+        inf = []
+        for want in InfluenceWant.objects.filter(character=char):
+            inf.append({'name':want.influence.name, 'val': want.wanted})
+            dislodged += want.dislodged
+        inf.append({'name':'dislodged', 'val': dislodged})
+        chars.append({'name':char.name, 'infls': inf})
+    
+    infls = []    
+    for inf in Influence.objects.all():
+        chrs = []
+        for want in InfluenceWant.objects.filter(influence=inf):
+            chrs.append({'name':want.character.name, 'val': want.wanted})
+            print (chrs)
+        infls.append( {'name':inf.name, 'chars': chrs})
+                       
+    return render(request, 'influence_want_list.html', {'chars':chars,'infls':infls})  
     
 age_to_number = {'Novis':0,'Neonat':1,'Ancilla':2,'Äldste':3}    
     

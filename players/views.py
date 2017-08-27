@@ -25,7 +25,7 @@ def undefined_character(request):
     if hasattr(request.user,'character'):
         return not request.user.character.defined
     else:
-        return False
+        return True
         
 MELEETABLE = ['','Knife','Machete','Sword']
 FIREARMSTABLE = ['','Light Gun','Heavy Gun','Assult Rifle']        
@@ -563,6 +563,15 @@ BLOODTABLE = [0,0,0,0,45,35,25,15,10,9,8,7,6,5]
 @user_passes_test(lambda u: not u.is_superuser, login_url='/gm/')
 def make_character(request):
     ch = request.user.character
+    
+        
+    dislodged = 0
+    infls = []
+    for want in InfluenceWant.objects.filter(character=ch):
+        infls.append({'name':want.influence.name, 'val': want.wanted})
+        dislodged += want.dislodged
+    infls.append({'name':'dislodged', 'val': dislodged})
+        
     sessions = Session.objects.all()
     
     session = Session.objects.get(is_open=True)
@@ -980,6 +989,6 @@ def make_character(request):
     else:
         form = forms.CharacterForm()
     
-    return render(request, 'character.html', {'form': form, 'ch':ch})
+    return render(request, 'character.html', {'form': form, 'ch':ch, 'infls':infls})
 
 

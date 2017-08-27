@@ -389,8 +389,6 @@ class CharacterForm(Form):
     
     titles = 	ModelMultipleChoiceField(queryset=Title.objects.all(),required=False,
         widget=CheckboxSelectMultiple)
-    domains = 	ModelMultipleChoiceField(queryset=Domain.objects.all(),required=False,
-        widget=CheckboxSelectMultiple)
     political_faction = ModelChoiceField(queryset=PoliticalFaction.objects.all(),empty_label=None)
     
     concept = CharField(
