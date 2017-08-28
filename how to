@@ -14,7 +14,7 @@ dokku run downtime-master python3 manage.py migrate
 dokku run downtime python3 manage.py dumpdata --natural-foreign --natural-primary --indent 4 -e sessions -e contenttypes -e auth.Permission -e admin > depdump.json 
 
 scp root@185.14.186.239:depdump.json depdump.json
-
+scp depdump.json root@185.14.186.239:depdump.json 
 
 python3 manage.py loaddata depdump.json
 
@@ -24,15 +24,22 @@ nano /etc/hosts
 
 
 
-git checkout master~6 --/players.view
+
+scp players.zip root@185.14.186.239:players.zip
+docker cp players.zip downtime-master.web.1:app/players.zip
+
+scp gamemaster.zip root@185.14.186.239:gamemaster.zip
+docker cp gamemaster.zip downtime-master.web.1:app/gamemaster.zip
 
 
 
+python3 manage.py dumpdata --natural-foreign --natural-primary --indent 4 -e sessions -e contenttypes -e auth.Permission -e admin > depdump.json
+scp depdump.json root@185.14.186.239:depdump.json 
+docker cp depdump.json downtime-master.web.1:app/depdump.json
 
 
+python3 manage.py loaddata --natural-foreign --natural-primary dedump.json
 
-
-
-
+downtime-master.web.1
 
 
