@@ -43,3 +43,59 @@ python3 manage.py loaddata --natural-foreign --natural-primary dedump.json
 downtime-master.web.1
 
 
+blood:
+
+ishtar:
+    ssh root@139.59.215.9
+
+browser: 139.59.215.9
+    hostname: downtime.treachery2.eu
+    Use virtualhost naming for apps: False
+    
+blood:
+    dokku apps:create downtime    
+    sudo dokku plugin:install https://github.com/dokku/dokku-postgres.git
+    dokku postgres:create bloodbank
+    dokku postgres:link bloodbank downtime
+    sudo fallocate -l 5G /swapfile
+    sudo chmod 600 /swapfile
+    sudo mkswap /swapfile
+    sudo swapon /swapfile
+    echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
+    dokku config:set downtime DJANGO_PRODUCTION=true
+    dokku config:set downtime DJANGO_ALLOWED_HOSTS=downtime.treachery2.eu
+    dokku config:set downtime DJANGO_DEBUG=True
+    dokku config:set downtime DJANGO_SECRET='fviegvertivvewhsvjvvergebvetehgbvbryrthvdryrtjnfghsrttjcfbbmdtyj'
+    sudo apt-get update
+    sudo apt-get upgrade
+    initial key: treachery_ssh.pub
+    
+ishtar:
+    git remote add deploy dokku@139.59.215.9:downtime    
+    python3 manage.py makemigrations
+    python3 manage.py migrate
+    python3 manage.py dumpdata --natural-foreign --natural-primary --indent 4 -e sessions -e contenttypes -e auth.Permission -e admin > depdump.json
+    -- git add .
+    -- git commit -m 'deployment prep'
+    git push deploy master
+    
+
+error:
+
+
+gcc -pthread -Wno-unused-result -Wsign-compare -Wunreachable-code -DNDEBUG -g -fwrapv -O3 -Wall -Wstrict-prototypes -fPIC -DVERSION="1.9.73" -I/app/.heroku/python/include/python3.5m -c cupsmodule.c -o build/temp.linux-x86_64-3.5/cupsmodule.o
+       cupsmodule.c:23:23: fatal error: cups/cups.h: No such file or directory
+       #include <cups/cups.h>
+       ^
+       compilation terminated.
+       error: command 'gcc' failed with exit status 1
+       
+----------------------------------------
+       Command "/app/.heroku/python/bin/python -u -c "import setuptools, tokenize;__file__='/tmp/pip-build-ru0e9uaq/pycups/setup.py';f=getattr(tokenize, 'open', open)(__file__);code=f.read().replace('rn', 'n');f.close();exec(compile(code, __file__, 'exec'))" install --record /tmp/pip-5ku3ukhy-record/install-record.txt --single-version-externally-managed --compile" failed with error code 1 in /tmp/pip-build-ru0e9uaq/pycups/
+
+
+DATABASE_URL=postgres://
+DJANGO_EMAIL_HOST=...
+DJANGO_EMAIL_PASSWORD=...
+DJANGO_EMAIL_USER=...
+
